@@ -1,5 +1,4 @@
-angular.module('newApp').controller('eftauthorrationCtrl', function($scope) {
-
+angular.module('newApp').controller('internationalratesCrtl', function($scope) {
     $("#comname").text(localStorage.getItem('comname'))
     $("#landmark").text(localStorage.getItem('landmark'))
     $("#comcity").text(localStorage.getItem('comcity'))
@@ -14,5 +13,6 @@ angular.module('newApp').controller('eftauthorrationCtrl', function($scope) {
         console.log('imagenotloaded')
         $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
+
 
 });

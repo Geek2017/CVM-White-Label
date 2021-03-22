@@ -657,16 +657,3 @@ var strurl = window.location.href;
 var newstr = strurl.slice(-11);
 
 console.log(newstr);
-
-if (newstr == 'wizard.html') {
-
-    $("#registerPassword").passwordValidation({ "confirmField": "#registerConfirmPassword" }, function(element, valid, match, failedCases) {
-
-        $("#errors").html("<span>" + failedCases.join("\n") + "</span>");
-
-        if (valid) $(element).css("border", "0.5px solid green");
-        if (!valid) $(element).css("border", "0.5px solid red");
-        if (valid && match) $("#registerPassword").css("border", "0.5px solid green"), $("#registerConfirmPassword").css("border", "0.5px solid green");
-        if (!valid || !match) $("#registerPassword").css("border", "0.5px solid red"), $("#registerConfirmPassword").css("border", "0.5px solid green");
-    });
-}

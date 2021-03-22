@@ -66,25 +66,28 @@
                     <li class="active">
                         <a href="#"><span class="fa fa-desktop"></span> <span class="xn-text" name="sashboard">Dashboard</span></a>
                     </li>
-                    <li class="xn-openable activate">
-                        <a href="#/dashboard"><span class="fa fa-files-o"></span> <span class="xn-text">Forms</span></a>
-                        <ul>
-                            <li><a href="#/addnumber"><span class="glyphicon glyphicon-earphone"></span>Port Local Number</a>
-                            </li>
 
-                            <li><a href="#/salesproposal"><span class="glyphicon glyphicon-list-alt"></span>Sales
-                  Proposal</a></li>
-                            <li><a href="#/tollfreeport"><span class="fa fa-exchange"></span>Port TF Number</a></li>
-                            <!-- <li><a href="#/creditcardauth"><span class="fa fa fa-credit-card"></span>Credit Card Auth</a>
-                            </li> -->
-                            <li><a href="#/eftauthorration"><span class="fa fa-unlock"></span>EFT Authorization</a></li>
-                            <!-- <li><a href="#/loaport"><span class="fa fa-retweet"></span>LOA Port</a></li> -->
-                            <li><a href="#/quickInstruction"><span class="fa fa-thumb-tack"></span>Q and A</a>
-                            </li>
-                            <li><a href="#/starcode"><span class="glyphicon glyphicon-qrcode"></span>Star Code Ref.</a>
-                            </li>
-                        </ul>
+
+                    <li><a href="#/salesproposal"><span class="glyphicon glyphicon-list-alt"></span>Sales
+                                Proposal</a></li>
+                    <li><a href="#/portlocalnumber"><span class="glyphicon glyphicon-earphone"></span>Port Local Number</a>
                     </li>
+
+                    <li><a href="#/loaport"><span class="fa fa-sitemap"></span>Port Toll Free Number</a>
+                    </li>
+                    <li><a href="#/creditcardauth"><span class="fa fa fa-credit-card"></span>Credit Card Auth</a></li>
+                    <li><a href="#/eftauthorration"><span class="fa fa-unlock"></span>EFT Authorization</a></li>
+
+                    <li><a href="#/quickInstruction"><span class="fa fa-thumb-tack"></span>Quick Start Guide</a>
+                    </li>
+                    <li><a href="#/starcode"><span class="fa fa-check-square-o"></span>Star Code Guide</a>
+                    </li>
+                    <li><a href="#/domesticrates"><span class="fa fa-map-marker"></span>Domestic Rates</a>
+                    </li>
+                    <li><a href="#/internationalrates"><span class="fa fa-globe"></span>International Rates</a>
+                    </li>
+
+
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>
@@ -94,21 +97,12 @@
 
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-                    <!-- TOGGLE NAVIGATION -->
-                    <li class="xn-icon-button">
-                        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
-                    </li>
-                    <!-- END TOGGLE NAVIGATION -->
-                    <!-- SEARCH -->
-                    <li class="xn-search">
-                        <form role="form">
-                            <input type="text" name="search" placeholder="Search..." />
-                        </form>
-                    </li>
+
                     <!-- END SEARCH -->
                     <!-- SIGN OUT -->
-                    <li class="xn-icon-button pull-right">
-                        <a href="" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>
+                    <li class="xn-icon-button pull-right" style="padding-top: 6px!important;padding-left: 16px!important;padding-right: 9px!important;">
+                        <!-- <a href="" class="mb-control" data-box="#mb-signout" style="width: 80px!important;"><span class="fa fa-sign-out" style="width: 100%!important;"></span></a> -->
+                        <button class="fa fa-sign-out mb-control btn-lg btn btn-success" data-box="#mb-signout"> Logout</button>
                     </li>
                     <!-- END SIGN OUT -->
                     <!-- MESSAGES -->
@@ -299,7 +293,7 @@
 
 
     <script src="./controllers/dashboardCtrl.js"></script>
-    <script src="./controllers/addnumberCtrl.js"></script>
+    <script src="./controllers/portlocalnumberCtrl.js"></script>
     <script src="./controllers/salesproposalCtrl.js"></script>
     <script src="./controllers/usersprofileCrtl.js"></script>
     <script src="./controllers/createstaffCtrl.js"></script>
@@ -310,6 +304,9 @@
     <script src="./controllers/creditcardauthCtrl.js"></script>
     <script src="./controllers/quickInstructionCtrl.js"></script>
     <script src="./controllers/starCodeRefCtrl.js"></script>
+    <script src="./controllers/internationalratesCrtl.js"></script>
+    <script src="./controllers/domesticratesCrtl.js"></script>
+    <script src="./controllers/mydocsCrtl.js"></script>
 
 
 

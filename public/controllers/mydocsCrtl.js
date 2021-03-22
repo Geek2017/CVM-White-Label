@@ -1,4 +1,4 @@
-angular.module('newApp').controller('eftauthorrationCtrl', function($scope) {
+angular.module('newApp').controller('mydocsCrtl', function($scope) {
 
     $("#comname").text(localStorage.getItem('comname'))
     $("#landmark").text(localStorage.getItem('landmark'))
@@ -7,6 +7,7 @@ angular.module('newApp').controller('eftauthorrationCtrl', function($scope) {
     $("#compostalcode").text(localStorage.getItem('compostalcode'))
     $("#comno").text(localStorage.getItem('comcontact'))
 
+
     if (sessionStorage.getItem('comlogo')) {
         console.log('imageloaded')
         $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));
@@ -14,5 +15,6 @@ angular.module('newApp').controller('eftauthorrationCtrl', function($scope) {
         console.log('imagenotloaded')
         $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
+
 
 });

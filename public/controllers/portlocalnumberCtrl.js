@@ -1,26 +1,26 @@
-angular.module('newApp').controller('addnumberdCtrl', function($scope) {
-
-    $scope.url0 = 'Forms';
-    $scope.url1 = 'Port Local Number';
+angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
 
 
 
-    var myVar = setInterval(myTimer, 100);
 
-    function myTimer() {
+    $("#comname").text(localStorage.getItem('comname'))
+    $("#landmark").text(localStorage.getItem('landmark'))
+    $("#comcity").text(localStorage.getItem('comcity'))
+    $("#comstate").text(localStorage.getItem('comstate'))
+    $("#compostalcode").text(localStorage.getItem('compostalcode'))
+    $("#comno").text(localStorage.getItem('comcontact'))
 
-        if (sessionStorage.getItem('comlogo')) {
-            console.log('imageloaded')
-            $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));
-        } else {
-            console.log('imagenotloaded')
-            $('#comlogo').attr('src', 'assets/images/plj.jpg')
-        }
+
+    if (sessionStorage.getItem('comlogo')) {
+        console.log('imageloaded')
+        $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));
+    } else {
+        console.log('imagenotloaded')
+        $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
 
-    setTimeout(function() {
-        clearInterval(myVar);
-    }, 2000);
+
+
 
 
     $('#logoimg').hide()

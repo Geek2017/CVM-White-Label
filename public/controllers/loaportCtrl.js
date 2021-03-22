@@ -1,31 +1,20 @@
 'use strict';
 
 angular.module('newApp').controller('loaportCtrl', function($scope) {
+    $("#comname").text(localStorage.getItem('comname'))
+    $("#landmark").text(localStorage.getItem('landmark'))
+    $("#comcity").text(localStorage.getItem('comcity'))
+    $("#comstate").text(localStorage.getItem('comstate'))
+    $("#compostalcode").text(localStorage.getItem('compostalcode'))
+    $("#comno").text(localStorage.getItem('comcontact'))
 
-    $scope.url0 = 'Forms';
-    $scope.url1 = 'Loa Port';
-
-    var myVar = setInterval(myTimer, 100);
-
-    function myTimer() {
-        $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
-        $(".panel").css("border-top-color", localStorage.getItem('unicolor'));
-        $(".panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
-        $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
-        console.log('loa color theme set')
-        if (sessionStorage.getItem('comlogo')) {
-            console.log('imageloaded')
-            $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));
-        } else {
-            console.log('imagenotloaded')
-            $('#comlogo').attr('src', 'assets/images/plj.jpg')
-        }
-
+    if (sessionStorage.getItem('comlogo')) {
+        console.log('imageloaded')
+        $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));
+    } else {
+        console.log('imagenotloaded')
+        $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
-
-    setTimeout(function() {
-        clearInterval(myVar);
-    }, 2000);
 
     $('.wrapper').on('click', '.clone', function() {
         $('.clone').closest('.wrapper').find('.element').first().clone().appendTo('.results');

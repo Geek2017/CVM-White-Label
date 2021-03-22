@@ -18,10 +18,32 @@
     <script type="text/javascript" src="assets/js/plugins/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/controller/ccftheme.js"></script>
     <!-- CSS INCLUDE -->
-
-    <!-- EOF CSS INCLUDE -->
-
-
+    <script src="assets/libraries/AngularJS/angular.js"></script>
+    <script src="assets/libraries/AngularJS/angular-route.js"></script>
+    <style>
+        /* Add a green text color and a checkmark when the requirements are right */
+        
+        .valid {
+            color: green;
+        }
+        
+        .valid:before {
+            position: relative;
+            left: -35px;
+            content: "✔";
+        }
+        /* Add a red text color and an "x" when the requirements are wrong */
+        
+        .invalid {
+            color: red;
+        }
+        
+        .invalid:before {
+            position: relative;
+            left: -35px;
+            content: "✖";
+        }
+    </style>
 </head>
 
 <body>
@@ -70,12 +92,12 @@
                 <img class="img-responsive" src="assets/img/CCM.png" alt="logo" style="height: 12%;width: 100%;"> <br>
 
             </div>
-            <div class="login-body">
+            <div class="login-body" ng-controller="wizardCtrl">
                 <div class="login-title"><strong>Welcome</strong>, Please Set Up your workspace</div>
 
                 <div class="block">
 
-                    <form action="#" role="form" class="form-horizontal" id="wizard-validation">
+                    <form action="#" role="form" class="form-horizontal" id="wizard-validation" autocomplete="off">
                         <div class="wizard show-submit wizard-validation">
                             <ul>
 
@@ -126,21 +148,25 @@
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" style="color: white;">Email:</label>
                                     <div class="col-md-10">
-                                        <input id="cusemail" type="text" class="form-control" name="Email" placeholder="email" />
+                                        <input id="cusemail" type="email" class="form-control" name="email" placeholder="email" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" style="color: white;">Password:</label>
                                     <div class="col-md-10">
-                                        <input id="registerPassword" type="password" class="form-control" name="password" placeholder="Password" />
+                                        <input id="registerPassword" type="password" class="form-control" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+                                        <label id="showpwd" class="col-md-12 pull-right control-label" style="color: white;">Show Password <input type="checkbox" ></label>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" style="color: white;">Re-Password:</label>
-                                    <div class="col-md-10">
-                                        <input id="registerConfirmPassword" type="password" class="form-control" name="repassword" placeholder="Re-Password" />
+
+                                    <div class="col-md-10 pull-left" id="message" style="color: white;padding-left: 180px!important;">
+                                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                                        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                                        <p id="number" class="invalid">A <b>number</b></p>
+                                        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                                     </div>
+
                                 </div>
+
                                 <div class="form-group" style="padding-bottom: 40px;">
                                     <label class="col-md-2 control-label" style="color: white;"></label>
                                     <div id="errors" class="col-md-10" style="color: white;">
@@ -153,10 +179,10 @@
                             <div id="step-1">
 
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label" style="color: white;"> Logo:</label>
+                                    <label class="col-md-2 control-label" style="color: white;">Logo:</label>
                                     <div class="col-md-10">
 
-                                        <a class="file-input-wrapper btn btn-default  fileinput btn-primary" name="data"><input type="file" class="fileinput btn-primary " name="filename" id="comlogo" title="Browse file" name="data"></a>
+                                        <a class="file-input-wrapper btn btn-default  fileinput btn-primary" name="data"><input type="file" class="fileinput btn-primary " name="filename" id="comlogo" title="Upload Company Logo" name="data"></a>
 
 
                                     </div>
@@ -165,26 +191,99 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label" style="color: white;">Company
-                                        &nbsp;&nbsp;Name:</label>
+                                    <label class="col-md-2 control-label" style="color: white;">Name:</label>
                                     <div class="col-md-10">
                                         <input id="comname" type="text" class="form-control" name="data" placeholder="Company Name" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label" style="color: white;">Company
-                                        Contact:</label>
+                                    <label class="col-md-2 control-label" style="color: white;">Contact:</label>
                                     <div class="col-md-10">
                                         <input id="comcontact" type="number" class="form-control" name="Contact" placeholder="Company Contact" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label" style="color: white;">Company
-                                        Address:</label>
+                                    <label class="col-md-2 control-label" style="color: white;">Landmark:
+                                        </label>
                                     <div class="col-md-10">
-                                        <textarea id="comaddress" name="address" class="form-control" rows="3" placeholder="Complete Address"></textarea>
+                                        <input id="landmark" type="text" class="form-control" name="landmark" placeholder="Stree/Block/Building" />
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" style="color: white;">City/Town:
+                                        </label>
+                                    <div class="col-md-10">
+                                        <input id="comcity" type="text" class="form-control" name="comcity" placeholder="City/Town" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" style="color: white;">Postal Code:
+                                        </label>
+                                    <div class="col-md-10">
+                                        <input id="compostalcode" type="text" class="form-control" name="postal" placeholder="code" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" style="color: white;">State:</label>
+                                    <div class="col-md-10">
+                                        <select id="comstate" class="form-control " data-style="btn-success">
+                                            <option value="Alabama">Alabama</option>
+                                            <option value="Alaska">Alaska</option>
+                                            <option value="Arizona">Arizona</option>
+                                            <option value="Arkansas">Arkansas</option>
+                                            <option value="California">California</option>
+                                            <option value="Colorado">Colorado</option>
+                                            <option value="Connecticut">Connecticut</option>
+                                            <option value="Delaware">Delaware</option>
+                                            <option value="District Of Columbia">District Of Columbia</option>
+                                            <option value="Florida">Florida</option>
+                                            <option value="Georgia">Georgia</option>
+                                            <option value="Hawaii">Hawaii</option>
+                                            <option value="Idaho">Idaho</option>
+                                            <option value="Illinois">Illinois</option>
+                                            <option value="Indiana">Indiana</option>
+                                            <option value="Iowa">Iowa</option>
+                                            <option value="Kansas">Kansas</option>
+                                            <option value="Kentucky">Kentucky</option>
+                                            <option value="Louisiana">Louisiana</option>
+                                            <option value="Maine">Maine</option>
+                                            <option value="Maryland">Maryland</option>
+                                            <option value="Massachusetts">Massachusetts</option>
+                                            <option value="Michigan">Michigan</option>
+                                            <option value="Minnesota">Minnesota</option>
+                                            <option value="Mississippi">Mississippi</option>
+                                            <option value="Missouri">Missouri</option>
+                                            <option value="Montana">Montana</option>
+                                            <option value="Nebraska">Nebraska</option>
+                                            <option value="Nevada">Nevada</option>
+                                            <option value="New Hampshire">New Hampshire</option>
+                                            <option value="New Jersey">New Jersey</option>
+                                            <option value="New Mexico">New Mexico</option>
+                                            <option value="New York">New York</option>
+                                            <option value="North Carolina">North Carolina</option>
+                                            <option value="North Dakota">North Dakota</option>
+                                            <option value="Ohio">Ohio</option>
+                                            <option value="Oklahoma">Oklahoma</option>
+                                            <option value="Oregon">Oregon</option>
+                                            <option value="Pennsylvania">Pennsylvania</option>
+                                            <option value="Rhode Island">Rhode Island</option>
+                                            <option value="South Carolina">South Carolina</option>
+                                            <option value="South Dakota">South Dakota</option>
+                                            <option value="Tennessee">Tennessee</option>
+                                            <option value="Texas">Texas</option>
+                                            <option value="Utah">Utah</option>
+                                            <option value="Vermont">Vermont</option>
+                                            <option value="Virginia">Virginia</option>
+                                            <option value="Washington">Washington</option>
+                                            <option value="West Virginia">West Virginia</option>
+                                            <option value="Wisconsin">Wisconsin</option>
+                                            <option value="Wyoming">Wyoming</option>
+                                            </select>
+                                    </div>
+                                </div>
+
+
 
                             </div>
 
@@ -196,7 +295,7 @@
 
                 <div class="login-footer">
                     <div class="pull-left">
-                        &copy; 2019 FormPortal
+                        &copy; 2020 Partner Portal
                     </div>
                     <div class="pull-right">
                         <a href="./login.html">Login</a> |
@@ -209,7 +308,7 @@
 
         </div>
 
-        <!-- END MESSAGE BOX-->
+        <!-- END MESSAGE BOX `P@$$w0rdK0`-->
 
         <!-- START PRELOADS -->
 
@@ -233,17 +332,17 @@
         <!-- END PAGE PLUGINS -->
 
         <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-        <script src="assets/js/jpv.js"></script>
+        <!-- <script src="assets/js/jpv.js"></script> -->
 
 
         <!-- START TEMPLATE -->
         <script type="text/javascript" src="assets/js/settings.js"></script>
 
-        <script type="text/javascript" src="assets/js/plugins.js"></script>
-        <script type="text/javascript" src="assets/js/actions.js"></script>
+        <script type="text/javascript" src="./assets/js/plugins.js"></script>
+        <script type="text/javascript" src="./assets/js/actions.js"></script>
 
 
-        <script src="assets/js/script.js"></script>
+        <script src="./wizard.js"></script>
 
         <!-- END TEMPLATE -->
         <!-- END SCRIPTS -->

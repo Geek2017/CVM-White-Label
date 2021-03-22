@@ -1,242 +1,257 @@
 <ul class="breadcrumb">
-    <li>{{url0}}</li>
-    <li class="active">{{url1}}</li>
+    <li>Forms</li>
+    <li class="active">Toll TF Number</li>
 </ul>
-<form class="form-horizontal">
-    <div class="panel panel-default">
-        <div class="col-md-12 scCol ui-sortable">
-            <div class="panel panel-success" id="grid_block_5">
-                <div class="panel-heading ui-draggable-handle ui-sortable-handle">
-                    <h3 class="panel-title">TOLL FREE NUMBER & RESPONSIBLE ORGANIZATION (RESP ORG) TRANSFER</h3>
-                </div>
-                <div class="panel-body"> Resporg ID:QYR01 </div>
-            </div>
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-6" style="padding-left:2%">
-                    <div class="form-group">
-                        <h3 class="panel-title pull-left"><img id="comlogo" class="img-responsive" width="40%" src="assets/images/plj.jpg" alt="logo"></h3>
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title pull-center"><strong>PORT TF </strong> NUMBER
+                        </h3>
+                        <ul class="panel-controls">
+                            <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                        </ul>
                     </div>
-                    <div class="form-group">
-                        <p> epic.network </p>
-                        <p> 823 Blaine St #423, Caldwell ID 83605-3733 </p>
-                        <p> (208) 391-3840 / help@support.epic.network </p>
+
+                    <div class="panel-heading ">
+                        <img id="comlogo" class="img-responsive pull-left" width="10%" src="" alt="log">
+                        <center>
+                            <h3>
+                                <div style=" padding-top: 2%!important;">
+
+                                    <span><strong><span id="comname"></span></strong><br>
+                                    <span id="landmark"></span><br>
+                                    <span id="comcity"></span><br>
+                                    <span id="comstate"></span>,
+                                    <span id="compostalcode"></span><br>#
+                                    <span id="comno"></span>
+                                </div>
+                            </h3>
+                        </center>
                     </div>
-                </div>
-                <div class="col-md-4 pull-right">
-                    <div class="panel panel-success">
-                        <div class="panel-heading ui-draggable-handle">
-                            <h3 class="panel-title">INTERNAL USE:</h3>
-                        </div>
-                        <div class="panel-body"> <label class="col-md-4 control-label">CUST ID</label>
-                            <div class="col-md-8">
-                                <div class="input-group"> <span class="input-group-addon"><span
+                    <div class="panel-body">
+
+
+
+                        <div class="col-md-4 pull-right">
+                            <div class="panel panel-success">
+                                <div class="panel-heading ui-draggable-handle">
+                                    <h3 class="panel-title">INTERNAL USE:</h3>
+                                </div>
+                                <div class="panel-body"> <label class="col-md-4 control-label">CUST ID</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group"> <span class="input-group-addon"><span
                                             class="fa fa-user"></span></span> <input ng-model="cid" type="text" class="form-control" /> </div>
-                            </div><br><br> <label class="col-md-4 control-label">RESSELLER ID</label>
-                            <div class="col-md-8">
-                                <div class="input-group"> <span class="input-group-addon"><span
+                                    </div><br><br> <label class="col-md-4 control-label">RESSELLER ID</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group"> <span class="input-group-addon"><span
                                             class="fa fa-users"></span></span> <input ng-model="rid" type="text" class="form-control" /> </div>
-                            </div><br><br> <label class="col-md-4 control-label">ENDPOINT</label>
-                            <div class="col-md-8">
-                                <div class="input-group"> <span class="input-group-addon"><span
+                                    </div><br><br> <label class="col-md-4 control-label">ENDPOINT</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group"> <span class="input-group-addon"><span
                                             class="glyphicon glyphicon-user"></span></span> <input ng-model="endpoint" type="text" class="form-control" /> </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-12 ">
-            <div class="panel panel-success">
-                <div class="panel-body ">
-                    <p>
-                        <h3> <strong> This authorization covers the following locations and lead billing telephone
+                <div class="col-md-12 ">
+                    <div class="panel panel-success">
+                        <div class="panel-body ">
+                            <p>
+                                <h3> <strong> This authorization covers the following locations and lead billing telephone
                                 numbers and shall remain in effect until further written notice is provided. I
                                 understand that I can have only one local service provider for any one telephone number.
                                 <br> <br>
                                 <p> NOTE:Hand written forms will not be accepted.</p>
                         </h3></strong>
-                    </p>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Main Billing Telephone
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Main Billing Telephone
                             Number:</label>
-                        <div class="col-md-8">
-                            <div class="input-group"> <span class="input-group-addon"><span
+                                <div class="col-md-8">
+                                    <div class="input-group"> <span class="input-group-addon"><span
                                         class="fa fa-briefcase"></span></span> <input ng-model="mbtn" type="text" class="form-control" /> </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Account Number:</label>
-                        <div class="col-md-8">
-                            <div class="input-group"> <span class="input-group-addon"><span
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Account Number:</label>
+                                <div class="col-md-8">
+                                    <div class="input-group"> <span class="input-group-addon"><span
                                         class="fa fa-info"></span></span> <input ng-model="acctno" type="number" class="form-control "> </div>
-                        </div>
-                    </div>
-                </div><br><br><br>
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Customer Name:</label>
-                        <div class="col-md-8">
-                            <div class="input-group"> <span class="input-group-addon"><span
+                                </div>
+                            </div>
+                        </div><br><br><br>
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Customer Name:</label>
+                                <div class="col-md-8">
+                                    <div class="input-group"> <span class="input-group-addon"><span
                                         class="fa fa-briefcase"></span></span> <input ng-model="custname" type="text" class="form-control" /> </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Physical Address:</label>
-                        <div class="col-md-8">
-                            <div class="input-group"> <span class="input-group-addon"><span
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Physical Address:</label>
+                                <div class="col-md-8">
+                                    <div class="input-group"> <span class="input-group-addon"><span
                                         class="fa fa-info"></span></span> <textarea ng-model="physadd" class="form-control" rows="2"></textarea> </div>
-                        </div>
-                    </div>
-                </div><br><br><br><br>
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Customer Billing Address:</label>
-                        <div class="col-md-8">
-                            <div class="input-group"> <span class="input-group-addon"><span
+                                </div>
+                            </div>
+                        </div><br><br><br><br>
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Customer Billing Address:</label>
+                                <div class="col-md-8">
+                                    <div class="input-group"> <span class="input-group-addon"><span
                                         class="fa fa-info"></span></span> <textarea ng-model="cba" class="form-control" rows="2"></textarea> </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Authorized Signer Phone #:</label>
-                        <div class="col-md-8">
-                            <div class="input-group"> <span class="input-group-addon"><span
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Authorized Signer Phone #:</label>
+                                <div class="col-md-8">
+                                    <div class="input-group"> <span class="input-group-addon"><span
                                         class="fa fa-briefcase"></span></span> <input ng-model="aspn" type="text" class="form-control" /> </div>
-                        </div>
-                    </div>
-                </div><br><br><br><br>
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Authorized Signer Name:</label>
-                        <div class="col-md-8">
-                            <div class="input-group"> <span class="input-group-addon"><span
+                                </div>
+                            </div>
+                        </div><br><br><br><br>
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Authorized Signer Name:</label>
+                                <div class="col-md-8">
+                                    <div class="input-group"> <span class="input-group-addon"><span
                                         class="fa fa-briefcase"></span></span> <input ng-model="asn" type="text" class="form-control" /> </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Requested Port Date:</label>
-                        <div class="col-md-8">
-                            <div class="input-group"> <span class="input-group-addon"><span
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Requested Port Date:</label>
+                                <div class="col-md-8">
+                                    <div class="input-group"> <span class="input-group-addon"><span
                                         class="fa fa-info"></span></span> <input ng-model="rpd" type="text" class="form-control datepicker" value="2014-11-01"> </div>
-                        </div>
-                    </div>
-                </div><br><br><br>
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Caller ID Name (CNAME):</label>
-                        <div class="col-md-8">
-                            <div class="input-group"> <span class="input-group-addon"><span
+                                </div>
+                            </div>
+                        </div><br><br><br>
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Caller ID Name (CNAME):</label>
+                                <div class="col-md-8">
+                                    <div class="input-group"> <span class="input-group-addon"><span
                                         class="fa fa-briefcase"></span></span> <input ng-model="cidn" type="text" class="form-control" /> </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div><br><br>
-            <div class="col-md-12 ">
-                <div class="panel panel-success">
-                    <div class="panel-body ">
-                        <p>
-                            <h3> <strong> The undersigned Toll Free number holder (the "Holder") does hereby appoint
+                    </div><br><br>
+                    <div class="col-md-12 ">
+                        <div class="panel panel-success">
+                            <div class="panel-body ">
+                                <p>
+                                    <h3> <strong> The undersigned Toll Free number holder (the "Holder") does hereby appoint
                                     Resp Org ID:QYR01 as the Responsible Organization for the listed Toll Free numbers
                                     below. <br> <br>
                                     <p>NOTE:If you are porting more than 10 (ten) numbers please submit an Excel
                                         spreadsheet.</p>
                             </h3></strong>
-                        </p>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <h2>The Numbers Listed Here are the numbers that I want ported:</h2>
-            <div class="col-md-12 form-group-separated">
-                <div class="panel panel-success ">
-                    <div class="panel-body wrapper">
-                        <div class="col-md-6">
-                            <div class="form-group"> <label class="col-md-4 control-label">Main Billing Telephone
-                                    Number:</label>
+                    <h2>The Numbers Listed Here are the numbers that I want ported:</h2>
+                    <div class="col-md-12 form-group-separated">
+                        <div class="panel panel-success ">
+                            <div class="panel-body wrapper">
                                 <div class="col-md-6">
-                                    <div class="input-group"> <span class="input-group-addon"><span
+                                    <div class="form-group"> <label class="col-md-4 control-label">Main Billing Telephone
+                                    Number:</label>
+                                        <div class="col-md-6">
+                                            <div class="input-group"> <span class="input-group-addon"><span
                                                 class="fa fa-briefcase"></span></span> <input ng-model="mbtn" type="text" class="form-control" /> </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group"> <label class="col-md-2 control-label">Account Number:</label>
-                                <div class="col-md-10">
-                                    <div class="input-group"> <span class="input-group-addon"><span
+                                <div class="col-md-12">
+                                    <div class="form-group"> <label class="col-md-2 control-label">Account Number:</label>
+                                        <div class="col-md-10">
+                                            <div class="input-group"> <span class="input-group-addon"><span
                                                 class="fa fa-info"></span></span> <input ng-model="acctn2" type="number" class="form-control "> </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 element">
-                            <div class="form-group"> <label class="col-md-4 control-label"> <button class="btn btn-danger btn-xs remove">X</button></label>
-                                <div class="col-md-8">
-                                    <div class="input-group"> <span class="input-group-addon"><span
-                                                class="fa fa-phone"></span></span> <input type="number" class="form-control "><span class="input-group-addon ">
-                                                    <span  class="btn btn-primary btn-xs fa fa-plus clone"></span></span>
+                                        </div>
                                     </div>
                                 </div>
 
+                                <div class="col-md-6 element">
+                                    <div class="form-group"> <label class="col-md-4 control-label"> <button class="btn btn-danger btn-xs remove">X</button></label>
+                                        <div class="col-md-8">
+                                            <div class="input-group"> <span class="input-group-addon"><span
+                                                class="fa fa-phone"></span></span> <input type="number" class="form-control "><span class="input-group-addon ">
+                                                    <span  class="btn btn-primary btn-xs fa fa-plus clone"></span></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="results"></div>
+
                             </div>
                         </div>
-                        <div class="results"></div>
-
                     </div>
-                </div>
-            </div>
-            <div class="form-group-separated">
+                    <div class="form-group-separated">
 
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Signature:</label><button class="btn btn-warning btn-default btn-rounded pull-right" id="sig-clearBtn">
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Signature:</label><button class="btn btn-warning btn-default btn-rounded pull-right" id="sig-clearBtn">
                                     X</button></h5>
 
 
-                        <div class="col-md-8">
-                            <canvas id="sig-canvas" width="400" height="100">
+                                <div class="col-md-8">
+                                    <canvas id="sig-canvas" width="400" height="100">
 
                                     </canvas>
-                        </div>
+                                </div>
 
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Date:</label>
-                        <div class="col-md-8">
-                            <div class="input-group"> <span class="input-group-addon"><span
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Date:</label>
+                                <div class="col-md-8">
+                                    <div class="input-group"> <span class="input-group-addon"><span
                                         class="fa fa-info"></span></span> <input class="form-control datepicker" value="10-3-2019"> </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Printed Name:</label>
-                        <div class="col-md-8">
-                            <div class="input-group"> <span class="input-group-addon"><span
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Printed Name:</label>
+                                <div class="col-md-8">
+                                    <div class="input-group"> <span class="input-group-addon"><span
                                         class="fa fa-briefcase"></span></span> <input type="text" class="form-control" /> </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group"> <label class="col-md-4 control-label">Email Address:</label>
-                        <div class="col-md-8">
-                            <div class="input-group"> <span class="input-group-addon"><span
+                        <div class="col-md-6">
+                            <div class="form-group"> <label class="col-md-4 control-label">Email Address:</label>
+                                <div class="col-md-8">
+                                    <div class="input-group"> <span class="input-group-addon"><span
                                         class="fa fa-info"></span></span> <input type="email" class="form-control ">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="panel-footer">
+                    <button class="btn btn-danger">Clear Form</button>
+                    <div class="btn-group pull-right ">
+                        <button class="btn btn-info">Print it</button>
+                        <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">Mail it</button>
+                        <button class="btn btn-success " id="sig-submitBtn">Save it</button>
+                    </div>
+                </div>
         </div>
-        <div class="panel-footer">
-            <button class="btn btn-danger">Clear Form</button>
-            <div class="btn-group pull-right ">
-                <button class="btn btn-info">Print it</button>
-                <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">Mail it</button>
-                <button class="btn btn-success " id="sig-submitBtn">Save it</button>
-            </div>
-        </div>
-</form>
+        </form>
+    </div>
+</div>
+</div>

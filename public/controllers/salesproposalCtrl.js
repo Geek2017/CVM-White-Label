@@ -1,33 +1,21 @@
-'use strict';
-
-
 angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
-    $scope.url0 = 'Forms';
-    $scope.url1 = 'Sales Proposal';
+    $("#comname").text(localStorage.getItem('comname'))
+    $("#landmark").text(localStorage.getItem('landmark'))
+    $("#comcity").text(localStorage.getItem('comcity'))
+    $("#comstate").text(localStorage.getItem('comstate'))
+    $("#compostalcode").text(localStorage.getItem('compostalcode'))
+    $("#comno").text(localStorage.getItem('comcontact'))
 
-    var myVar = setInterval(myTimer, 100);
-
-    function myTimer() {
-        $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
-        $(".panel").css("border-top-color", localStorage.getItem('unicolor'));
-        $(".panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
-        $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
-        console.log('salesproposal color theme set')
-
-        if (sessionStorage.getItem('comlogo')) {
-            console.log('imageloaded')
-            $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));
-        } else {
-            console.log('imagenotloaded')
-            $('#comlogo').attr('src', 'assets/images/plj.jpg')
-        }
-
+    if (sessionStorage.getItem('comlogo')) {
+        console.log('imageloaded')
+        $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));
+    } else {
+        console.log('imagenotloaded')
+        $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
 
-    setTimeout(function() {
-        clearInterval(myVar);
-    }, 2000);
+
 
     (function() {
         emailjs.init("user_Vc5Bkgq73iehzqAZWo38i");
@@ -60,62 +48,121 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         return false;
     });
 
-
-    $scope.mrcadd = function() {
-
-        var $tableBody = $('#mcrrowTable').find("tbody"),
-            $trLast = $tableBody.find("tr:first"),
-            $trNew = $trLast.clone();
-
-        $trLast.after($trNew);
-
-    }
-
-    $scope.mrcmin = function() {
-
-        var $tableBody = $('#mcrrowTable').find("tbody"),
-            $trLast = $tableBody.find("tr:first"),
-            $trNew = $trLast.remove();
-
-        $trLast.after($trNew);
-
-    }
-
+    // MRC
     $scope.mcritems = [{
-        items: "Unlimited use Hosted VoIP service priced monthly per call path"
+        items: "Area Code Routing $50 monthly"
     }, {
-        items: "Fax adapter service"
+        items: "Batch FTP download $50 monthly "
     }, {
-        items: "Additional DIDs (direct dial phone numbers-one is included)"
+        items: "Batch Zip files for recording $10 monthly"
     }, {
-        items: "Electronic fax service (inbound and outbound)"
+        items: "Call Center Agent $5 per Agent"
     }, {
-        items: "Virtual Extensions for cell or land lines included at no additional charge"
+        items: "Call Center Feature $50"
     }, {
-        items: "SMS Text with 1,000 texts"
+        items: "Conference Bridge $25 for up to 20 people"
     }, {
-        items: "Note: 1.50 per device for regulatory recovery will be added."
+        items: "Conference Bridge Additional people, $5 for each bundle of 5 people"
+    }, {
+        items: "DID additional, first one free $2 each additional"
+    }, {
+        items: "E911 by device $1 per device"
+    }, {
+        items: "E911 by location $1 monthly per location"
+    }, {
+        items: "Fax (vFax) $10"
+    }, {
+        items: "Fax ATA $25"
+    }, {
+        items: "International Dialing, client charged on the prevailing rate"
+    }, {
+        items: "Smart CallerID $2 monthly per Smart CallerID"
+    }, {
+        items: "Smart CardID Routing $10 monthly"
+    }, {
+        items: "Teams Integration $4.50 per user monthly"
+    }, {
+        items: "VCCComplete mobile app only device on extension, $2.50 monthly"
+    }, {
+        items: "VCCComplete mobile app combined with any device on the extension, $ 5 monthly"
+    }, {
+        items: "Voicemail Transcription $5 monthly per entire account"
     }];
 
+    function calc_mrc() {
+        var calculated_total_sum = 0;
 
-    $scope.nrcadd = function() {
-
-        var $tableBody = $('#ncrrowTable').find("tbody"),
-            $trLast = $tableBody.find("tr:first"),
-            $trNew = $trLast.clone();
-
-        $trLast.after($trNew);
-
+        $("#mcrrowTable .tprice").each(function() {
+            var get_textbox_value = $(this).val();
+            if ($.isNumeric(get_textbox_value)) {
+                calculated_total_sum += parseFloat(get_textbox_value);
+            }
+        });
+        console.log(calculated_total_sum);
+        $('.mrcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
     }
 
-    $scope.nrcmin = function() {
+    $("#mcrrowTable").on('input', '.mrcu', function() {
+        calc_mrc()
+    });
 
-        var $tableBody = $('#ncrrowTable').find("tbody"),
-            $trLast = $tableBody.find("tr:first"),
-            $trNew = $trLast.remove();
+    $("#mcrrowTable").on('input', '.mrcup', function() {
+        calc_mrc()
+    });
 
-        $trLast.after($trNew);
+    $scope.mrc = [{ unit: "0", unitprice: "0.00" }];
 
+    $scope.mrcadd = function(mrc) {
+
+        console.log($('.tprice').val())
+
+        var mrc = {};
+        mrc.unit = $scope.unit;
+        mrc.unitprice = $scope.unitprice;
+        mrc.tprice = $scope.tprice;
+        $scope.mrc.push(mrc);
+    }
+
+    $scope.mrcmin = function(mrc) {
+        console.log(mrc.length);
+        $scope.mrc.splice(mrc.length - 1, 1);
+    }
+
+    function calc_nrc() {
+        var calculated_total_sum = 0;
+        $("#ncrrowTable .tnup").each(function() {
+            var get_textbox_value = $(this).val();
+            if ($.isNumeric(get_textbox_value)) {
+                calculated_total_sum += parseFloat(get_textbox_value);
+            }
+        });
+
+        console.log(calculated_total_sum);
+        $('.nrcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
+    }
+
+    $("#ncrrowTable").on('input', '.nrcu', function() {
+        calc_nrc();
+    });
+
+    $("#ncrrowTable").on('input', '.nrcup', function() {
+        calc_nrc();
+    });
+
+    $scope.nrc = [{ unit: "0", unitprice: "0.00" }];
+
+    $scope.nrcadd = function(nrc) {
+        console.log($('.tnup').val())
+        var nrc = {};
+        nrc.unit = $scope.unit;
+        nrc.unitprice = $scope.unitprice;
+        nrc.tprice = $scope.tnup;
+        $scope.nrc.push(nrc);
+    }
+
+    $scope.nrcmin = function(nrc) {
+        console.log(nrc.length);
+        $scope.nrc.splice(nrc.length - 1, 1);
     }
 
     $scope.ncritems = [{
@@ -136,40 +183,57 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
 
 
-    $scope.fpfhadd = function() {
+    function calc_fpfh() {
+        var calculated_total_sum = 0;
+        $("#fpfrowTable .tfpfh").each(function() {
+            var get_textbox_value = $(this).val();
+            if ($.isNumeric(get_textbox_value)) {
+                calculated_total_sum += parseFloat(get_textbox_value);
+            }
+        });
 
-        var $tableBody = $('#fpfrowTable').find("tbody"),
-            $trLast = $tableBody.find("tr:first"),
-            $trNew = $trLast.clone();
-
-        $trLast.after($trNew);
-
+        console.log(calculated_total_sum);
+        $('.fpfhgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
     }
 
-    $scope.fpfhmin = function() {
+    $("#fpfrowTable").on('input', '.fpfhu', function() {
+        calc_fpfh();
+    });
 
-        var $tableBody = $('#fpfrowTable').find("tbody"),
-            $trLast = $tableBody.find("tr:first"),
-            $trNew = $trLast.remove();
+    $("#fpfrowTable").on('input', '.fpfhup', function() {
+        calc_fpfh();
+    });
 
-        $trLast.after($trNew);
+    $scope.fpfh = [{ unit: "0", unitprice: "0.00" }];
 
+    $scope.fpfhadd = function(fpfh) {
+        console.log($('.tnup').val())
+        var fpfh = {};
+        fpfh.unit = $scope.unit;
+        fpfh.unitprice = $scope.unitprice;
+        fpfh.tprice = $scope.tnup;
+        $scope.fpfh.push(fpfh);
+    }
+
+    $scope.fpfhmin = function(fpfh) {
+        console.log(fpfh.length);
+        $scope.fpfh.splice(fpfh.length - 1, 1);
     }
 
     $scope.fpfitems = [{
-        items: "Auto attendant with unlimited extensions and dial by name"
+        items: "Aastra/Mitel 6863i Basic | MSRP $100.00"
     }, {
-        items: "Upload custom music-on-hold"
+        items: "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00"
     }, {
-        items: "Upload greetings "
+        items: "Aastra/Mitel 6869i Executive Phone | MSRP $300.00"
     }, {
-        items: "Voicemail to email "
+        items: "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00 "
     }, {
-        items: "After hours and holiday routing"
+        items: "Aastra/Mitel M680i Expansion Module | MSRP $80.00"
     }, {
-        items: "Extension to extension dialing"
+        items: "Aastra/Mitel M685i Expansion Module | MSRP $200.00"
     }, {
-        items: "Callier ID and CallerId name"
+        items: "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
     }];
 
 
@@ -343,6 +407,8 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         console.log(password);
         sessionStorage.setItem('hkc', password);
     }
+
+
     $("#myform").submit(function(event) {
 
 
@@ -364,4 +430,4 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
     });
 
 
-});
+})

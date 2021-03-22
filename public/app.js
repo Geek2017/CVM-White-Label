@@ -14,9 +14,9 @@ angular
                 templateUrl: 'views/createstaff.html',
                 controller: 'createstaffdCtrl'
             })
-            .when('/addnumber', {
-                templateUrl: 'views/addnumber.html',
-                controller: 'addnumberdCtrl'
+            .when('/portlocalnumber', {
+                templateUrl: 'views/portlocalnumber.html',
+                controller: 'portlocalnumberCtrl'
             })
             .when('/salesproposal', {
                 templateUrl: 'views/salesproposal.html',
@@ -49,6 +49,17 @@ angular
             .when('/usersprofile', {
                 templateUrl: 'views/usersprofile.html',
                 controller: 'usersprofileCrtl'
+            })
+            .when('/internationalrates', {
+                templateUrl: 'views/internationalrates.html',
+                controller: 'internationalratesCrtl'
+            })
+            .when('/domesticrates', {
+                templateUrl: 'views/domesticrates.html',
+                controller: 'domesticratesCrtl'
+            }).when('/mydocs', {
+                templateUrl: 'views/mydocs.html',
+                controller: 'mydocsCrtl'
             })
 
     });

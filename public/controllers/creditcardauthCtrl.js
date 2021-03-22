@@ -5,6 +5,13 @@ angular.module('newApp').controller('creditcardauthCtrl', function($scope) {
 
     var myVar = setInterval(myTimer, 100);
 
+    $("#comname").text(localStorage.getItem('comname'))
+    $("#landmark").text(localStorage.getItem('landmark'))
+    $("#comcity").text(localStorage.getItem('comcity'))
+    $("#comstate").text(localStorage.getItem('comstate'))
+    $("#compostalcode").text(localStorage.getItem('compostalcode'))
+    $("#comno").text(localStorage.getItem('comcontact'))
+
     function myTimer() {
         $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
         $(".panel").css("border-top-color", localStorage.getItem('unicolor'));

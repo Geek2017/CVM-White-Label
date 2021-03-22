@@ -1,6 +1,3 @@
-'use strict';
-
-
 angular.module('newApp').controller('indexdCtrl', function($scope, $rootScope) {
 
     var config = {
@@ -57,10 +54,21 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $rootScope) {
 
             var ref = firebase.database().ref("com_profiles");
             ref.orderByChild("cusid").equalTo(snapshot.val().cusid).on("child_added", function(snapshot) {
-                console.log(snapshot.val().comname);
-                console.log(snapshot.val().comlogo);
-                sessionStorage.setItem('comlogo', snapshot.val().comlogo)
+                console.log(snapshot.val().landmark);
+
+
+
                 $('#span').text(snapshot.val().comname);
+
+                sessionStorage.setItem('comlogo', snapshot.val().comlogo)
+                localStorage.setItem('comcity', snapshot.val().comcity)
+                localStorage.setItem('comstate', snapshot.val().comstate)
+                localStorage.setItem('compostalcode', snapshot.val().compostalcode)
+                localStorage.setItem('comcontact', snapshot.val().comcontact)
+                localStorage.setItem('comname', snapshot.val().comname)
+                localStorage.setItem('landmark', snapshot.val().landmark)
+
+                console.log(snapshot.val())
             });
 
 
