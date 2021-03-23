@@ -47,6 +47,7 @@ angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
         var r = confirm("Are you sure you want to remove this number ?");
         if (r == true) {
             $('#content div').last()[0].remove();
+
         }
     })
 
