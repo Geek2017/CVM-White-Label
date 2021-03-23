@@ -2,24 +2,141 @@
     <li>Forms</li>
     <li class="active">LOA</li>
 </ul>
-
+<style>
+    .m-signature-pad {
+        position: relative;
+        font-size: 10px;
+        width: 400px;
+        height: 180px;
+        border: 1px solid #e8e8e8;
+        background-color: #fff;
+        border-top-width: 2px;
+        border-top-color: #9773e2;
+    }
+    
+    .m-signature-pad:before,
+    .m-signature-pad:after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        width: 40%;
+        height: 10px;
+        left: 20px;
+        bottom: 10px;
+        background: transparent;
+        -webkit-transform: skew(-3deg) rotate(-3deg);
+        -moz-transform: skew(-3deg) rotate(-3deg);
+        -ms-transform: skew(-3deg) rotate(-3deg);
+        -o-transform: skew(-3deg) rotate(-3deg);
+        transform: skew(-3deg) rotate(-3deg);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+    }
+    
+    .m-signature-pad:after {
+        left: auto;
+        right: 20px;
+        -webkit-transform: skew(3deg) rotate(3deg);
+        -moz-transform: skew(3deg) rotate(3deg);
+        -ms-transform: skew(3deg) rotate(3deg);
+        -o-transform: skew(3deg) rotate(3deg);
+        transform: skew(3deg) rotate(3deg);
+    }
+    
+    .m-signature-pad--body {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 20px;
+        bottom: 20px;
+        border: 1px solid #f4f4f4;
+    }
+    
+    .m-signature-pad--body canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+    }
+    
+    @media screen and (max-width: 1024px) {
+        .m-signature-pad {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: auto;
+            height: auto;
+            min-width: 250px;
+            min-height: 250px;
+            margin: 5%;
+        }
+        #github {
+            display: none;
+        }
+    }
+    
+    @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        .m-signature-pad {
+            margin: 10%;
+        }
+    }
+    
+    @media screen and (max-height: 320px) {
+        .m-signature-pad--body {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 32px;
+        }
+        .m-signature-pad--footer {
+            left: 20px;
+            right: 20px;
+            bottom: 4px;
+            height: 8px;
+        }
+        .m-signature-pad--footer .description {
+            font-size: 1em;
+            margin-top: 1em;
+        }
+    }
+</style>
 <div class="page-content-wrap">
 
     <div class="row">
         <div class="col-md-12">
 
             <form class="form-horizontal">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><strong>LOCAL NUMBER LETTER OF AUTHORIZATION </strong> (LOA)</h3>
+                <div class="panel panel-success">
+                    <div class="panel-heading" style="padding-left: 23%!important;">
+
+                        <h1 class="panel-title" style="font-size: 35px;"><strong>LOCAL NUMBER OF</strong> AUTHORIZATION (LOA)
+                        </h1>
                         <ul class="panel-controls">
                             <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                         </ul>
+
+                    </div>
+
+                    <div class="panel-heading" style="text-align:center!important;">
+                        <img id="comlogo" style=" z-index: 1!important;" class="img-responsive pull-left" width="10%" src="" alt="log">
+                        <h3>
+                            <section style="padding-right: 11%!important;padding-top: 1%!important;">
+                                <span><strong><span id="comname"></span></strong><br>
+                                <span id="landmark"></span><br>
+                                <span id="comcity"></span><br>
+                                <span id="comstate"></span>,
+                                <span id="compostalcode"></span><br>#
+                                <span id="comno"></span>
+                            </section>
+                        </h3>
                     </div>
                     <div class="panel-body">
 
-                        <div class="row" style="padding-right:10%!important">
-                            <div class="panel-body" style="padding-left: 13%!important;padding-right: 13%!important;">
+                        <div class="row" style="padding-right:14%!important">
+                            <div class="panel-body" style="padding-left: 18%!important;padding-right: 13%!important;">
 
                                 <h3> This authorization covers the following locations and lead billing telephone numbers and shall remain in effect until further written notice is provided. I understand that I can have only one local service provider for
                                     any one telephone number.
@@ -31,185 +148,165 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label style="padding-left: 12px!important;">Main Billing Telephone Number</label>
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="fa fa-asterisk"></span></span>
-                                            <input type="text" class="form-control" />
-                                        </div>
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Main Billing Tel. Number:</label>
+                                        <input type="text" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label style="padding-left: 12px!important;">Account Number</label>
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="fa fa-folder-open"></span></span>
-                                            <input type="text" class="form-control" />
-                                        </div>
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Account Number:</label>
+                                        <input type="text" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label style="padding-left: 12px!important;">Caller ID Name (CNAME)</label>
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                            <input type="text" class="form-control" />
-                                        </div>
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Caller ID Name (CNAME):</label>
+                                        <input type="text" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label style="padding-left: 12px!important;">Requested Port Date</label>
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                            <input type="text" class="form-control" />
-                                        </div>
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Requested Port Date:</label>
+                                        <input type="text" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label style="padding-left: 12px!important;">e911 Address</label>
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="fa fa-home"></span></span>
-                                            <input type="text" class="form-control" />
-                                        </div>
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">e911 Address:</label>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Cell Phone or NumberBarn :</label>
+                                        <input type="text" class="form-control" />
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6 ">
                                 <div class="form-group">
-                                    <label style="padding-left: 12px!important;">Customer Name</label>
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="fa fa-male"></span></span>
+                                    <div class="form-group">
+                                        <span class="col-md-4"></span>
+                                        <div class="col-md-8">
+                                            <label class=" control-label">Customer Name:</label>
                                             <input type="text" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label style="padding-left: 12px!important;">Customer Billing Address</label>
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="fa fa-building-o"></span></span>
+                                    <div class="form-group">
+                                        <span class="col-md-4"></span>
+                                        <div class="col-md-8">
+                                            <label class=" control-label">Customer Billing Address:</label>
                                             <input type="text" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label style="padding-left: 12px!important;">Physical Address</label>
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="fa fa-map-marker"></span></span>
+                                    <div class="form-group">
+                                        <span class="col-md-4"></span>
+                                        <div class="col-md-8">
+                                            <label class=" control-label">Physical Address:</label>
                                             <input type="text" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label style="padding-left: 12px!important;">Authorized Signer Name</label>
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
+                                    <div class="form-group">
+                                        <span class="col-md-4"></span>
+                                        <div class="col-md-8">
+                                            <label class=" control-label">Authorized Signer Name:</label>
                                             <input type="text" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label style="padding-left: 12px!important;">Authorized Signer Phone #</label>
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="fa fa-th-large"></span></span>
+                                    <div class="form-group">
+                                        <span class="col-md-4"></span>
+                                        <div class="col-md-8">
+                                            <label class=" control-label">Authorized Signer Phone #:</label>
                                             <input type="text" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <span class="col-md-4"></span>
+                                        <div class="col-md-8">
+                                            <label class=" control-label"></label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <label class="check"><strong> Cell Phone or NumberBarn : </strong><input type="checkbox"  style="width: 18px!important;height: 18px!important;"/></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                            </div>
+
+                        </div>
+                        <br>
+                        <br>
+                        <div style="padding-left: 15%!important;">
+                            <h3> The numbers listed below are the numbers</h3>
+                            <p>
+                                <strong> NOTE: If you are porting more than 10 (ten) numbers please submit an Excel spreadsheet. The Numbers Listed Here are the numbers that I want ported: </strong>
+                            </p>
                         </div>
 
-                        <div class="row" style="padding-right:10%!important">
-                            <div class="panel-body" style="padding-left: 13%!important;padding-right: 10%!important;">
-
-                                <h3> The numbers listed below are the numbers</h3>
-                                <p>
-                                    <strong> NOTE: If you are porting more than 10 (ten) numbers please submit an Excel spreadsheet. The Numbers Listed Here are the numbers that I want ported:
-
-                                    </strong>
-                                </p>
-                            </div>
-                            <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6" style="padding-right: 80px!important;">
                                 <div class="form-group">
-
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">Main Number</span>
-                                            <input type="text" class="form-control" placeholder="Main Number" />
-                                            <span class="input-group-addon"></span>
-                                        </div>
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8" style="width: 380px!important;">
+                                        <label class="check"><strong>Main Number:</strong></label>
+                                        <input type="text" class="form-control" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
 
-                                    <label class="col-md-3 control-label">&nbsp;</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">Other Number</span>
-                                            <input type="text" class="form-control" placeholder="Other Number" />
-                                            <span class="input-group-addon"> <a href="#" ><i class="fa fa-plus"></i></a></span>
-                                        </div>
+                            <div class="col-md-6" style="padding-left: 114px!important;">
+                                <div class="form-group">
+                                    <label class="check">&nbsp;</label>
+                                    <span class="col-md-0"></span>
+                                    <div class="input-group" style="width: 380px!important;">
+                                        <input type="text" class="form-control" placeholder="Other Number" />
+                                        <span class="input-group-addon"> <a href="#" ><i class="fa fa-plus"></i></a></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <br>
                         <div class="row" style="padding-right:10%!important;padding-left:10%!important">
-                            <div class="col-md-6" style="padding-left:25px!important">
+                            <div class="col-md-6" style="padding-left:72px!important">
                                 <strong>Signature:</strong>
-                                <button id="sig-clearBtn" type="button" class="btn btn-danger btn-xs pull-right">x</button>
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <canvas id="sig-canvas" width="600" height="180px">       
-                                        </canvas>
+                                <div id="signature-pad" class="m-signature-pad panel-success" style="width: 360px!important;">
+                                    <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">x</button>
+                                    <div class="m-signature-pad--body">
+                                        <canvas></canvas>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-6" style="padding-right:2px!important">
+                            <div class="col-md-6" style="padding-left:100px!important;">
                                 <strong>Attached File:</strong>
-                                <div class="panel panel-default">
+                                <div class="panel panel-success" style="width: 380px!important;">
                                     <div class="panel-body">
                                         <form action="#" class="dropzone dropzone-mini"></form>
                                         <form action="#" class="dropzone dropzone-mini"></form>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
-                        <div class="row" style="padding-right:10%!important;padding-left:4%!important;padding-bottom:2%!important;">
+                        <div class="row" style="padding-right:170px!important;padding-left:100px!important;padding-bottom:2%!important;">
 
                             <div class="col-md-4">
                                 <div class="form-group">
