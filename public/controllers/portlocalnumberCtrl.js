@@ -19,6 +19,38 @@ angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
         $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
 
+    let count = 0;
+
+
+
+    $(document).on('click', '#add', function(e) {
+        e.preventDefault();
+
+        if (count % 2 == 0) {
+
+            count = count + 1;
+            $("#content").append("<div  class='col-md-6' style='padding-left: 220px!important;'><div class='form-group'><label class='check'>&nbsp;</label><span class='col-md-0'></span><div class='input-group' style='width: 360px!important;'><input type='text' class='form-control' placeholder='Other Number' /><span id='rem' class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
+            console.log(count)
+            return (count)
+        } else {
+
+            count = count + 1;
+            $("#content").append("<div  class='col-md-6' style='padding-left: 114px!important;'><div class='form-group'><label class='check'>&nbsp;</label><span class='col-md-0'></span><div class='input-group' style='width: 380px!important;'><input type='text' class='form-control' placeholder='Other Number' /><span id='rem' class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
+            console.log(count)
+            return (count)
+        }
+
+    });
+
+    $(document).on('click', '#rem', function() {
+
+        var r = confirm("Are you sure you want to remove this number ?");
+        if (r == true) {
+            $('#content div').last()[0].remove();
+            $('#content div').last()[0].remove();
+        }
+    })
+
 
 
 

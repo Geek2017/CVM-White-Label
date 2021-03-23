@@ -3,6 +3,10 @@
     <li class="active">LOA</li>
 </ul>
 <style>
+    .hover:hover {
+        background-color: #9773e2;
+    }
+    
     .m-signature-pad {
         position: relative;
         font-size: 10px;
@@ -278,10 +282,15 @@
                                     <span class="col-md-0"></span>
                                     <div class="input-group" style="width: 380px!important;">
                                         <input type="text" class="form-control" placeholder="Other Number" />
-                                        <span class="input-group-addon"> <a href="#" ><i class="fa fa-plus"></i></a></span>
+                                        <span id="add" class="input-group-addon hover"><i class="fa fa-plus"></i></span>
                                     </div>
                                 </div>
                             </div>
+                            <div id="content">
+
+                            </div>
+
+
                         </div>
                         <br>
                         <div class="row" style="padding-right:10%!important;padding-left:10%!important">
