@@ -15,4 +15,27 @@ angular.module('newApp').controller('eftauthorrationCtrl', function($scope) {
         $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
 
+    document.getElementById('clear').addEventListener('click', function() {
+        signaturePad.clear();
+    });
+    var w = document.getElementById("signature-pad"),
+        c = w.querySelector("canvas");
+
+    function resizeCanvas(canvas) {
+        var ratio = window.devicePixelRatio || 1;
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext("2d").scale(ratio, ratio);
+    }
+
+    resizeCanvas(c);
+
+    var data = "";
+
+    console.log("devicePixelRatio: ", window.devicePixelRatio);
+    console.log("data length: ", data.length);
+
+    var signaturePad = new SignaturePad(c);
+    signaturePad.fromDataURL(data);
+
 });
