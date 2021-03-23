@@ -23,28 +23,26 @@ angular.module('newApp').controller('loaportCtrl', function($scope) {
         $('.remove').closest('.wrapper').find('.element').not(':first').last().remove();
     });
 
-    let count = 0;
+    var ptfncount = 0;
 
-    $(document).on('click', '#add', function(e) {
+    $(document).on('click', '#ptfnadd', function(e) {
         e.preventDefault();
-
-        if (count % 2 == 0) {
-
-            count = count + 1;
-            $("#content").append("<div  class='col-md-6' style='padding-left: 220px!important;'><div class='form-group'><label class='check'>&nbsp;</label><span class='col-md-0'></span><div class='input-group' style='width: 360px!important;'><input type='text' class='form-control' placeholder='Other Number' /><span id='rem' class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
-            console.log(count)
-            return (count)
+        console.log(ptfncount)
+        if (ptfncount % 2 == 0) {
+            $("#content").append("<div  class='col-md-6' style='padding-left: 220px!important;'><div class='form-group'><label class='check'>&nbsp;</label><span class='col-md-0'></span><div class='input-group' style='width: 360px!important;'><input type='text' class='form-control' placeholder='Other Number' /><span id='ptfnrem' class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
+            ptfncount = ptfncount + 1;
+            console.log(ptfncount)
+            return (ptfncount)
         } else {
-
-            count = count + 1;
-            $("#content").append("<div  class='col-md-6' style='padding-left: 114px!important;'><div class='form-group'><label class='check'>&nbsp;</label><span class='col-md-0'></span><div class='input-group' style='width: 380px!important;'><input type='text' class='form-control' placeholder='Other Number' /><span id='rem' class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
-            console.log(count)
-            return (count)
+            $("#content").append("<div  class='col-md-6' style='padding-left: 114px!important;'><div class='form-group'><label class='check'>&nbsp;</label><span class='col-md-0'></span><div class='input-group' style='width: 380px!important;'><input type='text' class='form-control' placeholder='Other Number' /><span id='ptfnrem' class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
+            ptfncount = ptfncount + 1;
+            console.log(ptfncount)
+            return (ptfncount)
         }
 
     });
 
-    $(document).on('click', '#rem', function() {
+    $(document).on('click', '#ptfnrem', function() {
 
         var r = confirm("Are you sure you want to remove this number ?");
         if (r == true) {

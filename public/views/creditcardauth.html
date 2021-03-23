@@ -1,355 +1,474 @@
 <ul class="breadcrumb">
-    <li>{{url0}}</li>
-    <li class="active">{{url1}}</li>
+    <li>Forms</li>
+    <li class="active">Credit Card Auth</li>
 </ul>
-<form class="form-horizontal">
-    <div class="panel panel-default">
+<style>
+    .hover:hover {
+        background-color: #9773e2;
+    }
+    
+    .m-signature-pad {
+        position: relative;
+        font-size: 10px;
+        width: 400px;
+        height: 165px!important;
+        border: 1px solid #e8e8e8;
+        background-color: #fff;
+        border-top-width: 2px;
+        border-top-color: #9773e2;
+    }
+    
+    .m-signature-pad:before,
+    .m-signature-pad:after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        width: 40%;
+        height: 10px;
+        left: 20px;
+        bottom: 10px;
+        background: transparent;
+        -webkit-transform: skew(-3deg) rotate(-3deg);
+        -moz-transform: skew(-3deg) rotate(-3deg);
+        -ms-transform: skew(-3deg) rotate(-3deg);
+        -o-transform: skew(-3deg) rotate(-3deg);
+        transform: skew(-3deg) rotate(-3deg);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+    }
+    
+    .m-signature-pad:after {
+        left: auto;
+        right: 20px;
+        -webkit-transform: skew(3deg) rotate(3deg);
+        -moz-transform: skew(3deg) rotate(3deg);
+        -ms-transform: skew(3deg) rotate(3deg);
+        -o-transform: skew(3deg) rotate(3deg);
+        transform: skew(3deg) rotate(3deg);
+    }
+    
+    .m-signature-pad--body {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 20px;
+        bottom: 20px;
+        border: 1px solid #f4f4f4;
+    }
+    
+    .m-signature-pad--body canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+    }
+    
+    @media screen and (max-width: 1024px) {
+        .m-signature-pad {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: auto;
+            height: auto;
+            min-width: 250px;
+            min-height: 250px;
+            margin: 5%;
+        }
+        #github {
+            display: none;
+        }
+    }
+    
+    @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        .m-signature-pad {
+            margin: 10%;
+        }
+    }
+    
+    @media screen and (max-height: 320px) {
+        .m-signature-pad--body {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 32px;
+        }
+        .m-signature-pad--footer {
+            left: 20px;
+            right: 20px;
+            bottom: 4px;
+            height: 8px;
+        }
+        .m-signature-pad--footer .description {
+            font-size: 1em;
+            margin-top: 1em;
+        }
+    }
+</style>
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal">
+                <div class="panel panel-success">
 
+                    <div class="panel-heading" style="padding-left: 37%!important;">
 
-        <div class="panel-heading">
-            <h1 class="panel-title pull-center"><strong>Credit Card</strong> Auth</h1>
-            <ul class="panel-controls">
-                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
-            </ul>
-        </div>
-        <div class="panel-heading ">
-            <img id="comlogo" class="img-responsive pull-left" width="10%" src="" alt="log">
-            <center>
-                <h3>
-                    <div style=" padding-top: 2%!important;">
+                        <h1 class="panel-title" style="font-size: 35px;"><strong>CARD CREDIT</strong> AUTH
+                        </h1>
+                        <ul class="panel-controls">
+                            <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                        </ul>
 
-                        <span><strong><span id="comname"></span></strong><br>
-                        <span id="landmark"></span><br>
-                        <span id="comcity"></span><br>
-                        <span id="comstate"></span>,
-                        <span id="compostalcode"></span><br>#
-                        <span id="comno"></span>
                     </div>
-                </h3>
-            </center>
-        </div>
-
-
-
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group text-left form-group-separated" style="padding-left: 160px;">
-                        <h4>
-                            <p>I <input type="text"> hereby authorize VoIP Billing Services to charge my credit card account for equipment purchases as requested and recurring monthly service fees.
-                                <br><br> Authorization for: <strong> Recurring monthly fee plus taxes and
-                                    telecommunication fees until the
-                                    account is canceled per Hamlett Computer Services</strong>
-                            </p>
-                        </h4>
-
-
-                        <label class="col-md-2  control-label">Company Name:</label>
-                        <div class="col-md-10 ">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                <input type="text" class="form-control">
-                            </div>
-
-                        </div>
-                        <br><br>
-                        <label class="col-md-2  control-label">Services:</label>
-                        <div class="col-md-10 ">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                <input type="text" class="form-control">
-                            </div>
-
-                        </div>
-                        <br><br>
-                        <label class="col-md-2  control-label">Account/Customer ID#:</label>
-                        <div class="col-md-10 ">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                <input type="text" class="form-control">
-                            </div>
-
-                        </div>
-                        <br><br>
-
-                        <div class="col-md-9 pull-right">
-                            <div class="col-md-3">
-                                <label class="check">
-                                            <div class="icheckbox_minimal-grey"
-                                                style="position: relative;"><input
-                                                    type="checkbox" class="icheckbox"
-                                                    style="position: absolute; opacity: 0;"><ins
-                                                    class="iCheck-helper"
-                                                    style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                            </div> VISA
-                                        </label>
-                            </div>
-                            <div class="col-md-3">
-                                <label class="check">
-                                            <div class="icheckbox_minimal-grey"
-                                                style="position: relative;"><input
-                                                    type="checkbox" class="icheckbox"
-                                                    style="position: absolute; opacity: 0;"><ins
-                                                    class="iCheck-helper"
-                                                    style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                            </div> Mastercard
-                                        </label>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label class="check">
-                                            <div class="icheckbox_minimal-grey"
-                                                style="position: relative;"><input
-                                                    type="checkbox" class="icheckbox"
-                                                    style="position: absolute; opacity: 0;"><ins
-                                                    class="iCheck-helper"
-                                                    style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                            </div> American Express 
-                                        </label>
-                            </div>
-                            <div class="col-md-3">
-                                <label class="check">
-                                            <div class="icheckbox_minimal-grey"
-                                                style="position: relative;"><input
-                                                    type="checkbox" class="icheckbox"
-                                                    style="position: absolute; opacity: 0;"><ins
-                                                    class="iCheck-helper"
-                                                    style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                            </div> Discover
-                                        </label>
-                            </div>
-
-                        </div>
-                        <br><br>
-                        <label class="col-md-2  control-label">Credit Card Number:</label>
-                        <div class="col-md-10 ">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                <input type="text" class="form-control">
-                            </div>
-
-                        </div>
-                        <br><br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label class="col-md-6  control-label">Expiration Date:</label>
-                                <div class="col-md-6 ">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                        <input type="text " class="form-control datepicker" value="10-4-19">
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="col-md-6  control-label">CSV Code:</label>
-                                <div class="col-md-6 ">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                        <input type="number" class="form-control">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div><br><br>
-                        <h4>Credit Card Billing Address: </h4>
-                        <label class="col-md-2  control-label">Name on card</label>
-                        <div class="col-md-10 ">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                <input type="text" class="form-control">
-                            </div>
-
-                        </div>
-                        <br><br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label class="col-md-6  control-label">Address:</label>
-                                <div class="col-md-6 ">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                        <input type="text " class="form-control datepicker" value="10-4-19">
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="col-md-6  control-label">City:</label>
-                                <div class="col-md-6 ">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                        <input type="number" class="form-control">
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="col-md-6  control-label">State:</label>
-                                <div class="col-md-6 ">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                        <input type="text " class="form-control ">
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <br> <br>
-                            <div class="col-md-4">
-                                <label class="col-md-6  control-label">Zip Code:</label>
-                                <div class="col-md-6 ">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                        <input type="number" class="form-control">
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="col-md-6  control-label">Telephone</label>
-                                <div class="col-md-6 ">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                        <input type="number" class="form-control">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <label class="col-md-2  control-label">Email Address:</label>
-                        <div class="col-md-10 ">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                <input type="text" class="form-control">
-                            </div>
-
-                        </div>
-                        <br><br>
-                        <p>
-                            <h4>I authorize VoIP Billing Services to charge my credit card for the recurring monthly fee plus taxes and telecommunication fees. These charges will occur on a monthly basis until this account is canceled per Hamlett Computer
-                                Services. </h4>
-                        </p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label class="col-md-4  control-label">Cardholder’s Signature:</label>
-                                <div class="col-md-6 ">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                        <input type="text " class="form-control">
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="col-md-4  control-label">Date:</label>
-                                <div class="col-md-6 ">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                        <input type="text" class="form-control datepicker" value="10-4-19">
-
-                                    </div>
-
-                                </div>
-                            </div><br><br>
-                            <p>
-                                <h4>As the credit card holder, I also authorize VoIP Billing Services to charge my credit card for future purchases or equipment orders verbally approved by me. VoIP Billing Services will keep all information entered on this
-                                    form strictly confidential. Please note that VoIP Billing Services is an outside provider that bills on behalf of Hamlett Computer Services.</h4>
-                            </p>
-                        </div>
+                    <div class="panel-heading" style="text-align:center!important;">
+                        <img id="comlogo" style=" z-index: 1!important;" class="img-responsive pull-left" width="10%" src="" alt="log">
+                        <h3>
+                            <section style="padding-right: 11%!important;padding-top: 1%!important;">
+                                <span><strong><span id="comname"></span></strong><br>
+                                <span id="landmark"></span><br>
+                                <span id="comcity"></span><br>
+                                <span id="comstate"></span>,
+                                <span id="compostalcode"></span><br>#
+                                <span id="comno"></span>
+                            </section>
+                        </h3>
                     </div>
 
-                </div>
 
-            </div>
 
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-4" style="padding-left:2%">
-                    <div class="widget widget-info widget-no-subtitle">
-                        <div class="widget-subtitle">
-                            <h1 style="color:white;"><strong>
+                    <div class="panel-body">
+
+                        <div class="row" style="padding-right:14%!important">
+                            <div class="panel-body" style="padding-left: 18%!important;">
+                                <h4>
+                                    <p>I <input type="text"> hereby authorize VoIP Billing Services to charge my credit card account for equipment purchases as requested and recurring monthly service fees.
+                                        <br><br> Authorization for: <strong> Recurring monthly fee plus taxes and
+                                        telecommunication fees until the
+                                        account is canceled per Hamlett Computer Services</strong>
+                                    </p>
+                                </h4>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Company Name:</label>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Services:</label>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Account/Customer ID#:</label>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6" style="padding-left:180px!important;">
+                                        <span class="col-md-4"></span>
+                                        <div class="col-md-9">
+                                            <label class="control-label" style="padding-left:16px!important;">Visa</label>
+                                            <input type="checkbox" class="checkbox" />
+                                        </div>
+                                        <span class="col-md-4"></span>
+                                        <div class="col-md-9">
+                                            <label class="control-label" style="padding-left:15px!important;">Mastercard</label>
+                                            <input type="checkbox" class="checkbox" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="padding-left:10px!important;">
+                                        <span class="col-md-4"></span>
+                                        <div class="col-md-9">
+                                            <label class="control-label" style="padding-left:78px!important;">Discover</label>
+                                            <input type="checkbox" class="checkbox" />
+                                        </div>
+                                        <span class="col-md-4"></span>
+                                        <div class="col-md-9">
+                                            <label class="control-label" style="padding-left:78px!important;">American Express</label>
+                                            <input type="checkbox" class="checkbox" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Credit Card Number:</label>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">CSV Code:</label>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Expiration Date:</label>
+                                        <input type="date" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Name on card:</label>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Landmark:</label>
+                                        <input type="text" class="form-control" placeholder="street/block/building/floor" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">City:</label>
+                                        <input type="text" class="form-control" placeholder="City/Village" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">State:</label>
+                                        <select id="state" class="form-control" data-style="btn-success">
+                                            <option value="">Select</option>
+                                            <option value="Alabama">Alabama</option>
+                                            <option value="Alaska">Alaska</option>
+                                            <option value="Arizona">Arizona</option>
+                                            <option value="Arkansas">Arkansas</option>
+                                            <option value="California">California</option>
+                                            <option value="Colorado">Colorado</option>
+                                            <option value="Connecticut">Connecticut</option>
+                                            <option value="Delaware">Delaware</option>
+                                            <option value="District Of Columbia">District Of Columbia</option>
+                                            <option value="Florida">Florida</option>
+                                            <option value="Georgia">Georgia</option>
+                                            <option value="Hawaii">Hawaii</option>
+                                            <option value="Idaho">Idaho</option>
+                                            <option value="Illinois">Illinois</option>
+                                            <option value="Indiana">Indiana</option>
+                                            <option value="Iowa">Iowa</option>
+                                            <option value="Kansas">Kansas</option>
+                                            <option value="Kentucky">Kentucky</option>
+                                            <option value="Louisiana">Louisiana</option>
+                                            <option value="Maine">Maine</option>
+                                            <option value="Maryland">Maryland</option>
+                                            <option value="Massachusetts">Massachusetts</option>
+                                            <option value="Michigan">Michigan</option>
+                                            <option value="Minnesota">Minnesota</option>
+                                            <option value="Mississippi">Mississippi</option>
+                                            <option value="Missouri">Missouri</option>
+                                            <option value="Montana">Montana</option>
+                                            <option value="Nebraska">Nebraska</option>
+                                            <option value="Nevada">Nevada</option>
+                                            <option value="New Hampshire">New Hampshire</option>
+                                            <option value="New Jersey">New Jersey</option>
+                                            <option value="New Mexico">New Mexico</option>
+                                            <option value="New York">New York</option>
+                                            <option value="North Carolina">North Carolina</option>
+                                            <option value="North Dakota">North Dakota</option>
+                                            <option value="Ohio">Ohio</option>
+                                            <option value="Oklahoma">Oklahoma</option>
+                                            <option value="Oregon">Oregon</option>
+                                            <option value="Pennsylvania">Pennsylvania</option>
+                                            <option value="Rhode Island">Rhode Island</option>
+                                            <option value="South Carolina">South Carolina</option>
+                                            <option value="South Dakota">South Dakota</option>
+                                            <option value="Tennessee">Tennessee</option>
+                                            <option value="Texas">Texas</option>
+                                            <option value="Utah">Utah</option>
+                                            <option value="Vermont">Vermont</option>
+                                            <option value="Virginia">Virginia</option>
+                                            <option value="Washington">Washington</option>
+                                            <option value="West Virginia">West Virginia</option>
+                                            <option value="Wisconsin">Wisconsin</option>
+                                            <option value="Wyoming">Wyoming</option>
+                                            </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Zip Code:</label>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Telephone:</label>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8">
+                                        <label class=" control-label">Email:</label>
+                                        <input type="email" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <hr class="panel panel-success">
+
+                        <div class="row" style="padding-right:10%!important;padding-left:10%!important">
+                            <div class="panel-body" style="padding-left: 70px!important;">
+                                <h4>
+                                    <p> I authorize VoIP Billing Services to charge my credit card for the recurring monthly fee plus taxes and telecommunication fees. These charges will occur on a monthly basis until this account is canceled.
+                                    </p>
+                                </h4>
+                            </div>
+                            <div class="col-md-6" style="padding-left:72px!important">
+                                <strong>Signature:</strong>
+                                <div id="signature-pad" class="m-signature-pad panel-success" style="width: 360px!important;">
+                                    <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">x</button>
+                                    <div class="m-signature-pad--body">
+                                        <canvas></canvas>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" style="padding-left: 100px!important;">
+                                <div class="form-group">
+                                    <span class="col-md-4"></span>
+                                    <div class="col-md-8" style="width: 400px!important;">
+                                        <label class="check"><strong>Date:</strong></label>
+                                        <input type="date" class="form-control" />
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="panel-body" style="padding-left: 70px!important;">
+                                <h4>
+                                    <p> As the credit card holder, I also authorize VoIP Billing Services to charge my credit card for future purchases or equipment orders verbally approved by me. VoIP Billing Services will keep all information entered on
+                                        this form strictly confidential.
+                                    </p>
+                                </h4>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4" style="padding-left:2%">
+                                <div class="widget widget-info widget-no-subtitle">
+                                    <div class="widget-subtitle">
+                                        <h1 style="color:white;"><strong>
                                         <p"> Voip Billing</p>
                                             <p> Services</p>
                                     </strong></h1>
-                        </div>
-                    </div>
+                                    </div>
+                                </div>
 
-                </div>
-                <div class="col-md-8 pull-right">
-                    <div class="panel panel-warning">
-                        <div class="panel-heading ui-draggable-handle">
-                            <h3 class="panel-title"></h3>
-                        </div>
-                        <div class="panel-body">
-                            <h1>
-                                <p>VOIP BILLING SERVICESCREDIT CARD AUTHORIZATION FORM</p>
-                            </h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 ">
-                    <div class="panel panel-warning">
-                        <div class="panel-heading ui-draggable-handle">
-                            <h3 class="panel-title"></h3>
-                        </div>
-                        <div class="panel-body">
-                            <h1>
-                                <p>About VoIP Billing Services</p>
-                            </h1>
-                        </div>
-                    </div>
-                    <p>
-                        <h4>VoIP Billing Services is designed and built for Managed Service Providers to perform billing for telecommunications. VoIP Billing Services, serves as a billing platform and handles telecommunication taxes and fees to assure FCC
-                            compliance. Once your account is actively running traffic and set to Active Status, your account is deemed active to bill. After your account is placed in Active Status, your initial invoice will generate and be charged. Each
-                            month you will be charged on your Bill Date for your monthly service. I understand VoIP Billing Services will apply fee of $20.00 to my account if I Chargeback my monthly payment or if I reverse payment without VoIP Billing
-                            Service’s permission of any of the charges authorized on this form and I agree to pay this fee if this occurs.</h4>
-                    </p>
-                    <div class="col-md-6">
-                        <div class="widget widget-info widget-no-subtitle">
-                            <div class="widget-subtitle">
-                                <img class="img-responsive" src="./assets/img/ccaf1.jpg">
+                            </div>
+                            <div class="col-md-8 pull-right">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading ui-draggable-handle">
+                                        <h3 class="panel-title"></h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h1>
+                                            <p>VOIP BILLING SERVICESCREDIT CARD AUTHORIZATION FORM</p>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 ">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading ui-draggable-handle">
+                                        <h3 class="panel-title"></h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h1>
+                                            <p>About VoIP Billing Services</p>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <p>
+                                    <h4>VoIP Billing Services is designed and built for Managed Service Providers to perform billing for telecommunications. VoIP Billing Services, serves as a billing platform and handles telecommunication taxes and fees to
+                                        assure FCC compliance. Once your account is actively running traffic and set to Active Status, your account is deemed active to bill. After your account is placed in Active Status, your initial invoice will generate
+                                        and be charged. Each month you will be charged on your Bill Date for your monthly service. I understand VoIP Billing Services will apply fee of $20.00 to my account if I Chargeback my monthly payment or if I reverse
+                                        payment without VoIP Billing Service’s permission of any of the charges authorized on this form and I agree to pay this fee if this occurs.</h4>
+                                </p>
+                                <div class="col-md-6">
+                                    <div class="widget widget-info widget-no-subtitle">
+                                        <div class="widget-subtitle">
+                                            <img class="img-responsive" src="./assets/img/ccaf1.jpg">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="widget widget-info widget-no-subtitle">
+                                        <div class="widget-subtitle">
+                                            <img class="img-responsive" src="./assets/img/ccaf2.jpg">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading ui-draggable-handle">
+                                        <h3 class="panel-title"></h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h1>
+                                            <p>Contac Us</p>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <h4 style="padding-left: 20px">
+                                    <p>VoIP Billing Services</p>
+                                    <p> 345 Highway 9 South Suite 342</p>
+                                    <p> Manalapan, NJ 07726</p>
+                                    <p> (800) 362-7929</p>
+                                </h4>
+
                             </div>
                         </div>
-
-                    </div>
-                    <div class="col-md-6">
-                        <div class="widget widget-info widget-no-subtitle">
-                            <div class="widget-subtitle">
-                                <img class="img-responsive" src="./assets/img/ccaf2.jpg">
+                        <div class="panel-footer">
+                            <button class="btn btn-danger">Clear Form</button>
+                            <div class="btn-group pull-right ">
+                                <button class="btn btn-primary">Print it</button>
+                                <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">Mail it</button>
+                                <button class="btn btn-primary " id="sig-submitBtn">Save it</button>
                             </div>
                         </div>
-
                     </div>
-                    <div class="panel panel-warning">
-                        <div class="panel-heading ui-draggable-handle">
-                            <h3 class="panel-title"></h3>
-                        </div>
-                        <div class="panel-body">
-                            <h1>
-                                <p>Contac Us</p>
-                            </h1>
-                        </div>
-                    </div>
-                    <h4 style="padding-left: 20px">
-                        <p>VoIP Billing Services</p>
-                        <p> 345 Highway 9 South Suite 342</p>
-                        <p> Manalapan, NJ 07726</p>
-                        <p> (800) 362-7929</p>
-                    </h4>
-
-                </div>
+            </form>
             </div>
-            <div class="panel-footer">
-                <button class="btn btn-danger">Clear Form</button>
-                <div class="btn-group pull-right ">
-                    <button class="btn btn-info">Print it</button>
-                    <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">Mail it</button>
-                    <button class="btn btn-success " id="sig-submitBtn">Save it</button>
-                </div>
-            </div>
-</form>
+        </div>
+    </div>
