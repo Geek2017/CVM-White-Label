@@ -4,7 +4,7 @@
 <head>
 
     <!-- META SECTION -->
-    <title>Form Portal</title>
+    <title>CMV</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,8 +25,11 @@
             <div class="login-box animated fadeInDown">
                 <div class="login-logo"></div>
                 <div class="login-body">
-                    <div class="login-title"><strong>Welcome JM</strong>, Please login</div>
-
+                    <div class="login-title"><strong>Welcome </strong>, Please login</div>
+                    <div class="alert alert-success" role="alert">
+                        <button id="alert" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <strong>Your Account had been successfully migrated!</strong> <br> Pls. check your email to reset your Password Cheers!.
+                    </div>
                     <div class="form-group">
                         <div class="col-md-12">
                             <input id="loginEmail" type="text" class="form-control" placeholder="Email" required />
@@ -41,15 +44,13 @@
 
                         <div class="col-md-6">
 
-                            <!-- <input id="wizard" type="button" href="./wizard.html" class="btn btn-default btn-block" value="Sign-Up
-                            "> -->
-                            <a href="wizard.html" class="btn btn-default btn-block">Sign-Up</a>
+                            <a href="wizard.html" class="btn btn-lg btn-default  btn-block">Sign-Up</a>
 
                         </div>
 
 
                         <div class="col-md-6">
-                            <button class="btn btn-info btn-block active ">Sign-In</button>
+                            <button class="btn btn-success btn-lg btn-block">Sign-In</button>
                             <a href="reset.html" class="btn btn-link btn-block pull-right">Forgot your password?</a>
                         </div>
 
@@ -70,9 +71,9 @@
         </form>
     </div>
     <script type="text/javascript" src="assets/js/plugins/jquery/jquery.min.js"></script>
-    <script src="assets/js/controller/script.js"></script>
+    <script src="login.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-    <script src="assets/js/controller/auth.js">
+
     </script>
 </body>
 
