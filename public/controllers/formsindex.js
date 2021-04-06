@@ -31,8 +31,29 @@ angular.module('sfApp').controller('formsindex', function($scope, $window) {
     ref.orderByChild("hashkeycode").equalTo(localStorage.getItem('street')).on("child_added", function(snapshot) {
         console.log(snapshot.val().hashkeycode);
         sessionStorage.setItem('hashkey', snapshot.val().hashkeycode)
-        sessionStorage.setItem('comid', snapshot.val().cusid)
-        $(location).attr('href', '/formsindex.html#/sfsalesproposal')
+
+
+
+        var ref = firebase.database().ref("com_profiles");
+        ref.orderByChild("cusid").equalTo(snapshot.val().cusid).on("child_added", function(snapshot) {
+
+            $('#span').text(snapshot.val().comname);
+
+            localStorage.setItem('comcity', snapshot.val().comcity)
+            localStorage.setItem('comstate', snapshot.val().comstate)
+            localStorage.setItem('compostalcode', snapshot.val().compostalcode)
+            localStorage.setItem('comcontact', snapshot.val().comcontact)
+            localStorage.setItem('comname', snapshot.val().comname)
+            localStorage.setItem('landmark', snapshot.val().landmark)
+
+            localStorage.setItem('comlogo', snapshot.val().comlogo)
+
+            console.log(snapshot.val())
+            $(location).attr('href', '/formsindex.html#/sfsalesproposal')
+
+        });
+
+
 
 
         if (snapshot.val().hashkeycode !== street) {
@@ -43,20 +64,7 @@ angular.module('sfApp').controller('formsindex', function($scope, $window) {
 
     });
 
-    var ref = firebase.database().ref("com_profiles");
-    ref.orderByChild("cusid").equalTo(sessionStorage.getItem('comid')).on("child_added", function(snapshot) {
 
-        $('#span').text(snapshot.val().comname);
-
-        localStorage.setItem('comcity', snapshot.val().comcity)
-        localStorage.setItem('comstate', snapshot.val().comstate)
-        localStorage.setItem('compostalcode', snapshot.val().compostalcode)
-        localStorage.setItem('comcontact', snapshot.val().comcontact)
-        localStorage.setItem('comname', snapshot.val().comname)
-        localStorage.setItem('landmark', snapshot.val().landmark)
-        localStorage.setItem('comlogo', snapshot.val().comlogo)
-        console.log(snapshot.val())
-    });
 
 
 
