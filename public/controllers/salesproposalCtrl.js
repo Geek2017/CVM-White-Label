@@ -15,37 +15,31 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
 
-
-
     (function() {
-        emailjs.init("user_Vc5Bkgq73iehzqAZWo38i");
+        emailjs.init('user_0dRWnov2yzJ0mYSTS3nqs')
     })();
 
 
-    var myform = $("form#myform");
-    myform.submit(function(event) {
+    const btn = document.getElementById('button');
+
+
+
+    $("#myform").submit(function(event) {
         event.preventDefault();
 
-        var params = myform.serializeArray().reduce(function(obj, item) {
-            obj[item.name] = item.value;
-            return obj;
-        }, {});
+        btn.value = 'Sending...';
 
-        // Change to your service ID, or keep using the default service
-        var service_id = "default_service";
+        const serviceID = 'default_service';
+        const templateID = 'template_zbea5bx';
 
-        var template_id = "template_Zi5Ei6W9";
-        myform.find("button").text("Sending...");
-        emailjs.send(service_id, template_id, params)
-            .then(function() {
-                alert("Sent!");
-                myform.find("button").text("Send");
-            }, function(err) {
-                alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
-                myform.find("button").text("Send");
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                btn.value = 'Send Email';
+                alert('Sent!');
+            }, (err) => {
+                btn.value = 'Send Email';
+                alert(JSON.stringify(err));
             });
-
-        return false;
     });
 
     // MRC
@@ -236,150 +230,29 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         items: "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
     }];
 
+    document.getElementById('clear').addEventListener('click', function() {
+        signaturePad.clear();
+    });
+    var w = document.getElementById("signature-pad"),
+        c = w.querySelector("canvas");
 
-    (function() {
+    function resizeCanvas(canvas) {
+        var ratio = window.devicePixelRatio || 1;
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext("2d").scale(ratio, ratio);
+    }
 
+    resizeCanvas(c);
 
+    var data = "";
 
-        window.requestAnimFrame = (function(callback) {
-            return window.requestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                window.oRequestAnimationFrame ||
-                window.msRequestAnimaitonFrame ||
-                function(callback) {
-                    window.setTimeout(callback, 1000 / 60);
-                };
-        })();
+    console.log("devicePixelRatio: ", window.devicePixelRatio);
+    console.log("data length: ", data.length);
 
-        var canvas = document.getElementById("sig-canvas");
-        var ctx = canvas.getContext("2d");
-        ctx.strokeStyle = "#222222";
-        ctx.lineWidth = 4;
+    var signaturePad = new SignaturePad(c);
+    signaturePad.fromDataURL(data);
 
-        var drawing = false;
-        var mousePos = {
-            x: 0,
-            y: 0
-        };
-        var lastPos = mousePos;
-
-        canvas.addEventListener("mousedown", function(e) {
-            drawing = true;
-            lastPos = getMousePos(canvas, e);
-        }, false);
-
-        canvas.addEventListener("mouseup", function(e) {
-            drawing = false;
-        }, false);
-
-        canvas.addEventListener("mousemove", function(e) {
-            mousePos = getMousePos(canvas, e);
-        }, false);
-
-        // Add touch event support for mobile
-        canvas.addEventListener("touchstart", function(e) {
-
-        }, false);
-
-        canvas.addEventListener("touchmove", function(e) {
-            var touch = e.touches[0];
-            var me = new MouseEvent("mousemove", {
-                clientX: touch.clientX,
-                clientY: touch.clientY
-            });
-            canvas.dispatchEvent(me);
-        }, false);
-
-        canvas.addEventListener("touchstart", function(e) {
-            mousePos = getTouchPos(canvas, e);
-            var touch = e.touches[0];
-            var me = new MouseEvent("mousedown", {
-                clientX: touch.clientX,
-                clientY: touch.clientY
-            });
-            canvas.dispatchEvent(me);
-        }, false);
-
-        canvas.addEventListener("touchend", function(e) {
-            var me = new MouseEvent("mouseup", {});
-            canvas.dispatchEvent(me);
-        }, false);
-
-        function getMousePos(canvasDom, mouseEvent) {
-            var rect = canvasDom.getBoundingClientRect();
-            return {
-                x: mouseEvent.clientX - rect.left,
-                y: mouseEvent.clientY - rect.top
-            }
-        }
-
-        function getTouchPos(canvasDom, touchEvent) {
-            var rect = canvasDom.getBoundingClientRect();
-            return {
-                x: touchEvent.touches[0].clientX - rect.left,
-                y: touchEvent.touches[0].clientY - rect.top
-            }
-        }
-
-        function renderCanvas() {
-            if (drawing) {
-                ctx.moveTo(lastPos.x, lastPos.y);
-                ctx.lineTo(mousePos.x, mousePos.y);
-                ctx.stroke();
-                lastPos = mousePos;
-            }
-        }
-
-        // Prevent scrolling when touching the canvas
-        document.body.addEventListener("touchstart", function(e) {
-            if (e.target == canvas) {
-                e.preventDefault();
-            }
-        }, false);
-        document.body.addEventListener("touchend", function(e) {
-            if (e.target == canvas) {
-                e.preventDefault();
-            }
-        }, false);
-        document.body.addEventListener("touchmove", function(e) {
-            if (e.target == canvas) {
-                e.preventDefault();
-            }
-        }, false);
-
-        (function drawLoop() {
-            requestAnimFrame(drawLoop);
-            renderCanvas();
-        })();
-
-        function clearCanvas() {
-            canvas.width = canvas.width;
-        }
-
-
-        var clearBtn = document.getElementById("sig-clearBtn");
-        var submitBtn = document.getElementById("sig-submitBtn");
-        clearBtn.addEventListener("click", function(e) {
-            clearCanvas();
-            sigText.innerHTML = "Data URL for your signature will go here!";
-            sigImage.setAttribute("src", "");
-        }, false);
-
-
-        submitBtn.addEventListener("click", function(e) {
-            e.preventDefault();
-            var dataUrl = canvas.toDataURL();
-            // sigText.innerHTML = dataUrl;
-
-            var sign = dataUrl
-            console.log(sign);
-            localStorage.setItem('sign', sign)
-                // sigImage.setAttribute("src", dataUrl);
-
-        }, false);
-
-    })();
 
 
 

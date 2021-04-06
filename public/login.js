@@ -27,14 +27,18 @@ $(document).ready(function() {
 
             var ref = firebase.database().ref("users");
             ref.orderByChild("cusemail").equalTo($('#loginEmail').val()).on("child_added", function(snapshot) {
-                if (snapshot.val().state == 0 && snapshot.val().userimage == "https://via.placeholder.com/150") {
+                console.log(snapshot.val())
+            });
+            var ref = firebase.database().ref("users");
+            ref.orderByChild("cusemail").equalTo($('#loginEmail').val()).on("child_added", function(snapshot) {
+                if (snapshot.val().state === 0 && snapshot.val().userimage === "https://via.placeholder.com/150") {
 
                     console.log(snapshot.val().user_id);
                     console.log(snapshot.val().cusemail);
                     console.log(snapshot.val().userimage);
 
                     var actionCodeSettings = {
-                        url: document.location.href,
+                        url: "https://kb.voipcloudconnect.com/4109-2/",
                         handleCodeInApp: false
                     };
                     firebase.auth().sendPasswordResetEmail(snapshot.val().cusemail, actionCodeSettings)
