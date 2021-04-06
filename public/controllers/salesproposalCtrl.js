@@ -1,11 +1,15 @@
 angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
+
+
+
     $("#comname").text(localStorage.getItem('comname'))
     $("#landmark").text(localStorage.getItem('landmark'))
     $("#comcity").text(localStorage.getItem('comcity'))
     $("#comstate").text(localStorage.getItem('comstate'))
     $("#compostalcode").text(localStorage.getItem('compostalcode'))
     $("#comno").text(localStorage.getItem('comcontact'))
+
 
     if (sessionStorage.getItem('comlogo')) {
         console.log('imageloaded')
@@ -276,7 +280,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         }
         // document.getElementById('hash').innerHTML=password;
 
-        $scope.hash = 'https://cmlformportal-b8674.web.app/formsindex.html#/:' + password;
+        $scope.hash = window.location.origin + '/formsindex.html#/:' + password;
         console.log(password);
         sessionStorage.setItem('hkc', password);
     }
@@ -288,8 +292,8 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         var uid = firebase.database().ref().child('users').push().key;
 
         var data = {
-            mailfrom: localStorage.getItem('curusermail'),
-            cusid: sessionStorage.getItem('curuserid'),
+            mailfrom: $scope.mailfrom,
+            cusid: localStorage.getItem('curuserid'),
             mailadd: $scope.mailto,
             sendername: $scope.mailfrom,
             recipientname: $scope.mailto,

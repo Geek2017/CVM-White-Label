@@ -1,790 +1,621 @@
-<<<<<<< HEAD
-<div class="row">
-    <div class="col-md-12">
+<style>
+    .hover:hover {
+        background-color: #9773e2;
+    }
+    
+    .m-signature-pad {
+        position: relative;
+        font-size: 10px;
+        width: 320px;
+        height: 128px;
+        border: 1px solid #e8e8e8;
+        background-color: #fff;
+        border-top-width: 2px;
+        border-top-color: #9773e2;
+    }
+    
+    .m-signature-pad:before,
+    .m-signature-pad:after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        width: 40%;
+        height: 10px;
+        left: 20px;
+        bottom: 10px;
+        background: transparent;
+        -webkit-transform: skew(-3deg) rotate(-3deg);
+        -moz-transform: skew(-3deg) rotate(-3deg);
+        -ms-transform: skew(-3deg) rotate(-3deg);
+        -o-transform: skew(-3deg) rotate(-3deg);
+        transform: skew(-3deg) rotate(-3deg);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+    }
+    
+    .m-signature-pad:after {
+        left: auto;
+        right: 20px;
+        -webkit-transform: skew(3deg) rotate(3deg);
+        -moz-transform: skew(3deg) rotate(3deg);
+        -ms-transform: skew(3deg) rotate(3deg);
+        -o-transform: skew(3deg) rotate(3deg);
+        transform: skew(3deg) rotate(3deg);
+    }
+    
+    .m-signature-pad--body {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 20px;
+        bottom: 20px;
+        border: 1px solid #f4f4f4;
+    }
+    
+    .m-signature-pad--body canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+    }
+    
+    @media screen and (max-width: 1024px) {
+        .m-signature-pad {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: auto;
+            height: auto;
+            min-width: 250px;
+            min-height: 250px;
+            margin: 5%;
+        }
+        #github {
+            display: none;
+        }
+    }
+    
+    @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        .m-signature-pad {
+            margin: 10%;
+        }
+    }
+    
+    @media screen and (max-height: 320px) {
+        .m-signature-pad--body {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 32px;
+        }
+        .m-signature-pad--footer {
+            left: 20px;
+            right: 20px;
+            bottom: 4px;
+            height: 8px;
+        }
+        .m-signature-pad--footer .description {
+            font-size: 1em;
+            margin-top: 1em;
+        }
+    }
+</style>
+<div class="page-content-wrap">
+    <div class="row">
 
-        <form class="form-horizontal">
-            <div class="panel panel-default">
-                <div class="panel-heading ">
-                    <h3 class="panel-title"><img id="logoimg" class="img-responsive pull-left" width="50%" src="assets/images/plj.jpg"
-                            alt="log"></h3>
-                 
-                </div>
-                <div id="wpblue" class="panel panel-warning">
-                    <h1>Proposal Specifications</h1>
-                </div>
-                <div class="panel-body">
+        <div class="col-md-12">
+            <form class="form-horizontal">
+                <div class="panel panel-success">
 
-                    <div class="row">
+                    <div class="panel-heading" style="padding-left: 40%;">
+                        <center>
+                            <h1 class="panel-title" style="font-size: 35px;"><strong>SALES</strong> PROPOSAL
+                            </h1>
+                        </center>
 
-                        <div class="col-md-6">
+                    </div>
+                    <center>
+                        <div class="panel-heading" style="text-align:center!important;">
+                            <img id="comlogo" style=" z-index: 1!important;" class="img-responsive pull-left" width="10%" src="" alt="log">
+                            <h3>
+                                <section style="padding-right: 11%!important;padding-top: 1%!important;">
+                                    <span><strong><span id="comname"></span></strong><br>
+                                    <span id="landmark"></span><br>
+                                    <span id="comcity"></span><br>
+                                    <span id="comstate"></span>,
+                                    <span id="compostalcode"></span><br>#
+                                    <span id="comno"></span>
+                                </section>
+                            </h3>
+                        </div>
+                    </center>
+                    <div class="panel-body">
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Business</label>
-                                <div class="col-md-9">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-briefcase"></span></span>
+                        <div class="row ">
+
+                            <div class="col-md-2">
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <span class="col-md-2"></span>
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Business Name:</label>
                                         <input id="biz" type="text" class="form-control" />
                                     </div>
-
                                 </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Contact Name</label>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                        <input id="cname" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                                <label class="col-md-2 control-label">Billing Name</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-users"></span></span>
-                                        <input id="bname" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Contact Title</label>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-tag"></span></span>
-                                        <input id="cphone" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                                <label class="col-md-2 control-label">Billing Title</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-money"></span></span>
-                                        <input id="btitle" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Contact Phone</label>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-asterisk"></span></span>
-                                        <input id="cphone" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                                <label class="col-md-2 control-label">Billing Phone</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span
-                                                class="fa fa-location-arrow"></span></span>
-                                        <input id="bname" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Contact Email</label>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
-                                        <input id="cemail" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                                <label class="col-md-2 control-label">Billing Email</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-envelope-o"></span></span>
-                                        <input id="bemail" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Contact Address</label>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"></span>
-                                        <textarea id="caddress" class="form-control" rows="5"></textarea>
-                                    </div>
-
-                                </div>
-                                <label class="col-md-2 control-label">Billing Address</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"></span>
-                                        <textarea id="baddress" class="form-control" rows="5"></textarea>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Date</label>
-                                <div class="col-md-9">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                        <input id="date" type="text" class="form-control datepicker" value="2014-11-01">
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Presented by:</label>
-                                <div class="col-md-9">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-info"></span></span>
-                                        <input id="presentedby" type="text" class="form-control ">
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Term Length:</label>
-                                <div class="col-md-9">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-ellipsis-h"></span></span>
-                                        <input id="termlength" type="text" class="form-control ">
-                                    </div>
-                                    <span class="help-block">Federal, state, local taxes, and fees not
-                                        included.</span>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="panel panel-default">
-                    <div class="col-md-12">
-                        <div class="panel panel-warning panel-heading">
-                            <h3 class="panel-title">Monthly Recurring Charges</h3>
-                            <div class="btn-group pull-right ">
-                                <button class="btn btn-success btn-lg" ng-click="mrcadd();">+</button>
-                                <button class="btn btn-danger btn-lg" ng-click="mrcmin();">-</button>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-
-                            <table class="table table-hover mcrrowTable" id="mcrrowTable">
-                                <thead>
-                                    <tr>
-                                        <th>Unit</th>
-                                        <th>Services</th>
-                                        <th>Unit Price</th>
-                                        <th>Total Price</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="number" ng-model="mrcunit" class="form-control"
-                                                placeholder="0"></td>
-                                        <td>
-                                            <select class="btn btn block btn-default">
-                                                <option ng-repeat="mrcitem in mcritems">{{mrcitem.items}}</option>
-                                            </select>
-                                        </td>
-                                        <td><input type="number" ng-model="mrcunitprice" class="form-control"
-                                                placeholder="$ 0.00"></td>
-                                        <td><input type="number" value="{{mrcunit*mrcunitprice}}"
-                                                ng-model="mcrtotalprice" class="form-control mcramount"
-                                                placeholder="$ 0.00"></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <h4>Total Monthly Recurring Charges</h4>
-                                        </td>
-                                        <td></td>
-                                        <td>
-                                            <h4><input type="number" id="mrctotal" class="form-control mrctotal"
-                                                    placeholder="$ 0.00"></h4>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="panel-heading panel panel-warning">
-                            <h3 class="panel-title">Non-Recurring Charges (NRC)</h3>
-                            <div class="btn-group pull-right ">
-                                <button class="btn btn-success btn-lg" ng-click="nrcadd()">+</button>
-                                <button class="btn btn-danger btn-lg" ng-click="nrcmin()">-</button>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-
-                            <table class="table table-hover ncrrowTable" id="ncrrowTable">
-                                <thead>
-                                    <tr>
-                                        <th>Unit</th>
-                                        <th>Services</th>
-                                        <th>Unit Price</th>
-                                        <th>Total Price </th>
-
-
-
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="number" id="" class="form-control" placeholder="0"></td>
-                                        <td>
-                                            <select class="btn btn block btn-default">
-                                                <option ng-repeat="nrcitem in ncritems">{{nrcitem.items}}</option>
-                                            </select>
-                                        </td>
-                                        <td><input type="number" id="" class="form-control" placeholder="$ 0.00"></td>
-                                        <td><input type="number" id="" class="form-control" placeholder="$ 0.00"></td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <h4>Total Non-Recurring ChargesDate</h4>
-                                        </td>
-                                        <td></td>
-                                        <td>
-                                            <h4>$ 0.00</h4>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br />
-
-
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-12" style="padding-top: 2%!important;">
-
-                                <div class="panel-heading panel panel-warning">
-                                    <h3 class="panel-title">Free Program Feature Highlights
-                                    </h3>
-                                    <div class="btn-group pull-right ">
-                                        <button class="btn btn-success btn-lg" ng-click="fpfhadd()">+</button>
-                                        <button class="btn btn-danger btn-lg" ng-click="fpfhmin()">-</button>
-                                    </div>
-                                </div>
-                                <table class="table table-hover fpfrowTable" id="fpfrowTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Unit</th>
-                                            <th>Services</th>
-                                            <th>Unit Price</th>
-                                            <th>Total Price</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input type="number" id="" class="form-control" placeholder="0"></td>
-                                            <td>
-                                                <select class="btn btn block btn-default">
-                                                    <option ng-repeat="fpfitem in fpfitems">{{fpfitem.items}}</option>
-                                                </select>
-                                            </td>
-                                            <td><input type="number" id="" class="form-control" placeholder="$ 0.00">
-                                            </td>
-                                            <td><input type="number" id="" class="form-control" placeholder="$ 0.00">
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <h4>Total Program Features</h4>
-                                            </td>
-                                            <td></td>
-                                            <td>
-                                                <h4>$ 0.00</h4>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-
-
-                            </div>
-
-
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">Main Phone Number to be
+                                    <span class="col-md-2"></span>
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Contact Name:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-2"></span>
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Title:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-2"></span>
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Phone:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-2"></span>
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Street:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-2"></span>
+                                    <div class="col-md-10">
+                                        <label class=" control-label">City:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-2"></span>
+                                    <div class="col-md-10">
+                                        <label class=" control-label">State:</label>
+                                        <select id="state" class="form-control " data-style="btn-success">
+                                            <option value="Alabama">Alabama</option>
+                                            <option value="Alaska">Alaska</option>
+                                            <option value="Arizona">Arizona</option>
+                                            <option value="Arkansas">Arkansas</option>
+                                            <option value="California">California</option>
+                                            <option value="Colorado">Colorado</option>
+                                            <option value="Connecticut">Connecticut</option>
+                                            <option value="Delaware">Delaware</option>
+                                            <option value="District Of Columbia">District Of Columbia</option>
+                                            <option value="Florida">Florida</option>
+                                            <option value="Georgia">Georgia</option>
+                                            <option value="Hawaii">Hawaii</option>
+                                            <option value="Idaho">Idaho</option>
+                                            <option value="Illinois">Illinois</option>
+                                            <option value="Indiana">Indiana</option>
+                                            <option value="Iowa">Iowa</option>
+                                            <option value="Kansas">Kansas</option>
+                                            <option value="Kentucky">Kentucky</option>
+                                            <option value="Louisiana">Louisiana</option>
+                                            <option value="Maine">Maine</option>
+                                            <option value="Maryland">Maryland</option>
+                                            <option value="Massachusetts">Massachusetts</option>
+                                            <option value="Michigan">Michigan</option>
+                                            <option value="Minnesota">Minnesota</option>
+                                            <option value="Mississippi">Mississippi</option>
+                                            <option value="Missouri">Missouri</option>
+                                            <option value="Montana">Montana</option>
+                                            <option value="Nebraska">Nebraska</option>
+                                            <option value="Nevada">Nevada</option>
+                                            <option value="New Hampshire">New Hampshire</option>
+                                            <option value="New Jersey">New Jersey</option>
+                                            <option value="New Mexico">New Mexico</option>
+                                            <option value="New York">New York</option>
+                                            <option value="North Carolina">North Carolina</option>
+                                            <option value="North Dakota">North Dakota</option>
+                                            <option value="Ohio">Ohio</option>
+                                            <option value="Oklahoma">Oklahoma</option>
+                                            <option value="Oregon">Oregon</option>
+                                            <option value="Pennsylvania">Pennsylvania</option>
+                                            <option value="Rhode Island">Rhode Island</option>
+                                            <option value="South Carolina">South Carolina</option>
+                                            <option value="South Dakota">South Dakota</option>
+                                            <option value="Tennessee">Tennessee</option>
+                                            <option value="Texas">Texas</option>
+                                            <option value="Utah">Utah</option>
+                                            <option value="Vermont">Vermont</option>
+                                            <option value="Virginia">Virginia</option>
+                                            <option value="Washington">Washington</option>
+                                            <option value="West Virginia">West Virginia</option>
+                                            <option value="Wisconsin">Wisconsin</option>
+                                            <option value="Wyoming">Wyoming</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-2"></span>
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Zip Code:</label>
+                                        <input id="Zip" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <span class="col-md-2"></span>
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Presented By:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Date:</label>
+                                        <input id="date" type="date" class="form-control" />
+                                    </div>
+                                    <span class="col-md-2"></span>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Billing Name:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                    </div>
+                                    <span class="col-md-2"></span>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Title:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                    </div>
+                                    <span class="col-md-2"></span>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Phone:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                    </div>
+                                    <span class="col-md-2"></span>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Street:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                    </div>
+                                    <span class="col-md-2"></span>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-md-10">
+                                        <label class=" control-label">City:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                    </div>
+                                    <span class="col-md-2"></span>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-md-10">
+                                        <label class=" control-label">State:</label>
+                                        <select id="state" class="form-control " data-style="btn-success">
+                                            <option value="Alabama">Alabama</option>
+                                            <option value="Alaska">Alaska</option>
+                                            <option value="Arizona">Arizona</option>
+                                            <option value="Arkansas">Arkansas</option>
+                                            <option value="California">California</option>
+                                            <option value="Colorado">Colorado</option>
+                                            <option value="Connecticut">Connecticut</option>
+                                            <option value="Delaware">Delaware</option>
+                                            <option value="District Of Columbia">District Of Columbia</option>
+                                            <option value="Florida">Florida</option>
+                                            <option value="Georgia">Georgia</option>
+                                            <option value="Hawaii">Hawaii</option>
+                                            <option value="Idaho">Idaho</option>
+                                            <option value="Illinois">Illinois</option>
+                                            <option value="Indiana">Indiana</option>
+                                            <option value="Iowa">Iowa</option>
+                                            <option value="Kansas">Kansas</option>
+                                            <option value="Kentucky">Kentucky</option>
+                                            <option value="Louisiana">Louisiana</option>
+                                            <option value="Maine">Maine</option>
+                                            <option value="Maryland">Maryland</option>
+                                            <option value="Massachusetts">Massachusetts</option>
+                                            <option value="Michigan">Michigan</option>
+                                            <option value="Minnesota">Minnesota</option>
+                                            <option value="Mississippi">Mississippi</option>
+                                            <option value="Missouri">Missouri</option>
+                                            <option value="Montana">Montana</option>
+                                            <option value="Nebraska">Nebraska</option>
+                                            <option value="Nevada">Nevada</option>
+                                            <option value="New Hampshire">New Hampshire</option>
+                                            <option value="New Jersey">New Jersey</option>
+                                            <option value="New Mexico">New Mexico</option>
+                                            <option value="New York">New York</option>
+                                            <option value="North Carolina">North Carolina</option>
+                                            <option value="North Dakota">North Dakota</option>
+                                            <option value="Ohio">Ohio</option>
+                                            <option value="Oklahoma">Oklahoma</option>
+                                            <option value="Oregon">Oregon</option>
+                                            <option value="Pennsylvania">Pennsylvania</option>
+                                            <option value="Rhode Island">Rhode Island</option>
+                                            <option value="South Carolina">South Carolina</option>
+                                            <option value="South Dakota">South Dakota</option>
+                                            <option value="Tennessee">Tennessee</option>
+                                            <option value="Texas">Texas</option>
+                                            <option value="Utah">Utah</option>
+                                            <option value="Vermont">Vermont</option>
+                                            <option value="Virginia">Virginia</option>
+                                            <option value="Washington">Washington</option>
+                                            <option value="West Virginia">West Virginia</option>
+                                            <option value="Wisconsin">Wisconsin</option>
+                                            <option value="Wyoming">Wyoming</option>
+                                        </select>
+                                    </div>
+                                    <span class="col-md-2"></span>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Zip Code:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                    </div>
+                                    <span class="col-md-2"></span>
+                                </div>
+
+                                <div class="form-group ">
+                                    <div class="col-md-10">
+                                        <label class=" control-label">Term Length:</label>
+                                        <input id="biz" type="text" class="form-control" />
+                                        <label class=" control-label">(Federal, state and Local Taxes and Fees Not
+                                            Included)</label>
+                                    </div>
+                                    <span class="col-md-2"></span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-8">
+
+                            <div class="panel">
+                                <span class="col-md-1"></span>
+                                <div class="col-md-10">
+                                    <div class="panel panel-warning panel-heading">
+                                        <h3 class="panel-title">Monthly Recurring Charges</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <table class="table table-hover mcrrowTable" id="mcrrowTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Unit</th>
+                                                    <th>Services</th>
+                                                    <th>Unit Price</th>
+                                                    <th>Total Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="m in mrc">
+                                                    <td><input type="number" class="mrcu form-control" ng-model="mrcu" placeholder="{{m.unit}}"></td>
+                                                    <td>
+                                                        <select class="btn btn block btn-default">
+                                                            <option ng-repeat="mrcitem in mcritems">{{mrcitem.items}}
+                                                            </option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="number" class="mrcup form-control" ng-model="mrcup" placeholder="{{m.unitprice}}"></td>
+                                                    <td>
+                                                        <input type="number" class="tprice form-control" ng-model="tprice" value="{{mrcup*mrcu}}" placeholder="$ 0.00">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <h4>Total Monthly Recurring Charges</h4>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>
+                                                        <h4><strong class="mrcgtotal">$ 0.00</strong></h4>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="panel panel-warning panel-heading">
+                                        <div class="btn-group pull-right ">
+                                            <button class="btn btn-primary btn-lg" ng-click="mrcadd(mrc);">+</button>
+                                            <button class="btn btn-danger btn-lg" ng-click="mrcmin(mrc);">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="panel">
+                                <span class="col-md-1"></span>
+                                <div class="col-md-10">
+                                    <div class="panel-heading panel panel-warning">
+                                        <h3 class="panel-title">Non-Recurring Charges (NRC)</h3>
+
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <table class="table table-hover ncrrowTable" id="ncrrowTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Unit</th>
+                                                    <th>Services</th>
+                                                    <th>Unit Price</th>
+                                                    <th>Total Price </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="n in nrc">
+                                                    <td><input type="number" class="nrcu form-control" ng-model="nrcu" placeholder="{{n.unit}}"></td>
+                                                    <td>
+                                                        <select class="btn btn block btn-default">
+                                                            <option ng-repeat="nrcitem in ncritems">{{nrcitem.items}}
+                                                            </option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="number" class="nrcup form-control" ng-model="nrcup" placeholder="{{n.unitprice}}"></td>
+                                                    <td><input type="number" class="form-control tnup" ng-model="tnup" value="{{nrcup*nrcu}}" placeholder="$ 0.00"></td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <h4>Total Non-Recurring ChargesDate</h4>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>
+                                                        <h4><strong class="nrcgtotal">$ 0.00</strong></h4>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <br />
+
+
+
+                                    </div>
+                                    <div class="panel-heading panel panel-warning">
+
+                                        <div class="btn-group pull-right ">
+                                            <button class="btn btn-primary btn-lg" ng-click="nrcadd(nrc)">+</button>
+                                            <button class="btn btn-danger btn-lg" ng-click="nrcmin(nrc)">-</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-12" style="padding-top: 2%!important;">
+
+                                            <div class="panel-heading panel panel-warning">
+                                                <h3 class="panel-title">Free Program Feature Highlights
+                                                </h3>
+                                            </div>
+                                            <table class="table table-hover fpfrowTable" id="fpfrowTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Unit</th>
+                                                        <th>Services</th>
+                                                        <th>Unit Price</th>
+                                                        <th>Total Price</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="f in fpfh">
+                                                        <td><input type="number" class="fpfhu form-control" ng-model="fpfhu" placeholder="0"></td>
+                                                        <td>
+                                                            <select class="btn btn block btn-default">
+                                                                <option ng-repeat="fpfitem in fpfitems">
+                                                                    {{fpfitem.items}}</option>
+                                                            </select>
+                                                        </td>
+                                                        <td><input type="number" class="fpfhup form-control" ng-model="fpfhup" placeholder="$ 0.00">
+                                                        </td>
+                                                        <td><input type="number" class="tfpfh form-control" ng-model="tfpfh" value="{{fpfhup*fpfhu}}" placeholder="$ 0.00">
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <h4>Total Program Features</h4>
+                                                        </td>
+                                                        <td></td>
+                                                        <td>
+                                                            <h4><strong class="fpfhgtotal">$ 0.00</strong></h4>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+
+
+                                        </div>
+                                        <div class="panel-heading panel panel-warning">
+                                            <div class="btn-group pull-right ">
+                                                <button class="btn btn-primary btn-lg" ng-click="fpfhadd(fpfh)">+</button>
+                                                <button class="btn btn-danger btn-lg" ng-click="fpfhmin(fpfh)">-</button>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class="control-label">Main Phone Number to be
                                         Used to Establish Account:</label>
-                                    <div class="col-md-8">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="glyphicon glyphicon-asterisk"></span></span>
-                                            <input type="text" class="form-control" />
-
-                                        </div>
-                                        <span class="help-block">This proposal has been approved and
-                                            is valid for 30 days from signature date.</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Date</label>
-                                    <div class="col-md-8">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                            <input type="text" class="form-control datepicker" value="2014-11-01">
-                                        </div>
-
-                                    </div>
+                                    <input id="Zip" type="text" class="form-control" />
+                                    <label class="control-label"><p style="font-size:9px">This proposal has been approved and
+                                        is valid for 30 days from signature date.</p> </label>
                                 </div>
                             </div>
-
-
-                            <div class="col-md-6">
-                                <h5><strong> Signature: </strong><button
-                                        class="btn btn-warning btn-default btn-rounded pull-right" id="sig-clearBtn">
-                                        X</button></h5>
-                                <!-- <div class="row pull-right">
-                                                <div class="col-md-12">
-                                                       
-                                                </div>
-                                            </div>          -->
-                                <div class="row pull-right">
-                                    <div class="col-md-12">
-                                        <canvas id="sig-canvas" width="600" height="80">
-
-                                        </canvas>
-                                    </div>
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class="control-label">Date</label>
+                                    <input id="biz" type="date" class="form-control datepicker" />
                                 </div>
+
                             </div>
-
-
-                            <br /><br /><br />
-
-
                         </div>
-
-                    </div> <br /><br /><br />
-                    <div class="panel-footer">
-                        <button class="btn btn-danger">Clear Form</button>
-                        <div class="btn-group pull-right ">
-                            <button class="btn btn-info ">Print it</button>
-                            <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter">Mail
-                                it</button>
-                            <button class="btn btn-success " id="sig-submitBtn">Save it</button>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class="control-label">Signature:</label>
+                                    <div id="signature-pad" class="m-signature-pad panel-success">
+                                        <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">x</button>
+                                        <div class="m-signature-pad--body">
+                                            <canvas></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-        </form>
-
-
+                    <br><br>
+                    <div class="row">
+                        <div class="panel-footer">
+                            <button class="btn btn-danger">Clear Form</button>
+                            <div class="btn-group pull-right ">
+                                <button class="btn btn-primary " id="sig-submitBtn">Save Form</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-=======
-<div class="row">
-    <div class="col-md-12">
-
-        <form class="form-horizontal">
-            <div class="panel panel-default">
-                <div class="panel-heading ">
-                    <h3 class="panel-title"><img id="comlogo" class="img-responsive pull-left" width="50%" src="assets/images/plj.jpg" alt="log"></h3>
-
-                </div>
-                <div id="wpblue" class="panel panel-warning">
-                    <h1>Proposal Specifications</h1>
-                </div>
-                <div class="panel-body">
-
-                    <div class="row">
-
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Business</label>
-                                <div class="col-md-9">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-briefcase"></span></span>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Contact Name</label>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                        <input id="cname" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                                <label class="col-md-2 control-label">Billing Name</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-users"></span></span>
-                                        <input id="bname" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Contact Title</label>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-tag"></span></span>
-                                        <input id="cphone" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                                <label class="col-md-2 control-label">Billing Title</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-money"></span></span>
-                                        <input id="btitle" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Contact Phone</label>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-asterisk"></span></span>
-                                        <input id="cphone" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                                <label class="col-md-2 control-label">Billing Phone</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span
-                                                class="fa fa-location-arrow"></span></span>
-                                        <input id="bname" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Contact Email</label>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
-                                        <input id="cemail" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                                <label class="col-md-2 control-label">Billing Email</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-envelope-o"></span></span>
-                                        <input id="bemail" type="text" class="form-control" />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Contact Address</label>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"></span>
-                                        <textarea id="caddress" class="form-control" rows="5"></textarea>
-                                    </div>
-
-                                </div>
-                                <label class="col-md-2 control-label">Billing Address</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"></span>
-                                        <textarea id="baddress" class="form-control" rows="5"></textarea>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Date</label>
-                                <div class="col-md-9">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                        <input id="date" type="text" class="form-control datepicker" value="2014-11-01">
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Presented by:</label>
-                                <div class="col-md-9">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-info"></span></span>
-                                        <input id="presentedby" type="text" class="form-control ">
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Term Length:</label>
-                                <div class="col-md-9">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-ellipsis-h"></span></span>
-                                        <input id="termlength" type="text" class="form-control ">
-                                    </div>
-                                    <span class="help-block">Federal, state, local taxes, and fees not
-                                        included.</span>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="panel panel-default">
-                    <div class="col-md-12">
-                        <div class="panel panel-warning panel-heading">
-                            <h3 class="panel-title">Monthly Recurring Charges</h3>
-                            <div class="btn-group pull-right ">
-                                <button class="btn btn-success btn-lg" ng-click="mrcadd();">+</button>
-                                <button class="btn btn-danger btn-lg" ng-click="mrcmin();">-</button>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-
-                            <table class="table table-hover mcrrowTable" id="mcrrowTable">
-                                <thead>
-                                    <tr>
-                                        <th>Unit</th>
-                                        <th>Services</th>
-                                        <th>Unit Price</th>
-                                        <th>Total Price</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="number" ng-model="mrcunit" class="form-control" placeholder="0"></td>
-                                        <td>
-                                            <select class="btn btn block btn-default">
-                                                <option ng-repeat="mrcitem in mcritems">{{mrcitem.items}}</option>
-                                            </select>
-                                        </td>
-                                        <td><input type="number" ng-model="mrcunitprice" class="form-control" placeholder="$ 0.00"></td>
-                                        <td><input type="number" value="{{mrcunit*mrcunitprice}}" ng-model="mcrtotalprice" class="form-control mcramount" placeholder="$ 0.00"></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <h4>Total Monthly Recurring Charges</h4>
-                                        </td>
-                                        <td></td>
-                                        <td>
-                                            <h4><input type="number" id="mrctotal" class="form-control mrctotal" placeholder="$ 0.00"></h4>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="panel-heading panel panel-warning">
-                            <h3 class="panel-title">Non-Recurring Charges (NRC)</h3>
-                            <div class="btn-group pull-right ">
-                                <button class="btn btn-success btn-lg" ng-click="nrcadd()">+</button>
-                                <button class="btn btn-danger btn-lg" ng-click="nrcmin()">-</button>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-
-                            <table class="table table-hover ncrrowTable" id="ncrrowTable">
-                                <thead>
-                                    <tr>
-                                        <th>Unit</th>
-                                        <th>Services</th>
-                                        <th>Unit Price</th>
-                                        <th>Total Price </th>
-
-
-
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="number" id="" class="form-control" placeholder="0"></td>
-                                        <td>
-                                            <select class="btn btn block btn-default">
-                                                <option ng-repeat="nrcitem in ncritems">{{nrcitem.items}}</option>
-                                            </select>
-                                        </td>
-                                        <td><input type="number" id="" class="form-control" placeholder="$ 0.00"></td>
-                                        <td><input type="number" id="" class="form-control" placeholder="$ 0.00"></td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <h4>Total Non-Recurring ChargesDate</h4>
-                                        </td>
-                                        <td></td>
-                                        <td>
-                                            <h4>$ 0.00</h4>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br />
-
-
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-12" style="padding-top: 2%!important;">
-
-                                <div class="panel-heading panel panel-warning">
-                                    <h3 class="panel-title">Free Program Feature Highlights
-                                    </h3>
-                                    <div class="btn-group pull-right ">
-                                        <button class="btn btn-success btn-lg" ng-click="fpfhadd()">+</button>
-                                        <button class="btn btn-danger btn-lg" ng-click="fpfhmin()">-</button>
-                                    </div>
-                                </div>
-                                <table class="table table-hover fpfrowTable" id="fpfrowTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Unit</th>
-                                            <th>Services</th>
-                                            <th>Unit Price</th>
-                                            <th>Total Price</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input type="number" id="" class="form-control" placeholder="0"></td>
-                                            <td>
-                                                <select class="btn btn block btn-default">
-                                                    <option ng-repeat="fpfitem in fpfitems">{{fpfitem.items}}</option>
-                                                </select>
-                                            </td>
-                                            <td><input type="number" id="" class="form-control" placeholder="$ 0.00">
-                                            </td>
-                                            <td><input type="number" id="" class="form-control" placeholder="$ 0.00">
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <h4>Total Program Features</h4>
-                                            </td>
-                                            <td></td>
-                                            <td>
-                                                <h4>$ 0.00</h4>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-
-
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Main Phone Number to be
-                                        Used to Establish Account:</label>
-                                    <div class="col-md-8">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="glyphicon glyphicon-asterisk"></span></span>
-                                            <input type="text" class="form-control" />
-
-                                        </div>
-                                        <span class="help-block">This proposal has been approved and
-                                            is valid for 30 days from signature date.</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label">Date</label>
-                                    <div class="col-md-8">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                            <input type="text" class="form-control datepicker" value="2014-11-01">
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <h5><strong> Signature: </strong><button class="btn btn-warning btn-default btn-rounded pull-right" id="sig-clearBtn">
-                                        X</button></h5>
-                                <!-- <div class="row pull-right">
-                                                <div class="col-md-12">
-                                                       
-                                                </div>
-                                            </div>          -->
-                                <div class="row pull-right">
-                                    <div class="col-md-12">
-                                        <canvas id="sig-canvas" width="600" height="80">
-
-                                        </canvas>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <br /><br /><br />
-
-
-                        </div>
-
-                    </div> <br /><br /><br />
-                    <div class="panel-footer">
-
-                        <div class="btn-group pull-right ">
-                            <button class="btn btn-danger">Clear Form</button>
-                            <button class="btn btn-success " id="sfsave">Save Form</button>
-                        </div>
-                    </div>
-
-        </form>
-
-
-        </div>
-        </div>
->>>>>>> 0a451426ff6c3e2bb72a00f48966ef61d02e344c
