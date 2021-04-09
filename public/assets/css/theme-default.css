@@ -6148,7 +6148,7 @@ td.dataTables_empty {
 .check {
     font-weight: 400;
     line-height: 20px;
-    margin: 5px 0px;
+    margin: 0.5px 0px;
     cursor: pointer;
 }
 

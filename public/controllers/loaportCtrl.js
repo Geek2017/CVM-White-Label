@@ -23,24 +23,31 @@ angular.module('newApp').controller('loaportCtrl', function($scope) {
         $('.remove').closest('.wrapper').find('.element').not(':first').last().remove();
     });
 
-    var ptfncount = 0;
+    var ptfncount;
+    parseInt(ptfncount);
+    console.log(ptfncount);
+
+    function changePart() {
+        alert(123)
+    }
+    object.addEventListener("hashchange", changePart);
+
 
     $(document).on('click', '#ptfnadd', function(e) {
         e.preventDefault();
         console.log(ptfncount)
         if (ptfncount % 2 == 0) {
-
             ptfncount = ptfncount + 1;
-            $("#left").append("<div  id='ptfnrem' class='form-group ptfnrem'><span class='col-md-2'></span><div class='col-md-10'><div class='input-group'><input type='text' class='form-control' required/><span class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
+            $("#ptleft").append("<div  id='ptfnrem' class='form-group ptfnrem'><span class='col-md-2'></span><div class='col-md-10'><div class='input-group'><input type='text' class='form-control' required/><span class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
             console.log(ptfncount)
             return (ptfncount)
         } else {
-
             ptfncount = ptfncount + 1;
-            $("#right").append("<div id='ptfnrem' class='form-group ptfnrem'><div class='col-md-10'><div class='input-group'><input type='text' class='form-control' required/><span  class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
+            $("#ptright").append("<div id='ptfnrem' class='form-group ptfnrem'><div class='col-md-10'><div class='input-group'><input type='text' class='form-control' required/><span  class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
             console.log(ptfncount)
             return (ptfncount)
         }
+        ``
 
     });
 
@@ -50,14 +57,14 @@ angular.module('newApp').controller('loaportCtrl', function($scope) {
         if (r == true) {
             if (ptfncount % 2 !== 0) {
                 ptfncount = ptfncount - 1;
-                $('#left div').last()[0].remove();
-                $('.left div').last()[0].remove();
+                $('#ptleft div').last()[0].remove();
+                $('.ptleft div').last()[0].remove();
                 console.log(ptfncount)
                 return (ptfncount)
             } else {
                 ptfncount = ptfncount - 1;
-                $('#right div').last()[0].remove();
-                $('.right div').last()[0].remove();
+                $('#ptright div').last()[0].remove();
+                $('.ptright div').last()[0].remove();
                 console.log(ptfncount)
                 return (ptfncount)
             }
