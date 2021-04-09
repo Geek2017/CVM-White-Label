@@ -11,7 +11,7 @@
         position: relative;
         font-size: 10px;
         width: 100%;
-        height: 180px;
+        height: 184px;
         border: 1px solid #e8e8e8;
         background-color: #fff;
         border-top-width: 2px;
@@ -107,6 +107,7 @@
         }
     }
 </style>
+<script src="./assets/js/drop.js"></script>
 <div class="page-content-wrap">
 
     <div class="row">
@@ -137,6 +138,8 @@
                             </section>
                         </h3>
                     </div>
+
+
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -149,6 +152,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-2">
                         </div>
@@ -174,7 +178,6 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class=" control-label">Main Billing Tel. Number:</label>
@@ -401,8 +404,22 @@
 
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
 
-                    <br>
+                                <span class="col-md-1"></span>
+                                <div class="col-md-10">
+                                    <p>
+                                        <strong> <hr></strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-2">
                         </div>
@@ -459,7 +476,22 @@
 
                     </div>
 
-                    <br>
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+
+                                <span class="col-md-1"></span>
+                                <div class="col-md-10">
+                                    <p>
+                                        <strong> <hr></strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-2">
                         </div>
@@ -468,6 +500,7 @@
                             <div class="form-group">
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10 ">
+                                    <label class="control-label">Attachment:</label>
                                     <div class="panel panel-success">
                                         <div class="panel-body">
                                             <div action="#" class="dropzone dropzone-mini"></div>
@@ -480,6 +513,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <div class="col-md-10 input-group">
+                                    <label class="control-label">Signature:</label>
                                     <div id="signature-pad" class="m-signature-pad panel-success">
                                         <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">x</button>
                                         <div class="m-signature-pad--body">
@@ -535,9 +569,15 @@
                 </div>
 
 
-                <div class="panel-footer ">
-                    <button class="btn btn-default ">Clear Form</button>
-                    <button class="btn btn-success pull-right ">Submit</button>
+                <div class="row">
+                    <div class="panel-footer">
+                        <button class="btn btn-danger">Clear Form</button>
+                        <div class="btn-group pull-right ">
+                            <button class="btn btn-primary">PRINT</button>
+                            <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="">EMAIL </button>
+                            <button class="btn btn-primary " ng-click="savesp()">SAVE</button>
+                        </div>
+                    </div>
                 </div>
         </div>
         </form>
@@ -546,4 +586,3 @@
 </div>
 
 </div>
-<script src="./assets/js/drop.js"></script>

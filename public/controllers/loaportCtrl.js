@@ -29,13 +29,15 @@ angular.module('newApp').controller('loaportCtrl', function($scope) {
         e.preventDefault();
         console.log(ptfncount)
         if (ptfncount % 2 == 0) {
-            $("#content").append("<div  class='col-md-6' style='padding-left: 220px!important;'><div class='form-group'><label class='check'>&nbsp;</label><span class='col-md-0'></span><div class='input-group' style='width: 360px!important;'><input type='text' class='form-control' placeholder='Other Number' /><span id='ptfnrem' class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
+
             ptfncount = ptfncount + 1;
+            $("#left").append("<div  id='ptfnrem' class='form-group ptfnrem'><span class='col-md-2'></span><div class='col-md-10'><div class='input-group'><input type='text' class='form-control' required/><span class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
             console.log(ptfncount)
             return (ptfncount)
         } else {
-            $("#content").append("<div  class='col-md-6' style='padding-left: 114px!important;'><div class='form-group'><label class='check'>&nbsp;</label><span class='col-md-0'></span><div class='input-group' style='width: 380px!important;'><input type='text' class='form-control' placeholder='Other Number' /><span id='ptfnrem' class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
+
             ptfncount = ptfncount + 1;
+            $("#right").append("<div id='ptfnrem' class='form-group ptfnrem'><div class='col-md-10'><div class='input-group'><input type='text' class='form-control' required/><span  class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
             console.log(ptfncount)
             return (ptfncount)
         }
@@ -46,8 +48,19 @@ angular.module('newApp').controller('loaportCtrl', function($scope) {
 
         var r = confirm("Are you sure you want to remove this number ?");
         if (r == true) {
-            $('#content div').last()[0].remove();
-
+            if (ptfncount % 2 !== 0) {
+                ptfncount = ptfncount - 1;
+                $('#left div').last()[0].remove();
+                $('.left div').last()[0].remove();
+                console.log(ptfncount)
+                return (ptfncount)
+            } else {
+                ptfncount = ptfncount - 1;
+                $('#right div').last()[0].remove();
+                $('.right div').last()[0].remove();
+                console.log(ptfncount)
+                return (ptfncount)
+            }
         }
     })
 
