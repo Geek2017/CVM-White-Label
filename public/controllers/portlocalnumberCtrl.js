@@ -29,13 +29,13 @@ angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
         if (count % 2 == 0) {
 
             count = count + 1;
-            $("#content").append("<div  class='col-md-6' style='padding-left: 220px!important;'><div class='form-group'><label class='check'>&nbsp;</label><span class='col-md-0'></span><div class='input-group' style='width: 360px!important;'><input type='text' class='form-control' placeholder='Other Number' /><span id='rem' class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
+            $("#left").append("<div  id='rem' class='form-group rem'><span class='col-md-2'></span><div class='col-md-10'><div class='input-group'><input type='text' class='form-control' required/><span class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
             console.log(count)
             return (count)
         } else {
 
             count = count + 1;
-            $("#content").append("<div  class='col-md-6' style='padding-left: 114px!important;'><div class='form-group'><label class='check'>&nbsp;</label><span class='col-md-0'></span><div class='input-group' style='width: 380px!important;'><input type='text' class='form-control' placeholder='Other Number' /><span id='rem' class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div></div>");
+            $("#right").append("<div id='rem' class='form-group rem'><div class='col-md-10'><div class='input-group'><input type='text' class='form-control' required/><span  class='input-group-addon hover'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
             console.log(count)
             return (count)
         }
@@ -46,8 +46,19 @@ angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
 
         var r = confirm("Are you sure you want to remove this number ?");
         if (r == true) {
-            $('#content div').last()[0].remove();
-
+            if (count % 2 !== 0) {
+                count = count - 1;
+                $('#left div').last()[0].remove();
+                $('.left div').last()[0].remove();
+                console.log(count)
+                return (count)
+            } else {
+                count = count - 1;
+                $('#right div').last()[0].remove();
+                $('.right div').last()[0].remove();
+                console.log(count)
+                return (count)
+            }
         }
     })
 

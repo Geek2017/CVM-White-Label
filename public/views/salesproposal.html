@@ -139,7 +139,7 @@
 
                     <div class="panel-body">
 
-                        <div class="row ">
+                        <div class="row">
 
                             <div class="col-md-2">
                             </div>
@@ -149,49 +149,50 @@
                                     <span class="col-md-2"></span>
                                     <div class="col-md-10">
                                         <label class=" control-label">Business Name:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="bizname" type="text" class="form-control" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <span class="col-md-2"></span>
                                     <div class="col-md-10">
                                         <label class=" control-label">Contact Name:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="contactname" type="text" class="form-control" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <span class="col-md-2"></span>
                                     <div class="col-md-10">
                                         <label class=" control-label">Title:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="title" type="text" class="form-control" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <span class="col-md-2"></span>
                                     <div class="col-md-10">
                                         <label class=" control-label">Phone:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="phone" type="text" class="form-control" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <span class="col-md-2"></span>
                                     <div class="col-md-10">
                                         <label class=" control-label">Street:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="street" type="text" class="form-control" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <span class="col-md-2"></span>
                                     <div class="col-md-10">
                                         <label class=" control-label">City:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="city" type="text" class="form-control" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <span class="col-md-2"></span>
                                     <div class="col-md-10">
                                         <label class=" control-label">State:</label>
-                                        <select id="state" class="form-control " data-style="btn-success">
+                                        <select ng-model="state" class="form-control " data-style="btn-success" required>
+                                            <option value="">Select</option>
                                             <option value="Alabama">Alabama</option>
                                             <option value="Alaska">Alaska</option>
                                             <option value="Arizona">Arizona</option>
@@ -250,65 +251,65 @@
                                     <span class="col-md-2"></span>
                                     <div class="col-md-10">
                                         <label class=" control-label">Zip Code:</label>
-                                        <input id="Zip" type="text" class="form-control" />
+                                        <input ng-model="zipcode" type="text" class="form-control" required/>
                                     </div>
                                 </div>
                                 <div class="form-group ">
                                     <span class="col-md-2"></span>
                                     <div class="col-md-10">
                                         <label class=" control-label">Presented By:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="presentedby" type="text" class="form-control" required/>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-4">
                                 <div class="form-group ">
                                     <div class="col-md-10">
                                         <label class=" control-label">Date:</label>
-                                        <input id="date" type="date" class="form-control" />
+                                        <input ng-model="date0" type="date" class="form-control" required/>
                                     </div>
                                     <span class="col-md-2"></span>
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-md-10">
                                         <label class=" control-label">Billing Name:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="billing" type="text" class="form-control" required/>
                                     </div>
                                     <span class="col-md-2"></span>
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-md-10">
                                         <label class=" control-label">Title:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="title2" type="text" class="form-control" required/>
                                     </div>
                                     <span class="col-md-2"></span>
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-md-10">
                                         <label class=" control-label">Phone:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="phone2" type="text" class="form-control" required/>
                                     </div>
                                     <span class="col-md-2"></span>
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-md-10">
                                         <label class=" control-label">Street:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="street2" type="text" class="form-control" required/>
                                     </div>
                                     <span class="col-md-2"></span>
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-md-10">
                                         <label class=" control-label">City:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="city2" type="text" class="form-control" required/>
                                     </div>
                                     <span class="col-md-2"></span>
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-md-10">
                                         <label class=" control-label">State:</label>
-                                        <select id="state" class="form-control " data-style="btn-success">
+                                        <select ng-model="state2" class="form-control " data-style="btn-success">
+                                            <option value="">Select</option>
                                             <option value="Alabama">Alabama</option>
                                             <option value="Alaska">Alaska</option>
                                             <option value="Arizona">Arizona</option>
@@ -367,15 +368,14 @@
                                 <div class="form-group ">
                                     <div class="col-md-10">
                                         <label class=" control-label">Zip Code:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="zipcode2" type="text" class="form-control" required/>
                                     </div>
                                     <span class="col-md-2"></span>
                                 </div>
-
                                 <div class="form-group ">
                                     <div class="col-md-10">
                                         <label class=" control-label">Term Length:</label>
-                                        <input id="biz" type="text" class="form-control" />
+                                        <input ng-model="termlength" type="text" class="form-control" required/>
                                         <label class=" control-label">(Federal, state and Local Taxes and Fees Not
                                             Included)</label>
                                     </div>
@@ -411,7 +411,7 @@
                                                 <tr ng-repeat="m in mrc">
                                                     <td><input type="number" class="mrcu form-control" ng-model="mrcu" placeholder="{{m.unit}}"></td>
                                                     <td>
-                                                        <select class="btn btn block btn-default">
+                                                        <select id="type" class="form-control btn-block" required>
                                                             <option ng-repeat="mrcitem in mcritems">{{mrcitem.items}}
                                                             </option>
                                                         </select>
@@ -467,7 +467,7 @@
                                                 <tr ng-repeat="n in nrc">
                                                     <td><input type="number" class="nrcu form-control" ng-model="nrcu" placeholder="{{n.unit}}"></td>
                                                     <td>
-                                                        <select class="btn btn block btn-default">
+                                                        <select id="type" class="form-control btn-block" required>
                                                             <option ng-repeat="nrcitem in ncritems">{{nrcitem.items}}
                                                             </option>
                                                         </select>
@@ -475,8 +475,6 @@
                                                     <td><input type="number" class="nrcup form-control" ng-model="nrcup" placeholder="{{n.unitprice}}"></td>
                                                     <td><input type="number" class="form-control tnup" ng-model="tnup" value="{{nrcup*nrcu}}" placeholder="$ 0.00"></td>
                                                 </tr>
-
-
                                                 <tr>
                                                     <td></td>
                                                     <td>
@@ -524,7 +522,7 @@
                                                     <tr ng-repeat="f in fpfh">
                                                         <td><input type="number" class="fpfhu form-control" ng-model="fpfhu" placeholder="0"></td>
                                                         <td>
-                                                            <select class="btn btn block btn-default">
+                                                            <select id="type" class="form-control btn-block" required>
                                                                 <option ng-repeat="fpfitem in fpfitems">
                                                                     {{fpfitem.items}}</option>
                                                             </select>
@@ -581,7 +579,7 @@
                                 <div class="col-md-10">
                                     <label class="control-label">Main Phone Number to be
                                         Used to Establish Account:</label>
-                                    <input id="Zip" type="text" class="form-control" />
+                                    <input ng-model="mainphoneno" type="text" class="form-control" />
                                     <label class="control-label"><p style="font-size:9px">This proposal has been approved and
                                         is valid for 30 days from signature date.</p> </label>
                                 </div>
@@ -590,7 +588,7 @@
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class="control-label">Date</label>
-                                    <input id="biz" type="date" class="form-control datepicker" />
+                                    <input ng-model="date1" type="date" class="form-control datepicker" />
                                 </div>
 
                             </div>
@@ -601,7 +599,7 @@
                                     <label class="control-label">Signature:</label>
                                     <div id="signature-pad" class="m-signature-pad panel-success" style="width: 360px!important;">
                                         <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">x</button>
-                                        <div class="m-signature-pad--body">
+                                        <div class="m-signature-pad--body" id="sign">
                                             <canvas></canvas>
                                         </div>
                                     </div>
@@ -617,7 +615,7 @@
                             <div class="btn-group pull-right ">
                                 <button class="btn btn-primary">PRINT</button>
                                 <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">EMAIL </button>
-                                <button class="btn btn-primary " id="sig-submitBtn">SAVE</button>
+                                <button class="btn btn-primary " ng-click="savesp()">SAVE</button>
                             </div>
                         </div>
                     </div>

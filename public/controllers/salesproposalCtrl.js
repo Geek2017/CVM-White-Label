@@ -1,8 +1,5 @@
 angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
-
-
-
     $("#comname").text(localStorage.getItem('comname'))
     $("#landmark").text(localStorage.getItem('landmark'))
     $("#comcity").text(localStorage.getItem('comcity'))
@@ -25,7 +22,6 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
 
     const btn = document.getElementById('button');
-
 
 
     $("#myform").submit(function(event) {
@@ -249,6 +245,9 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
     resizeCanvas(c);
 
+
+
+
     var data = "";
 
     console.log("devicePixelRatio: ", window.devicePixelRatio);
@@ -306,5 +305,79 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
     });
 
+    var obj0;
+
+    $scope.savesp = function(obj0) {
+
+        var table0 = $('#mcrrowTable').tableToJSON({
+            extractor: function(cellIndex, $cell) {
+                return $cell.find('input').val() || $cell.find("#type option:selected").text();
+            }
+        })
+        const ino0 = table0.length - 1;
+        console.log(table0, ino0)
+        var newtable0 = table0.splice(ino0, 1);
+        console.log(table0)
+
+        var table1 = $('#ncrrowTable').tableToJSON({
+            extractor: function(cellIndex, $cell) {
+                return $cell.find('input').val() || $cell.find("#type option:selected").text();
+            }
+        })
+        const ino1 = table1.length - 1;
+        console.log(table1, ino1)
+        var newtable1 = table1.splice(ino1, 1);
+        console.log(table1)
+
+        var table2 = $('#fpfrowTable').tableToJSON({
+            extractor: function(cellIndex, $cell) {
+                return $cell.find('input').val() || $cell.find("#type option:selected").text();
+            }
+        })
+        const ino2 = table2.length - 1;
+        console.log(table2, ino2)
+        var newtable2 = table2.splice(ino2, 1);
+        console.log(table2)
+
+        try {
+            var uid = firebase.database().ref().child('salesproposal').push().key;
+
+            var data = {
+                mrc: table0,
+                nrc: table1,
+                fpfrow: table2,
+                bizname: $scope.bizname,
+                contactname: $scope.contactname,
+                title: $scope.title,
+                phone: $scope.phone,
+                street: $scope.street,
+                city: $scope.city,
+                state: $scope.state,
+                zipcode: $scope.zipcode,
+                presentedby: $scope.presentedby,
+                date0: $scope.date0,
+                billing: $scope.billing,
+                title2: $scope.title2,
+                phone2: $scope.phone2,
+                street2: $scope.street2,
+                city2: $scope.city2,
+                state2: $scope.state2,
+                zipcode2: $scope.zipcode2,
+                termlength: $scope.termlength,
+                mainphoneno: $scope.mainphoneno,
+                date1: $scope.date1,
+                sign: c.toDataURL(c)
+            }
+
+            var updates = {};
+            updates['/salesproposal/' + uid] = data;
+            firebase.database().ref().update(updates);
+            console.log(updates)
+
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
 
 })
