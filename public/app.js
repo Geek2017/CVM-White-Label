@@ -60,6 +60,9 @@ angular
             }).when('/mydocs', {
                 templateUrl: 'views/mydocs.html',
                 controller: 'mydocsCrtl'
+            }).when('/spindex', {
+                templateUrl: 'views/spindex.html',
+                controller: 'spindexCrtl'
             })
 
     });

@@ -1,4 +1,4 @@
-angular.module('newApp').controller('salesproposalCtrl', function($scope) {
+angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     $("#comname").text(localStorage.getItem('comname'))
     $("#landmark").text(localStorage.getItem('landmark'))
@@ -7,6 +7,19 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
     $("#compostalcode").text(localStorage.getItem('compostalcode'))
     $("#comno").text(localStorage.getItem('comcontact'))
 
+    $scope.currentPage = 0;
+    $scope.pageSize = 10;
+    $scope.data = [];
+
+    $scope.numberOfPages = () => {
+        return Math.ceil(
+            $scope.data.length / $scope.pageSize
+        );
+    }
+
+    for (var i = 0; i < 10; i++) {
+        $scope.data.push(`Question number ${i}`);
+    }
 
     if (sessionStorage.getItem('comlogo')) {
         console.log('imageloaded')
@@ -15,6 +28,25 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         console.log('imagenotloaded')
         $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
+
+    firebase.database().ref('/salesproposal/').orderByChild('uid').on("value", function(snapshot) {
+        $timeout(function() {
+
+            $scope.$apply(function() {
+                let returnArr = [];
+                snapshot.forEach(childSnapshot => {
+                    let item = childSnapshot.val();
+                    item.key = childSnapshot.key;
+                    returnArr.push(item);
+                });
+                $scope.osps = returnArr;
+                console.log($scope.osps);
+            });
+
+        })
+    });
+
+
 
     (function() {
         emailjs.init('user_0dRWnov2yzJ0mYSTS3nqs')
@@ -230,32 +262,35 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         items: "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
     }];
 
-    document.getElementById('clear').addEventListener('click', function() {
-        signaturePad.clear();
-    });
-    var w = document.getElementById("signature-pad"),
-        c = w.querySelector("canvas");
+    $scope.trigersign = function() {
 
-    function resizeCanvas(canvas) {
-        var ratio = window.devicePixelRatio || 1;
-        canvas.width = canvas.offsetWidth * ratio;
-        canvas.height = canvas.offsetHeight * ratio;
-        canvas.getContext("2d").scale(ratio, ratio);
+        setTimeout(function() {
+            document.getElementById('clear').addEventListener('click', function() {
+                signaturePad.clear();
+            });
+            var w = document.getElementById("signature-pad"),
+                c = w.querySelector("canvas");
+
+            function resizeCanvas(canvas) {
+                var ratio = window.devicePixelRatio || 1;
+                canvas.width = canvas.offsetWidth * ratio;
+                canvas.height = canvas.offsetHeight * ratio;
+                canvas.getContext("2d").scale(ratio, ratio);
+            }
+
+            resizeCanvas(c);
+
+            var data = "";
+
+            console.log("devicePixelRatio: ", window.devicePixelRatio);
+            console.log("data length: ", data.length);
+
+            var signaturePad = new SignaturePad(c);
+            signaturePad.fromDataURL(data);
+        }, 1000)
+
+
     }
-
-    resizeCanvas(c);
-
-
-    var data = "";
-
-    console.log("devicePixelRatio: ", window.devicePixelRatio);
-    console.log("data length: ", data.length);
-
-    var signaturePad = new SignaturePad(c);
-    signaturePad.fromDataURL(data);
-
-
-
 
     $scope.passwordcall = function(length, special) {
         var iteration = 0;
@@ -305,7 +340,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
     var obj0;
 
-    $scope.savesp = function(obj0) {
+    $scope.updatesp = function(obj0) {
 
         var table0 = $('#mcrrowTable').tableToJSON({
             extractor: function(cellIndex, $cell) {
@@ -378,4 +413,39 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
     }
 
+    $scope.edit = function(nsp) {
+
+        console.log(nsp)
+        $scope.bizname = nsp.bizname;
+        $scope.contactname = nsp.contactname;
+        $scope.title = nsp.title;
+        $scope.phone = nsp.phone;
+        $scope.street = nsp.street;
+        $scope.city = nsp.city;
+        $scope.state = nsp.state;
+        $scope.zipcode = nsp.zipcode;
+        $scope.presentedby = nsp.presentedby;
+
+        console.log(new Date(nsp.date));
+
+        $scope.date = new Date(nsp.date);
+        $scope.contactname = nsp.contactname;
+        $scope.title = nsp.title;
+        $scope.billing = nsp.billing;
+        $scope.title2 = nsp.title2;
+        $scope.phone2 = nsp.phone2;
+        $scope.street2 = nsp.street2;
+        $scope.city2 = nsp.city2;
+        $scope.state2 = nsp.state2;
+        $scope.zipcode2 = nsp.zipcode2;
+        $scope.termlength = nsp.termlength;
+
+    }
+
+}).filter('startFrom', function() {
+    return function(input, start) {
+        if (!input || !input.length) { return; }
+        start = +start; //parse to int
+        return input.slice(start);
+    }
 })
