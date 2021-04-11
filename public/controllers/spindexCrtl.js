@@ -136,7 +136,8 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         calc_mrc()
     });
 
-    $scope.mrc = [{ unit: "0", unitprice: "0.00" }];
+
+    $scope.mrc = [];
 
     $scope.mrcadd = function(mrc) {
 
@@ -149,9 +150,22 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         $scope.mrc.push(mrc);
     }
 
+
     $scope.mrcmin = function(mrc) {
         console.log(mrc.length);
-        $scope.mrc.splice(mrc.length - 1, 1);
+
+        if (mrc.length !== 0) {
+            $scope.mrc.splice(mrc.length - 1, 1);
+        } else {
+            rowCount = $('#myTable tr#tr1').length;
+            console.log(rowCount)
+            if (rowCount !== 0) {
+                $('table#mcrrowTable tr#tr1:last').remove();
+            } else {
+                $('table#mcrrowTable tr#tr0:last').remove();
+            }
+        }
+
     }
 
     function calc_nrc() {
@@ -413,32 +427,19 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     }
 
+
+
+
     $scope.edit = function(nsp) {
 
         console.log(nsp)
-        $scope.bizname = nsp.bizname;
-        $scope.contactname = nsp.contactname;
-        $scope.title = nsp.title;
-        $scope.phone = nsp.phone;
-        $scope.street = nsp.street;
-        $scope.city = nsp.city;
-        $scope.state = nsp.state;
-        $scope.zipcode = nsp.zipcode;
-        $scope.presentedby = nsp.presentedby;
 
-        console.log(new Date(nsp.date));
+        localStorage.setItem('json', JSON.stringify(nsp))
 
-        $scope.date = new Date(nsp.date);
-        $scope.contactname = nsp.contactname;
-        $scope.title = nsp.title;
-        $scope.billing = nsp.billing;
-        $scope.title2 = nsp.title2;
-        $scope.phone2 = nsp.phone2;
-        $scope.street2 = nsp.street2;
-        $scope.city2 = nsp.city2;
-        $scope.state2 = nsp.state2;
-        $scope.zipcode2 = nsp.zipcode2;
-        $scope.termlength = nsp.termlength;
+        $scope.nsp = nsp;
+        $scope.nsp.date = new Date(nsp.date);
+
+        console.log($scope.nsp.mrc)
 
     }
 

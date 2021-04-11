@@ -104,17 +104,17 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         calc_mrc()
     });
 
-    $scope.mrc = [{ unit: "0", unitprice: "0.00" }];
+    $scope.nsp = [{ unit: "0", unitprice: "0.00" }];
 
-    $scope.mrcadd = function(mrc) {
+    $scope.mrcadd = function(nsp) {
 
         console.log($('.tprice').val())
 
-        var mrc = {};
-        mrc.unit = $scope.unit;
-        mrc.unitprice = $scope.unitprice;
-        mrc.tprice = $scope.tprice;
-        $scope.mrc.push(mrc);
+        var nsp = {};
+        nsp.unit = $scope.unit;
+        nsp.unitprice = $scope.unitprice;
+        nsp.tprice = $scope.tprice;
+        $scope.nsp.push(nsp);
     }
 
     $scope.mrcmin = function(mrc) {
