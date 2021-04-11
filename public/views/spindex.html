@@ -328,7 +328,7 @@
                             <div class="form-group ">
                                 <div class="col-md-10">
                                     <label class=" control-label">Date:</label>
-                                    <input ng-model="nsp.date" type="date" class="form-control" required/>
+                                    <input ng-model="nsp.date0" type="date" class="form-control" required/>
                                 </div>
                                 <span class="col-md-2"></span>
                             </div>
@@ -470,24 +470,27 @@
                                             <tbody>
 
                                                 <tr id="tr0" ng-repeat="nnsp in nsp.mrc">
-                                                    <td><input type="text" class="mrcu form-control" ng-model="nnsp['Unit']" placeholder="{{m.unit}}"></td>
                                                     <td>
-                                                        <select class="form-control btn-block" required>
-                                                    <option ng-model="nnsp['Services']" ng-repeat="mrcitem in mcritems">{{mrcitem.items}}
-                                                    </option>
-                                                </select>
+                                                        <input type="text" class="mrcu form-control" ng-model="nnsp['Unit']" placeholder="0">
                                                     </td>
-                                                    <td><input type="text" class="mrcup form-control" ng-model="nnsp['Unit Price']" placeholder="{{m.unitprice}}"></td>
+
+
                                                     <td>
-                                                        <input type="text" class="tprice form-control" ng-model="nnsp['Total Price']" value="{{mrcup*mrcu}}" placeholder="$ 0.00">
+                                                        <select id="type0" class="form-control btn-block" data-ng-options="i for i in mcritems" data-ng-model="nnsp['Services']"></select>
+                                                    </td>
+
+
+                                                    <td><input type="text" class="mrcup form-control" ng-model="nnsp['Unit Price']" placeholder="$ 0.00"></td>
+                                                    <td>
+                                                        <input type="text" class="tprice form-control" ng-value="nnsp['Unit Price']*nnsp['Unit']" placeholder="$ 0.00">
                                                     </td>
 
                                                 </tr>
                                                 <tr id="tr1" ng-repeat="m in mrc">
 
-                                                    <td><input type="number" ng-value="nnsp['Unit']" class="mrcu form-control" ng-model="mrcu" placeholder="{{m.unit}}"></td>
+                                                    <td><input type="number" class="mrcu form-control" ng-model="mrcu" placeholder="{{m.unit}}"></td>
                                                     <td>
-                                                        <select id="type" class="form-control btn-block" required>
+                                                        <select id="type1" class="form-control btn-block" required>
                                                     <option ng-repeat="mrcitem in mcritems">{{mrcitem.items}}
                                                     </option>
                                                 </select>
@@ -654,7 +657,7 @@
                                 <div class="col-md-10">
                                     <label class="control-label">Main Phone Number to be
                                     Used to Establish Account:</label>
-                                    <input ng-model="mainphoneno" type="text" class="form-control" />
+                                    <input ng-model="nsp.mainphoneno" type="text" class="form-control" />
                                     <label class="control-label"><p style="font-size:9px">This proposal has been approved and
                                     is valid for 30 days from signature date.</p> </label>
                                 </div>
@@ -663,7 +666,7 @@
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class="control-label">Date</label>
-                                    <input ng-model="date1" type="date" class="form-control datepicker" />
+                                    <input ng-model="nsp.date1" type="date" class="form-control datepicker" />
                                 </div>
 
                             </div>
@@ -672,13 +675,18 @@
                             <div class="form-group">
                                 <div class="col-md-10">
                                     <label class="control-label">Signature:</label>
+
                                     <div id="signature-pad" class="m-signature-pad panel-success" style="width: 360px!important;">
-                                        <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">x</button>
+                                        <button id="savesign" type="button" class="btn  btn-info btn-xs  pull-right">Save Sign</button>
+                                        <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">Delete Sign</button><br><br><br>
                                         <div class="m-signature-pad--body" id="sign">
                                             <canvas></canvas>
                                         </div>
+
                                     </div>
+
                                 </div>
+
                                 <span class="col-md-2"></span>
                             </div>
                         </div>
@@ -687,7 +695,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">CLOSE</button>
-                <button type="button" class="btn btn-primary">UPDATE</button>
+                <button id="update" type="button" class="btn btn-primary" ng-click="updatesp();">UPDATE</button>
             </div>
         </div>
     </div>

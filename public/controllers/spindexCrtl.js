@@ -52,9 +52,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         emailjs.init('user_0dRWnov2yzJ0mYSTS3nqs')
     })();
 
-
     const btn = document.getElementById('button');
-
 
     $("#myform").submit(function(event) {
         event.preventDefault();
@@ -75,47 +73,15 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     });
 
     // MRC
-    $scope.mcritems = [{
-        items: "Area Code Routing $50 monthly"
-    }, {
-        items: "Batch FTP download $50 monthly "
-    }, {
-        items: "Batch Zip files for recording $10 monthly"
-    }, {
-        items: "Call Center Agent $5 per Agent"
-    }, {
-        items: "Call Center Feature $50"
-    }, {
-        items: "Conference Bridge $25 for up to 20 people"
-    }, {
-        items: "Conference Bridge Additional people, $5 for each bundle of 5 people"
-    }, {
-        items: "DID additional, first one free $2 each additional"
-    }, {
-        items: "E911 by device $1 per device"
-    }, {
-        items: "E911 by location $1 monthly per location"
-    }, {
-        items: "Fax (vFax) $10"
-    }, {
-        items: "Fax ATA $25"
-    }, {
-        items: "International Dialing, client charged on the prevailing rate"
-    }, {
-        items: "Smart CallerID $2 monthly per Smart CallerID"
-    }, {
-        items: "Smart CardID Routing $10 monthly"
-    }, {
-        items: "Teams Integration $4.50 per user monthly"
-    }, {
-        items: "VCCComplete mobile app only device on extension, $2.50 monthly"
-    }, {
-        items: "VCCComplete mobile app combined with any device on the extension, $ 5 monthly"
-    }, {
-        items: "Voicemail Transcription $5 monthly per entire account"
-    }];
+    $scope.mcritems = ["Call Center Feature $50", "Area Code Routing $50 monthly", "Batch FTP download $50 monthly ", "Conference Bridge Additional people, $5 for each bundle of 5 people"];
+
+    $scope.mrcmodel = $scope.mcritems;
+
+    console.log($scope.mrcmodel)
+
 
     function calc_mrc() {
+
         var calculated_total_sum = 0;
 
         $("#mcrrowTable .tprice").each(function() {
@@ -136,6 +102,11 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         calc_mrc()
     });
 
+    $("#update_modal").on('shown', function() {
+        alert(1);
+        calc_mrc();
+
+    });
 
     $scope.mrc = [];
 
@@ -149,7 +120,6 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         mrc.tprice = $scope.tprice;
         $scope.mrc.push(mrc);
     }
-
 
     $scope.mrcmin = function(mrc) {
         console.log(mrc.length);
@@ -221,8 +191,6 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         items: "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
     }];
 
-
-
     function calc_fpfh() {
         var calculated_total_sum = 0;
         $("#fpfrowTable .tfpfh").each(function() {
@@ -276,35 +244,8 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         items: "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
     }];
 
-    $scope.trigersign = function() {
-
-        setTimeout(function() {
-            document.getElementById('clear').addEventListener('click', function() {
-                signaturePad.clear();
-            });
-            var w = document.getElementById("signature-pad"),
-                c = w.querySelector("canvas");
-
-            function resizeCanvas(canvas) {
-                var ratio = window.devicePixelRatio || 1;
-                canvas.width = canvas.offsetWidth * ratio;
-                canvas.height = canvas.offsetHeight * ratio;
-                canvas.getContext("2d").scale(ratio, ratio);
-            }
-
-            resizeCanvas(c);
-
-            var data = "";
-
-            console.log("devicePixelRatio: ", window.devicePixelRatio);
-            console.log("data length: ", data.length);
-
-            var signaturePad = new SignaturePad(c);
-            signaturePad.fromDataURL(data);
-        }, 1000)
 
 
-    }
 
     $scope.passwordcall = function(length, special) {
         var iteration = 0;
@@ -352,15 +293,77 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     });
 
-    var obj0;
+    var sigb64 = [];
+
+
+    $scope.trigersign = function() {
+        var w = document.getElementById("signature-pad"),
+            c = w.querySelector("canvas");
+
+
+        document.getElementById('clear').addEventListener('click', function() {
+            signaturePad.clear();
+
+            $('#sign').prepend($('<canvas>'))
+            $('#sigb64').remove();
+
+            $scope.trigersign();
+
+        });
+
+        function resizeCanvas(canvas) {
+            var ratio = window.devicePixelRatio || 1;
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+        }
+        resizeCanvas(c);
+
+        var data = "";
+
+        console.log("devicePixelRatio: ", window.devicePixelRatio);
+        console.log("data length: ", data.length);
+
+        var signaturePad = new SignaturePad(c);
+        signaturePad.fromDataURL(data);
+
+        $("#savesign").click(function() {
+            sigb64.push(c.toDataURL(c));
+            console.log("confirm", sigb64[1]);
+        });
+
+    }
+
+    let keyid;
+
+    $scope.edit = function(nsp) {
+        $('canvas').remove();
+
+        $('#sign').prepend($('<img>', { id: 'sigb64', src: nsp.sign }))
+
+        console.log(nsp)
+
+        $scope.nsp = nsp;
+        $scope.nsp.date0 = new Date(nsp.date0);
+        $scope.nsp.date1 = new Date(nsp.date1);
+        console.log($scope.nsp.mrc)
+        return keyid = nsp.key;
+
+    }
 
     $scope.updatesp = function(obj0) {
 
+
+        console.log(keyid);
+        console.log(sigb64[0]);
+
         var table0 = $('#mcrrowTable').tableToJSON({
             extractor: function(cellIndex, $cell) {
-                return $cell.find('input').val() || $cell.find("#type option:selected").text();
+                return $cell.find('input').val() || $cell.find("#type0 option:selected").text() ||
+                    $cell.find("#type1 option:selected").text();
             }
         })
+
         const ino0 = table0.length - 1;
         console.log(table0, ino0)
         var newtable0 = table0.splice(ino0, 1);
@@ -387,33 +390,33 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         console.log(table2)
 
         try {
-            var uid = firebase.database().ref().child('salesproposal').push().key;
+            var uid = keyid;
 
             var data = {
                 mrc: table0,
                 nrc: table1,
                 fpfrow: table2,
-                bizname: $scope.bizname,
-                contactname: $scope.contactname,
-                title: $scope.title,
-                phone: $scope.phone,
-                street: $scope.street,
-                city: $scope.city,
-                state: $scope.state,
-                zipcode: $scope.zipcode,
-                presentedby: $scope.presentedby,
-                date0: $scope.date0,
-                billing: $scope.billing,
-                title2: $scope.title2,
-                phone2: $scope.phone2,
-                street2: $scope.street2,
-                city2: $scope.city2,
-                state2: $scope.state2,
-                zipcode2: $scope.zipcode2,
-                termlength: $scope.termlength,
-                mainphoneno: $scope.mainphoneno,
-                date1: $scope.date1,
-                sign: c.toDataURL(c)
+                bizname: $scope.nsp.bizname,
+                contactname: $scope.nsp.contactname,
+                title: $scope.nsp.title,
+                phone: $scope.nsp.phone,
+                street: $scope.nsp.street,
+                city: $scope.nsp.city,
+                state: $scope.nsp.state,
+                zipcode: $scope.nsp.zipcode,
+                presentedby: $scope.nsp.presentedby,
+                date0: $scope.nsp.date0,
+                date1: $scope.nsp.date1,
+                billing: $scope.nsp.billing,
+                title2: $scope.nsp.title2,
+                phone2: $scope.nsp.phone2,
+                street2: $scope.nsp.street2,
+                city2: $scope.nsp.city2,
+                state2: $scope.nsp.state2,
+                zipcode2: $scope.nsp.zipcode2,
+                termlength: $scope.nsp.termlength,
+                mainphoneno: $scope.nsp.mainphoneno,
+                sign: sigb64[1]
             }
 
             var updates = {};
@@ -430,18 +433,6 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
 
 
-    $scope.edit = function(nsp) {
-
-        console.log(nsp)
-
-        localStorage.setItem('json', JSON.stringify(nsp))
-
-        $scope.nsp = nsp;
-        $scope.nsp.date = new Date(nsp.date);
-
-        console.log($scope.nsp.mrc)
-
-    }
 
 }).filter('startFrom', function() {
     return function(input, start) {

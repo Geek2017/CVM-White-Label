@@ -44,6 +44,8 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
     // MRC
     $scope.mcritems = [{
+        items: "Select Services"
+    }, {
         items: "Area Code Routing $50 monthly"
     }, {
         items: "Batch FTP download $50 monthly "
@@ -104,17 +106,17 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         calc_mrc()
     });
 
-    $scope.nsp = [{ unit: "0", unitprice: "0.00" }];
+    $scope.mrc = [{ unit: "0", unitprice: "0.00" }];
 
-    $scope.mrcadd = function(nsp) {
+    $scope.mrcadd = function(mrc) {
 
         console.log($('.tprice').val())
 
-        var nsp = {};
-        nsp.unit = $scope.unit;
-        nsp.unitprice = $scope.unitprice;
-        nsp.tprice = $scope.tprice;
-        $scope.nsp.push(nsp);
+        var mrc = {};
+        mrc.unit = $scope.unit;
+        mrc.unitprice = $scope.unitprice;
+        mrc.tprice = $scope.tprice;
+        $scope.mrc.push(mrc);
     }
 
     $scope.mrcmin = function(mrc) {
@@ -160,6 +162,8 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
     }
 
     $scope.ncritems = [{
+        items: "Select Services"
+    }, {
         items: "Aastra/Mitel 6863i Basic | MSRP $100.00"
     }, {
         items: "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00"
@@ -215,6 +219,8 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
     }
 
     $scope.fpfitems = [{
+        items: "Select Services"
+    }, {
         items: "Aastra/Mitel 6863i Basic | MSRP $100.00"
     }, {
         items: "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00"
@@ -354,6 +360,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
                 zipcode: $scope.zipcode,
                 presentedby: $scope.presentedby,
                 date0: $scope.date0,
+                date1: $scope.date1,
                 billing: $scope.billing,
                 title2: $scope.title2,
                 phone2: $scope.phone2,
@@ -363,7 +370,6 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
                 zipcode2: $scope.zipcode2,
                 termlength: $scope.termlength,
                 mainphoneno: $scope.mainphoneno,
-                date1: $scope.date1,
                 sign: c.toDataURL(c)
             }
 
