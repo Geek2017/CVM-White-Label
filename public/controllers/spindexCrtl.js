@@ -76,9 +76,8 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     // MRC
 
     $scope.mcritems = [
-        "Select Services",
         "Area Code Routing $50 monthly",
-        "Batch FTP download $50 monthly ",
+        "Batch FTP download $50 monthly",
         "Batch Zip files for recording $10 monthly",
         "Call Center Agent $5 per Agent",
         "Call Center Feature $50",
@@ -153,7 +152,6 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     }
 
 
-
     // NRC
 
     $scope.ncritems = [
@@ -224,7 +222,72 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
 
 
+    // FPF
 
+    $scope.fcritems = [
+        "Aastra/Mitel 6863i Basic | MSRP $100.00",
+        "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00",
+        "Aastra/Mitel 6869i Executive Phone | MSRP $300.00",
+        "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00 ",
+        "Aastra/Mitel M680i Expansion Module | MSRP $80.00",
+        "Aastra/Mitel M685i Expansion Module | MSRP $200.00",
+        "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
+    ];
+
+    $scope.frcmodel = $scope.fcritems;
+
+    console.log($scope.frcmodel)
+
+    function calc_mrc() {
+
+        var calculated_total_sum = 0;
+
+        $("#fcrrowTable .ftprice").each(function() {
+            var get_textbox_value = $(this).val();
+            if ($.isNumeric(get_textbox_value)) {
+                calculated_total_sum += parseFloat(get_textbox_value);
+            }
+        });
+        console.log(calculated_total_sum);
+        $('.nrcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
+    }
+
+    $("#fcrrowTable").on('input', '.frcu', function() {
+        calc_mrc()
+    });
+
+    $("#fcrrowTable").on('input', '.frcup', function() {
+        calc_mrc()
+    });
+
+    $scope.frc = [];
+
+    $scope.frcadd = function(frc) {
+        console.log($('.ntprice').val())
+
+        var nrc = {};
+        nrc.unit = $scope.unit;
+        nrc.unitprice = $scope.unitprice;
+        nrc.tprice = $scope.tprice;
+        $scope.nrc.push(nrc);
+    }
+
+    $scope.frcmin = function(frc) {
+        console.log(nrc.length);
+
+        if (nrc.length !== 0) {
+            $scope.nrc.splice(nrc.length - 1, 1);
+        } else {
+            rowCount = $('#ncrrowTable tr#tr1').length;
+            console.log(rowCount)
+            if (rowCount !== 0) {
+                $('table#ncrrowTable tr#tr1:last').remove();
+            } else {
+                $('table#ncrrowTable tr#tr0:last').remove();
+            }
+        }
+
+    }
 
 
 
@@ -353,7 +416,8 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
         var table1 = $('#ncrrowTable').tableToJSON({
             extractor: function(cellIndex, $cell) {
-                return $cell.find('input').val() || $cell.find("#type option:selected").text();
+                return $cell.find('input').val() || $cell.find("#type0 option:selected").text() ||
+                    $cell.find("#type1 option:selected").text();
             }
         })
         const ino1 = table1.length - 1;
@@ -363,7 +427,8 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
         var table2 = $('#fpfrowTable').tableToJSON({
             extractor: function(cellIndex, $cell) {
-                return $cell.find('input').val() || $cell.find("#type option:selected").text();
+                return $cell.find('input').val() || $cell.find("#type0 option:selected").text() ||
+                    $cell.find("#type1 option:selected").text();
             }
         })
         const ino2 = table2.length - 1;

@@ -454,7 +454,7 @@
                             <span class="col-md-1"></span>
                             <div class="col-md-10">
                                 <div class="panel panel-warning panel-heading">
-                                    <h3 class="panel-title">Monthly Recurring Charges</h3>
+                                    <h3 class="panel-title">Monthly Recurring Charges (MRC)</h3>
                                 </div>
                                 <div class="panel-body">
                                     <table class="table table-hover mcrrowTable" id="mcrrowTable">
@@ -528,7 +528,7 @@
                             <span class="col-md-1"></span>
                             <div class="col-md-10">
                                 <div class="panel panel-warning panel-heading">
-                                    <h3 class="panel-title">Non-Monthly Recurring Charges</h3>
+                                    <h3 class="panel-title">Non-Recurring Charges (NRC)</h3>
                                 </div>
                                 <div class="panel-body">
                                     <table class="table table-hover ncrrowTable" id="ncrrowTable">
@@ -597,14 +597,15 @@
                             </div>
                         </div>
 
+                        <!-- FPFH -->
                         <div class="col-md-12">
                             <span class="col-md-1"></span>
                             <div class="col-md-10">
                                 <div class="panel panel-warning panel-heading">
-                                    <h3 class="panel-title">Monthly Recurring Charges</h3>
+                                    <h3 class="panel-title">Free Program Feature Highlights</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <table class="table table-hover " id="">
+                                    <table class="table table-hover fcrrowTable" id="fcrrowTable">
                                         <thead>
                                             <tr>
                                                 <th>Unit</th>
@@ -615,45 +616,44 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr id="tr0" ng-repeat="nnsp in nsp.mrc">
+                                            <tr id="tr0" ng-repeat="fnsp in nsp.fpfrow">
                                                 <td>
-                                                    <input type="text" class="mrcu form-control" ng-model="nnsp['Unit']" placeholder="0">
+                                                    <input type="text" class="mrcu form-control" ng-model="fnsp['Unit']" placeholder="0">
                                                 </td>
 
 
                                                 <td>
-                                                    <select id="type0" class="form-control btn-block" data-ng-options="i for i in mcritems" data-ng-model="nnsp['Services']"></select>
+                                                    <select id="type0" class="form-control btn-block" data-ng-options="i for i in fcritems" data-ng-model="fnsp['Services']"></select>
                                                 </td>
 
 
-                                                <td><input type="text" class="mrcup form-control" ng-model="nnsp['Unit Price']" placeholder="$ 0.00"></td>
+                                                <td><input type="text" class="frcup form-control" ng-model="fnsp['Unit Price']" placeholder="$ 0.00"></td>
                                                 <td>
-                                                    <input type="text" class="tprice form-control" ng-value="nnsp['Unit Price']*nnsp['Unit']" placeholder="$ 0.00">
+                                                    <input type="text" class="ftprice form-control" ng-value="fnsp['Unit Price']*fnsp['Unit']" placeholder="$ 0.00">
                                                 </td>
 
                                             </tr>
-                                            <tr id="tr1" ng-repeat="m in mrc">
-
-                                                <td><input type="number" class="mrcu form-control" ng-model="mrcu" placeholder="{{m.unit}}"></td>
+                                            <tr id="tr1" ng-repeat="m in frc">
+                                                <td><input type="number" class="frcu form-control" ng-model="frcu" placeholder="{{m.unit}}"></td>
                                                 <td>
                                                     <select id="type1" class="form-control btn-block" required>
-                                                    <option ng-repeat="mrcitem in mcritems">{{mrcitem.items}}
+                                                    <option ng-repeat="frcitem in fcritems">{{frcitem.items}}
                                                     </option>
                                                 </select>
                                                 </td>
-                                                <td><input type="number" class="mrcup form-control" ng-model="mrcup" placeholder="{{m.unitprice}}"></td>
+                                                <td><input type="number" class="frcup form-control" ng-model="frcup" placeholder="{{m.unitprice}}"></td>
                                                 <td>
-                                                    <input type="number" class="tprice form-control" ng-model="tprice" value="{{mrcup*mrcu}}" placeholder="$ 0.00">
-                                                </td>
+                                                    <input type="number" class="ftprice form-control" ng-model="ftprice" value="{{frcup*frcu}}" placeholder="$ 0.00">
+                                                </td>∂
                                             </tr>
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <h4>Total Monthly Recurring Charges</h4>
+                                                    <h4>Total Program Features</h4>
                                                 </td>
                                                 <td></td>
                                                 <td>
-                                                    <h4><strong class="mrcgtotal">$ 0.00</strong></h4>
+                                                    <h4><strong class="frcgtotal">$ 0.00</strong></h4>
                                                 </td>
                                             </tr>
 
