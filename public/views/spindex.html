@@ -202,9 +202,9 @@
                                         <th width="100">Data Controls <a href="#/salesproposal"><span class="btn btn-primary btn-sm fa fa-plus pull-right"></span></a></th>
                                     </tr>
                                 </thead>
-                                <tbody ng-repeat=" nsp in osps | startFrom:currentPage*pageSize | limitTo:pageSize |filter:findcf ">
+                                <tbody ng-repeat="nsp in osps | startFrom:currentPage*pageSize | limitTo:pageSize |filter:findcf ">
                                     <tr>
-                                        <td>{{nsp.indexOf(nsp) + 1}}</td>
+                                        <td>{{$index + 1}}</td>
                                         <td>{{nsp.bizname}}</td>
                                         <td>{{nsp.contactname}}</td>
                                         <td>{{nsp.title}}</td>

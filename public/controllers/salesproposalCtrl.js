@@ -378,8 +378,24 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
             firebase.database().ref().update(updates);
             console.log(updates)
 
+            if (updates) {
+                $('#spsuccess').addClass('open')
+                setTimeout(function() {
+                    window.location.replace("#/");
+                    window.location.replace("#/spindex");
+                }, 2000)
+
+            }
+
         } catch (err) {
+            $("#errormsg").text(err);
+
             console.log(err)
+
+            $('#sperror').addClass('open')
+            setTimeout(function() {
+                $('#sperror').removeClass('open')
+            }, 8000)
         }
 
     }

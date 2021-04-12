@@ -136,14 +136,33 @@
                             </section>
                         </h3>
                     </div>
+                    <div class="message-box message-box-success animated fadeIn" id="spsuccess">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+                                <div class="mb-title"><span class="fa fa-check"></span> Success:</div>
+                                <div class="mb-content">
+                                    <p>Your Data had been save!</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="panel-body">
                         <div class="row">
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-8">
+                                <hr class="panel panel-success">
+                            </div>
+                        </div>
 
+                        <div class="row">
                             <div class="col-md-2">
                             </div>
 
                             <div class="col-md-4">
+
                                 <div class="form-group">
                                     <span class="col-md-2"></span>
                                     <div class="col-md-10">
@@ -261,7 +280,9 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-md-4">
+
                                 <div class="form-group ">
                                     <div class="col-md-10">
                                         <label class=" control-label">Date:</label>
@@ -381,7 +402,6 @@
                                     <span class="col-md-2"></span>
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="row">
@@ -389,50 +409,50 @@
                             </div>
                             <div class="col-md-8">
 
-                                <div class="panel">
-                                    <span class="col-md-1"></span>
-                                    <div class="col-md-10">
-                                        <div class="panel panel-warning panel-heading">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <hr class="panel panel-success">
+                                        <div class="panel panel-success panel-heading">
                                             <h3 class="panel-title">Monthly Recurring Charges</h3>
                                         </div>
-                                        <div class="panel-body">
-                                            <table class="table table-hover mcrrowTable" id="mcrrowTable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Unit</th>
-                                                        <th>Services</th>
-                                                        <th>Unit Price</th>
-                                                        <th>Total Price</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr ng-repeat="m in mrc">
-                                                        <td><input type="number" class="mrcu form-control" ng-model="mrcu" placeholder="{{m.unit}}"></td>
-                                                        <td>
-                                                            <select id="type" class="form-control btn-block" required>
+                                        <table class="table table-hover mcrrowTable" id="mcrrowTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Unit</th>
+                                                    <th>Services</th>
+                                                    <th>Unit Price</th>
+                                                    <th>Total Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="m in mrc">
+                                                    <td><input type="number" class="mrcu form-control" ng-model="mrcu" placeholder="{{m.unit}}"></td>
+                                                    <td>
+                                                        <select id="type" class="form-control btn-block" required>
                                                             <option ng-repeat="mrcitem in mcritems">{{mrcitem.items}}
                                                             </option>
                                                         </select>
-                                                        </td>
-                                                        <td><input type="number" class="mrcup form-control" ng-model="mrcup" placeholder="{{m.unitprice}}"></td>
-                                                        <td>
-                                                            <input type="number" class="tprice form-control" ng-model="tprice" value="{{mrcup*mrcu}}" placeholder="$ 0.00">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>
-                                                            <h4>Total Monthly Recurring Charges</h4>
-                                                        </td>
-                                                        <td></td>
-                                                        <td>
-                                                            <h4><strong class="mrcgtotal">$ 0.00</strong></h4>
-                                                        </td>
-                                                    </tr>
+                                                    </td>
+                                                    <td><input type="number" class="mrcup form-control" ng-model="mrcup" placeholder="{{m.unitprice}}"></td>
+                                                    <td>
+                                                        <input type="number" class="tprice form-control" ng-model="tprice" value="{{mrcup*mrcu}}" placeholder="$ 0.00">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <h4>Total Monthly Recurring Charges</h4>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>
+                                                        <h4><strong class="mrcgtotal">$ 0.00</strong></h4>
+                                                    </td>
+                                                </tr>
 
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            </tbody>
+                                        </table>
+
                                         <div class="panel panel-warning panel-heading">
                                             <div class="btn-group pull-right ">
                                                 <button class="btn btn-primary btn-lg" ng-click="mrcadd(mrc);">+</button>
@@ -440,134 +460,118 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
 
-                                <div class="panel">
-                                    <span class="col-md-1"></span>
-                                    <div class="col-md-10">
+
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <hr class="panel panel-success">
                                         <div class="panel-heading panel panel-warning">
                                             <h3 class="panel-title">Non-Recurring Charges (NRC)</h3>
 
                                         </div>
-                                        <div class="panel-body">
 
-                                            <table class="table table-hover ncrrowTable" id="ncrrowTable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Unit</th>
-                                                        <th>Services</th>
-                                                        <th>Unit Price</th>
-                                                        <th>Total Price </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr ng-repeat="n in nrc">
-                                                        <td><input type="number" class="nrcu form-control" ng-model="nrcu" placeholder="{{n.unit}}"></td>
-                                                        <td>
-                                                            <select id="type" class="form-control btn-block" required>
+                                        <table class="table table-hover ncrrowTable" id="ncrrowTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Unit</th>
+                                                    <th>Services</th>
+                                                    <th>Unit Price</th>
+                                                    <th>Total Price </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="n in nrc">
+                                                    <td><input type="number" class="nrcu form-control" ng-model="nrcu" placeholder="{{n.unit}}"></td>
+                                                    <td>
+                                                        <select id="type" class="form-control btn-block" required>
                                                             <option ng-repeat="nrcitem in ncritems">{{nrcitem.items}}
                                                             </option>
                                                         </select>
-                                                        </td>
-                                                        <td><input type="number" class="nrcup form-control" ng-model="nrcup" placeholder="{{n.unitprice}}"></td>
-                                                        <td><input type="number" class="form-control tnup" ng-model="tnup" value="{{nrcup*nrcu}}" placeholder="$ 0.00"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>
-                                                            <h4>Total Non-Recurring ChargesDate</h4>
-                                                        </td>
-                                                        <td></td>
-                                                        <td>
-                                                            <h4><strong class="nrcgtotal">$ 0.00</strong></h4>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <br />
-
-
-
-                                        </div>
+                                                    </td>
+                                                    <td><input type="number" class="nrcup form-control" ng-model="nrcup" placeholder="{{n.unitprice}}"></td>
+                                                    <td><input type="number" class="form-control tnup" ng-model="tnup" value="{{nrcup*nrcu}}" placeholder="$ 0.00"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <h4>Total Non-Recurring ChargesDate</h4>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>
+                                                        <h4><strong class="nrcgtotal">$ 0.00</strong></h4>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                         <div class="panel-heading panel panel-warning">
-
                                             <div class="btn-group pull-right ">
                                                 <button class="btn btn-primary btn-lg" ng-click="nrcadd(nrc)">+</button>
                                                 <button class="btn btn-danger btn-lg" ng-click="nrcmin(nrc)">-</button>
                                             </div>
                                         </div>
-
-
                                     </div>
 
                                 </div>
 
-                                <div lass="panel">
-                                    <div class="row">
 
-                                        <div class="col-md-12" style="padding-top: 2%!important;">
 
-                                            <div class="panel-heading panel panel-warning">
-                                                <h3 class="panel-title">Free Program Feature Highlights
-                                                </h3>
-                                            </div>
-                                            <table class="table table-hover fpfrowTable" id="fpfrowTable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Unit</th>
-                                                        <th>Services</th>
-                                                        <th>Unit Price</th>
-                                                        <th>Total Price</th>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <hr class="panel panel-success">
+                                        <div class="panel-heading panel panel-warning">
+                                            <h3 class="panel-title">Free Program Feature Highlights
+                                            </h3>
+                                        </div>
 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr ng-repeat="f in fpfh">
-                                                        <td><input type="number" class="fpfhu form-control" ng-model="fpfhu" placeholder="0"></td>
-                                                        <td>
-                                                            <select id="type" class="form-control btn-block" required>
+                                        <table class="table table-hover fpfrowTable" id="fpfrowTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Unit</th>
+                                                    <th>Services</th>
+                                                    <th>Unit Price</th>
+                                                    <th>Total Price</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="f in fpfh">
+                                                    <td><input type="number" class="fpfhu form-control" ng-model="fpfhu" placeholder="0"></td>
+                                                    <td>
+                                                        <select id="type" class="form-control btn-block" required>
                                                             <option ng-repeat="fpfitem in fpfitems">
                                                                 {{fpfitem.items}}</option>
                                                         </select>
-                                                        </td>
-                                                        <td><input type="number" class="fpfhup form-control" ng-model="fpfhup" placeholder="$ 0.00">
-                                                        </td>
-                                                        <td><input type="number" class="tfpfh form-control" ng-model="tfpfh" value="{{fpfhup*fpfhu}}" placeholder="$ 0.00">
-                                                        </td>
-                                                    </tr>
+                                                    </td>
+                                                    <td><input type="number" class="fpfhup form-control" ng-model="fpfhup" placeholder="$ 0.00">
+                                                    </td>
+                                                    <td><input type="number" class="tfpfh form-control" ng-model="tfpfh" value="{{fpfhup*fpfhu}}" placeholder="$ 0.00">
+                                                    </td>
+                                                </tr>
 
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>
-                                                            <h4>Total Program Features</h4>
-                                                        </td>
-                                                        <td></td>
-                                                        <td>
-                                                            <h4><strong class="fpfhgtotal">$ 0.00</strong></h4>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-
-
-                                        </div>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <h4>Total Program Features</h4>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>
+                                                        <h4><strong class="fpfhgtotal">$ 0.00</strong></h4>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                         <div class="panel-heading panel panel-warning">
                                             <div class="btn-group pull-right ">
                                                 <button class="btn btn-primary btn-lg" ng-click="fpfhadd(fpfh)">+</button>
                                                 <button class="btn btn-danger btn-lg" ng-click="fpfhmin(fpfh)">-</button>
                                             </div>
                                         </div>
-
-
-
-
-
-
                                     </div>
 
                                 </div>
+
                             </div>
 
                         </div>
@@ -610,6 +614,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <br><br>
                     <div class="row">
