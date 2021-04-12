@@ -46,7 +46,7 @@
         position: absolute;
         left: 20px;
         right: 20px;
-        top: 20px;
+        top: 30px;
         bottom: 20px;
         border: 1px solid #f4f4f4;
     }
@@ -151,6 +151,27 @@
                             </div>
                         </div>
                     </div>
+                    <div class="message-box message-box-warning animated fadeIn" id="spdelete">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+
+                                <div class="mb-content pull-center">
+                                    <div class="col-md-4">
+                                    </div>
+                                    <div class="col-md-4 input-group-lg">
+                                        <div class="mb-title"><span class="fa fa-warning"></span> Warning:</div>
+                                        <p>Please TYPE "remove" to delete data!</p>
+                                        <input ng-model="deleteconfirm" type="text" class="form-control " required/><br>
+                                        <button class="btn btn-block btn-danger btn-lg fa fa-trash-o" ng-click="confirmdel()"><strong> DELETE</strong></button>
+                                    </div>
+                                    <div class="col-md-4 pull-right">
+                                        <button class="btn btn-default btn-lg btn-rounded fa fa-times" ng-click="closesp()"></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                     <div class="panel-body">
                         <div class="table-responsive">
                             <label class="input">
@@ -194,8 +215,8 @@
                                         <td>{{nsp.zipcode}}</td>
 
                                         <td class="text-center ">
-                                            <button ng-click="trigersign();edit(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
-                                            <button class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
+                                            <button ng-click="trigersignsp();editsp(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
+                                            <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
                                             <button class="btn btn-info btn-sm fa fa-print " data-box="#message-box-success"> PRINT&nbsp;</button>
                                             <button ng-click="passwordcall(16);" class="btn btn-warning btn-sm fa fa-rocket " data-toggle="modal" data-target="#email_modal"> EMAIL&nbsp;</button>
                                         </td>

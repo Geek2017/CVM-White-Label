@@ -158,7 +158,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         "Aastra/Mitel 6863i Basic | MSRP $100.00",
         "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00",
         "Aastra/Mitel 6869i Executive Phone | MSRP $300.00",
-        "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00 ",
+        "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00",
         "Aastra/Mitel M680i Expansion Module | MSRP $80.00",
         "Aastra/Mitel M685i Expansion Module | MSRP $200.00",
         "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
@@ -340,7 +340,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     var sigb64;
 
-    $scope.trigersign = function() {
+    $scope.trigersignsp = function() {
         var w = document.getElementById("signature-pad"),
             c = w.querySelector("canvas");
 
@@ -351,7 +351,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
             $('#sign').prepend($('<canvas>'))
             $('#sigb64').remove();
 
-            $scope.trigersign();
+            $scope.trigersignsp();
 
         });
 
@@ -379,7 +379,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     let keyid;
 
-    $scope.edit = function(nsp) {
+    $scope.editsp = function(nsp) {
 
         $('canvas').remove();
         sigb64 = nsp.sign;
@@ -497,6 +497,29 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     }
 
+    $scope.deletesp = function(nsp) {
+        $('#spdelete').addClass('open')
+        console.log(nsp.key);
+        $scope.confirmdel = function() {
+            if ($scope.deleteconfirm === "remove") {
+
+                var ref = firebase.database().ref("/salesproposal/" + nsp.key);
+                ref.remove()
+                    .then(function() {
+                        console.log("Remove succeeded.")
+                        $('#spdelete').removeClass('open')
+                    })
+                    .catch(function(error) {
+                        console.log(error.message)
+                    });
+
+            }
+        }
+    }
+
+    $scope.closesp = function() {
+        $('#spdelete').removeClass('open')
+    }
 
 
 

@@ -170,7 +170,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
     }, {
         items: "Aastra/Mitel 6869i Executive Phone | MSRP $300.00"
     }, {
-        items: "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00 "
+        items: "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00"
     }, {
         items: "Aastra/Mitel M680i Expansion Module | MSRP $80.00"
     }, {
