@@ -46,7 +46,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         })
     });
 
-
+    // Email
 
     (function() {
         emailjs.init('user_0dRWnov2yzJ0mYSTS3nqs')
@@ -72,19 +72,41 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
             });
     });
 
+
     // MRC
-    $scope.mcritems = ["Call Center Feature $50", "Area Code Routing $50 monthly", "Batch FTP download $50 monthly ", "Conference Bridge Additional people, $5 for each bundle of 5 people"];
+
+    $scope.mcritems = [
+        "Select Services",
+        "Area Code Routing $50 monthly",
+        "Batch FTP download $50 monthly ",
+        "Batch Zip files for recording $10 monthly",
+        "Call Center Agent $5 per Agent",
+        "Call Center Feature $50",
+        "Conference Bridge $25 for up to 20 people",
+        "Conference Bridge Additional people, $5 for each bundle of 5 people",
+        "DID additional, first one free $2 each additional",
+        "E911 by device $1 per device",
+        "E911 by location $1 monthly per location",
+        "Fax (vFax) $10",
+        "Fax ATA $25",
+        "International Dialing, client charged on the prevailing rate",
+        "Smart CallerID $2 monthly per Smart CallerID",
+        "Smart CardID Routing $10 monthly",
+        "Teams Integration $4.50 per user monthly",
+        "VCCComplete mobile app only device on extension, $2.50 monthly",
+        "VCCComplete mobile app combined with any device on the extension, $ 5 monthly",
+        "Voicemail Transcription $5 monthly per entire account"
+    ];
 
     $scope.mrcmodel = $scope.mcritems;
 
     console.log($scope.mrcmodel)
 
-
     function calc_mrc() {
 
         var calculated_total_sum = 0;
 
-        $("#mcrrowTable .tprice").each(function() {
+        $("#mcrrowTable .mtprice").each(function() {
             var get_textbox_value = $(this).val();
             if ($.isNumeric(get_textbox_value)) {
                 calculated_total_sum += parseFloat(get_textbox_value);
@@ -102,18 +124,10 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         calc_mrc()
     });
 
-    $("#update_modal").on('shown', function() {
-        alert(1);
-        calc_mrc();
-
-    });
-
     $scope.mrc = [];
 
     $scope.mrcadd = function(mrc) {
-
-        console.log($('.tprice').val())
-
+        console.log($('.mtprice').val())
         var mrc = {};
         mrc.unit = $scope.unit;
         mrc.unitprice = $scope.unitprice;
@@ -127,7 +141,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         if (mrc.length !== 0) {
             $scope.mrc.splice(mrc.length - 1, 1);
         } else {
-            rowCount = $('#myTable tr#tr1').length;
+            rowCount = $('#mcrrowTable tr#tr1').length;
             console.log(rowCount)
             if (rowCount !== 0) {
                 $('table#mcrrowTable tr#tr1:last').remove();
@@ -138,111 +152,78 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     }
 
-    function calc_nrc() {
+
+
+    // NRC
+
+    $scope.ncritems = [
+        "Aastra/Mitel 6863i Basic | MSRP $100.00",
+        "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00",
+        "Aastra/Mitel 6869i Executive Phone | MSRP $300.00",
+        "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00 ",
+        "Aastra/Mitel M680i Expansion Module | MSRP $80.00",
+        "Aastra/Mitel M685i Expansion Module | MSRP $200.00",
+        "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
+    ];
+
+    $scope.nrcmodel = $scope.ncritems;
+
+    console.log($scope.nrcmodel)
+
+    function calc_mrc() {
+
         var calculated_total_sum = 0;
-        $("#ncrrowTable .tnup").each(function() {
+
+        $("#ncrrowTable .ntprice").each(function() {
             var get_textbox_value = $(this).val();
             if ($.isNumeric(get_textbox_value)) {
                 calculated_total_sum += parseFloat(get_textbox_value);
             }
         });
-
         console.log(calculated_total_sum);
         $('.nrcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
     }
 
     $("#ncrrowTable").on('input', '.nrcu', function() {
-        calc_nrc();
+        calc_mrc()
     });
 
     $("#ncrrowTable").on('input', '.nrcup', function() {
-        calc_nrc();
+        calc_mrc()
     });
 
-    $scope.nrc = [{ unit: "0", unitprice: "0.00" }];
+    $scope.nrc = [];
 
     $scope.nrcadd = function(nrc) {
-        console.log($('.tnup').val())
+        console.log($('.ntprice').val())
+
         var nrc = {};
         nrc.unit = $scope.unit;
         nrc.unitprice = $scope.unitprice;
-        nrc.tprice = $scope.tnup;
-        $scope.nrc.push(nrc);
+        nrc.tprice = $scope.tprice;
+        $scope.nrc.push(mrc);
     }
 
     $scope.nrcmin = function(nrc) {
         console.log(nrc.length);
-        $scope.nrc.splice(nrc.length - 1, 1);
-    }
 
-    $scope.ncritems = [{
-        items: "Aastra/Mitel 6863i Basic | MSRP $100.00"
-    }, {
-        items: "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00"
-    }, {
-        items: "Aastra/Mitel 6869i Executive Phone | MSRP $300.00"
-    }, {
-        items: "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00 "
-    }, {
-        items: "Aastra/Mitel M680i Expansion Module | MSRP $80.00"
-    }, {
-        items: "Aastra/Mitel M685i Expansion Module | MSRP $200.00"
-    }, {
-        items: "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
-    }];
-
-    function calc_fpfh() {
-        var calculated_total_sum = 0;
-        $("#fpfrowTable .tfpfh").each(function() {
-            var get_textbox_value = $(this).val();
-            if ($.isNumeric(get_textbox_value)) {
-                calculated_total_sum += parseFloat(get_textbox_value);
+        if (nrc.length !== 0) {
+            $scope.nrc.splice(nrc.length - 1, 1);
+        } else {
+            rowCount = $('#ncrrowTable tr#tr1').length;
+            console.log(rowCount)
+            if (rowCount !== 0) {
+                $('table#ncrrowTable tr#tr1:last').remove();
+            } else {
+                $('table#ncrrowTable tr#tr0:last').remove();
             }
-        });
+        }
 
-        console.log(calculated_total_sum);
-        $('.fpfhgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
     }
 
-    $("#fpfrowTable").on('input', '.fpfhu', function() {
-        calc_fpfh();
-    });
 
-    $("#fpfrowTable").on('input', '.fpfhup', function() {
-        calc_fpfh();
-    });
 
-    $scope.fpfh = [{ unit: "0", unitprice: "0.00" }];
 
-    $scope.fpfhadd = function(fpfh) {
-        console.log($('.tnup').val())
-        var fpfh = {};
-        fpfh.unit = $scope.unit;
-        fpfh.unitprice = $scope.unitprice;
-        fpfh.tprice = $scope.tnup;
-        $scope.fpfh.push(fpfh);
-    }
-
-    $scope.fpfhmin = function(fpfh) {
-        console.log(fpfh.length);
-        $scope.fpfh.splice(fpfh.length - 1, 1);
-    }
-
-    $scope.fpfitems = [{
-        items: "Aastra/Mitel 6863i Basic | MSRP $100.00"
-    }, {
-        items: "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00"
-    }, {
-        items: "Aastra/Mitel 6869i Executive Phone | MSRP $300.00"
-    }, {
-        items: "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00 "
-    }, {
-        items: "Aastra/Mitel M680i Expansion Module | MSRP $80.00"
-    }, {
-        items: "Aastra/Mitel M685i Expansion Module | MSRP $200.00"
-    }, {
-        items: "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
-    }];
 
 
 
@@ -293,8 +274,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     });
 
-    var sigb64 = [];
-
+    var sigb64;
 
     $scope.trigersign = function() {
         var w = document.getElementById("signature-pad"),
@@ -328,8 +308,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         signaturePad.fromDataURL(data);
 
         $("#savesign").click(function() {
-            sigb64.push(c.toDataURL(c));
-            console.log("confirm", sigb64[1]);
+            sigb64 = c.toDataURL(c);
         });
 
     }
@@ -355,7 +334,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
 
         console.log(keyid);
-        console.log(sigb64[0]);
+        console.log(sigb64);
 
         var table0 = $('#mcrrowTable').tableToJSON({
             extractor: function(cellIndex, $cell) {
@@ -416,7 +395,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
                 zipcode2: $scope.nsp.zipcode2,
                 termlength: $scope.nsp.termlength,
                 mainphoneno: $scope.nsp.mainphoneno,
-                sign: sigb64[1]
+                sign: sigb64
             }
 
             var updates = {};
