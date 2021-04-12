@@ -6,7 +6,7 @@
     .m-signature-pad {
         position: relative;
         font-size: 10px;
-        width: 320px;
+        width: 100%;
         height: 128px;
         border: 1px solid #e8e8e8;
         background-color: #fff;
@@ -46,7 +46,7 @@
         position: absolute;
         left: 20px;
         right: 20px;
-        top: 20px;
+        top: 30px;
         bottom: 20px;
         border: 1px solid #f4f4f4;
     }
@@ -105,88 +105,101 @@
 </style>
 <div class="page-content-wrap">
     <div class="row">
-
         <div class="col-md-12">
             <form class="form-horizontal">
                 <div class="panel panel-success">
+                    <div class="panel-heading" style="padding-left: 39%!important;">
 
-                    <div class="panel-heading" style="padding-left: 40%;">
-                        <center>
-                            <h1 class="panel-title" style="font-size: 35px;"><strong>SALES</strong> PROPOSAL
-                            </h1>
-                        </center>
+                        <h1 class="panel-title" style="font-size: 35px;"><strong>SALES</strong> PROPOSAL
+                        </h1>
+                        <ul class="panel-controls">
+                            <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                        </ul>
 
                     </div>
-                    <center>
-                        <div class="panel-heading" style="text-align:center!important;">
-                            <img id="comlogo" style=" z-index: 1!important;" class="img-responsive pull-left" width="10%" src="" alt="log">
-                            <h3>
-                                <section style="padding-right: 11%!important;padding-top: 1%!important;">
-                                    <span><strong><span id="comname"></span></strong><br>
-                                    <span id="landmark"></span><br>
-                                    <span id="comcity"></span><br>
-                                    <span id="comstate"></span>,
-                                    <span id="compostalcode"></span><br>#
-                                    <span id="comno"></span>
-                                </section>
-                            </h3>
+
+                    <div class="panel-heading" style="text-align:center!important;">
+                        <img id="comlogo" style=" z-index: 1!important;" class="img-responsive pull-left" width="10%" src="" alt="log">
+                        <h3>
+                            <section style="padding-right: 11%!important;padding-top: 1%!important;">
+                                <span><strong><span id="comname"></span></strong><br>
+                                <span id="landmark"></span><br>
+                                <span id="comcity"></span><br>
+                                <span id="comstate"></span>,
+                                <span id="compostalcode"></span><br>#
+                                <span id="comno"></span>
+                            </section>
+                        </h3>
+                    </div>
+
+                    <div class="message-box message-box-success animated fadeIn" id="spsuccess">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+                                <div class="mb-title"><span class="fa fa-check"></span> Success:</div>
+                                <div class="mb-content">
+                                    <p>Your Data had been save!</p>
+                                </div>
+
+                            </div>
                         </div>
-                    </center>
-                    <div class="panel-body">
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="panel-body">
+                            <div class="panel-body">
 
-                        <div class="row ">
+                                <div class="row">
 
-                            <div class="col-md-2">
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <span class="col-md-2"></span>
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Business Name:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <span class="col-md-2"></span>
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Contact Name:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <span class="col-md-2"></span>
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Title:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <span class="col-md-2"></span>
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Phone:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <span class="col-md-2"></span>
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Street:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <span class="col-md-2"></span>
-                                    <div class="col-md-10">
-                                        <label class=" control-label">City:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <span class="col-md-2"></span>
-                                    <div class="col-md-10">
-                                        <label class=" control-label">State:</label>
-                                        <select id="state" class="form-control " data-style="btn-success">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <span class="col-md-2"></span>
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Business Name:</label>
+                                                <input ng-model="nsp.bizname" type="text" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="col-md-2"></span>
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Contact Name:</label>
+                                                <input ng-model="nsp.contactname" type="text" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="col-md-2"></span>
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Title:</label>
+                                                <input ng-model="nsp.title" type="text" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="col-md-2"></span>
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Phone:</label>
+                                                <input ng-model="nsp.phone" type="text" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="col-md-2"></span>
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Street/Block/Bldg/Lot:</label>
+                                                <input ng-model="nsp.street" type="text" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="col-md-2"></span>
+                                            <div class="col-md-10">
+                                                <label class=" control-label">City:</label>
+                                                <input ng-model="nsp.city" type="text" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="col-md-2"></span>
+                                            <div class="col-md-10">
+                                                <label class=" control-label">State:</label>
+                                                <select ng-model="nsp.state" class="form-control " data-style="btn-success" required>
+                                            <option value="">Select</option>
                                             <option value="Alabama">Alabama</option>
                                             <option value="Alaska">Alaska</option>
                                             <option value="Arizona">Arizona</option>
@@ -239,71 +252,71 @@
                                             <option value="Wisconsin">Wisconsin</option>
                                             <option value="Wyoming">Wyoming</option>
                                         </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="col-md-2"></span>
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Zip Code:</label>
+                                                <input ng-model="nsp.zipcode" type="text" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <span class="col-md-2"></span>
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Presented By:</label>
+                                                <input ng-model="nsp.presentedby" type="text" class="form-control" required/>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <span class="col-md-2"></span>
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Zip Code:</label>
-                                        <input id="Zip" type="text" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <span class="col-md-2"></span>
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Presented By:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group ">
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Date:</label>
-                                        <input id="date" type="date" class="form-control" />
-                                    </div>
-                                    <span class="col-md-2"></span>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Billing Name:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                    <span class="col-md-2"></span>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Title:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                    <span class="col-md-2"></span>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Phone:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                    <span class="col-md-2"></span>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Street:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                    <span class="col-md-2"></span>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="col-md-10">
-                                        <label class=" control-label">City:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                    <span class="col-md-2"></span>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="col-md-10">
-                                        <label class=" control-label">State:</label>
-                                        <select id="state" class="form-control " data-style="btn-success">
+                                    <div class="col-md-6">
+                                        <div class="form-group ">
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Date:</label>
+                                                <input ng-model="nsp.date0" type="date" class="form-control" required/>
+                                            </div>
+                                            <span class="col-md-2"></span>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Billing Name:</label>
+                                                <input ng-model="nsp.billing" type="text" class="form-control" required/>
+                                            </div>
+                                            <span class="col-md-2"></span>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Title:</label>
+                                                <input ng-model="nsp.title2" type="text" class="form-control" required/>
+                                            </div>
+                                            <span class="col-md-2"></span>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Phone:</label>
+                                                <input ng-model="nsp.phone2" type="text" class="form-control" required/>
+                                            </div>
+                                            <span class="col-md-2"></span>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Street/Block/Bldg/Lot:</label>
+                                                <input ng-model="nsp.street2" type="text" class="form-control" required/>
+                                            </div>
+                                            <span class="col-md-2"></span>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="col-md-10">
+                                                <label class=" control-label">City:</label>
+                                                <input ng-model="nsp.city2" type="text" class="form-control" required/>
+                                            </div>
+                                            <span class="col-md-2"></span>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="col-md-10">
+                                                <label class=" control-label">State:</label>
+                                                <select ng-model="nsp.state2" class="form-control " data-style="btn-success">
+                                            <option value="">Select</option>
                                             <option value="Alabama">Alabama</option>
                                             <option value="Alaska">Alaska</option>
                                             <option value="Arizona">Arizona</option>
@@ -356,261 +369,303 @@
                                             <option value="Wisconsin">Wisconsin</option>
                                             <option value="Wyoming">Wyoming</option>
                                         </select>
-                                    </div>
-                                    <span class="col-md-2"></span>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Zip Code:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                    </div>
-                                    <span class="col-md-2"></span>
-                                </div>
-
-                                <div class="form-group ">
-                                    <div class="col-md-10">
-                                        <label class=" control-label">Term Length:</label>
-                                        <input id="biz" type="text" class="form-control" />
-                                        <label class=" control-label">(Federal, state and Local Taxes and Fees Not
+                                            </div>
+                                            <span class="col-md-2"></span>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Zip Code:</label>
+                                                <input ng-model="nsp.zipcode2" type="text" class="form-control" required/>
+                                            </div>
+                                            <span class="col-md-2"></span>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="col-md-10">
+                                                <label class=" control-label">Term Length:</label>
+                                                <input ng-model="nsp.termlength" type="text" class="form-control" required/>
+                                                <label class=" control-label">(Federal, state and Local Taxes and Fees Not
                                             Included)</label>
-                                    </div>
-                                    <span class="col-md-2"></span>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-8">
-
-                            <div class="panel">
-                                <span class="col-md-1"></span>
-                                <div class="col-md-10">
-                                    <div class="panel panel-warning panel-heading">
-                                        <h3 class="panel-title">Monthly Recurring Charges</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <table class="table table-hover mcrrowTable" id="mcrrowTable">
-                                            <thead>
-                                                <tr>
-                                                    <th>Unit</th>
-                                                    <th>Services</th>
-                                                    <th>Unit Price</th>
-                                                    <th>Total Price</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr ng-repeat="m in mrc">
-                                                    <td><input type="number" class="mrcu form-control" ng-model="mrcu" placeholder="{{m.unit}}"></td>
-                                                    <td>
-                                                        <select class="btn btn block btn-default">
-                                                            <option ng-repeat="mrcitem in mcritems">{{mrcitem.items}}
-                                                            </option>
-                                                        </select>
-                                                    </td>
-                                                    <td><input type="number" class="mrcup form-control" ng-model="mrcup" placeholder="{{m.unitprice}}"></td>
-                                                    <td>
-                                                        <input type="number" class="tprice form-control" ng-model="tprice" value="{{mrcup*mrcu}}" placeholder="$ 0.00">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <h4>Total Monthly Recurring Charges</h4>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>
-                                                        <h4><strong class="mrcgtotal">$ 0.00</strong></h4>
-                                                    </td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="panel panel-warning panel-heading">
-                                        <div class="btn-group pull-right ">
-                                            <button class="btn btn-primary btn-lg" ng-click="mrcadd(mrc);">+</button>
-                                            <button class="btn btn-danger btn-lg" ng-click="mrcmin(mrc);">-</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="panel">
-                                <span class="col-md-1"></span>
-                                <div class="col-md-10">
-                                    <div class="panel-heading panel panel-warning">
-                                        <h3 class="panel-title">Non-Recurring Charges (NRC)</h3>
-
-                                    </div>
-                                    <div class="panel-body">
-
-                                        <table class="table table-hover ncrrowTable" id="ncrrowTable">
-                                            <thead>
-                                                <tr>
-                                                    <th>Unit</th>
-                                                    <th>Services</th>
-                                                    <th>Unit Price</th>
-                                                    <th>Total Price </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr ng-repeat="n in nrc">
-                                                    <td><input type="number" class="nrcu form-control" ng-model="nrcu" placeholder="{{n.unit}}"></td>
-                                                    <td>
-                                                        <select class="btn btn block btn-default">
-                                                            <option ng-repeat="nrcitem in ncritems">{{nrcitem.items}}
-                                                            </option>
-                                                        </select>
-                                                    </td>
-                                                    <td><input type="number" class="nrcup form-control" ng-model="nrcup" placeholder="{{n.unitprice}}"></td>
-                                                    <td><input type="number" class="form-control tnup" ng-model="tnup" value="{{nrcup*nrcu}}" placeholder="$ 0.00"></td>
-                                                </tr>
-
-
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <h4>Total Non-Recurring ChargesDate</h4>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>
-                                                        <h4><strong class="nrcgtotal">$ 0.00</strong></h4>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <br />
-
-
-
-                                    </div>
-                                    <div class="panel-heading panel panel-warning">
-
-                                        <div class="btn-group pull-right ">
-                                            <button class="btn btn-primary btn-lg" ng-click="nrcadd(nrc)">+</button>
-                                            <button class="btn btn-danger btn-lg" ng-click="nrcmin(nrc)">-</button>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-md-12" style="padding-top: 2%!important;">
-
-                                            <div class="panel-heading panel panel-warning">
-                                                <h3 class="panel-title">Free Program Feature Highlights
-                                                </h3>
                                             </div>
-                                            <table class="table table-hover fpfrowTable" id="fpfrowTable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Unit</th>
-                                                        <th>Services</th>
-                                                        <th>Unit Price</th>
-                                                        <th>Total Price</th>
-
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr ng-repeat="f in fpfh">
-                                                        <td><input type="number" class="fpfhu form-control" ng-model="fpfhu" placeholder="0"></td>
-                                                        <td>
-                                                            <select class="btn btn block btn-default">
-                                                                <option ng-repeat="fpfitem in fpfitems">
-                                                                    {{fpfitem.items}}</option>
-                                                            </select>
-                                                        </td>
-                                                        <td><input type="number" class="fpfhup form-control" ng-model="fpfhup" placeholder="$ 0.00">
-                                                        </td>
-                                                        <td><input type="number" class="tfpfh form-control" ng-model="tfpfh" value="{{fpfhup*fpfhu}}" placeholder="$ 0.00">
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>
-                                                            <h4>Total Program Features</h4>
-                                                        </td>
-                                                        <td></td>
-                                                        <td>
-                                                            <h4><strong class="fpfhgtotal">$ 0.00</strong></h4>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-
-
+                                            <span class="col-md-2"></span>
                                         </div>
-                                        <div class="panel-heading panel panel-warning">
-                                            <div class="btn-group pull-right ">
-                                                <button class="btn btn-primary btn-lg" ng-click="fpfhadd(fpfh)">+</button>
-                                                <button class="btn btn-danger btn-lg" ng-click="fpfhmin(fpfh)">-</button>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <!-- MRC -->
+                                    <div class="col-md-12">
+
+                                        <span class="col-md-1"></span>
+                                        <div class="col-md-10">
+                                            <div class="panel panel-warning panel-heading">
+                                                <h3 class="panel-title">Monthly Recurring Charges (MRC)</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <table class="table table-hover mcrrowTable" id="mcrrowTable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Unit</th>
+                                                            <th>Services</th>
+                                                            <th>Unit Price</th>
+                                                            <th>Total Price</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        <tr id="tr0" ng-repeat="mnsp in nsp.mrc">
+                                                            <td>
+                                                                <input type="text" class="mrcu form-control" ng-model="mnsp['Unit']" placeholder="0">
+                                                            </td>
+
+
+                                                            <td>
+                                                                <select id="type0" class="form-control btn-block" data-ng-options="i for i in mcritems" data-ng-model="mnsp['Services']"></select>
+                                                            </td>
+
+
+                                                            <td><input type="text" class="mrcup form-control" ng-model="mnsp['Unit Price']" placeholder="$ 0.00"></td>
+                                                            <td>
+                                                                <input type="text" class="mtprice form-control" ng-value="mnsp['Unit Price']*mnsp['Unit']" placeholder="$ 0.00">
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr id="tr1" ng-repeat="m in mrc">
+
+                                                            <td><input type="number" class="mrcu form-control" ng-model="mrcu" placeholder="{{m.unit}}"></td>
+                                                            <td>
+                                                                <select id="type0" class="form-control btn-block" data-ng-options="jj for jj in ncritems" data-ng-model="nmnsp['Services']"></select>
+                                                            </td>
+                                                            <td><input type="number" class="mrcup form-control" ng-model="mrcup" placeholder="{{m.unitprice}}"></td>
+                                                            <td>
+                                                                <input type="number" class="mtprice form-control" ng-model="mtprice" value="{{mrcup*mrcu}}" placeholder="$ 0.00">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>
+                                                                <h4>Total Monthly Recurring Charges</h4>
+                                                            </td>
+                                                            <td></td>
+                                                            <td>
+                                                                <h4><strong class="mrcgtotal">$ 0.00</strong></h4>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="panel panel-warning panel-heading">
+                                                <div class="btn-group pull-right ">
+                                                    <button class="btn btn-primary btn-lg" ng-click="mrcadd(mrc);">+</button>
+                                                    <button class="btn btn-danger btn-lg" ng-click="mrcmin(mrc);">-</button>
+                                                </div>
                                             </div>
                                         </div>
 
+                                    </div>
+
+                                    <!-- NRC -->
+                                    <div class="col-md-12">
+                                        <span class="col-md-1"></span>
+                                        <div class="col-md-10">
+                                            <div class="panel panel-warning panel-heading">
+                                                <h3 class="panel-title">Non-Recurring Charges (NRC)</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <table class="table table-hover ncrrowTable" id="ncrrowTable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Unit</th>
+                                                            <th>Services</th>
+                                                            <th>Unit Price</th>
+                                                            <th>Total Price</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        <tr id="tr0" ng-repeat="nmnsp in nsp.nrc">
+                                                            <td>
+                                                                <input type="text" class="nrcu form-control" ng-model="nmnsp['Unit']" placeholder="0">
+                                                            </td>
 
 
+                                                            <td>
+                                                                <select id="type0" class="form-control btn-block" data-ng-options="k for k in ncritems" data-ng-model="nmnsp['Services']"></select>
+                                                            </td>
 
+
+                                                            <td><input type="text" class="nrcup form-control" ng-model="nmnsp['Unit Price']" placeholder="$ 0.00"></td>
+                                                            <td>
+                                                                <input type="text" class="ntprice form-control" ng-value="nmnsp['Unit Price']*nmnsp['Unit']" placeholder="$ 0.00">
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr id="tr1" ng-repeat="n in nrc">
+
+                                                            <td><input type="number" class="nrcu form-control" ng-model="nrcu" placeholder="{{n.unit}}"></td>
+
+                                                            <td>
+                                                                <select id="type0" class="form-control btn-block" data-ng-options="kk for kk in ncritems" data-ng-model="nmnsp['Services']"></select>
+                                                            </td>
+                                                            <td><input type="number" class="nrcup form-control" ng-model="nrcup" placeholder="{{n.unitprice}}"></td>
+                                                            <td>
+                                                                <input type="number" class="ntprice form-control" ng-model="ntprice" value="{{nrcup*nrcu}}" placeholder="$ 0.00">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>
+                                                                <h4>Total Monthly Recurring Charges</h4>
+                                                            </td>
+                                                            <td></td>
+                                                            <td>
+                                                                <h4><strong class="nrcgtotal">$ 0.00</strong></h4>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="panel panel-warning panel-heading">
+                                                <div class="btn-group pull-right ">
+
+                                                    <button class="btn btn-primary btn-lg" ng-click="nrcadd(nrc);">+</button>
+                                                    <button class="btn btn-danger btn-lg" ng-click="nrcmin(nrc);">-</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- FPFH -->
+                                    <div class="col-md-12">
+                                        <span class="col-md-1"></span>
+                                        <div class="col-md-10">
+                                            <div class="panel panel-warning panel-heading">
+                                                <h3 class="panel-title">Free Program Feature Highlights</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <table class="table table-hover fcrrowTable" id="fcrrowTable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Unit</th>
+                                                            <th>Services</th>
+                                                            <th>Unit Price</th>
+                                                            <th>Total Price</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        <tr id="tr0" ng-repeat="fnsp in nsp.fpfrow">
+                                                            <td>
+                                                                <input type="text" class="frcu form-control" ng-model="fnsp['Unit']" placeholder="0">
+                                                            </td>
+
+
+                                                            <td>
+                                                                <select id="type0" class="form-control btn-block" data-ng-options="k for k in fcritems" data-ng-model="fnsp['Services']"></select>
+                                                            </td>
+
+
+                                                            <td><input type="text" class="frcup form-control" ng-model="fnsp['Unit Price']" placeholder="$ 0.00"></td>
+                                                            <td>
+                                                                <input type="text" class="ftprice form-control" ng-value="fnsp['Unit Price']*fnsp['Unit']" placeholder="$ 0.00">
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr id="tr1" ng-repeat="m in frc">
+                                                            <td><input type="number" class="frcu form-control" ng-model="frcu" placeholder="{{m.unit}}"></td>
+                                                            <td>
+                                                                <select id="type0" class="form-control btn-block" data-ng-options="l for l in fcritems" data-ng-model="fnsp['Services']"></select>
+                                                                </select>
+                                                            </td>
+                                                            <td><input type="number" class="frcup form-control" ng-model="frcup" placeholder="{{m.unitprice}}"></td>
+                                                            <td>
+                                                                <input type="number" class="ftprice form-control" ng-model="ftprice" value="{{frcup*frcu}}" placeholder="$ 0.00">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>
+                                                                <h4>Total Program Features</h4>
+                                                            </td>
+                                                            <td></td>
+                                                            <td>
+                                                                <h4><strong class="frcgtotal">$ 0.00</strong></h4>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="panel panel-warning panel-heading">
+                                                <div class="btn-group pull-right ">
+
+                                                    <button class="btn btn-primary btn-lg" ng-click="frcadd(frc);">+</button>
+                                                    <button class="btn btn-danger btn-lg" ng-click="frcmin(frc);">-</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+
+
+                                        </div>
 
 
                                     </div>
 
                                 </div>
 
-                            </div>
-                        </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <span class="col-md-2"></span>
+                                            <div class="col-md-10">
+                                                <label class="control-label">Main Phone Number to be
+                                Used to Establish Account:</label>
+                                                <input ng-model="nsp.mainphoneno" type="text" class="form-control" />
+                                                <label class="control-label"><p style="font-size:9px">This proposal has been approved and
+                                is valid for 30 days from signature date.</p> </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="col-md-2"></span>
+                                            <div class="col-md-10">
+                                                <label class="control-label">Date</label>
+                                                <input ng-model="nsp.date1" type="date" class="form-control datepicker" />
+                                            </div>
 
-                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-10">
+                                                <label class="control-label">Signature:</label>
 
-                    <div class="row">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <span class="col-md-2"></span>
-                                <div class="col-md-10">
-                                    <label class="control-label">Main Phone Number to be
-                                        Used to Establish Account:</label>
-                                    <input id="Zip" type="text" class="form-control" />
-                                    <label class="control-label"><p style="font-size:9px">This proposal has been approved and
-                                        is valid for 30 days from signature date.</p> </label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <span class="col-md-2"></span>
-                                <div class="col-md-10">
-                                    <label class="control-label">Date</label>
-                                    <input id="biz" type="date" class="form-control datepicker" />
-                                </div>
+                                                <div id="signature-pad" class="m-signature-pad panel-success">
+                                                    <button id="savesign" type="button" class="btn  btn-info btn-xs  pull-right">Save Sign</button>
+                                                    <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">Delete Sign</button><br><br><br>
+                                                    <div class="m-signature-pad--body" id="sign">
+                                                        <canvas></canvas>
+                                                    </div>
 
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <span class="col-md-2"></span>
-                                <div class="col-md-10">
-                                    <label class="control-label">Signature:</label>
-                                    <div id="signature-pad" class="m-signature-pad panel-success">
-                                        <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">x</button>
-                                        <div class="m-signature-pad--body">
-                                            <canvas></canvas>
+                                                </div>
+
+                                            </div>
+
+                                            <span class="col-md-2"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <br><br>
+
                     <div class="row">
                         <div class="panel-footer">
-                            <button class="btn btn-danger">Clear Form</button>
+                            <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">CLOSE</button>
                             <div class="btn-group pull-right ">
-                                <button class="btn btn-primary " id="sig-submitBtn">Save Form</button>
+                                <button id="update" type="button" class="btn btn-primary" ng-click="updatesp();">APPROVE</button>
                             </div>
                         </div>
                     </div>

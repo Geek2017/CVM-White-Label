@@ -139,9 +139,23 @@
                     <div class="message-box message-box-success animated fadeIn" id="spsuccess">
                         <div class="mb-container">
                             <div class="mb-middle">
-                                <div class="mb-title"><span class="fa fa-check"></span> Success:</div>
-                                <div class="mb-content">
-                                    <p>Your Data had been save!</p>
+
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4  pull-center">
+                                    <div class="mb-title"><span class="fa fa-check"></span> Success:</div>
+                                    <div class="mb-content">
+                                        <p>Your Data had been save!</p>
+                                    </div>
+
+
+
+                                    <div class="btn-group btn-default" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-default" ng-click="goindex()">GO TO LIST</button>
+                                        <button type="button" class="btn btn-primary" ng-click="closesp()">CREATE ANEW</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                 </div>
 
                             </div>
@@ -157,7 +171,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row ">
                             <div class="col-md-2">
                             </div>
 
@@ -622,7 +636,7 @@
                             <button class="btn btn-danger">Clear Form</button>
                             <div class="btn-group pull-right ">
                                 <button class="btn btn-primary">PRINT</button>
-                                <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">EMAIL </button>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">EMAIL </button>
                                 <button class="btn btn-primary " ng-click="savesp()">SAVE</button>
                             </div>
                         </div>
@@ -636,7 +650,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="width: 400px!important;">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle"></h5>
