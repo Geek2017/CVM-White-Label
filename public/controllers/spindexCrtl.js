@@ -75,7 +75,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     // MRC
 
-    $scope.mcritems = [
+    $scope.mcritems = ["Select",
         "Area Code Routing $50 monthly",
         "Batch FTP download $50 monthly",
         "Batch Zip files for recording $10 monthly",
@@ -154,7 +154,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     // NRC
 
-    $scope.ncritems = [
+    $scope.ncritems = ["Select",
         "Aastra/Mitel 6863i Basic | MSRP $100.00",
         "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00",
         "Aastra/Mitel 6869i Executive Phone | MSRP $300.00",
@@ -225,10 +225,11 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     // FPF
 
     $scope.fcritems = [
+        "Select",
         "Aastra/Mitel 6863i Basic | MSRP $100.00",
         "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00",
         "Aastra/Mitel 6869i Executive Phone | MSRP $300.00",
-        "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00 ",
+        "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00",
         "Aastra/Mitel M680i Expansion Module | MSRP $80.00",
         "Aastra/Mitel M685i Expansion Module | MSRP $200.00",
         "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
@@ -263,27 +264,27 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     $scope.frc = [];
 
     $scope.frcadd = function(frc) {
-        console.log($('.ntprice').val())
+        console.log($('.ftprice').val())
 
-        var nrc = {};
-        nrc.unit = $scope.unit;
-        nrc.unitprice = $scope.unitprice;
-        nrc.tprice = $scope.tprice;
-        $scope.nrc.push(nrc);
+        var frc = {};
+        frc.unit = $scope.unit;
+        frc.unitprice = $scope.unitprice;
+        frc.tprice = $scope.ftprice;
+        $scope.frc.push(frc);
     }
 
     $scope.frcmin = function(frc) {
-        console.log(nrc.length);
+        console.log(frc.length);
 
-        if (nrc.length !== 0) {
-            $scope.nrc.splice(nrc.length - 1, 1);
+        if (frc.length !== 0) {
+            $scope.frc.splice(frc.length - 1, 1);
         } else {
-            rowCount = $('#ncrrowTable tr#tr1').length;
+            rowCount = $('#fcrrowTable tr#tr1').length;
             console.log(rowCount)
             if (rowCount !== 0) {
-                $('table#ncrrowTable tr#tr1:last').remove();
+                $('table#fcrrowTable tr#tr1:last').remove();
             } else {
-                $('table#ncrrowTable tr#tr0:last').remove();
+                $('table#fcrrowTable tr#tr0:last').remove();
             }
         }
 

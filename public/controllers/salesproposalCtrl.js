@@ -44,7 +44,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
     // MRC
     $scope.mcritems = [{
-        items: "Select Services"
+        items: "Select"
     }, {
         items: "Area Code Routing $50 monthly"
     }, {
@@ -162,7 +162,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
     }
 
     $scope.ncritems = [{
-        items: "Select Services"
+        items: "Select"
     }, {
         items: "Aastra/Mitel 6863i Basic | MSRP $100.00"
     }, {
@@ -219,7 +219,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
     }
 
     $scope.fpfitems = [{
-        items: "Select Services"
+        items: "Select"
     }, {
         items: "Aastra/Mitel 6863i Basic | MSRP $100.00"
     }, {
