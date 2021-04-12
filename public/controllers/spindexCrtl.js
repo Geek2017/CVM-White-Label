@@ -201,7 +201,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         nrc.unit = $scope.unit;
         nrc.unitprice = $scope.unitprice;
         nrc.tprice = $scope.tprice;
-        $scope.nrc.push(mrc);
+        $scope.nrc.push(nrc);
     }
 
     $scope.nrcmin = function(nrc) {
@@ -325,7 +325,10 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         $scope.nsp = nsp;
         $scope.nsp.date0 = new Date(nsp.date0);
         $scope.nsp.date1 = new Date(nsp.date1);
+
         console.log($scope.nsp.mrc)
+        console.log($scope.nsp.nrc)
+
         return keyid = nsp.key;
 
     }

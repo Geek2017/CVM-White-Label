@@ -468,20 +468,20 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr id="tr0" ng-repeat="nnsp in nsp.mrc">
+                                            <tr id="tr0" ng-repeat="mnsp in nsp.mrc">
                                                 <td>
-                                                    <input type="text" class="mrcu form-control" ng-model="nnsp['Unit']" placeholder="0">
+                                                    <input type="text" class="mrcu form-control" ng-model="mnsp['Unit']" placeholder="0">
                                                 </td>
 
 
                                                 <td>
-                                                    <select id="type0" class="form-control btn-block" data-ng-options="i for i in mcritems" data-ng-model="nnsp['Services']"></select>
+                                                    <select id="type0" class="form-control btn-block" data-ng-options="i for i in mcritems" data-ng-model="mnsp['Services']"></select>
                                                 </td>
 
 
-                                                <td><input type="text" class="mrcup form-control" ng-model="nnsp['Unit Price']" placeholder="$ 0.00"></td>
+                                                <td><input type="text" class="mrcup form-control" ng-model="mnsp['Unit Price']" placeholder="$ 0.00"></td>
                                                 <td>
-                                                    <input type="text" class="mtprice form-control" ng-value="nnsp['Unit Price']*nnsp['Unit']" placeholder="$ 0.00">
+                                                    <input type="text" class="mtprice form-control" ng-value="mnsp['Unit Price']*mnsp['Unit']" placeholder="$ 0.00">
                                                 </td>
 
                                             </tr>
@@ -515,14 +515,14 @@
                                 </div>
                                 <div class="panel panel-warning panel-heading">
                                     <div class="btn-group pull-right ">
-
-                                        <button class="btn btn-primary btn-lg" ng-click="nrcadd(nrc);">+</button>
-                                        <button class="btn btn-danger btn-lg" ng-click="nrcmin(nrc);">-</button>
+                                        <button class="btn btn-primary btn-lg" ng-click="mrcadd(mrc);">+</button>
+                                        <button class="btn btn-danger btn-lg" ng-click="mrcmin(mrc);">-</button>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
+
                         <!-- NRC -->
                         <div class="col-md-12">
                             <span class="col-md-1"></span>
@@ -531,7 +531,7 @@
                                     <h3 class="panel-title">Non-Monthly Recurring Charges</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <table class="table table-hover mcrrowTable" id="mcrrowTable">
+                                    <table class="table table-hover ncrrowTable" id="ncrrowTable">
                                         <thead>
                                             <tr>
                                                 <th>Unit</th>
@@ -549,7 +549,7 @@
 
 
                                                 <td>
-                                                    <select id="type0" class="form-control btn-block" data-ng-options="i for i in ncritems" data-ng-model="nmnsp['Services']"></select>
+                                                    <select id="type0" class="form-control btn-block" data-ng-options="j for j in ncritems" data-ng-model="nmnsp['Services']"></select>
                                                 </td>
 
 
@@ -590,8 +590,8 @@
                                 <div class="panel panel-warning panel-heading">
                                     <div class="btn-group pull-right ">
 
-                                        <button class="btn btn-primary btn-lg" ng-click="mrcadd(mrc);">+</button>
-                                        <button class="btn btn-danger btn-lg" ng-click="mrcmin(mrc);">-</button>
+                                        <button class="btn btn-primary btn-lg" ng-click="nrcadd(nrc);">+</button>
+                                        <button class="btn btn-danger btn-lg" ng-click="nrcmin(nrc);">-</button>
                                     </div>
                                 </div>
                             </div>
@@ -604,7 +604,7 @@
                                     <h3 class="panel-title">Monthly Recurring Charges</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <table class="table table-hover mcrrowTable" id="mcrrowTable">
+                                    <table class="table table-hover " id="">
                                         <thead>
                                             <tr>
                                                 <th>Unit</th>
