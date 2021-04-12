@@ -128,6 +128,29 @@
                             </section>
                         </h3>
                     </div>
+                    <div class="message-box message-box-success animated fadeIn" id="spsuccess">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+                                <div class="mb-title"><span class="fa fa-check"></span> Success:</div>
+                                <div class="mb-content">
+                                    <p>Your Data had been save!</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-box message-box-danger animated fadeIn" id="sperror">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+                                <div class="mb-title"><span class="fa fa-times-circle"></span> Error:</div>
+                                <div class="mb-content">
+
+                                    <p id="errormsg"></p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                     <div class="panel-body">
                         <div class="table-responsive">
                             <label class="input">
@@ -173,7 +196,7 @@
                                         <td class="text-center ">
                                             <button ng-click="trigersign();edit(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
                                             <button class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
-                                            <button class="btn btn-info btn-sm fa fa-print "> PRINT&nbsp;</button>
+                                            <button class="btn btn-info btn-sm fa fa-print " data-box="#message-box-success"> PRINT&nbsp;</button>
                                             <button ng-click="passwordcall(16);" class="btn btn-warning btn-sm fa fa-rocket " data-toggle="modal" data-target="#email_modal"> EMAIL&nbsp;</button>
                                         </td>
                                     </tr>
@@ -489,10 +512,7 @@
 
                                                 <td><input type="number" class="mrcu form-control" ng-model="mrcu" placeholder="{{m.unit}}"></td>
                                                 <td>
-                                                    <select id="type1" class="form-control btn-block" required>
-                                                    <option ng-repeat="mrcitem in mcritems">{{mrcitem.items}}
-                                                    </option>
-                                                </select>
+                                                    <select id="type0" class="form-control btn-block" data-ng-options="jj for jj in ncritems" data-ng-model="nmnsp['Services']"></select>
                                                 </td>
                                                 <td><input type="number" class="mrcup form-control" ng-model="mrcup" placeholder="{{m.unitprice}}"></td>
                                                 <td>
@@ -549,7 +569,7 @@
 
 
                                                 <td>
-                                                    <select id="type0" class="form-control btn-block" data-ng-options="j for j in ncritems" data-ng-model="nmnsp['Services']"></select>
+                                                    <select id="type0" class="form-control btn-block" data-ng-options="k for k in ncritems" data-ng-model="nmnsp['Services']"></select>
                                                 </td>
 
 
@@ -562,11 +582,9 @@
                                             <tr id="tr1" ng-repeat="n in nrc">
 
                                                 <td><input type="number" class="nrcu form-control" ng-model="nrcu" placeholder="{{n.unit}}"></td>
+
                                                 <td>
-                                                    <select id="type1" class="form-control btn-block" required>
-                                                    <option ng-repeat="nrcitem in ncritems">{{nrcitem.items}}
-                                                    </option>
-                                                </select>
+                                                    <select id="type0" class="form-control btn-block" data-ng-options="kk for kk in ncritems" data-ng-model="nmnsp['Services']"></select>
                                                 </td>
                                                 <td><input type="number" class="nrcup form-control" ng-model="nrcup" placeholder="{{n.unitprice}}"></td>
                                                 <td>
@@ -618,7 +636,7 @@
 
                                             <tr id="tr0" ng-repeat="fnsp in nsp.fpfrow">
                                                 <td>
-                                                    <input type="text" class="mrcu form-control" ng-model="fnsp['Unit']" placeholder="0">
+                                                    <input type="text" class="frcu form-control" ng-model="fnsp['Unit']" placeholder="0">
                                                 </td>
 
 
@@ -636,10 +654,8 @@
                                             <tr id="tr1" ng-repeat="m in frc">
                                                 <td><input type="number" class="frcu form-control" ng-model="frcu" placeholder="{{m.unit}}"></td>
                                                 <td>
-                                                    <select id="type1" class="form-control btn-block" required>
-                                                    <option ng-repeat="frcitem in fcritems">{{frcitem.items}}
-                                                    </option>
-                                                </select>
+                                                    <select id="type0" class="form-control btn-block" data-ng-options="l for l in fcritems" data-ng-model="fnsp['Services']"></select>
+                                                    </select>
                                                 </td>
                                                 <td><input type="number" class="frcup form-control" ng-model="frcup" placeholder="{{m.unitprice}}"></td>
                                                 <td>

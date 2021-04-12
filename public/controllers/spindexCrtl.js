@@ -101,7 +101,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     console.log($scope.mrcmodel)
 
-    function calc_mrc() {
+    function mcalc_mrc() {
 
         var calculated_total_sum = 0;
 
@@ -116,11 +116,11 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     }
 
     $("#mcrrowTable").on('input', '.mrcu', function() {
-        calc_mrc()
+        mcalc_mrc()
     });
 
     $("#mcrrowTable").on('input', '.mrcup', function() {
-        calc_mrc()
+        mcalc_mrc()
     });
 
     $scope.mrc = [];
@@ -168,7 +168,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     console.log($scope.nrcmodel)
 
-    function calc_mrc() {
+    function ncalc_mrc() {
 
         var calculated_total_sum = 0;
 
@@ -183,11 +183,11 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     }
 
     $("#ncrrowTable").on('input', '.nrcu', function() {
-        calc_mrc()
+        ncalc_mrc()
     });
 
     $("#ncrrowTable").on('input', '.nrcup', function() {
-        calc_mrc()
+        ncalc_mrc()
     });
 
     $scope.nrc = [];
@@ -239,7 +239,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     console.log($scope.frcmodel)
 
-    function calc_mrc() {
+    function fcalc_mrc() {
 
         var calculated_total_sum = 0;
 
@@ -250,15 +250,15 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
             }
         });
         console.log(calculated_total_sum);
-        $('.nrcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
+        $('.frcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
     }
 
     $("#fcrrowTable").on('input', '.frcu', function() {
-        calc_mrc()
+        fcalc_mrc()
     });
 
     $("#fcrrowTable").on('input', '.frcup', function() {
-        calc_mrc()
+        fcalc_mrc()
     });
 
     $scope.frc = [];
@@ -380,8 +380,9 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     let keyid;
 
     $scope.edit = function(nsp) {
-        $('canvas').remove();
 
+        $('canvas').remove();
+        sigb64 = nsp.sign;
         $('#sign').prepend($('<img>', { id: 'sigb64', src: nsp.sign }))
 
         console.log(nsp)
@@ -426,7 +427,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         var newtable1 = table1.splice(ino1, 1);
         console.log(table1)
 
-        var table2 = $('#fpfrowTable').tableToJSON({
+        var table2 = $('#fcrrowTable').tableToJSON({
             extractor: function(cellIndex, $cell) {
                 return $cell.find('input').val() || $cell.find("#type0 option:selected").text() ||
                     $cell.find("#type1 option:selected").text();
@@ -472,8 +473,26 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
             firebase.database().ref().update(updates);
             console.log(updates)
 
+            $scope.successtxt = updates;
+
+            if (updates) {
+                $('#spsuccess').addClass('open')
+                setTimeout(function() {
+                    window.location.replace("#/");
+                    window.location.replace("#/spindex");
+                }, 2000)
+
+            }
+
         } catch (err) {
+            $("#errormsg").text(err);
+
             console.log(err)
+
+            $('#sperror').addClass('open')
+            setTimeout(function() {
+                $('#sperror').removeClass('open')
+            }, 8000)
         }
 
     }
