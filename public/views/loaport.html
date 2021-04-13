@@ -113,28 +113,38 @@
             <form class="form-horizontal">
                 <div class="panel panel-success">
 
-                    <div class="panel-heading" style="padding-left: 33%!important;">
-
-                        <h1 class="panel-title" style="font-size: 35px;"><strong>PORT TOLL</strong> FREE NUMBER
-                        </h1>
-                        <ul class="panel-controls">
-                            <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
-                        </ul>
-
+                    <div class="panel-heading" style="height:50px!important">
+                        <div class="col-md-2 pull-left">
+                        </div>
+                        <div class="col-md-8" style="top:-15px!important">
+                            <h1 class="text-center">
+                                <strong>PORT TOLL</strong> FREE NUMBER
+                            </h1>
+                        </div>
+                        <div class="col-md-2">
+                            <ul class="panel-controls">
+                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                            </ul>
+                        </div>
                     </div>
-
-                    <div class="panel-heading" style="text-align:center!important;">
-                        <img id="comlogo" style=" z-index: 1!important;" class="img-responsive pull-left" width="10%" src="" alt="log">
-                        <h3>
-                            <section style="padding-right: 11%!important;padding-top: 1%!important;">
-                                <span><strong><span id="comname"></span></strong><br>
-                                <span id="landmark"></span><br>
-                                <span id="comcity"></span><br>
-                                <span id="comstate"></span>,
-                                <span id="compostalcode"></span><br>#
-                                <span id="comno"></span>
-                            </section>
-                        </h3>
+                    <div class="row panel-heading">
+                        <div class="col-md-4 pull-left">
+                            <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive " width="40%" src="" alt="log">
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="text-center">
+                                <span>
+                                    <h1>{{comname | uppercase}}</h1>
+                                </span>
+                                <span>{{comlandmark}}</span><br>
+                                <span>{{comcity}}</span><br>
+                                <span>{{comstate}},</span>
+                                <span>{{compostalcode}}</span><br>
+                                <span>#{{comno}}</span>
+                            </h3>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
                     </div>
 
                     <div class="row">
@@ -181,19 +191,19 @@
                                 </div>
 
                                 <span class="col-md-2"></span>
-                                <div class="col-md-10">
+                                <div class="col-md-5">
                                     <label class=" control-label">Street/Block/Bldg/Lot:</label>
                                     <input ng-model="street2" type="text" class="form-control" required />
                                 </div>
 
                                 <span class="col-md-2"></span>
-                                <div class="col-md-10">
+                                <div class="col-md-5">
                                     <label class=" control-label">City:</label>
                                     <input ng-model="city2" type="text" class="form-control" required />
                                 </div>
 
                                 <span class="col-md-2"></span>
-                                <div class="col-md-10">
+                                <div class="col-md-5">
                                     <label class=" control-label">State:</label>
                                     <select ng-model="state2" class="form-control " data-style="btn-success">
                                         <option value="">Select</option>
@@ -252,7 +262,7 @@
                                 </div>
 
                                 <span class="col-md-2"></span>
-                                <div class="col-md-10">
+                                <div class="col-md-5">
                                     <label class=" control-label">Zip Code:</label>
                                     <input ng-model="zipcode2" type="text" class="form-control" required />
                                 </div>
@@ -276,19 +286,20 @@
                                 </div>
                                 <span class="col-md-2"></span>
 
-                                <div class="col-md-10">
+                                <div class="col-md-5">
                                     <label class=" control-label">Street/Block/Bldg/Lot:</label>
                                     <input ng-model="street2" type="text" class="form-control" required />
                                 </div>
-                                <span class="col-md-2"></span>
 
-                                <div class="col-md-10">
+
+                                <div class="col-md-5">
                                     <label class=" control-label">City:</label>
                                     <input ng-model="city2" type="text" class="form-control" required />
                                 </div>
                                 <span class="col-md-2"></span>
 
-                                <div class="col-md-10">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-5">
                                     <label class=" control-label">State:</label>
                                     <select ng-model="state2" class="form-control " data-style="btn-success">
                                         <option value="">Select</option>
@@ -345,12 +356,13 @@
                                         <option value="Wyoming">Wyoming</option>
                                     </select>
                                 </div>
-                                <span class="col-md-2"></span>
 
-                                <div class="col-md-10">
+                                <div class="col-md-5">
                                     <label class=" control-label">Zip Code:</label>
                                     <input ng-model="zipcode2" type="text" class="form-control" required />
                                 </div>
+                                <span class="col-md-2"></span>
+
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class=" control-label">Requested Port Date:</label>
@@ -445,20 +457,8 @@
                             <div class="form-group">
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
-                                    <label class=" control-label">Account Number:</label>
-                                    <input ng-model="mainbtn" type="text" class="form-control" required />
-                                </div>
-
-                                <span class="col-md-2"></span>
-                                <div class="col-md-10">
-                                    <label class=" control-label">Street/Block/Bldg/Lot:</label>
-                                    <input ng-model="street2" type="text" class="form-control" required />
-                                </div>
-
-                                <span class="col-md-2"></span>
-                                <div class="col-md-10">
-                                    <label class=" control-label">City:</label>
-                                    <input ng-model="city2" type="text" class="form-control" required />
+                                    <label class=" control-label">Date Sign:</label>
+                                    <input ng-model="mainbtn" type="date" class="form-control" required />
                                 </div>
                             </div>
                         </div>
