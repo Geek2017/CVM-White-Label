@@ -24,6 +24,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
     const btn = document.getElementById('button');
 
 
+
     $("#myform").submit(function(event) {
         event.preventDefault();
 
@@ -40,7 +41,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
                 btn.value = 'Send Email';
                 alert(JSON.stringify(err));
             });
-    });
+    })
 
     // MRC
     $scope.mcritems = [{
@@ -302,9 +303,17 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
     });
 
-    var obj0;
+    $(".icheckbox").click(function() {
 
-    $scope.savesp = function(obj0) {
+        $('.street2').val($scope.street);
+        $('.city2').val($scope.city);
+        $('.state2').val($scope.state);
+        $('.zipcode2').val($scope.zipcode);
+    });
+
+
+
+    $scope.savesp = function() {
 
         var table0 = $('#mcrrowTable').tableToJSON({
             extractor: function(cellIndex, $cell) {
@@ -346,24 +355,21 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
                 nrc: table1,
                 fpfrow: table2,
                 bizname: $scope.bizname,
-                contactname: $scope.contactname,
-                title: $scope.title,
-                phone: $scope.phone,
                 street: $scope.street,
                 city: $scope.city,
                 state: $scope.state,
                 zipcode: $scope.zipcode,
                 presentedby: $scope.presentedby,
-                date0: $scope.date0,
-                date1: $scope.date1,
-                billing: $scope.billing,
-                title2: $scope.title2,
-                phone2: $scope.phone2,
-                street2: $scope.street2,
-                city2: $scope.city2,
-                state2: $scope.state2,
-                zipcode2: $scope.zipcode2,
+                // date0: $scope.date0,
+                // date1: $scope.date1,
+                date2: $scope.date2,
+                street2: $('.street2').val(),
+                city2: $('.city2').val(),
+                state2: $('.state2').val(),
+                zipcode2: $('.zipcode2').val(),
                 termlength: $scope.termlength,
+                phone: $scope.phone,
+                phone2: $scope.phone2,
                 mainphoneno: $scope.mainphoneno,
                 sign: c.toDataURL(c)
             }
@@ -381,7 +387,6 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
                     // }, 2000)
 
             }
-
 
         } catch (err) {
             $("#errormsg").text(err);

@@ -63,6 +63,9 @@ angular
             }).when('/spindex', {
                 templateUrl: 'views/spindex.html',
                 controller: 'spindexCrtl'
+            }).when('/plnindex', {
+                templateUrl: 'views/plnindex.html',
+                controller: 'plnindexCrtl'
             })
 
     });
