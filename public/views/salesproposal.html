@@ -471,6 +471,7 @@
                                         <hr class="panel panel-success">
                                         <div class="panel panel-success panel-heading">
                                             <h3 class="panel-title">Monthly Recurring Charges</h3>
+
                                         </div>
                                         <table class="table table-hover mcrrowTable" id="mcrrowTable">
                                             <thead>
@@ -482,7 +483,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="m in mrc">
+                                                <tr class="mrc0" ng-repeat="m in mrc">
                                                     <td><input type="number" class="mrcu form-control" ng-model="mrcu" placeholder="{{m.unit}}"></td>
                                                     <td>
                                                         <select id="type" class="form-control btn-block" required>

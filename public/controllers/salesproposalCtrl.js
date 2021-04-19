@@ -1,4 +1,4 @@
-angular.module('newApp').controller('salesproposalCtrl', function($scope) {
+angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
 
 
     $scope.comname = localStorage.getItem('comname');
@@ -43,6 +43,10 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
             });
     })
 
+
+
+
+
     // MRC
     $scope.mcritems = [{
         items: "Select"
@@ -86,8 +90,34 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         items: "Voicemail Transcription $5 monthly per entire account"
     }];
 
+    $scope.mrcu = 1;
+
+
+    $("#mcrrowTable").on('change', 'select', function() {
+
+        // console.log($("#mcrrowTable option:selected").text().match(/\d+/))
+        var unitp = $("#mcrrowTable option:selected").text().match(/\d+/);
+
+        console.log(unitp[0])
+
+        $('.mrcup').val((unitp[0]));
+
+        $(".mrcup:input").focus();
+        recalc();
+        calc_mrc();
+    });
+
+    function recalc() {
+        let u = $(".mrcu").val();
+        let up = $(".mrcup").val();
+
+        $(".tprice").val(u * up);
+    }
+
     function calc_mrc() {
         var calculated_total_sum = 0;
+
+        console.log($('.mrcup').val());
 
         $("#mcrrowTable .tprice").each(function() {
             var get_textbox_value = $(this).val();
@@ -99,12 +129,15 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         $('.mrcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
     }
 
+
     $("#mcrrowTable").on('input', '.mrcu', function() {
-        calc_mrc()
+        recalc();
+        calc_mrc();
     });
 
     $("#mcrrowTable").on('input', '.mrcup', function() {
-        calc_mrc()
+        recalc();
+        calc_mrc();
     });
 
     $scope.mrc = [{ unit: "0", unitprice: "0.00" }];
