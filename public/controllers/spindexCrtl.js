@@ -101,6 +101,20 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     console.log($scope.mrcmodel)
 
+
+    $("#mcrrowTable").on('change', 'select', function() {
+
+        var unitp = $("#mcrrowTable option:selected:last").text().match(/\d+/);
+
+        console.log(unitp[0])
+
+        $('.mrcup:input:last').val((unitp[0]));
+
+        $(".mrcup:input:last").focus();
+
+    });
+
+
     function mcalc_mrc() {
 
         var calculated_total_sum = 0;
@@ -115,11 +129,11 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         $('.mrcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
     }
 
-    $("#mcrrowTable").on('input', '.mrcu', function() {
+    $("#mcrrowTable").on('input', '.mrcu0', function() {
         mcalc_mrc()
     });
 
-    $("#mcrrowTable").on('input', '.mrcup', function() {
+    $("#mcrrowTable").on('input', '.mrcup0', function() {
         mcalc_mrc()
     });
 

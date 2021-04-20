@@ -61,7 +61,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
     }, {
         items: "Call Center Feature $50"
     }, {
-        items: "Conference Bridge $25 for up to 20 people"
+        items: "Conference Bridge $25 for up to twenty people"
     }, {
         items: "Conference Bridge Additional people, $5 for each bundle of 5 people"
     }, {
@@ -95,23 +95,22 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
 
     $("#mcrrowTable").on('change', 'select', function() {
 
-        // console.log($("#mcrrowTable option:selected").text().match(/\d+/))
-        var unitp = $("#mcrrowTable option:selected").text().match(/\d+/);
+        var unitp = $("#mcrrowTable option:selected:last").text().replace(/[^0-9\.]+/g, "");
 
-        console.log(unitp[0])
+        console.log(unitp)
 
-        $('.mrcup').val((unitp[0]));
+        $('.mrcup:input:last').val(parseFloat(unitp).toFixed(2));
 
-        $(".mrcup:input").focus();
+        $(".mrcu:input:last").focus();
         recalc();
         calc_mrc();
     });
 
     function recalc() {
-        let u = $(".mrcu").val();
-        let up = $(".mrcup").val();
+        let u = $('.mrcu:input:last').val();
+        let up = $('.mrcup:input:last').val();
 
-        $(".tprice").val(u * up);
+        $(".tprice:input:last").val(parseFloat(u * up).toFixed(2));
     }
 
     function calc_mrc() {
