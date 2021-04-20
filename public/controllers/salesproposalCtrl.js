@@ -378,6 +378,11 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
     });
 
     $(".icheckbox").click(function() {
+        console.log($scope.phone, $scope.custname, $scope.bizname)
+
+        $('.phone2').val($scope.phone);
+        $('.custname2').val($scope.custname);
+        $('.bizname2').val($scope.bizname);
 
         $('.street2').val($scope.street);
         $('.city2').val($scope.city);
