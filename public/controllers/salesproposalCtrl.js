@@ -91,7 +91,8 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
     }];
 
     $scope.mrcu = 1;
-
+    $scope.nrcu = 1;
+    $scope.fpfhu = 1;
 
     $("#mcrrowTable").on('change', 'select', function() {
 
@@ -102,11 +103,11 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
         $('.mrcup:input:last').val(parseFloat(unitp).toFixed(2));
 
         $(".mrcu:input:last").focus();
-        recalc();
+        mrecalc();
         calc_mrc();
     });
 
-    function recalc() {
+    function mrecalc() {
         let u = $('.mrcu:input:last').val();
         let up = $('.mrcup:input:last').val();
 
@@ -130,12 +131,12 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
 
 
     $("#mcrrowTable").on('input', '.mrcu', function() {
-        recalc();
+        mrecalc();
         calc_mrc();
     });
 
     $("#mcrrowTable").on('input', '.mrcup', function() {
-        recalc();
+        mrecalc();
         calc_mrc();
     });
 
@@ -157,6 +158,26 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
         $scope.mrc.splice(mrc.length - 1, 1);
     }
 
+    $("#ncrrowTable").on('change', 'select', function() {
+
+        var unitp = $("#ncrrowTable option:selected:last").text().replace(/[^0-9\.]+/g, "");
+
+        console.log(unitp)
+
+        $('.nrcup:input:last').val(parseFloat(unitp).toFixed(2));
+
+        $(".nrcu:input:last").focus();
+        nrecalc();
+        calc_nrc();
+    });
+
+    function nrecalc() {
+        let u = $('.nrcu:input:last').val();
+        let up = $('.nrcup:input:last').val();
+
+        $(".tnup:input:last").val(parseFloat(u * up).toFixed(2));
+    }
+
     function calc_nrc() {
         var calculated_total_sum = 0;
         $("#ncrrowTable .tnup").each(function() {
@@ -171,10 +192,12 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
     }
 
     $("#ncrrowTable").on('input', '.nrcu', function() {
+        nrecalc();
         calc_nrc();
     });
 
     $("#ncrrowTable").on('input', '.nrcup', function() {
+        nrecalc();
         calc_nrc();
     });
 
@@ -197,22 +220,39 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
     $scope.ncritems = [{
         items: "Select"
     }, {
-        items: "Aastra/Mitel 6863i Basic | MSRP $100.00"
+        items: "Aastra/Mitel  Basic | MSRP $100.00"
     }, {
-        items: "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00"
+        items: "Aastra/Mitel  Advanced Phone | MSRP $230.00"
     }, {
-        items: "Aastra/Mitel 6869i Executive Phone | MSRP $300.00"
+        items: "Aastra/Mitel  Executive Phone | MSRP $300.00"
     }, {
-        items: "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00"
+        items: "Aastra/Mitel  Advanced Touch Screen Executive Phone | MSRP $425.00"
     }, {
-        items: "Aastra/Mitel M680i Expansion Module | MSRP $80.00"
+        items: "Aastra/Mitel  Expansion Module | MSRP $80.00"
     }, {
-        items: "Aastra/Mitel M685i Expansion Module | MSRP $200.00"
+        items: "Aastra/Mitel  Expansion Module | MSRP $200.00"
     }, {
         items: "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
     }];
 
+    $("#fpfrowTable").on('change', 'select', function() {
 
+        var unitp = $("#fpfrowTable option:selected:last").text().replace(/[^0-9\.]+/g, "");
+
+        console.log(unitp)
+
+        $('.fpfhup:input:last').val(parseFloat(unitp).toFixed(2));
+
+        $(".fpfhup:input:last").focus();
+        frecalc();
+        calc_fpfh();
+    });
+
+    function frecalc() {
+        let u = $('.fpfhu:input:last').val();
+        let up = $('.fpfhup:input:last').val();
+        $(".tfpfh:input:last").val(parseFloat(u * up).toFixed(2));
+    }
 
     function calc_fpfh() {
         var calculated_total_sum = 0;
@@ -229,10 +269,12 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
 
     $("#fpfrowTable").on('input', '.fpfhu', function() {
         calc_fpfh();
+        frecalc();
     });
 
     $("#fpfrowTable").on('input', '.fpfhup', function() {
         calc_fpfh();
+        frecalc();
     });
 
     $scope.fpfh = [{ unit: "0", unitprice: "0.00" }];
@@ -254,17 +296,17 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
     $scope.fpfitems = [{
         items: "Select"
     }, {
-        items: "Aastra/Mitel 6863i Basic | MSRP $100.00"
+        items: "Aastra/Mitel  Basic | MSRP $100.00"
     }, {
-        items: "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00"
+        items: "Aastra/Mitel  Advanced Phone | MSRP $230.00"
     }, {
-        items: "Aastra/Mitel 6869i Executive Phone | MSRP $300.00"
+        items: "Aastra/Mitel  Executive Phone | MSRP $300.00"
     }, {
-        items: "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00 "
+        items: "Aastra/Mitel  Advanced Touch Screen Executive Phone | MSRP $425.00 "
     }, {
-        items: "Aastra/Mitel M680i Expansion Module | MSRP $80.00"
+        items: "Aastra/Mitel  Expansion Module | MSRP $80.00"
     }, {
-        items: "Aastra/Mitel M685i Expansion Module | MSRP $200.00"
+        items: "Aastra/Mitel  Expansion Module | MSRP $200.00"
     }, {
         items: "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
     }];

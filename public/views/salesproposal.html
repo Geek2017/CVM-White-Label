@@ -502,8 +502,8 @@
                                                         <h4>Total Monthly Recurring Charges</h4>
                                                     </td>
                                                     <td></td>
-                                                    <td>
-                                                        <h4><strong class="mrcgtotal">$ 0.00</strong></h4>
+                                                    <td class="text-center">
+                                                        <h4><strong class="mrcgtotal ">$ 0.00</strong></h4>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -537,15 +537,15 @@
                                             </thead>
                                             <tbody>
                                                 <tr ng-repeat="n in nrc">
-                                                    <td><input type="number" class="nrcu form-control" ng-model="nrcu" placeholder="{{n.unit}}"></td>
+                                                    <td><input type="number" class="nrcu form-control text-center" ng-model="nrcu" placeholder="{{n.unit}}"></td>
                                                     <td>
                                                         <select id="type" class="form-control btn-block" required>
                                                             <option ng-repeat="nrcitem in ncritems">{{nrcitem.items}}
                                                             </option>
                                                         </select>
                                                     </td>
-                                                    <td><input type="number" class="nrcup form-control" ng-model="nrcup" placeholder="{{n.unitprice}}"></td>
-                                                    <td><input type="number" class="form-control tnup" ng-model="tnup" value="{{nrcup*nrcu}}" placeholder="$ 0.00"></td>
+                                                    <td><input type="number" class="nrcup form-control text-center" ng-model="nrcup" placeholder="{{n.unitprice}}" readonly></td>
+                                                    <td><input type="number" class="form-control tnup text-center" ng-model="tnup" value="{{nrcup*nrcu}}" placeholder="$ 0.00" readonly></td>
                                                 </tr>
                                                 <tr>
                                                     <td></td>
@@ -553,7 +553,7 @@
                                                         <h4>Total Non-Recurring ChargesDate</h4>
                                                     </td>
                                                     <td></td>
-                                                    <td>
+                                                    <td class="text-center">
                                                         <h4><strong class="nrcgtotal">$ 0.00</strong></h4>
                                                     </td>
                                                 </tr>
@@ -589,16 +589,16 @@
                                             </thead>
                                             <tbody>
                                                 <tr ng-repeat="f in fpfh">
-                                                    <td><input type="number" class="fpfhu form-control" ng-model="fpfhu" placeholder="0"></td>
+                                                    <td><input type="number" class="fpfhu form-control text-center" ng-model="fpfhu" placeholder="0"></td>
                                                     <td>
                                                         <select id="type" class="form-control btn-block" required>
                                                             <option ng-repeat="fpfitem in fpfitems">
                                                                 {{fpfitem.items}}</option>
                                                         </select>
                                                     </td>
-                                                    <td><input type="number" class="fpfhup form-control" ng-model="fpfhup" placeholder="$ 0.00">
+                                                    <td><input type="number" class="fpfhup form-control text-center" ng-model="fpfhup" placeholder="$ 0.00" readonly>
                                                     </td>
-                                                    <td><input type="number" class="tfpfh form-control" ng-model="tfpfh" value="{{fpfhup*fpfhu}}" placeholder="$ 0.00">
+                                                    <td><input type="number" class="tfpfh form-control text-center" ng-model="tfpfh" value="{{fpfhup*fpfhu}}" placeholder="$ 0.00" readonly>
                                                     </td>
                                                 </tr>
 
@@ -608,7 +608,7 @@
                                                         <h4>Total Program Features</h4>
                                                     </td>
                                                     <td></td>
-                                                    <td>
+                                                    <td class="text-center">
                                                         <h4><strong class="fpfhgtotal">$ 0.00</strong></h4>
                                                     </td>
                                                 </tr>
