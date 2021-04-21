@@ -102,22 +102,36 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     console.log($scope.mrcmodel)
 
 
+    $scope.mrcu = 1;
+    $scope.nrcu = 1;
+    $scope.fpfhu = 1;
+
     $("#mcrrowTable").on('change', 'select', function() {
 
-        var unitp = $("#mcrrowTable option:selected:last").text().match(/\d+/);
+        var unitp = $("#mcrrowTable option:selected:last").text().replace(/[^0-9\.]+/g, "");
 
-        console.log(unitp[0])
+        console.log(unitp)
 
-        $('.mrcup:input:last').val((unitp[0]));
+        $('.mrcup:input:last').val(parseFloat(unitp).toFixed(2));
 
-        $(".mrcup:input:last").focus();
-
+        $(".mrcu:input:last").focus();
+        mrecalc();
+        calc_mrc();
     });
 
 
-    function mcalc_mrc() {
 
+    function mrecalc() {
+        let u = $('.mrcu:input:last').val();
+        let up = $('.mrcup:input:last').val();
+
+        $(".mtprice:input:last").val(parseFloat(u * up).toFixed(2));
+    }
+
+    function calc_mrc() {
         var calculated_total_sum = 0;
+
+        console.log($('.mrcup').val());
 
         $("#mcrrowTable .mtprice").each(function() {
             var get_textbox_value = $(this).val();
@@ -129,12 +143,14 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         $('.mrcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
     }
 
-    $("#mcrrowTable").on('input', '.mrcu0', function() {
-        mcalc_mrc()
+    $("#mcrrowTable").on('input', '.mrcu', function() {
+        mrecalc();
+        calc_mrc();
     });
 
-    $("#mcrrowTable").on('input', '.mrcup0', function() {
-        mcalc_mrc()
+    $("#mcrrowTable").on('input', '.mrcup', function() {
+        mrecalc();
+        calc_mrc();
     });
 
     $scope.mrc = [];
@@ -169,12 +185,12 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     // NRC
 
     $scope.ncritems = ["Select",
-        "Aastra/Mitel 6863i Basic | MSRP $100.00",
-        "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00",
-        "Aastra/Mitel 6869i Executive Phone | MSRP $300.00",
-        "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00",
-        "Aastra/Mitel M680i Expansion Module | MSRP $80.00",
-        "Aastra/Mitel M685i Expansion Module | MSRP $200.00",
+        "Aastra/Mitel Basic | MSRP $100.00",
+        "Aastra/Mitel Advanced Phone | MSRP $230.00",
+        "Aastra/Mitel Executive Phone | MSRP $300.00",
+        "Aastra/Mitel Advanced Touch Screen Executive Phone | MSRP $425.00",
+        "Aastra/Mitel Expansion Module | MSRP $80.00",
+        "Aastra/Mitel Expansion Module | MSRP $200.00",
         "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
     ];
 
@@ -182,26 +198,47 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     console.log($scope.nrcmodel)
 
-    function ncalc_mrc() {
+    $("#ncrrowTable").on('change', 'select', function() {
 
+        var unitp = $("#ncrrowTable option:selected:last").text().replace(/[^0-9\.]+/g, "");
+
+        console.log(unitp)
+
+        $('.nrcup:input:last').val(parseFloat(unitp).toFixed(2));
+
+        $(".nrcu:input:last").focus();
+        nrecalc();
+        calc_nrc();
+    });
+
+    function nrecalc() {
+        let u = $('.nrcu:input:last').val();
+        let up = $('.nrcup:input:last').val();
+
+        $(".ntprice:input:last").val(parseFloat(u * up).toFixed(2));
+    }
+
+    function calc_nrc() {
         var calculated_total_sum = 0;
-
         $("#ncrrowTable .ntprice").each(function() {
             var get_textbox_value = $(this).val();
             if ($.isNumeric(get_textbox_value)) {
                 calculated_total_sum += parseFloat(get_textbox_value);
             }
         });
+
         console.log(calculated_total_sum);
         $('.nrcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
     }
 
     $("#ncrrowTable").on('input', '.nrcu', function() {
-        ncalc_mrc()
+        nrecalc();
+        calc_nrc();
     });
 
     $("#ncrrowTable").on('input', '.nrcup', function() {
-        ncalc_mrc()
+        nrecalc();
+        calc_nrc();
     });
 
     $scope.nrc = [];
@@ -240,12 +277,12 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     $scope.fcritems = [
         "Select",
-        "Aastra/Mitel 6863i Basic | MSRP $100.00",
-        "Aastra/Mitel 6867i Advanced Phone | MSRP $230.00",
-        "Aastra/Mitel 6869i Executive Phone | MSRP $300.00",
-        "Aastra/Mitel 6873i Advanced Touch Screen Executive Phone | MSRP $425.00",
-        "Aastra/Mitel M680i Expansion Module | MSRP $80.00",
-        "Aastra/Mitel M685i Expansion Module | MSRP $200.00",
+        "Aastra/Mitel Basic | MSRP $100.00",
+        "Aastra/Mitel Advanced Phone | MSRP $230.00",
+        "Aastra/Mitel Executive Phone | MSRP $300.00",
+        "Aastra/Mitel Advanced Touch Screen Executive Phone | MSRP $425.00",
+        "Aastra/Mitel Expansion Module | MSRP $80.00",
+        "Aastra/Mitel Expansion Module | MSRP $200.00",
         "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
     ];
 
@@ -253,37 +290,59 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     console.log($scope.frcmodel)
 
-    function fcalc_mrc() {
+    $("#fpfrowTable").on('change', 'select', function() {
 
+        var unitp = $("#fpfrowTable option:selected:last").text().replace(/[^0-9\.]+/g, "");
+
+        console.log(unitp)
+
+        $('.fpfhup:input:last').val(parseFloat(unitp).toFixed(2));
+
+        $(".fpfhup:input:last").focus();
+        frecalc();
+        calc_fpfh();
+    });
+
+    function frecalc() {
+        let u = $('.fpfhu:input:last').val();
+        let up = $('.fpfhup:input:last').val();
+        $(".tfpfh:input:last").val(parseFloat(u * up).toFixed(2));
+    }
+
+    function calc_fpfh() {
         var calculated_total_sum = 0;
-
-        $("#fcrrowTable .ftprice").each(function() {
+        $("#fpfrowTable .tfpfh").each(function() {
             var get_textbox_value = $(this).val();
             if ($.isNumeric(get_textbox_value)) {
                 calculated_total_sum += parseFloat(get_textbox_value);
             }
         });
+
         console.log(calculated_total_sum);
-        $('.frcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
+        $('.fpfhgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
     }
 
-    $("#fcrrowTable").on('input', '.frcu', function() {
-        fcalc_mrc()
+
+
+    $("#fpfrowTable").on('input', '.fpfhu', function() {
+        frecalc();
+        calc_fpfh();
     });
 
-    $("#fcrrowTable").on('input', '.frcup', function() {
-        fcalc_mrc()
+    $("#fpfrowTable").on('input', '.fpfhup', function() {
+        frecalc();
+        calc_fpfh();
     });
 
     $scope.frc = [];
 
     $scope.frcadd = function(frc) {
-        console.log($('.ftprice').val())
+        console.log($('.fprice').val())
 
         var frc = {};
         frc.unit = $scope.unit;
         frc.unitprice = $scope.unitprice;
-        frc.tprice = $scope.ftprice;
+        frc.tprice = $scope.fprice;
         $scope.frc.push(frc);
     }
 
@@ -386,8 +445,11 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         console.log(nsp)
 
         $scope.nsp = nsp;
-        $scope.nsp.date0 = new Date(nsp.date0);
-        $scope.nsp.date1 = new Date(nsp.date1);
+
+
+        console.log($scope.nsp.mrc['Total Price']);
+
+        $scope.nsp.date2 = new Date(nsp.date2);
 
         console.log($scope.nsp.mrc)
         console.log($scope.nsp.nrc)
@@ -443,20 +505,15 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
                 mrc: table0,
                 nrc: table1,
                 fpfrow: table2,
+
                 bizname: $scope.nsp.bizname,
-                contactname: $scope.nsp.contactname,
-                title: $scope.nsp.title,
-                phone: $scope.nsp.phone,
+                bizname2: $scope.nsp.bizname2,
+                custname: $scope.nsp.custname,
                 street: $scope.nsp.street,
                 city: $scope.nsp.city,
                 state: $scope.nsp.state,
                 zipcode: $scope.nsp.zipcode,
                 presentedby: $scope.nsp.presentedby,
-                date0: $scope.nsp.date0,
-                date1: $scope.nsp.date1,
-                billing: $scope.nsp.billing,
-                title2: $scope.nsp.title2,
-                phone2: $scope.nsp.phone2,
                 street2: $scope.nsp.street2,
                 city2: $scope.nsp.city2,
                 state2: $scope.nsp.state2,
@@ -518,6 +575,19 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         $('#spdelete').removeClass('open')
     }
 
+
+    $(".icheckbox").click(function() {
+        console.log($scope.phone, $scope.custname, $scope.bizname)
+
+        $('.phone2').val($scope.phone);
+        $('.custname2').val($scope.custname);
+        $('.bizname2').val($scope.bizname);
+
+        $('.street2').val($scope.street);
+        $('.city2').val($scope.city);
+        $('.state2').val($scope.state);
+        $('.zipcode2').val($scope.zipcode);
+    });
 
 
 
