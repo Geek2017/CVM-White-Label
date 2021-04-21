@@ -5,7 +5,6 @@ angular
     .module('newApp', ['ngRoute'])
     .config(function($routeProvider) {
         $routeProvider
-
             .when('/', {
                 templateUrl: 'views/dashboard.html',
                 controller: 'dashboardCtrl'
@@ -57,15 +56,29 @@ angular
             .when('/domesticrates', {
                 templateUrl: 'views/domesticrates.html',
                 controller: 'domesticratesCrtl'
-            }).when('/mydocs', {
+            })
+            .when('/mydocs', {
                 templateUrl: 'views/mydocs.html',
                 controller: 'mydocsCrtl'
-            }).when('/spindex', {
+            })
+            .when('/spindex', {
                 templateUrl: 'views/spindex.html',
                 controller: 'spindexCrtl'
-            }).when('/plnindex', {
+            })
+            .when('/plnindex', {
                 templateUrl: 'views/plnindex.html',
                 controller: 'plnindexCrtl'
             })
-
+            .when('/ptfnindex', {
+                templateUrl: 'views/ptfnindex.html',
+                controller: 'ptfnindexCrtl'
+            })
+            .when('/ccaindex', {
+                templateUrl: 'views/ccaindex.html',
+                controller: 'ccaindexCrtl'
+            })
+            .when('/eftaindex', {
+                templateUrl: 'views/eftaindex.html',
+                controller: 'eftaindexCrtl'
+            })
     });

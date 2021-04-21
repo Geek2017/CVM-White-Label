@@ -1,0 +1,625 @@
+<style>
+    .inputs {
+        border: 0;
+        outline: 0;
+        background: transparent;
+        border-bottom: 1px solid black;
+    }
+    
+    .buttons {
+        width: 20%;
+        table-layout: fixed;
+        border-collapse: collapse;
+    }
+    
+    .buttons button {
+        width: 36%;
+    }
+    
+    .hover:hover {
+        background-color: #9773e2;
+    }
+    
+    .m-signature-pad {
+        position: relative;
+        font-size: 10px;
+        width: 100%;
+        height: 128px;
+        border: 1px solid #e8e8e8;
+        background-color: #fff;
+        border-top-width: 2px;
+        border-top-color: #9773e2;
+    }
+    
+    .m-signature-pad:before,
+    .m-signature-pad:after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        width: 40%;
+        height: 10px;
+        left: 20px;
+        bottom: 10px;
+        background: transparent;
+        -webkit-transform: skew(-3deg) rotate(-3deg);
+        -moz-transform: skew(-3deg) rotate(-3deg);
+        -ms-transform: skew(-3deg) rotate(-3deg);
+        -o-transform: skew(-3deg) rotate(-3deg);
+        transform: skew(-3deg) rotate(-3deg);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+    }
+    
+    .m-signature-pad:after {
+        left: auto;
+        right: 20px;
+        -webkit-transform: skew(3deg) rotate(3deg);
+        -moz-transform: skew(3deg) rotate(3deg);
+        -ms-transform: skew(3deg) rotate(3deg);
+        -o-transform: skew(3deg) rotate(3deg);
+        transform: skew(3deg) rotate(3deg);
+    }
+    
+    .m-signature-pad--body {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 30px;
+        bottom: 20px;
+        border: 1px solid #f4f4f4;
+    }
+    
+    .m-signature-pad--body canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+    }
+    
+    @media screen and (max-width: 1024px) {
+        .m-signature-pad {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: auto;
+            height: auto;
+            min-width: 250px;
+            min-height: 250px;
+            margin: 5%;
+        }
+        #github {
+            display: none;
+        }
+    }
+    
+    @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        .m-signature-pad {
+            margin: 10%;
+        }
+    }
+    
+    @media screen and (max-height: 320px) {
+        .m-signature-pad--body {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 32px;
+        }
+        .m-signature-pad--footer {
+            left: 20px;
+            right: 20px;
+            bottom: 4px;
+            height: 8px;
+        }
+        .m-signature-pad--footer .description {
+            font-size: 1em;
+            margin-top: 1em;
+        }
+    }
+</style>
+<ul class="breadcrumb">
+    <li>List</li>
+    <li class="active">EFT Authorization</li>
+</ul>
+
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal">
+                <div class="panel panel-success">
+                    <div class="panel-heading" style="height:50px!important">
+                        <div class="col-md-4 pull-left">
+                        </div>
+                        <div class="col-md-4" style="top:-15px!important">
+                            <h1 class="text-center">
+                                <strong>EFT</strong> AUTH
+                            </h1>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="panel-controls">
+                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row panel-heading">
+                        <div class="col-md-4 pull-left">
+                            <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive " width="40%" src="" alt="log">
+                        </div>
+                        <div class="col-md-4 ">
+                            <h3 class="text-center">
+
+                                <span>
+                                    <h1>{{comname | uppercase}}</h1>
+                                </span>
+                                <span>{{comlandmark}}</span><br>
+                                <span>{{comcity}}</span><br>
+                                <span>{{comstate}},</span>
+                                <span>{{compostalcode}}</span><br>
+                                <span>#{{comno}}</span>
+                            </h3>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                    </div>
+                    <div class="message-box message-box-success animated fadeIn" id="spsuccess">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+                                <div class="mb-title"><span class="fa fa-check"></span> Success:</div>
+                                <div class="mb-content">
+                                    <p>Your Data had been save!</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-box message-box-danger animated fadeIn" id="sperror">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+                                <div class="mb-title"><span class="fa fa-times-circle"></span> Error:</div>
+                                <div class="mb-content">
+
+                                    <p id="errormsg"></p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-box message-box-warning animated fadeIn" id="spdelete">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+
+                                <div class="mb-content pull-center">
+                                    <div class="col-md-4">
+                                    </div>
+                                    <div class="col-md-4 input-group-lg">
+                                        <div class="mb-title"><span class="fa fa-warning"></span> Warning:</div>
+                                        <p>Please TYPE "remove" to delete data!</p>
+                                        <input ng-model="deleteconfirm" type="text" class="form-control " required/><br>
+                                        <button class="btn btn-block btn-danger btn-lg fa fa-trash-o" ng-click="confirmdel()"><strong> DELETE</strong></button>
+                                    </div>
+                                    <div class="col-md-4 pull-right">
+                                        <button class="btn btn-default btn-lg btn-rounded fa fa-times" ng-click="closesp()"></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <label class="input">
+                                <input type="text" name="name" ng-model="findcf" >
+                            </label>
+
+                            <label class="input pull-right">
+                                <label class="select ">
+                                    <select class="" ng-model="pageSize" ng-options="num for num in [5,10, 100,1000]" ></select> <i></i> <br>
+                                    
+                                </label>
+                            </label>
+
+
+                            <table class="table table-bordered table-striped table-actions ">
+                                <thead>
+                                    <tr>
+                                        <th width="3" class="text-center">#</th>
+                                        <th width="10">Customer Name</th>
+                                        <th width="10">Company Name</th>
+                                        <th width="10">Services</th>
+                                        <th width="10">Account/Customer ID#</th>
+                                        <th width="10">Name on card</th>
+                                        <th width="10">Card Type</th>
+                                        <th width="5">Street/Block/Bldg/Lot</th>
+                                        <th width="5">City</th>
+                                        <th width="5">State</th>
+                                        <th width="3"><label class="input">Zip Code</label></th>
+                                        <th>Data Controls <a href="#/eftauthorration"><span class="btn btn-primary btn-sm fa fa-plus pull-right"> NEW</span></a></th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="nsp in opln | startFrom:currentPage*pageSize | limitTo:pageSize |filter:findcf ">
+                                    <tr>
+                                        <td class="text-center">{{$index + 1}}</td>
+                                        <td>{{nsp.acctnumber}}</td>
+                                        <td>{{nsp.custname}}</td>
+                                        <td>{{nsp.street1}}</td>
+                                        <td>{{nsp.city1}}</td>
+                                        <td>{{nsp.state1}}</td>
+                                        <td>{{nsp.zipcode1}}</td>
+                                        <td>{{nsp.street1}}</td>
+                                        <td>{{nsp.city1}}</td>
+                                        <td>{{nsp.state1}}</td>
+                                        <td>{{nsp.zipcode1}}</td>
+
+                                        <td class="text-center buttons">
+                                            <button ng-click="trigersignsp();editsp(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW</button>
+                                            <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
+                                            <button class="btn btn-info btn-sm fa fa-print " data-box="#message-box-success"> PRINT</button>
+                                            <button class="btn btn-warning btn-sm fa fa-rocket" data-toggle="modal" data-target="#email_modal" ng-click="passwordcall(16);"> EMAIL</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="btn-group btn-group-xs pull-right ">
+                            <button class="btn btn-primary " ng-disabled="currentPage==0 " ng-click="currentPage=currentPage-1 ">
+       Back
+      </button>
+                            <button class="btn btn-primary ">{{currentPage+1}} of {{numberOfPages()}}</button>
+                            <button class="btn btn-primary " ng-disabled="currentPage>= data.length/pageSize - 1" ng-click="currentPage=currentPage+1"> Next
+                                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="email_modal" tabindex="-1" role="dialog" aria-labelledby="email_modalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="width: 400px!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: none!important;">X</button>
+            </div>
+            <div class="modal-body ">
+                <form id="myform">
+                    <label>Recipient Email:</label>
+                    <input type="text" ng-model="mailadd" name="reply_to" id="reply_to" class="form-control" />
+                    <label>Sender Name:</label>
+                    <input type="text" ng-model="mailfrom" name="from_name" id="from_name" class="form-control" />
+                    <label>Receiver Name:</label>
+                    <input type="text" ng-model="mailto" name="to_name" class="form-control" />
+                    <label>Hash Link:</label>
+                    <input ng-model="hash" type="text" name="message" id="message" class="form-control" readonly />
+                    <br><br>
+
+
+
+                    <input type="submit" class="btn btn-primary btn-block" id="button" value="SEND">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">EFT AUTHORIZATION INFO.</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <label class=" control-label">&nbsp;</label>
+                                <label class=" control-label">&nbsp;</label>
+                                <label class=" control-label">&nbsp;</label>
+                            </div>
+                            <span class="col-md-2"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <hr class="panel panel-success">
+                                <strong> <p>I <input type="text" class="inputs text-center" style="width:200px;"> hereby authorize VoIP Billing Services to charge my credit card account for equipment purchases as requested and recurring monthly service fees.
+                                </p></strong>
+                                <p>
+                                    NOTE: Authorization for: Recurring monthly fee plus taxes and telecommunication fees until the account is canceled per Hamlett Computer Services.
+                                </p>
+                                <hr class="panel panel-success">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <span class="col-md-2"></span>
+                            <div class="col-md-10">
+                                <label class=" control-label">Company Name:</label>
+                                <input ng-model="mainbtn" type="text" class="form-control" required />
+                            </div>
+                            <span class="col-md-2"></span>
+                            <div class="col-md-10">
+                                <label class=" control-label">Services:</label>
+                                <input ng-model="zipcode2" type="text" class="form-control" required />
+                            </div>
+                            <span class="col-md-2"></span>
+                            <div class="col-md-10">
+                                <label class=" control-label">Account/Customer ID#:</label>
+                                <input ng-model="zipcode2" type="text" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-2"></span>
+                            <div class="col-md-10">
+                                <label class="control-label" style="padding-bottom:8px!important;">Card Type:</label><br>
+
+                                <label class="check">Visa <input ng-model="visa" type="checkbox" class="icheckbox "/></label>
+
+                                <label class="check">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+                                <label class="check ">Discover <input ng-model="discover" type="checkbox" class="icheckbox "/></label>
+
+                                <label class="check">&nbsp;&nbsp;&nbsp;</label>
+
+                                <label class="check ">Mastercard <input ng-model="mastercard" type="checkbox" class="icheckbox "/></label>
+
+                                <label class="check">&nbsp;&nbsp;&nbsp;</label>
+
+                                <label class="check ">American Express <input ng-model="americanexpress" type="checkbox" class="icheckbox "/></label>
+                            </div>
+
+                            <span class="col-md-2"></span>
+                            <div class="col-md-10">
+                                <label class=" control-label">Credit Card Number:</label>
+                                <input ng-model="ccnumber" type="number" class="form-control" required />
+                            </div>
+
+                            <span class="col-md-2"></span>
+                            <div class="col-md-10">
+                                <label class=" control-label">CSV Code:</label>
+                                <input ng-model="csvcode" type="text" class="form-control" required />
+                            </div>
+                            <span class="col-md-2"></span>
+                            <div class="col-md-10">
+                                <label class=" control-label">Expiration Date:</label>
+                                <input ng-model="expiredate" type="date" class="form-control" required/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+                                <label class=" control-label">Name on card:</label>
+                                <input ng-model="asname" type="text" class="form-control" required />
+                            </div>
+                            <span class="col-md-2"></span>
+
+                            <div class="col-md-10">
+                                <label class=" control-label">Street/Block/Bldg/Lot:</label>
+                                <input ng-model="street2" type="text" class="form-control" required />
+                            </div>
+                            <span class="col-md-2"></span>
+
+                            <div class="col-md-10">
+                                <label class=" control-label">City:</label>
+                                <input ng-model="city2" type="text" class="form-control" required />
+                            </div>
+                            <span class="col-md-2"></span>
+
+                            <div class="col-md-10">
+                                <label class=" control-label">State:</label>
+                                <select ng-model="state2" class="form-control " data-style="btn-success">
+                                    <option value="">Select</option>
+                                    <option value="Alabama">Alabama</option>
+                                    <option value="Alaska">Alaska</option>
+                                    <option value="Arizona">Arizona</option>
+                                    <option value="Arkansas">Arkansas</option>
+                                    <option value="California">California</option>
+                                    <option value="Colorado">Colorado</option>
+                                    <option value="Connecticut">Connecticut</option>
+                                    <option value="Delaware">Delaware</option>
+                                    <option value="District Of Columbia">District Of Columbia</option>
+                                    <option value="Florida">Florida</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Hawaii">Hawaii</option>
+                                    <option value="Idaho">Idaho</option>
+                                    <option value="Illinois">Illinois</option>
+                                    <option value="Indiana">Indiana</option>
+                                    <option value="Iowa">Iowa</option>
+                                    <option value="Kansas">Kansas</option>
+                                    <option value="Kentucky">Kentucky</option>
+                                    <option value="Louisiana">Louisiana</option>
+                                    <option value="Maine">Maine</option>
+                                    <option value="Maryland">Maryland</option>
+                                    <option value="Massachusetts">Massachusetts</option>
+                                    <option value="Michigan">Michigan</option>
+                                    <option value="Minnesota">Minnesota</option>
+                                    <option value="Mississippi">Mississippi</option>
+                                    <option value="Missouri">Missouri</option>
+                                    <option value="Montana">Montana</option>
+                                    <option value="Nebraska">Nebraska</option>
+                                    <option value="Nevada">Nevada</option>
+                                    <option value="New Hampshire">New Hampshire</option>
+                                    <option value="New Jersey">New Jersey</option>
+                                    <option value="New Mexico">New Mexico</option>
+                                    <option value="New York">New York</option>
+                                    <option value="North Carolina">North Carolina</option>
+                                    <option value="North Dakota">North Dakota</option>
+                                    <option value="Ohio">Ohio</option>
+                                    <option value="Oklahoma">Oklahoma</option>
+                                    <option value="Oregon">Oregon</option>
+                                    <option value="Pennsylvania">Pennsylvania</option>
+                                    <option value="Rhode Island">Rhode Island</option>
+                                    <option value="South Carolina">South Carolina</option>
+                                    <option value="South Dakota">South Dakota</option>
+                                    <option value="Tennessee">Tennessee</option>
+                                    <option value="Texas">Texas</option>
+                                    <option value="Utah">Utah</option>
+                                    <option value="Vermont">Vermont</option>
+                                    <option value="Virginia">Virginia</option>
+                                    <option value="Washington">Washington</option>
+                                    <option value="West Virginia">West Virginia</option>
+                                    <option value="Wisconsin">Wisconsin</option>
+                                    <option value="Wyoming">Wyoming</option>
+                                </select>
+                            </div>
+                            <span class="col-md-2"></span>
+
+                            <div class="col-md-10">
+                                <label class="control-label">Zip Code:</label>
+                                <input ng-model="zipcode2" type="text" class="form-control" required />
+                            </div>
+                            <span class="col-md-2"></span>
+                            <div class="col-md-10">
+                                <label class=" control-label">Telephone:</label>
+                                <input ng-model="zipcode2" type="number" class="form-control" required />
+                            </div>
+                            <span class="col-md-2"></span>
+                            <div class="col-md-10">
+                                <label class=" control-label">Email:</label>
+                                <input ng-model="zipcode2" type="email" class="form-control" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <span class="col-md-1"></span>
+                            <div class="col-md-10">
+                                <hr class="panel panel-success">
+                                <p>
+                                    I authorize VoIP Billing Services to charge my credit card for the recurring monthly fee plus taxes and telecommunication fees. These charges will occur on a monthly basis until this account is canceled.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <span class="col-md-2"></span>
+                            <div class="col-md-10">
+                                <label class="check"><strong>Date:</strong></label>
+                                <input type="date" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-10 input-group">
+                                <label class="control-label">Signature:</label>
+                                <div id="signature-pad" class="m-signature-pad panel-success">
+                                    <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">x</button>
+                                    <div class="m-signature-pad--body">
+                                        <canvas></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="col-md-2"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <span class="col-md-1"></span>
+                            <div class="col-md-10">
+                                <p> As the credit card holder, I also authorize VoIP Billing Services to charge my credit card for future purchases or equipment orders verbally approved by me. VoIP Billing Services will keep all information entered on this
+                                    form strictly confidential.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <center>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading ui-draggable-handle">
+                                        <h3 class="panel-title">Voip Billing Services</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h2>
+                                            <p>VOIP BILLING SERVICES CREDIT CARD AUTHORIZATION FORM</p>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading ui-draggable-handle">
+                                        <h3 class="panel-title"></h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h1>
+                                            <p>About VoIP Billing Services</p>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <p>
+                                    <h4>VoIP Billing Services is designed and built for Managed Service Providers to perform billing for telecommunications. VoIP Billing Services, serves as a billing platform and handles telecommunication taxes and fees to
+                                        assure FCC compliance. Once your account is actively running traffic and set to Active Status, your account is deemed active to bill. After your account is placed in Active Status, your initial invoice will generate
+                                        and be charged. Each month you will be charged on your Bill Date for your monthly service. I understand VoIP Billing Services will apply fee of $20.00 to my account if I Chargeback my monthly payment or if I reverse
+                                        payment without VoIP Billing Service’s permission of any of the charges authorized on this form and I agree to pay this fee if this occurs.</h4>
+                                </p>
+
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading ui-draggable-handle">
+                                        <h3 class="panel-title"></h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h1>
+                                            <p>Contac Us</p>
+                                        </h1>
+                                    </div>
+                                </div>
+
+                                <h4 style="padding-left: 20px">
+                                    <p>VoIP Billing Services</p>
+                                    <p> 345 Highway 9 South Suite 342</p>
+                                    <p> Manalapan, NJ 07726</p>
+                                    <p> (800) 362-7929</p>
+                                </h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </center>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">CLOSE</button>
+                <button id="update" type="button" class="btn btn-primary" ng-click="updatesp();">UPDATE</button>
+            </div>
+        </div>
+    </div>
+</div>

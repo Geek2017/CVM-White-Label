@@ -105,7 +105,7 @@
 </style>
 <ul class="breadcrumb">
     <li>List</li>
-    <li class="active">Sales Proposal</li>
+    <li class="active">Port Toll Free Number</li>
 </ul>
 <div class="page-content-wrap">
     <div class="row">
@@ -117,7 +117,7 @@
                         </div>
                         <div class="col-md-4" style="top:-15px!important">
                             <h1 class="text-center">
-                                <strong>SALES</strong> PROPOSAL
+                                <strong>PORT TOLL</strong> FREE NUMBER
                             </h1>
                         </div>
                         <div class="col-md-4">
@@ -133,7 +133,6 @@
                         </div>
                         <div class="col-md-4 ">
                             <h3 class="text-center">
-
                                 <span>
                                     <h1>{{comname | uppercase}}</h1>
                                 </span>
@@ -209,29 +208,25 @@
                                 <thead>
                                     <tr>
                                         <th width="3" class="text-center">#</th>
-                                        <th width="10">Business Name</th>
-                                        <th width="10">Contact Name</th>
-                                        <th width="10">Title</th>
-                                        <th width="10">Phone</th>
-
+                                        <th width="5">Account Number</th>
+                                        <th width="10">Customer Name:</th>
+                                        <th width="5">Street/Block/Bldg/Lot:</th>
                                         <th width="5">City</th>
                                         <th width="5">State</th>
-                                        <th width="3"><label class="input">Zip Code</label></th>
-
-                                        <th style="width:160px!important">Data Controls <a href="#/salesproposal"><span class="btn btn-primary btn-sm fa fa-plus pull-right"> NEW</span></a></th>
+                                        <th width="5">Zip Code</th>
+                                        <th style="width:160px!important">Data Controls <a href="#/loaport"><span class="btn btn-primary btn-sm fa fa-plus pull-right"> NEW</span></a></th>
                                     </tr>
                                 </thead>
-                                <tbody ng-repeat="nsp in osps | startFrom:currentPage*pageSize | limitTo:pageSize |filter:findcf ">
+                                <tbody ng-repeat="nsp in opln | startFrom:currentPage*pageSize | limitTo:pageSize |filter:findcf ">
                                     <tr>
                                         <td class="text-center">{{$index + 1}}</td>
-                                        <td>{{nsp.bizname}}</td>
-                                        <td>{{nsp.contactname}}</td>
-                                        <td>{{nsp.title}}</td>
-                                        <td>{{nsp.phone}}</td>
+                                        <td>{{nsp.acctnumber}}</td>
+                                        <td>{{nsp.custname}}</td>
+                                        <td>{{nsp.street1}}</td>
+                                        <td>{{nsp.city1}}</td>
 
-                                        <td>{{nsp.city}}</td>
-                                        <td>{{nsp.state}}</td>
-                                        <td>{{nsp.zipcode}}</td>
+                                        <td>{{nsp.state1}}</td>
+                                        <td>{{nsp.zipcode1}}</td>
 
                                         <td class="text-center ">
                                             <button ng-click="trigersignsp();editsp(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
