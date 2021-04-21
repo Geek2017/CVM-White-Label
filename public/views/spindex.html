@@ -1,4 +1,14 @@
 <style>
+    .buttons {
+        width: 20%;
+        table-layout: fixed;
+        border-collapse: collapse;
+    }
+    
+    .buttons button {
+        width: 36%;
+    }
+    
     .hover:hover {
         background-color: #9773e2;
     }
@@ -233,7 +243,7 @@
                                         <td>{{nsp.state}}</td>
                                         <td>{{nsp.zipcode}}</td>
 
-                                        <td class="text-center ">
+                                        <td class="text-center buttons">
                                             <button ng-click="trigersignsp();editsp(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
                                             <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
                                             <button class="btn btn-info btn-sm fa fa-print " data-box="#message-box-success"> PRINT&nbsp;</button>
@@ -292,7 +302,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Sales Proposal Info.</h5>
+                <h5 class="modal-title" id="exampleModalLabel">SALES PROPOSAL INFO.</h5>
             </div>
             <div class="modal-body">
                 <div class="panel-body">
