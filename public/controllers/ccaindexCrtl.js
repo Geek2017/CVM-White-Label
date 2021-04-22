@@ -81,46 +81,114 @@ angular.module('newApp').controller('ccaindexCrtl', function($scope, $timeout) {
 
     var sigb64;
 
-    // $scope.trigersignsp = function() {
-    //     var w = document.getElementById("signature-pad"),
-    //         c = w.querySelector("canvas");
+    $scope.trigersigncca = function() {
+        var w = document.getElementById("signature-pad"),
+            c = w.querySelector("canvas");
 
+        document.getElementById('clear').addEventListener('click', function() {
+            signaturePad.clear();
 
-    //     document.getElementById('clear').addEventListener('click', function() {
-    //         signaturePad.clear();
+            $('#sign').prepend($('<canvas>'))
+            $('#sigb64').remove();
 
-    //         $('#sign').prepend($('<canvas>'))
-    //         $('#sigb64').remove();
+            $scope.trigersigncca();
 
-    //         $scope.trigersignsp();
+        });
 
-    //     });
+        function resizeCanvas(canvas) {
+            var ratio = window.devicePixelRatio || 1;
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+        }
 
-    //     function resizeCanvas(canvas) {
-    //         var ratio = window.devicePixelRatio || 1;
-    //         canvas.width = canvas.offsetWidth * ratio;
-    //         canvas.height = canvas.offsetHeight * ratio;
-    //         canvas.getContext("2d").scale(ratio, ratio);
-    //     }
-    //     resizeCanvas(c);
+        resizeCanvas(c);
 
-    //     var data = "";
+        var data = "";
 
-    //     console.log("devicePixelRatio: ", window.devicePixelRatio);
-    //     console.log("data length: ", data.length);
+        console.log("devicePixelRatio: ", window.devicePixelRatio);
+        console.log("data length: ", data.length);
 
-    //     var signaturePad = new SignaturePad(c);
-    //     signaturePad.fromDataURL(data);
+        var signaturePad = new SignaturePad(c);
+        signaturePad.fromDataURL(data);
 
-    //     $("#savesign").click(function() {
-    //         sigb64 = c.toDataURL(c);
-    //     });
+        $("#savesign").click(function() {
+            sigb64 = c.toDataURL(c);
+        });
 
-    // }
+    }
+
+    var cardname;
+    $("#cardused input[type=checkbox]").change(function() {
+        if ($scope.mastercard) {
+
+            console.log(cardname)
+
+            $('.americanexpress').attr('checked', false);
+            $('.discover').attr('checked', false);
+            $('.visa').attr('checked', false);
+
+            return cardname = "Mastercard";
+
+        } else if ($scope.discover) {
+
+            $('.americanexpress').attr('checked', false);
+            $('.mastercard').attr('checked', false);
+            $('.visa').attr('checked', false);
+
+            return cardname = "Discover"
+
+        } else if ($scope.visa) {
+
+            console.log(cardname)
+
+            $('.americanexpress').attr('checked', false);
+            $('.mastercard').attr('checked', false);
+            $('.discover').attr('checked', false);
+
+            return cardname = "Visa"
+
+        } else if ($scope.americanexpress) {
+
+            console.log(cardname)
+
+            $('.visa').attr('checked', false);
+            $('.mastercard').attr('checked', false);
+            $('.discover').attr('checked', false);
+
+            return cardname = "AmericanExpress"
+
+        }
+    });
+
 
     let keyid;
 
-    $scope.editsp = function(nsp) {
+    $scope.editcca = function(nsp) {
+
+
+
+        console.log(nsp.card);
+
+        if (nsp.card == "Visa") {
+
+            $('.visa').prop('checked', true);
+
+
+        } else if (nsp.card = "AmericanExpress") {
+
+            $('.americanExpress').prop('checked', true);
+
+
+        } else if (nsp.card = 'Mastercard') {
+
+            $('.mastercard').prop('checked', true);
+
+        } else if (nsp.card = 'Discover') {
+
+            $('.discover').prop('checked', true);
+
+        }
 
         $('canvas').remove();
         sigb64 = nsp.sign;
@@ -129,10 +197,13 @@ angular.module('newApp').controller('ccaindexCrtl', function($scope, $timeout) {
         console.log(nsp)
 
         $scope.nsp = nsp;
-        $scope.nsp.date0 = new Date(nsp.date0);
-        $scope.nsp.date1 = new Date(nsp.date1);
+
+        $scope.nsp.date = new Date(nsp.date);
+
+        $scope.nsp.expiredate = new Date(nsp.expiredate);
 
         console.log($scope.nsp.mrc)
+
         console.log($scope.nsp.nrc)
 
         return keyid = nsp.key;
@@ -206,7 +277,7 @@ angular.module('newApp').controller('ccaindexCrtl', function($scope, $timeout) {
         $scope.confirmdel = function() {
             if ($scope.deleteconfirm === "remove") {
 
-                var ref = firebase.database().ref("/portlocalnumber/" + nsp.key);
+                var ref = firebase.database().ref("/creditcardauth/" + nsp.key);
                 ref.remove()
                     .then(function() {
                         console.log("Remove succeeded.")

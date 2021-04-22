@@ -103,12 +103,12 @@ angular.module('newApp').controller('creditcardauthCtrl', function($scope) {
 
 
             var data = {
+                fullname: $scope.fullname,
                 compname: $scope.comname,
                 services: $scope.services,
                 acid: $scope.acid,
-
                 card: cardname,
-
+                date: $scope.date,
                 ccnumber: $scope.ccnumber,
                 csvcode: $scope.csvcode,
                 expiredate: $scope.expiredate,
