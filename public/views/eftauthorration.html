@@ -1,7 +1,3 @@
-<ul class="breadcrumb">
-    <li>Forms</li>
-    <li class="active">EFT Authorization</li>
-</ul>
 <style>
     .input {
         border: 0;
@@ -114,33 +110,77 @@
         }
     }
 </style>
+
+<ul class="breadcrumb">
+    <li>Forms</li>
+    <li class="active">EFT Authorization</li>
+</ul>
+
 <div class="page-content-wrap">
     <div class="row">
         <div class="col-md-12">
             <form class="form-horizontal">
                 <div class="panel panel-success">
-                    <div class="panel-heading" style="padding-left: 37%!important;">
 
-                        <h1 class="panel-title" style="font-size: 35px;"><strong>CARD CREDIT</strong> AUTH
-                        </h1>
-                        <ul class="panel-controls">
-                            <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
-                        </ul>
+                    <div class="panel-heading" style="height:50px!important">
+                        <div class="col-md-4 pull-left">
+                        </div>
+                        <div class="col-md-4" style="top:-15px!important">
+                            <h1 class="text-center">
+                                <strong>EFT</strong> AUTHORIZATION
+                            </h1>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="panel-controls">
+                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
 
+                    <div class="row panel-heading">
+                        <div class="col-md-4 pull-left">
+                            <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive " width="40%" src="" alt="log">
+                        </div>
+                        <div class="col-md-4 ">
+                            <h3 class="text-center">
+
+                                <span>
+                                    <h1>{{comname | uppercase}}</h1>
+                                </span>
+                                <span>{{comlandmark}}</span><br>
+                                <span>{{comcity}}</span><br>
+                                <span>{{comstate}},</span>
+                                <span>{{compostalcode}}</span><br>
+                                <span>#{{comno}}</span>
+                            </h3>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
                     </div>
-                    <div class="panel-heading" style="text-align:center!important;">
-                        <img id="comlogo" style=" z-index: 1!important;" class="img-responsive pull-left" width="10%" src="" alt="log">
-                        <h3>
-                            <section style="padding-right: 11%!important;padding-top: 1%!important;">
-                                <span><strong><span id="comname"></span></strong><br>
-                                <span id="landmark"></span><br>
-                                <span id="comcity"></span><br>
-                                <span id="comstate"></span>,
-                                <span id="compostalcode"></span><br>#
-                                <span id="comno"></span>
-                            </section>
-                        </h3>
+
+                    <div class="message-box message-box-success animated fadeIn" id="spsuccess">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4  pull-center">
+                                    <div class="mb-title"><span class="fa fa-check"></span> Success:</div>
+                                    <div class="mb-content">
+                                        <p>Your Data had been save!</p>
+                                    </div>
+                                    <div class="btn-group btn-default" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-default" ng-click="goindex()">GO TO
+                                            LIST</button>
+                                        <button type="button" class="btn btn-primary" ng-click="closesp()">CREATE
+                                            ANEW</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -162,7 +202,7 @@
                                 <span class="col-md-1"></span>
                                 <div class="col-md-10">
                                     <hr class="panel panel-success">
-                                    <strong> <p>I <input type="text" class="input text-center" style="width:200px;"> hereby authorize VoIP Billing Services to charge my bank account via EFT (Electronic Funds Transfer) for recurring monthly service fees.
+                                    <strong> <p>I <input type="text" ng-model="fullname" class="input text-center" style="width:200px;"> hereby authorize VoIP Billing Services to charge my bank account via EFT (Electronic Funds Transfer) for recurring monthly service fees.
                                     </p></strong>
                                     <p>
                                         Authorization for: ongoing until written cancellation is received.
@@ -181,18 +221,18 @@
                             <div class="form-group">
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
-                                    <label class=" control-label">Company Name:</label>
-                                    <input ng-model="mainbtn" type="text" class="form-control" required />
+                                    <label class="control-label">Company Name:</label>
+                                    <input ng-model="compname" type="text" class="form-control" required/>
                                 </div>
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">Account Phone Number:</label>
-                                    <input ng-model="zipcode2" type="text" class="form-control" required />
+                                    <input ng-model="acctpn" type="text" class="form-control" required/>
                                 </div>
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">Bank Name:</label>
-                                    <input ng-model="zipcode2" type="text" class="form-control" required />
+                                    <input ng-model="bankname" type="text" class="form-control" required/>
                                 </div>
                             </div>
                         </div>
@@ -201,16 +241,15 @@
                             <div class="form-group">
                                 <div class="col-md-10">
                                     <label class=" control-label">Bank Routing Number:</label>
-                                    <input ng-model="mainbtn" type="text" class="form-control" required />
+                                    <input ng-model="bankroutingno" type="text" class="form-control" required/>
                                 </div>
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class=" control-label">Bank Account Number:</label>
-                                    <input ng-model="zipcode2" type="text" class="form-control" required />
+                                    <input ng-model="bankacctno" type="number" class="form-control" required/>
                                 </div>
                                 <span class="col-md-2"></span>
                             </div>
-
                         </div>
                     </div>
 
@@ -239,7 +278,7 @@
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class="check"><strong>Date:</strong></label>
-                                    <input type="date" class="form-control" />
+                                    <input type="date" ng-model="date" class="form-control" />
                                 </div>
 
                             </div>
@@ -257,7 +296,7 @@
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class="check"><strong>Email:</strong></label>
-                                    <input type="email" class="form-control" />
+                                    <input type="email" ng-model="email" class="form-control" />
                                 </div>
 
                             </div>
@@ -269,7 +308,7 @@
                                     <label class="control-label">Signature:</label>
                                     <div id="signature-pad" class="m-signature-pad panel-success">
                                         <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">x</button>
-                                        <div class="m-signature-pad--body">
+                                        <div class="m-signature-pad--body" id="sign">
                                             <canvas></canvas>
                                         </div>
                                     </div>
@@ -368,11 +407,11 @@
 
 
                     <div class="panel-footer">
-                        <button class="btn btn-danger">Clear Form</button>
+                        <button class="btn btn-danger">CLEAR</button>
                         <div class="btn-group pull-right ">
-                            <button class="btn btn-primary">Print it</button>
-                            <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">Mail it</button>
-                            <button class="btn btn-primary " id="sig-submitBtn">Save it</button>
+                            <button class="btn btn-primary">PRINT</button>
+                            <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">EMAIL</button>
+                            <button class="btn btn-primary " ng-click="eftsave()">SAVE</button>
                         </div>
                     </div>
             </form>

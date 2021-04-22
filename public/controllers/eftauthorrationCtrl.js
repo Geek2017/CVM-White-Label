@@ -1,11 +1,11 @@
 angular.module('newApp').controller('eftauthorrationCtrl', function($scope) {
 
-    $("#comname").text(localStorage.getItem('comname'))
-    $("#landmark").text(localStorage.getItem('landmark'))
-    $("#comcity").text(localStorage.getItem('comcity'))
-    $("#comstate").text(localStorage.getItem('comstate'))
-    $("#compostalcode").text(localStorage.getItem('compostalcode'))
-    $("#comno").text(localStorage.getItem('comcontact'))
+    $scope.comname = localStorage.getItem('comname');
+    $scope.comlandmark = localStorage.getItem('landmark');
+    $scope.comcity = localStorage.getItem('comcity');
+    $scope.comstate = localStorage.getItem('comstate');
+    $scope.compostalcode = localStorage.getItem('compostalcode');
+    $scope.comno = localStorage.getItem('comcontact');
 
     if (sessionStorage.getItem('comlogo')) {
         console.log('imageloaded')
@@ -38,4 +38,60 @@ angular.module('newApp').controller('eftauthorrationCtrl', function($scope) {
     var signaturePad = new SignaturePad(c);
     signaturePad.fromDataURL(data);
 
+
+    $scope.eftsave = function() {
+
+
+        try {
+            var uid = firebase.database().ref().child('eftauthorization').push().key;
+
+            localStorage.setItem('ukeyid', uid);
+
+            var data = {
+                fullname: $scope.fullname,
+                compname: $scope.compname,
+                acctpn: $scope.acctpn,
+                bankname: $scope.bankname,
+                bankroutingno: $scope.bankroutingno,
+                bankacctno: $scope.bankacctno,
+                date: $scope.date,
+                email: $scope.email,
+                sign: c.toDataURL(c)
+            }
+
+            var updates = {};
+            updates['/eftauthorization/' + uid] = data;
+            firebase.database().ref().update(updates);
+            console.log(updates)
+
+            if (updates) {
+                $('#spsuccess').addClass('open')
+                    // setTimeout(function() {
+                    //     window.location.replace("#/");
+                    //     window.location.replace("#/spindex");
+                    // }, 2000)
+            }
+
+        } catch (err) {
+            $("#errormsg").text(err);
+
+            console.log(err)
+
+            $('#sperror').addClass('open')
+            setTimeout(function() {
+                $('#sperror').removeClass('open')
+            }, 8000)
+        }
+
+    }
+
+    $scope.closesp = function() {
+        $('#spsuccess').removeClass('open')
+        window.location.replace("#/");
+        window.location.replace("#/eftauthorration");
+    }
+
+    $scope.goindex = function() {
+        window.location.replace("#/eftaindex");
+    }
 });

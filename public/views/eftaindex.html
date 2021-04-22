@@ -135,7 +135,7 @@
                         </div>
                         <div class="col-md-4" style="top:-15px!important">
                             <h1 class="text-center">
-                                <strong>EFT</strong> AUTH
+                                <strong>EFT</strong> AUTHORIZATION
                             </h1>
                         </div>
                         <div class="col-md-4">
@@ -198,7 +198,7 @@
                                     <div class="col-md-4 input-group-lg">
                                         <div class="mb-title"><span class="fa fa-warning"></span> Warning:</div>
                                         <p>Please TYPE "remove" to delete data!</p>
-                                        <input ng-model="deleteconfirm" type="text" class="form-control " required/><br>
+                                        <input ng-model="nsp.deleteconfirm" type="text" class="form-control " required/><br>
                                         <button class="btn btn-block btn-danger btn-lg fa fa-trash-o" ng-click="confirmdel()"><strong> DELETE</strong></button>
                                     </div>
                                     <div class="col-md-4 pull-right">
@@ -212,12 +212,12 @@
                     <div class="panel-body">
                         <div class="table-responsive">
                             <label class="input">
-                                <input type="text" name="name" ng-model="findcf" >
+                                <input type="text" name="name" ng-model="nsp.findcf" >
                             </label>
 
                             <label class="input pull-right">
                                 <label class="select ">
-                                    <select class="" ng-model="pageSize" ng-options="num for num in [5,10, 100,1000]" ></select> <i></i> <br>
+                                    <select class="" ng-model="nsp.pageSize" ng-options="num for num in [5,10, 100,1000]" ></select> <i></i> <br>
                                     
                                 </label>
                             </label>
@@ -227,32 +227,24 @@
                                 <thead>
                                     <tr>
                                         <th width="3" class="text-center">#</th>
-                                        <th width="10">Customer Name</th>
-                                        <th width="10">Name on card</th>
-                                        <th width="10">Services</th>
-                                        <th width="10">Account/Customer ID#</th>
-                                        <th width="10">Name on card</th>
-                                        <th width="10">Card Type</th>
-                                        <th width="5">Street/Block/Bldg/Lot</th>
-                                        <th width="5">City</th>
-                                        <th width="5">State</th>
-                                        <th width="3"><label class="input">Zip Code</label></th>
+                                        <th width="5">Full Name</th>
+                                        <th width="5">Company Name</th>
+                                        <th width="5">Bank Routing Number</th>
+                                        <th width="5">Account Phone Number</th>
+                                        <th width="5">Bank Name</th>
+                                        <th width="5">Email</th>
                                         <th>Data Controls <a href="#/eftauthorration"><span class="btn btn-primary btn-sm fa fa-plus pull-right"> NEW</span></a></th>
                                     </tr>
                                 </thead>
-                                <tbody ng-repeat="nsp in opln | startFrom:currentPage*pageSize | limitTo:pageSize |filter:findcf ">
+                                <tbody ng-repeat="nsp in opln | startFrom:currentPage*pageSize | limitTo:pageSize |filter:findcf">
                                     <tr>
                                         <td class="text-center">{{$index + 1}}</td>
-                                        <td>{{nsp.acctnumber}}</td>
-                                        <td>{{nsp.custname}}</td>
-                                        <td>{{nsp.street1}}</td>
-                                        <td>{{nsp.city1}}</td>
-                                        <td>{{nsp.state1}}</td>
-                                        <td>{{nsp.zipcode1}}</td>
-                                        <td>{{nsp.street1}}</td>
-                                        <td>{{nsp.city1}}</td>
-                                        <td>{{nsp.state1}}</td>
-                                        <td>{{nsp.zipcode1}}</td>
+                                        <td>{{nsp.fullname}}</td>
+                                        <td>{{nsp.compname}}</td>
+                                        <td>{{nsp.bankroutingno}}</td>
+                                        <td>{{nsp.acctpn}}</td>
+                                        <td>{{nsp.bankname}}</td>
+                                        <td>{{nsp.email}}</td>
 
                                         <td class="text-center buttons">
                                             <button ng-click="trigersignsp();editsp(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW</button>
@@ -290,13 +282,13 @@
             <div class="modal-body ">
                 <form id="myform">
                     <label>Recipient Email:</label>
-                    <input type="text" ng-model="mailadd" name="reply_to" id="reply_to" class="form-control" />
+                    <input type="text" ng-model="nsp.mailadd" name="reply_to" id="reply_to" class="form-control" />
                     <label>Sender Name:</label>
-                    <input type="text" ng-model="mailfrom" name="from_name" id="from_name" class="form-control" />
+                    <input type="text" ng-model="nsp.mailfrom" name="from_name" id="from_name" class="form-control" />
                     <label>Receiver Name:</label>
-                    <input type="text" ng-model="mailto" name="to_name" class="form-control" />
+                    <input type="text" ng-model="nsp.mailto" name="to_name" class="form-control" />
                     <label>Hash Link:</label>
-                    <input ng-model="hash" type="text" name="message" id="message" class="form-control" readonly />
+                    <input ng-model="nsp.hash" type="text" name="message" id="message" class="form-control" readonly />
                     <br><br>
 
 
@@ -332,12 +324,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <div class="col-md-12">
+                            <span class="col-md-1"></span>
+                            <div class="col-md-10">
                                 <hr class="panel panel-success">
-                                <strong> <p>I <input type="text" class="inputs text-center" style="width:200px;"> hereby authorize VoIP Billing Services to charge my credit card account for equipment purchases as requested and recurring monthly service fees.
+                                <strong> <p>I <input type="text" ng-model="nsp.fullname" class="inputs text-center" style="width:200px;"> hereby authorize VoIP Billing Services to charge my bank account via EFT (Electronic Funds Transfer) for recurring monthly service fees.
                                 </p></strong>
                                 <p>
-                                    NOTE: Authorization for: Recurring monthly fee plus taxes and telecommunication fees until the account is canceled per Hamlett Computer Services.
+                                    Authorization for: ongoing until written cancellation is received.
                                 </p>
                                 <hr class="panel panel-success">
                             </div>
@@ -350,153 +343,34 @@
                         <div class="form-group">
                             <span class="col-md-2"></span>
                             <div class="col-md-10">
-                                <label class=" control-label">Company Name:</label>
-                                <input ng-model="mainbtn" type="text" class="form-control" required />
+                                <label class="control-label">Company Name:</label>
+                                <input ng-model="nsp.compname" type="text" class="form-control" required/>
                             </div>
                             <span class="col-md-2"></span>
-                            <div class="col-md-10">
-                                <label class=" control-label">Services:</label>
-                                <input ng-model="zipcode2" type="text" class="form-control" required />
+                            <div class="col-md-5">
+                                <label class=" control-label">Account Phone Number:</label>
+                                <input ng-model="nsp.acctpn" type="text" class="form-control" required/>
                             </div>
                             <span class="col-md-2"></span>
-                            <div class="col-md-10">
-                                <label class=" control-label">Account/Customer ID#:</label>
-                                <input ng-model="zipcode2" type="text" class="form-control" required />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <span class="col-md-2"></span>
-                            <div class="col-md-10">
-                                <label class="control-label" style="padding-bottom:8px!important;">Card Type:</label><br>
-
-                                <label class="check">Visa <input ng-model="visa" type="checkbox" class="icheckbox "/></label>
-
-                                <label class="check">&nbsp;&nbsp;&nbsp;&nbsp;</label>
-
-                                <label class="check ">Discover <input ng-model="discover" type="checkbox" class="icheckbox "/></label>
-
-                                <label class="check">&nbsp;&nbsp;&nbsp;</label>
-
-                                <label class="check ">Mastercard <input ng-model="mastercard" type="checkbox" class="icheckbox "/></label>
-
-                                <label class="check">&nbsp;&nbsp;&nbsp;</label>
-
-                                <label class="check ">American Express <input ng-model="americanexpress" type="checkbox" class="icheckbox "/></label>
-                            </div>
-
-                            <span class="col-md-2"></span>
-                            <div class="col-md-10">
-                                <label class=" control-label">Credit Card Number:</label>
-                                <input ng-model="ccnumber" type="number" class="form-control" required />
-                            </div>
-
-                            <span class="col-md-2"></span>
-                            <div class="col-md-10">
-                                <label class=" control-label">CSV Code:</label>
-                                <input ng-model="csvcode" type="text" class="form-control" required />
-                            </div>
-                            <span class="col-md-2"></span>
-                            <div class="col-md-10">
-                                <label class=" control-label">Expiration Date:</label>
-                                <input ng-model="expiredate" type="date" class="form-control" required/>
+                            <div class="col-md-5">
+                                <label class=" control-label">Bank Name:</label>
+                                <input ng-model="nsp.bankname" type="text" class="form-control" required/>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
-
                             <div class="col-md-10">
-                                <label class=" control-label">Name on card:</label>
-                                <input ng-model="asname" type="text" class="form-control" required />
-                            </div>
-                            <span class="col-md-2"></span>
-
-                            <div class="col-md-10">
-                                <label class=" control-label">Street/Block/Bldg/Lot:</label>
-                                <input ng-model="street2" type="text" class="form-control" required />
-                            </div>
-                            <span class="col-md-2"></span>
-
-                            <div class="col-md-10">
-                                <label class=" control-label">City:</label>
-                                <input ng-model="city2" type="text" class="form-control" required />
-                            </div>
-                            <span class="col-md-2"></span>
-
-                            <div class="col-md-10">
-                                <label class=" control-label">State:</label>
-                                <select ng-model="state2" class="form-control " data-style="btn-success">
-                                    <option value="">Select</option>
-                                    <option value="Alabama">Alabama</option>
-                                    <option value="Alaska">Alaska</option>
-                                    <option value="Arizona">Arizona</option>
-                                    <option value="Arkansas">Arkansas</option>
-                                    <option value="California">California</option>
-                                    <option value="Colorado">Colorado</option>
-                                    <option value="Connecticut">Connecticut</option>
-                                    <option value="Delaware">Delaware</option>
-                                    <option value="District Of Columbia">District Of Columbia</option>
-                                    <option value="Florida">Florida</option>
-                                    <option value="Georgia">Georgia</option>
-                                    <option value="Hawaii">Hawaii</option>
-                                    <option value="Idaho">Idaho</option>
-                                    <option value="Illinois">Illinois</option>
-                                    <option value="Indiana">Indiana</option>
-                                    <option value="Iowa">Iowa</option>
-                                    <option value="Kansas">Kansas</option>
-                                    <option value="Kentucky">Kentucky</option>
-                                    <option value="Louisiana">Louisiana</option>
-                                    <option value="Maine">Maine</option>
-                                    <option value="Maryland">Maryland</option>
-                                    <option value="Massachusetts">Massachusetts</option>
-                                    <option value="Michigan">Michigan</option>
-                                    <option value="Minnesota">Minnesota</option>
-                                    <option value="Mississippi">Mississippi</option>
-                                    <option value="Missouri">Missouri</option>
-                                    <option value="Montana">Montana</option>
-                                    <option value="Nebraska">Nebraska</option>
-                                    <option value="Nevada">Nevada</option>
-                                    <option value="New Hampshire">New Hampshire</option>
-                                    <option value="New Jersey">New Jersey</option>
-                                    <option value="New Mexico">New Mexico</option>
-                                    <option value="New York">New York</option>
-                                    <option value="North Carolina">North Carolina</option>
-                                    <option value="North Dakota">North Dakota</option>
-                                    <option value="Ohio">Ohio</option>
-                                    <option value="Oklahoma">Oklahoma</option>
-                                    <option value="Oregon">Oregon</option>
-                                    <option value="Pennsylvania">Pennsylvania</option>
-                                    <option value="Rhode Island">Rhode Island</option>
-                                    <option value="South Carolina">South Carolina</option>
-                                    <option value="South Dakota">South Dakota</option>
-                                    <option value="Tennessee">Tennessee</option>
-                                    <option value="Texas">Texas</option>
-                                    <option value="Utah">Utah</option>
-                                    <option value="Vermont">Vermont</option>
-                                    <option value="Virginia">Virginia</option>
-                                    <option value="Washington">Washington</option>
-                                    <option value="West Virginia">West Virginia</option>
-                                    <option value="Wisconsin">Wisconsin</option>
-                                    <option value="Wyoming">Wyoming</option>
-                                </select>
-                            </div>
-                            <span class="col-md-2"></span>
-
-                            <div class="col-md-10">
-                                <label class="control-label">Zip Code:</label>
-                                <input ng-model="zipcode2" type="text" class="form-control" required />
+                                <label class=" control-label">Bank Routing Number:</label>
+                                <input ng-model="nsp.bankroutingno" type="text" class="form-control" required/>
                             </div>
                             <span class="col-md-2"></span>
                             <div class="col-md-10">
-                                <label class=" control-label">Telephone:</label>
-                                <input ng-model="zipcode2" type="number" class="form-control" required />
+                                <label class=" control-label">Bank Account Number:</label>
+                                <input ng-model="nsp.bankacctno" type="number" class="form-control" required/>
                             </div>
                             <span class="col-md-2"></span>
-                            <div class="col-md-10">
-                                <label class=" control-label">Email:</label>
-                                <input ng-model="zipcode2" type="email" class="form-control" required />
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -516,48 +390,77 @@
                 </div>
 
                 <div class="row">
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <span class="col-md-2"></span>
                             <div class="col-md-10">
                                 <label class="check"><strong>Date:</strong></label>
-                                <input type="date" class="form-control" />
+                                <input type="date" ng-model="nsp.date" class="form-control" />
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-2"></span>
+                            <div class="col-md-10">
+                                <label class="check"><strong>&nbsp;</strong></label>
+                                <label class="check"><strong>&nbsp;</strong></label>
+                                <label class="check"><strong>&nbsp;</strong></label>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
+
                         <div class="form-group">
-                            <div class="col-md-10 input-group">
+                            <span class="col-md-2"></span>
+                            <div class="col-md-10">
+                                <label class="check"><strong>Email:</strong></label>
+                                <input type="email" ng-model="nsp.email" class="form-control" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="col-md-10">
+                            <div class="form-group">
                                 <label class="control-label">Signature:</label>
                                 <div id="signature-pad" class="m-signature-pad panel-success">
                                     <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">x</button>
-                                    <div class="m-signature-pad--body">
+                                    <div class="m-signature-pad--body" id="sign">
                                         <canvas></canvas>
                                     </div>
                                 </div>
                             </div>
-                            <span class="col-md-2"></span>
                         </div>
                     </div>
+
                 </div>
 
+
+
                 <div class="row">
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <span class="col-md-1"></span>
                             <div class="col-md-10">
+                                <hr class="panel ">
                                 <p> As the credit card holder, I also authorize VoIP Billing Services to charge my credit card for future purchases or equipment orders verbally approved by me. VoIP Billing Services will keep all information entered on this
                                     form strictly confidential.
+
                                 </p>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
 
                 <center>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-10">
                             <div class="form-group">
                                 <div class="panel panel-warning">
                                     <div class="panel-heading ui-draggable-handle">
@@ -574,7 +477,9 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-10">
                             <div class="form-group">
                                 <div class="panel panel-warning">
                                     <div class="panel-heading ui-draggable-handle">
