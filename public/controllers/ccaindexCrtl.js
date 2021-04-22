@@ -29,7 +29,7 @@ angular.module('newApp').controller('ccaindexCrtl', function($scope, $timeout) {
         $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
 
-    firebase.database().ref('/portlocalnumber/').orderByChild('uid').on("value", function(snapshot) {
+    firebase.database().ref('/creditcardauth/').orderByChild('uid').on("value", function(snapshot) {
         $timeout(function() {
 
             $scope.$apply(function() {

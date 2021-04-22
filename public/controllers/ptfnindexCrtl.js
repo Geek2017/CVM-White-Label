@@ -213,7 +213,6 @@ angular.module('newApp').controller('ptfnindexCrtl', function($scope, $timeout) 
                     .catch(function(error) {
                         console.log(error.message)
                     });
-
             }
         }
     }

@@ -226,12 +226,10 @@
                                 <thead>
                                     <tr>
                                         <th width="3" class="text-center">#</th>
-                                        <th width="10">Customer Name</th>
                                         <th width="10">Company Name</th>
+                                        <th width="10">Name on Card</th>
                                         <th width="10">Services</th>
                                         <th width="10">Account/Customer ID#</th>
-                                        <th width="10">Name on card</th>
-                                        <th width="10">Card Type</th>
                                         <th width="5">Street/Block/Bldg/Lot</th>
                                         <th width="5">City</th>
                                         <th width="5">State</th>
@@ -242,16 +240,15 @@
                                 <tbody ng-repeat="nsp in opln | startFrom:currentPage*pageSize | limitTo:pageSize |filter:findcf ">
                                     <tr>
                                         <td class="text-center">{{$index + 1}}</td>
-                                        <td>{{nsp.acctnumber}}</td>
-                                        <td>{{nsp.custname}}</td>
-                                        <td>{{nsp.street1}}</td>
-                                        <td>{{nsp.city1}}</td>
-                                        <td>{{nsp.state1}}</td>
-                                        <td>{{nsp.zipcode1}}</td>
-                                        <td>{{nsp.street1}}</td>
-                                        <td>{{nsp.city1}}</td>
-                                        <td>{{nsp.state1}}</td>
-                                        <td>{{nsp.zipcode1}}</td>
+                                        <td>{{nsp.compname}}</td>
+                                        <td>{{nsp.nocard}}</td>
+                                        <td>{{nsp.services}}</td>
+                                        <td>{{nsp.acid}}</td>
+                                        <td>{{nsp.street}}</td>
+                                        <td>{{nsp.city}}</td>
+                                        <td>{{nsp.state}}</td>
+                                        <td>{{nsp.zipcode}}</td>
+
 
                                         <td class="text-center buttons">
                                             <button ng-click="trigersignsp();editsp(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW</button>

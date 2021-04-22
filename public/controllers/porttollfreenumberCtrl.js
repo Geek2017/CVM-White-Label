@@ -1,4 +1,5 @@
 angular.module('newApp').controller('porttollfreenumber', function($scope) {
+
     $scope.comname = localStorage.getItem('comname');
     $scope.comlandmark = localStorage.getItem('landmark');
     $scope.comcity = localStorage.getItem('comcity');
