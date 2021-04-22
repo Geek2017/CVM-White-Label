@@ -1,4 +1,4 @@
-angular.module('newApp').controller('ptfnindexCrtl', function($scope, $timeout) {
+angular.module('newApp').controller('plfnindexCrtl', function($scope, $timeout) {
 
     $scope.comname = localStorage.getItem('comname');
     $scope.comlandmark = localStorage.getItem('landmark');

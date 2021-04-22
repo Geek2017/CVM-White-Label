@@ -117,6 +117,7 @@
     <li>List</li>
     <li class="active">Port Local Number</li>
 </ul>
+<script src="./assets/js/drop.js"></script>
 <div class="page-content-wrap">
     <div class="row">
         <div class="col-md-12">
@@ -244,7 +245,7 @@
                                         <td>{{nsp.zipcode1}}</td>
 
                                         <td class="text-center buttons">
-                                            <button ng-click="trigersignsp();editsp(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
+                                            <button ng-click="trigersignpl();editpl(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
                                             <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
                                             <button class="btn btn-info btn-sm fa fa-print " data-box="#message-box-success"> PRINT&nbsp;</button>
                                             <button class="btn btn-warning btn-sm fa fa-rocket" data-toggle="modal" data-target="#email_modal" ng-click="passwordcall(16);"> EMAIL&nbsp;</button>
@@ -367,35 +368,35 @@
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class=" control-label">Main Billing Tel. Number:</label>
-                                    <input ng-model="mainbtn" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.mainbtn" type="text" class="form-control" required/>
                                 </div>
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class=" control-label">Account Number:</label>
-                                    <input ng-model="acctnumber" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.acctnumber" type="text" class="form-control" required/>
                                 </div>
                                 <!-- Boundery -->
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
-                                    <h4><label class=" control-label">Customer Billing Address:</label></h4>
+                                    <h4><label class="control-label">Customer Billing Address:</label></h4>
                                 </div>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">Street/Block/Bldg/Lot:</label>
-                                    <input ng-model="street2" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.street2" type="text" class="form-control" required/>
                                 </div>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">City:</label>
-                                    <input ng-model="city2" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.city2" type="text" class="form-control" required/>
                                 </div>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">State:</label>
-                                    <select ng-model="state2" class="form-control " data-style="btn-success">
+                                    <select ng-model="nsp.state2" class="form-control " data-style="btn-success">
                                                     <option value="">Select</option>
                                                     <option value="Alabama">Alabama</option>
                                                     <option value="Alaska">Alaska</option>
@@ -453,24 +454,24 @@
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">Zip Code:</label>
-                                    <input ng-model="zipcode2" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.zipcode2" type="text" class="form-control" required/>
                                 </div>
 
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">e911:</label>
-                                    <input ng-model="e911" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.e911" type="text" class="form-control" required/>
                                 </div>
                                 <div class="col-md-5">
                                     <label class=" control-label">Caller ID Name (CNAME):</label>
-                                    <input ng-model="cname" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.cname" type="text" class="form-control" required/>
                                 </div>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class=" control-label">Cell Phone or NumberBarn:</label>
-                                    <input ng-model="numberbarn" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.numberbarn" type="text" class="form-control" required/>
                                 </div>
 
 
@@ -485,12 +486,12 @@
 
                                 <div class="col-md-10">
                                     <label class=" control-label">Requested Port Date:</label>
-                                    <input ng-model="reqpd" type="date" class="form-control" required/>
+                                    <input ng-model="nsp.reqpd" type="date" class="form-control" required/>
                                 </div>
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class=" control-label">Customer Name:</label>
-                                    <input ng-model="custname" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.custname" type="text" class="form-control" required/>
                                 </div>
 
                                 <span class="col-md-2"></span>
@@ -498,25 +499,25 @@
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
-                                    <h4><label class=" control-label">Customer Physical Addres:</label></h4>
+                                    <h4><label class="control-label">Customer Physical Addres:</label></h4>
                                 </div>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">Street/Block/Bldg/Lot:</label>
-                                    <input ng-model="street1" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.street1" type="text" class="form-control" required/>
                                 </div>
 
                                 <div class="col-md-5">
                                     <label class=" control-label">City:</label>
-                                    <input ng-model="city1" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.city1" type="text" class="form-control" required/>
                                 </div>
                                 <span class="col-md-2"></span>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">State:</label>
-                                    <select ng-model="state1" class="form-control " data-style="btn-success">
+                                    <select ng-model="nsp.state1" class="form-control " data-style="btn-success">
                                                    <option value="">Select</option>
                                                    <option value="Alabama">Alabama</option>
                                                    <option value="Alaska">Alaska</option>
@@ -574,23 +575,20 @@
 
                                 <div class="col-md-5">
                                     <label class=" control-label">Zip Code:</label>
-                                    <input ng-model="zipcode1" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.zipcode1" type="text" class="form-control" required/>
                                 </div>
                                 <span class="col-md-2"></span>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
-                                    <label class=" control-label">Authorized Signer Name:</label>
-                                    <input ng-model="asname" type="text" class="form-control" required/>
+                                    <label class="control-label">Authorized Signer Name:</label>
+                                    <input ng-model="nsp.asname" type="text" class="form-control" required/>
                                 </div>
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class=" control-label">Authorized Signer Phone #:</label>
-                                    <input ng-model="asphone" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.asphone" type="text" class="form-control" required/>
                                 </div>
-
-
-
                             </div>
                         </div>
 
@@ -634,7 +632,7 @@
                             <div class="form-group">
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
-                                    <input ng-model="mainno" placeholder="Main Number" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.mainno" placeholder="Main Number" type="text" class="form-control" required/>
                                 </div>
                             </div>
                         </div>
@@ -642,23 +640,20 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="col-md-10 input-group">
-                                    <input type="number" ng-model="addno" class="form-control" placeholder="Other Number" />
+                                    <input type="number" ng-model="nsp.addno" class="form-control" placeholder="Other Number" />
                                     <span id="addno" class="input-group-addon hover"><i class="fa fa-plus"></i></span>
                                 </div>
                                 <span class="col-md-2"></span>
                             </div>
                         </div>
                     </div>
-                    <br>
 
-                    <div class="row">
-                        <div class="col-md-2">
+
+                    <div class="row" style="padding-top: 2px!important;">
+                        <div class="col-md-6 left" id="left">
                         </div>
 
-                        <div class="col-md-4 left" id="left">
-                        </div>
-
-                        <div class="col-md-4 right" id="right">
+                        <div class="col-md-6 right" id="right">
                         </div>
                     </div>
 
@@ -700,7 +695,7 @@
                                     <div id="signature-pad" class="m-signature-pad panel-success">
                                         <button id="savesign" type="button" class="btn  btn-info btn-xs  pull-right">Save Sign</button>
                                         <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">Delete Sign</button><br><br><br>
-                                        <div class="m-signature-pad--body">
+                                        <div class="m-signature-pad--body" id="sign">
                                             <canvas></canvas>
                                         </div>
                                     </div>
@@ -716,12 +711,12 @@
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">Date:</label>
-                                    <input ng-model="thedate" type="date" class="form-control" required/>
+                                    <input ng-model="nsp.thedate" type="date" class="form-control" required/>
                                 </div>
 
                                 <div class="col-md-5">
                                     <label class=" control-label">Printed Name:</label>
-                                    <input ng-model="printname" type="text" class="form-control" required/>
+                                    <input ng-model="nsp.printname" type="text" class="form-control" required/>
                                 </div>
                             </div>
                         </div>
@@ -730,7 +725,7 @@
                             <div class="form-group">
                                 <div class="col-md-10">
                                     <label class=" control-label">Email Address:</label>
-                                    <input ng-model="emailadd" type="email" class="form-control" required/>
+                                    <input ng-model="nsp.emailadd" type="email" class="form-control" required/>
                                 </div>
                                 <span class="col-md-2"></span>
                             </div>

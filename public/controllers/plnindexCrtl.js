@@ -81,46 +81,50 @@ angular.module('newApp').controller('plnindexCrtl', function($scope, $timeout) {
 
     var sigb64;
 
-    // $scope.trigersignsp = function() {
-    //     var w = document.getElementById("signature-pad"),
-    //         c = w.querySelector("canvas");
+    $scope.trigersignpl = function() {
+        var w = document.getElementById("signature-pad"),
+            c = w.querySelector("canvas");
 
 
-    //     document.getElementById('clear').addEventListener('click', function() {
-    //         signaturePad.clear();
+        document.getElementById('clear').addEventListener('click', function() {
+            signaturePad.clear();
 
-    //         $('#sign').prepend($('<canvas>'))
-    //         $('#sigb64').remove();
+            $('#sign').prepend($('<canvas>'))
+            $('#sigb64').remove();
 
-    //         $scope.trigersignsp();
+            $scope.trigersignpl();
 
-    //     });
+        });
 
-    //     function resizeCanvas(canvas) {
-    //         var ratio = window.devicePixelRatio || 1;
-    //         canvas.width = canvas.offsetWidth * ratio;
-    //         canvas.height = canvas.offsetHeight * ratio;
-    //         canvas.getContext("2d").scale(ratio, ratio);
-    //     }
-    //     resizeCanvas(c);
+        function resizeCanvas(canvas) {
+            var ratio = window.devicePixelRatio || 1;
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+        }
+        resizeCanvas(c);
 
-    //     var data = "";
+        var data = "";
 
-    //     console.log("devicePixelRatio: ", window.devicePixelRatio);
-    //     console.log("data length: ", data.length);
+        console.log("devicePixelRatio: ", window.devicePixelRatio);
+        console.log("data length: ", data.length);
 
-    //     var signaturePad = new SignaturePad(c);
-    //     signaturePad.fromDataURL(data);
+        var signaturePad = new SignaturePad(c);
+        signaturePad.fromDataURL(data);
 
-    //     $("#savesign").click(function() {
-    //         sigb64 = c.toDataURL(c);
-    //     });
+        $("#savesign").click(function() {
+            sigb64 = c.toDataURL(c);
+        });
 
-    // }
+    }
 
     let keyid;
 
-    $scope.editsp = function(nsp) {
+    $scope.editpl = function(nsp) {
+
+
+
+        console.log("edit data", nsp)
 
         $('canvas').remove();
         sigb64 = nsp.sign;
@@ -129,11 +133,23 @@ angular.module('newApp').controller('plnindexCrtl', function($scope, $timeout) {
         console.log(nsp)
 
         $scope.nsp = nsp;
-        $scope.nsp.date0 = new Date(nsp.date0);
-        $scope.nsp.date1 = new Date(nsp.date1);
+        $scope.nsp.reqpd = new Date(nsp.reqpd);
+        $scope.nsp.thedate = new Date(nsp.thedate);
 
         console.log($scope.nsp.mrc)
         console.log($scope.nsp.nrc)
+
+
+        var onl = $scope.nsp.otherno;
+
+        for (var i = 0; i < onl.length; i++) {
+            if (i % 2 == 0) {
+                $("#left").append("<div class='form-group left'><span class='col-md-2'></span><div class='col-md-10'><div class='input-group'><input  type='text'  class='form-control' value='" + $scope.nsp.otherno[i] + "' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div></div>");
+            } else {
+                $("#right").append("<div class='form-group right'><div class='col-md-10'><div class='input-group'><input type='text' class='form-control' value='" + $scope.nsp.otherno[i] + "' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
+            }
+        }
+
 
         return keyid = nsp.key;
 
@@ -224,6 +240,41 @@ angular.module('newApp').controller('plnindexCrtl', function($scope, $timeout) {
         $('#spdelete').removeClass('open')
     }
 
+    let count = 0;
+
+
+    $(document).on('click', '#addno', function(e) {
+        if (count % 2 == 0) {
+
+            $("#left").append("<div class='form-group left' ><span class='col-md-2'></span><div class='col-md-10'><div class='input-group' style='padding-top: 3px!important;'><input  type='text' id='ldata" + count + "' class='form-control' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div></div>");
+            // console.log(count)
+            count += 1;
+            return (count)
+        } else {
+
+            $("#right").append("<div class='form-group right' ><div class='col-md-10'><div class='input-group' style='padding-top: 3px!important;'><input type='text' id='rdata" + count + "' class='form-control' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
+            // console.log(count)
+            count += 1;
+            return (count)
+        }
+    });
+
+    $(document).on('click', '.remt', function() {
+
+        if (count % 2 !== 0) {
+            count = count - 1;
+            $('#left div').last()[0].remove();
+
+            console.log(count)
+            return (count)
+        } else {
+            count = count - 1;
+            $('#right div').last()[0].remove();
+
+            console.log(count)
+            return (count)
+        }
+    })
 
 
 
