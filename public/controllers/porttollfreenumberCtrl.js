@@ -1,6 +1,4 @@
-'use strict';
-
-angular.module('newApp').controller('loaportCtrl', function($scope) {
+angular.module('newApp').controller('porttollfreenumber', function($scope) {
     $scope.comname = localStorage.getItem('comname');
     $scope.comlandmark = localStorage.getItem('landmark');
     $scope.comcity = localStorage.getItem('comcity');
@@ -25,11 +23,6 @@ angular.module('newApp').controller('loaportCtrl', function($scope) {
 
     let ptfncount = 0;
 
-
-
-    // object.addEventListener("hashchange", changePart);
-
-
     $(document).on('click', '#ptfnadd', function(e) {
         e.preventDefault();
         console.log(ptfncount)
@@ -44,8 +37,6 @@ angular.module('newApp').controller('loaportCtrl', function($scope) {
             console.log(ptfncount)
             return (ptfncount)
         }
-        ``
-
     });
 
     $(document).on('click', '#ptfnrem', function() {
@@ -90,5 +81,68 @@ angular.module('newApp').controller('loaportCtrl', function($scope) {
 
     var signaturePad = new SignaturePad(c);
     signaturePad.fromDataURL(data);
+
+    $scope.saveptfn = function() {
+
+        try {
+            var uid = firebase.database().ref().child('porttollfreenumber').push().key;
+
+            localStorage.setItem('ukeyid', uid);
+
+            var data = {
+                acctno: $scope.acctno,
+                street0: $scope.street0,
+                city0: $scope.city0,
+                zipcode0: $scope.zipcode0,
+                asname: $scope.asname,
+                custname: $scope.custname,
+                street1: $scope.street1,
+                city1: $scope.city1,
+                state0: $scope.state0,
+                state1: $scope.state1,
+                zipcode1: $scope.zipcode1,
+                rpdate: $scope.rpdate,
+                mainno: $scope.mainno,
+                otherno: $scope.otherno,
+                datesign: $scope.datesign,
+                sign: c.toDataURL(c)
+            }
+
+            var updates = {};
+            updates['/porttollfreenumber/' + uid] = data;
+            firebase.database().ref().update(updates);
+            console.log(updates)
+
+            if (updates) {
+                $('#spsuccess').addClass('open')
+                    // setTimeout(function() {
+                    //     window.location.replace("#/");
+                    //     window.location.replace("#/spindex");
+                    // }, 2000)
+
+            }
+
+        } catch (err) {
+            $("#errormsg").text(err);
+
+            console.log(err)
+
+            $('#sperror').addClass('open')
+            setTimeout(function() {
+                $('#sperror').removeClass('open')
+            }, 8000)
+        }
+
+    }
+
+    $scope.closesp = function() {
+        $('#spsuccess').removeClass('open')
+        window.location.replace("#/");
+        window.location.replace("#/porttollfreenumber");
+    }
+
+    $scope.goindex = function() {
+        window.location.replace("#/ptfnindex");
+    }
 
 });

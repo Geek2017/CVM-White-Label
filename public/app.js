@@ -33,9 +33,9 @@ angular
                 templateUrl: 'views/eftauthorration.html',
                 controller: 'eftauthorrationCtrl'
             })
-            .when('/loaport', {
-                templateUrl: 'views/loaport.html',
-                controller: 'loaportCtrl'
+            .when('/porttollfreenumber', {
+                templateUrl: 'views/porttollfreenumber.html',
+                controller: 'porttollfreenumber'
             })
             .when('/quickInstruction', {
                 templateUrl: 'views/quickInstruction.html',

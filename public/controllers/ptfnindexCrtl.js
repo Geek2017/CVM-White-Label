@@ -1,4 +1,4 @@
-angular.module('newApp').controller('plfnindexCrtl', function($scope, $timeout) {
+angular.module('newApp').controller('ptfnindexCrtl', function($scope, $timeout) {
 
     $scope.comname = localStorage.getItem('comname');
     $scope.comlandmark = localStorage.getItem('landmark');
@@ -29,7 +29,7 @@ angular.module('newApp').controller('plfnindexCrtl', function($scope, $timeout) 
         $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
 
-    firebase.database().ref('/portlocalnumber/').orderByChild('uid').on("value", function(snapshot) {
+    firebase.database().ref('/porttollfreenumber/').orderByChild('uid').on("value", function(snapshot) {
         $timeout(function() {
 
             $scope.$apply(function() {
@@ -81,59 +81,57 @@ angular.module('newApp').controller('plfnindexCrtl', function($scope, $timeout) 
 
     var sigb64;
 
-    // $scope.trigersignsp = function() {
-    //     var w = document.getElementById("signature-pad"),
-    //         c = w.querySelector("canvas");
+    $scope.trigersignsp = function() {
+        var w = document.getElementById("signature-pad"),
+            c = w.querySelector("canvas");
 
 
-    //     document.getElementById('clear').addEventListener('click', function() {
-    //         signaturePad.clear();
+        document.getElementById('clear').addEventListener('click', function() {
+            signaturePad.clear();
 
-    //         $('#sign').prepend($('<canvas>'))
-    //         $('#sigb64').remove();
+            $('#sign').prepend($('<canvas>'))
+            $('#sigb64').remove();
 
-    //         $scope.trigersignsp();
+            $scope.trigersignsp();
 
-    //     });
+        });
 
-    //     function resizeCanvas(canvas) {
-    //         var ratio = window.devicePixelRatio || 1;
-    //         canvas.width = canvas.offsetWidth * ratio;
-    //         canvas.height = canvas.offsetHeight * ratio;
-    //         canvas.getContext("2d").scale(ratio, ratio);
-    //     }
-    //     resizeCanvas(c);
+        function resizeCanvas(canvas) {
+            var ratio = window.devicePixelRatio || 1;
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+        }
+        resizeCanvas(c);
 
-    //     var data = "";
+        var data = "";
 
-    //     console.log("devicePixelRatio: ", window.devicePixelRatio);
-    //     console.log("data length: ", data.length);
+        console.log("devicePixelRatio: ", window.devicePixelRatio);
+        console.log("data length: ", data.length);
 
-    //     var signaturePad = new SignaturePad(c);
-    //     signaturePad.fromDataURL(data);
+        var signaturePad = new SignaturePad(c);
+        signaturePad.fromDataURL(data);
 
-    //     $("#savesign").click(function() {
-    //         sigb64 = c.toDataURL(c);
-    //     });
+        $("#savesign").click(function() {
+            sigb64 = c.toDataURL(c);
+        });
 
-    // }
+    }
 
     let keyid;
 
-    $scope.editsp = function(nsp) {
+    $scope.editptfn = function(nsp) {
 
         $('canvas').remove();
+
         sigb64 = nsp.sign;
+
         $('#sign').prepend($('<img>', { id: 'sigb64', src: nsp.sign }))
 
-        console.log(nsp)
-
         $scope.nsp = nsp;
-        $scope.nsp.date0 = new Date(nsp.date0);
-        $scope.nsp.date1 = new Date(nsp.date1);
 
-        console.log($scope.nsp.mrc)
-        console.log($scope.nsp.nrc)
+        $scope.nsp.datesign = new Date(nsp.datesign);
+        $scope.nsp.rpdate = new Date(nsp.rpdate);
 
         return keyid = nsp.key;
 
@@ -206,7 +204,7 @@ angular.module('newApp').controller('plfnindexCrtl', function($scope, $timeout) 
         $scope.confirmdel = function() {
             if ($scope.deleteconfirm === "remove") {
 
-                var ref = firebase.database().ref("/portlocalnumber/" + nsp.key);
+                var ref = firebase.database().ref("/porttollfreenumber/" + nsp.key);
                 ref.remove()
                     .then(function() {
                         console.log("Remove succeeded.")

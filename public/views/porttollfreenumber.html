@@ -178,6 +178,29 @@
                         </div>
                     </div>
 
+                    <div class="message-box message-box-success animated fadeIn" id="spsuccess">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4  pull-center">
+                                    <div class="mb-title"><span class="fa fa-check"></span> Success:</div>
+                                    <div class="mb-content">
+                                        <p>Your Data had been save!</p>
+                                    </div>
+                                    <div class="btn-group btn-default" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-default" ng-click="goindex()">GO TO
+                                            LIST</button>
+                                        <button type="button" class="btn btn-primary" ng-click="closesp()">CREATE
+                                            ANEW</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-2">
                         </div>
@@ -187,25 +210,25 @@
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class=" control-label">Account Number:</label>
-                                    <input ng-model="mainbtn" type="text" class="form-control" required />
+                                    <input ng-model="acctno" type="text" class="form-control" required />
                                 </div>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">Street/Block/Bldg/Lot:</label>
-                                    <input ng-model="street2" type="text" class="form-control" required />
+                                    <input ng-model="street0" type="text" class="form-control" required />
                                 </div>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">City:</label>
-                                    <input ng-model="city2" type="text" class="form-control" required />
+                                    <input ng-model="city0" type="text" class="form-control" required />
                                 </div>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">State:</label>
-                                    <select ng-model="state2" class="form-control " data-style="btn-success">
+                                    <select ng-model="state0" class="form-control " data-style="btn-success">
                                         <option value="">Select</option>
                                         <option value="Alabama">Alabama</option>
                                         <option value="Alaska">Alaska</option>
@@ -264,13 +287,13 @@
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">Zip Code:</label>
-                                    <input ng-model="zipcode2" type="text" class="form-control" required />
+                                    <input ng-model="zipcode0" type="text" class="form-control" required />
                                 </div>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class=" control-label">Authorized Signer Name:</label>
-                                    <input ng-model="zipcode2" type="text" class="form-control" required />
+                                    <input ng-model="asname" type="text" class="form-control" required />
                                 </div>
 
                             </div>
@@ -282,26 +305,25 @@
 
                                 <div class="col-md-10">
                                     <label class=" control-label">Customer Name:</label>
-                                    <input ng-model="asname" type="text" class="form-control" required />
+                                    <input ng-model="custname" type="text" class="form-control" required/>
                                 </div>
                                 <span class="col-md-2"></span>
 
                                 <div class="col-md-5">
                                     <label class=" control-label">Street/Block/Bldg/Lot:</label>
-                                    <input ng-model="street2" type="text" class="form-control" required />
+                                    <input ng-model="street1" type="text" class="form-control" required/>
                                 </div>
-
 
                                 <div class="col-md-5">
                                     <label class=" control-label">City:</label>
-                                    <input ng-model="city2" type="text" class="form-control" required />
+                                    <input ng-model="city1" type="text" class="form-control" required />
                                 </div>
                                 <span class="col-md-2"></span>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
                                     <label class=" control-label">State:</label>
-                                    <select ng-model="state2" class="form-control " data-style="btn-success">
+                                    <select ng-model="state1" class="form-control " data-style="btn-success">
                                         <option value="">Select</option>
                                         <option value="Alabama">Alabama</option>
                                         <option value="Alaska">Alaska</option>
@@ -359,14 +381,14 @@
 
                                 <div class="col-md-5">
                                     <label class=" control-label">Zip Code:</label>
-                                    <input ng-model="zipcode2" type="text" class="form-control" required />
+                                    <input ng-model="zipcode1" type="text" class="form-control" required />
                                 </div>
                                 <span class="col-md-2"></span>
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class=" control-label">Requested Port Date:</label>
-                                    <input ng-model="zipcode2" type="date" class="form-control" required />
+                                    <input ng-model="rpdate" type="date" class="form-control" required />
                                 </div>
                                 <span class="col-md-2"></span>
 
@@ -401,7 +423,7 @@
                             <div class="form-group">
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
-                                    <input ng-model="custname" placeholder="Main Number" type="text" class="form-control" required />
+                                    <input ng-model="mainno" placeholder="Main Number" type="text" class="form-control" required />
                                 </div>
                             </div>
                         </div>
@@ -409,8 +431,8 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <div class="col-md-10 input-group">
-                                    <input type="text" class="form-control" placeholder="Other Number" />
-                                    <span id="ptfnadd" class="input-group-addon hover"><i class="fa fa-plus"></i></span>
+                                    <input type="text" ng-model="otherno" class="form-control" placeholder="Other Number" />
+                                    <span class="input-group-addon hover"><i class="fa fa-plus"></i></span>
                                 </div>
                                 <span class="col-md-2"></span>
                             </div>
@@ -458,7 +480,7 @@
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
                                     <label class=" control-label">Date Sign:</label>
-                                    <input ng-model="mainbtn" type="date" class="form-control" required />
+                                    <input ng-model="datesign" type="date" class="form-control" required />
                                 </div>
                             </div>
                         </div>
@@ -498,7 +520,7 @@
                         <div class="btn-group pull-right ">
                             <button class="btn btn-primary">PRINT</button>
                             <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">EMAIL </button>
-                            <button class="btn btn-primary " id="sig-submitBtn">SAVE</button>
+                            <button class="btn btn-primary " ng-click="saveptfn();">SAVE</button>
                         </div>
                     </div>
                 </div>
