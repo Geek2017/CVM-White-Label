@@ -296,17 +296,17 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
     $scope.fpfitems = [{
         items: "Select"
     }, {
-        items: "Aastra/Mitel  Basic | MSRP $100.00"
+        items: "Aastra/Mitel Basic | MSRP $100.00"
     }, {
-        items: "Aastra/Mitel  Advanced Phone | MSRP $230.00"
+        items: "Aastra/Mitel Advanced Phone | MSRP $230.00"
     }, {
-        items: "Aastra/Mitel  Executive Phone | MSRP $300.00"
+        items: "Aastra/Mitel Executive Phone | MSRP $300.00"
     }, {
-        items: "Aastra/Mitel  Advanced Touch Screen Executive Phone | MSRP $425.00 "
+        items: "Aastra/Mitel Advanced Touch Screen Executive Phone | MSRP $425.00 "
     }, {
-        items: "Aastra/Mitel  Expansion Module | MSRP $80.00"
+        items: "Aastra/Mitel Expansion Module | MSRP $80.00"
     }, {
-        items: "Aastra/Mitel  Expansion Module | MSRP $200.00"
+        items: "Aastra/Mitel Expansion Module | MSRP $200.00"
     }, {
         items: "Aastra/Mitel MiVoice Conference Phone | MSRP $1,195.00"
     }];
@@ -434,15 +434,15 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
                 nrc: table1,
                 fpfrow: table2,
                 bizname: $scope.bizname,
-                bizname2: $scope.bizname2,
                 custname: $scope.custname,
-                custname2: $scope.custname2,
                 street: $scope.street,
                 city: $scope.city,
                 state: $scope.state,
                 zipcode: $scope.zipcode,
                 presentedby: $scope.presentedby,
                 date2: $scope.date2,
+                bizname2: $('.bizname2').val(),
+                custname2: $('.custname2').val(),
                 street2: $('.street2').val(),
                 city2: $('.city2').val(),
                 state2: $('.state2').val(),

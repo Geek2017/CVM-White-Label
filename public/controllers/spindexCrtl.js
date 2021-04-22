@@ -139,8 +139,8 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
                 calculated_total_sum += parseFloat(get_textbox_value);
             }
         });
-        console.log(calculated_total_sum);
-        $('.mrcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
+        console.log(calculated_total_sum + $scope.mrct);
+        $('.mrcgtotal').text('$ ' + parseFloat(calculated_total_sum + $scope.mrct).toFixed(2))
     }
 
     $("#mcrrowTable").on('input', '.mrcu', function() {
@@ -165,7 +165,9 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     }
 
     $scope.mrcmin = function(mrc) {
-        console.log(mrc.length);
+
+        console.log($scope.mrct, $('.mrcup:input:last').val());
+        $('.mrcgtotal').text('$ ' + parseFloat($scope.mrct - $('.mrcup:input:last').val()).toFixed(2));
 
         if (mrc.length !== 0) {
             $scope.mrc.splice(mrc.length - 1, 1);
@@ -227,8 +229,8 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
             }
         });
 
-        console.log(calculated_total_sum);
-        $('.nrcgtotal').text('$ ' + parseFloat(calculated_total_sum).toFixed(2))
+        console.log(calculated_total_sum + $scope.nrct);
+        $('.nrcgtotal').text('$ ' + parseFloat(calculated_total_sum + $scope.nrct).toFixed(2))
     }
 
     $("#ncrrowTable").on('input', '.nrcu', function() {
@@ -254,7 +256,13 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     }
 
     $scope.nrcmin = function(nrc) {
+
         console.log(nrc.length);
+
+
+        console.log($scope.nrct, $('.nrcup:input:last').val());
+        $('.nrcgtotal').text('$ ' + parseFloat($scope.nrct - $('.nrcup:input:last').val()).toFixed(2));
+
 
         if (nrc.length !== 0) {
             $scope.nrc.splice(nrc.length - 1, 1);
@@ -267,6 +275,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
                 $('table#ncrrowTable tr#tr0:last').remove();
             }
         }
+
 
     }
 
@@ -323,7 +332,6 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     }
 
 
-
     $("#fpfrowTable").on('input', '.fpfhu', function() {
         frecalc();
         calc_fpfh();
@@ -347,7 +355,12 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     }
 
     $scope.frcmin = function(frc) {
+
         console.log(frc.length);
+
+        console.log($scope.nrct, $('.tfpfh:input:last').val());
+
+        $('.fpfhgtotal').text('$ ' + parseFloat($scope.frct - $('.tfpfh:input:last').val()).toFixed(2));
 
         if (frc.length !== 0) {
             $scope.frc.splice(frc.length - 1, 1);
@@ -435,26 +448,49 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     }
 
     let keyid;
+    $scope.nrct;
+    $scope.mrct;
+    $scope.frct;
 
     $scope.editsp = function(nsp) {
 
         $('canvas').remove();
+
         sigb64 = nsp.sign;
+
         $('#sign').prepend($('<img>', { id: 'sigb64', src: nsp.sign }))
 
         console.log(nsp)
 
         $scope.nsp = nsp;
 
-
         console.log($scope.nsp.mrc['Total Price']);
 
         $scope.nsp.date2 = new Date(nsp.date2);
 
         console.log($scope.nsp.mrc)
-        console.log($scope.nsp.nrc)
 
-        return keyid = nsp.key;
+        console.log($scope.nsp.nrc[0]["Total Price"]);
+
+        var nrct = 0;
+        angular.forEach($scope.nsp.nrc, function(value, key) {
+            nrct += parseFloat(value["Total Price"]);
+        });
+
+        var mrct = 0;
+        angular.forEach($scope.nsp.mrc, function(value, key) {
+            mrct += parseFloat(value["Total Price"]);
+        });
+
+        var frct = 0;
+        angular.forEach($scope.nsp.fpfrow, function(value, key) {
+            frct += parseFloat(value["Total Price"]);
+        });
+
+        return keyid = nsp.key,
+            $scope.nrct = nrct,
+            $scope.mrct = mrct,
+            $scope.frct = frct;
 
     }
 

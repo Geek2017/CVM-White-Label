@@ -639,14 +639,14 @@
                                                     <input type="number" class="mtprice form-control text-center" ng-model="mtprice" ng-value="{{mrcup*mrcu}}" placeholder="$ 0.00" readonly>
                                                 </td>
                                             </tr>
-                                            <tr ng-repeat="total in nsp.mrc">
+                                            <tr>
                                                 <td></td>
                                                 <td>
                                                     <h4>Total Monthly Recurring Charges</h4>
                                                 </td>
                                                 <td></td>
                                                 <td class="text-center">
-                                                    <h4><strong class="mrcgtotal">$ {{total['Total Price']}}</strong></h4>
+                                                    <h4><strong class="mrcgtotal">$ {{mrct|number:2}}</strong></h4>
                                                 </td>
                                             </tr>
 
@@ -711,14 +711,14 @@
                                                     <input type="number" class="ntprice form-control text-center" ng-model="ntprice" ng-value="{{nrcup*nrcu}}" placeholder="$ 0.00" readonly>
                                                 </td>
                                             </tr>
-                                            <tr ng-repeat="total in nsp.nrc">
+                                            <tr>
                                                 <td></td>
                                                 <td>
-                                                    <h4>Total Monthly Recurring Charges</h4>
+                                                    <h4>Total Non-Recurring Charges</h4>
                                                 </td>
                                                 <td></td>
                                                 <td class="text-center">
-                                                    <h4><strong class="nrcgtotal">$ {{total['Total Price']}}</strong></h4>
+                                                    <h4><strong class="nrcgtotal">$ {{nrct|number:2}}</strong></h4>
                                                 </td>
                                             </tr>
 
@@ -777,14 +777,14 @@
                                                 </td>
                                             </tr>
 
-                                            <tr ng-repeat="total in nsp.fpfrow">
+                                            <tr>
                                                 <td></td>
                                                 <td>
                                                     <h4>Total Program Features</h4>
                                                 </td>
                                                 <td></td>
                                                 <td class="text-center">
-                                                    <h4><strong class="fpfhgtotal">$ {{total['Total Price']}}</strong></h4>
+                                                    <h4><strong class="fpfhgtotal">$ {{frct|number:2}}</strong></h4>
                                                 </td>
                                             </tr>
                                         </tbody>
