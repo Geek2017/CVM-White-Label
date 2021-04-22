@@ -205,7 +205,7 @@ angular.module('newApp').controller('eftaindexCrtl', function($scope, $timeout) 
         $scope.confirmdel = function() {
             if ($scope.deleteconfirm === "remove") {
 
-                var ref = firebase.database().ref("/portlocalnumber/" + nsp.key);
+                var ref = firebase.database().ref("/eftauthorization/" + nsp.key);
                 ref.remove()
                     .then(function() {
                         console.log("Remove succeeded.")
