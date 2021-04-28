@@ -245,7 +245,7 @@
                                             <button ng-click="trigersignsp();editsp(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
                                             <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
                                             <button class="btn btn-info btn-sm fa fa-print " data-box="#message-box-success"> PRINT&nbsp;</button>
-                                            <button class="btn btn-warning btn-sm fa fa-rocket" data-toggle="modal" data-target="#email_modal" ng-click="passwordcall(16);"> EMAIL&nbsp;</button>
+                                            <button class="btn btn-warning btn-sm fa fa-rocket" data-toggle="modal" data-target="#email_modal" ng-click="genhashkey(nsp);"> EMAIL&nbsp;</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -271,13 +271,12 @@
     <div class="modal-dialog modal-dialog-centered" role="document" style="width: 400px!important;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: none!important;">X</button>
+                <h2 class="modal-title" id="exampleModalLongTitle">Sales Proposal Fillable Form</h2>
             </div>
             <div class="modal-body ">
                 <form id="myform">
                     <label>Recipient Email:</label>
-                    <input type="text" ng-model="mailadd" name="reply_to" id="reply_to" class="form-control" />
+                    <input type="email" ng-model="mailadd" name="reply_to" id="reply_to" class="form-control" />
                     <label>Sender Name:</label>
                     <input type="text" ng-model="mailfrom" name="from_name" id="from_name" class="form-control" />
                     <label>Receiver Name:</label>
@@ -285,9 +284,6 @@
                     <label>Hash Link:</label>
                     <input ng-model="hash" type="text" name="message" id="message" class="form-control" readonly />
                     <br><br>
-
-
-
                     <input type="submit" class="btn btn-primary btn-block" id="button" value="SEND">
                 </form>
             </div>

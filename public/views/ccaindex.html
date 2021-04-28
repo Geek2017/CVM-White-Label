@@ -311,7 +311,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">CARD CREDIT AUTH INFO.</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="qrids">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -614,8 +614,10 @@
                 </center>
             </div>
             <div class="modal-footer">
+
                 <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">CLOSE</button>
                 <button id="update" type="button" class="btn btn-primary" ng-click="updatesp();">UPDATE</button>
+                <button type="button" class="btn btn-danger pull-left" ng-click="printid();">PRINT</button>
             </div>
         </div>
     </div>

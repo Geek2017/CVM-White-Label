@@ -1,5 +1,21 @@
 angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
+    var fcolor = localStorage.getItem('formcolor')
+    $(".panel").css("border-top-color", fcolor);
+    $(".btn-primary").css("background", fcolor)
+    $(".btn-primary").css("border-color", 'white')
+    $(".x-navigation>li.xn-logo>a:first-child").css("background", fcolor);
+    $(".x-navigation li.active>a").css("background", fcolor);
+    $(".panel-success>.panel-heading").css("color", fcolor);
+
+    var fcolor = localStorage.getItem('formcolor')
+    $(".panel").css("border-top-color", fcolor);
+    $(".btn-primary").css("background", fcolor)
+    $(".btn-primary").css("border-color", 'white')
+    $(".x-navigation>li.xn-logo>a:first-child").css("background", fcolor);
+    $(".x-navigation li.active>a").css("background", fcolor);
+    $(".panel-success>.panel-heading").css("color", fcolor);
+
     $scope.comname = localStorage.getItem('comname');
     $scope.comlandmark = localStorage.getItem('landmark');
     $scope.comcity = localStorage.getItem('comcity');
@@ -46,31 +62,6 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         })
     });
 
-    // Email
-
-    (function() {
-        emailjs.init('user_0dRWnov2yzJ0mYSTS3nqs')
-    })();
-
-    const btn = document.getElementById('button');
-
-    $("#myform").submit(function(event) {
-        event.preventDefault();
-
-        btn.value = 'Sending...';
-
-        const serviceID = 'default_service';
-        const templateID = 'template_zbea5bx';
-
-        emailjs.sendForm(serviceID, templateID, this)
-            .then(() => {
-                btn.value = 'Send Email';
-                alert('Sent!');
-            }, (err) => {
-                btn.value = 'Send Email';
-                alert(JSON.stringify(err));
-            });
-    });
 
 
     // MRC
@@ -378,19 +369,19 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
 
 
-    $scope.passwordcall = function(length, special) {
+    $scope.genhashkey = function(nsp) {
+        console.log(nsp.key)
 
-        // document.getElementById('hash').innerHTML=password;
+        let comid = localStorage.getItem('curuserid');
 
-        $scope.hash = window.location.origin + '/formsindex.html#/:' + password;
-        console.log(password);
-        sessionStorage.setItem('hkc', password);
+        $scope.hash = window.location.origin + '/formsindex.html#/:' + nsp.key
+
+        sessionStorage.setItem('hkc', nsp.key);
     }
 
 
-    $("#myform").submit(function(event) {
 
-
+    function savedmaildate() {
         var uid = firebase.database().ref().child('users').push().key;
 
         var data = {
@@ -404,9 +395,56 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
         var updates = {};
         updates['/sfsalespropsal/' + uid] = data;
-        firebase.database().ref().update(updates, alert('Data Saved!'));
+        firebase.database().ref().update(updates);
+        if (updates) {
+            console.log(updates)
+            btn.value = 'SUCCESS!';
+            btn.disabled = true;
+
+            setTimeout(function() {
+                window.location.replace("#/");
+                window.location.replace("#/spindex");
+            }, 2000)
+
+        }
+
+    }
+
+    // Email
+
+    (function() {
+        emailjs.init('user_0dRWnov2yzJ0mYSTS3nqs')
+    })();
+
+    const btn = document.getElementById('button');
+
+    $("#myform").submit(function(event) {
+        event.preventDefault();
+
+        try {
+            btn.value = 'Sending...';
+
+            const serviceID = 'default_service';
+            const templateID = 'template_zbea5bx';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then((resp) => {
+                    btn.value = 'Send Email';
+                    if (resp.status == 200) {
+                        savedmaildate();
+                    }
+
+                }, (err) => {
+                    btn.value = 'Erro!';
+                    alert(JSON.stringify(err));
+                });
+        } catch (error) {
+
+        }
+
 
     });
+
 
     var sigb64;
 

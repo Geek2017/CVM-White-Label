@@ -1,6 +1,3 @@
-'use strict';
-
-
 angular.module('newApp').controller('dashboardCtrl', function($scope, $rootScope) {
 
 
@@ -8,21 +5,12 @@ angular.module('newApp').controller('dashboardCtrl', function($scope, $rootScope
         console.log(current.originalPath); // Do not use $$route here it is private
     });
 
-
-    // var myVar = setInterval(myTimer, 100);
-
-
-    // function myTimer() {
-    //     $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
-    //     $(".panel").css("border-top-color", localStorage.getItem('unicolor'));
-    //     $(".panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
-    //     $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
-    //     $(".panel-default").css("border-top-color", localStorage.getItem('unicolor'));
-    //     console.log('Dashboard color set')
-    // }
-
-    // setTimeout(function() {
-    //     clearInterval(myVar);
-    // }, 1000);
+    var fcolor = localStorage.getItem('formcolor')
+    $(".panel").css("border-top-color", fcolor);
+    $(".btn-primary").css("background", fcolor)
+    $(".btn-primary").css("border-color", 'white')
+    $(".x-navigation>li.xn-logo>a:first-child").css("background", fcolor);
+    $(".x-navigation li.active>a").css("background", fcolor);
+    $(".panel-success>.panel-heading").css("color", fcolor);
 
 });

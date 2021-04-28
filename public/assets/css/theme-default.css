@@ -7373,7 +7373,7 @@ input.ui-editRangeSlider-inputValue {
 }
 
 .wizard .actionBar {
-    padding-top: 15%;
+    padding-top: 0px;
 }
 
 .wizard .actionBar .btn.pull-right {

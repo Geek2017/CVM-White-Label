@@ -11,9 +11,65 @@ $(document).ready(function() {
     };
     firebase.initializeApp(config);
 
-    //create firebase references
-    var Auth = firebase.auth();
-    var dbRef = firebase.database();
+
+
+
+
+
+    var fcolor;
+    var ftheme;
+
+    $("#purple").on("click", function() {
+        return fcolor = '#b511b4', console.log(fcolor);
+    });
+
+    $("#blue").on("click", function() {
+        return fcolor = '#02c2fb', console.log(fcolor);
+    });
+
+    $("#green").on("click", function() {
+        return fcolor = '#2bc20e', console.log(fcolor);
+    });
+
+    $("#red").on("click", function() {
+        return fcolor = '#f21918', console.log(fcolor);
+    });
+
+    $("#grey").on("click", function() {
+        return fcolor = '#a4a3a2', console.log(fcolor);
+    });
+
+    $("#orange").on("click", function() {
+        return fcolor = '#f2b706', console.log(fcolor);
+    });
+
+    $("#tdefault").on("click", function() {
+        return ftheme = './assets/css/theme-default.css', console.log(ftheme);
+    });
+
+    $("#tbrown").on("click", function() {
+        return ftheme = './assets/css/theme-brown.css', console.log(ftheme);
+    });
+
+    $("#tblue").on("click", function() {
+        return ftheme = './assets/css/theme-blue.css', console.log(ftheme);
+    });
+
+    $("#twhite").on("click", function() {
+        return ftheme = './assets/css/theme-white.css', console.log(ftheme);
+    });
+
+    $("#tblack").on("click", function() {
+        return ftheme = './assets/css/theme-black.css', console.log(ftheme);
+    });
+
+
+    $('.colorpicker').on('click', function() {
+        var rcolor = $('#cpr').children()[0].style.backgroundColor;
+        return fcolor = rcolor, console.log(fcolor);
+    });
+
+
 
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -178,83 +234,125 @@ $(document).ready(function() {
                             })
                         }
 
-                        sendEmailVerification(data);
-                        save_cus_credencials();
-                        save_cus_com_info();
-
-                        var cusname = $('#cusname').val();
-                        var email = $('#cusemail').val();
+                        sendEmailVerification(data, consolelog());
 
                         function sendEmailVerification(data) {
-                            cusname = firebase.auth().currentUser;
-                            email = data.email || user.email;
-                            var urlr = location.origin;
+                            try {
+                                cusname = firebase.auth().currentUser;
+                                email = data.email || user.email;
+                                var urlr = location.origin;
 
-                            return user.emailVerified || user.sendEmailVerification({
-                                url: urlr,
-                            });
+                                return user.emailVerified || user.sendEmailVerification({
+                                    url: urlr,
+                                });
+
+
+                            } catch (error) {
+                                alert(error)
+                            }
+
                         }
+
+                        function consolelog() {
+                            console.log(user.emailVerified)
+                            if (user.emailVerified == false) {
+                                save_cus_credencials();
+                            }
+                        }
+
                         //save customer cred to firebase
                         function save_cus_credencials() {
 
+                            try {
+                                var uid = firebase.database().ref().child('users').push().key;
+                                var cusid = $('#cusid').val();
+                                var cusname = $('#cusname').val();
+                                var cusemail = $('#cusemail').val();
 
-                            var uid = firebase.database().ref().child('users').push().key;
-                            var cusid = $('#cusid').val();
-                            var cusname = $('#cusname').val();
-                            var cusemail = $('#cusemail').val();
+                                var data = {
+                                    user_id: uid,
+                                    cusid: cusid,
+                                    cusname: cusname,
+                                    cusemail: cusemail,
+                                    role: "1",
+                                    designation: "Account Manager",
+                                    userimage: localStorage.getItem('userimgbase64')
+                                }
 
-
-
-                            var data = {
-                                user_id: uid,
-                                cusid: cusid,
-                                cusname: cusname,
-                                cusemail: cusemail,
-                                role: "1",
-                                designation: "Account Manager",
-                                userimage: localStorage.getItem('userimgbase64')
+                                var updates = {};
+                                updates['/users/' + uid] = data;
+                                firebase.database().ref().update(updates);
+                                if (updates) {
+                                    save_cus_com_info();
+                                }
+                            } catch (error) {
+                                alert(error)
                             }
 
-                            var updates = {};
-                            updates['/users/' + uid] = data;
-                            firebase.database().ref().update(updates);
 
 
                         }
 
                         //save customer com_info to firebase
                         function save_cus_com_info() {
+                            try {
+                                var uid = firebase.database().ref().child('com_profiles').push().key;
+                                var cusid = $('#cusid').val();
+                                var comlogo = sessionStorage.getItem('companylogo');
+                                var comname = $('#comname').val();
+                                var comcontact = $('#comcontact').val();
+                                var landmark = $('#landmark').val();
+                                var comcity = $('#comcity').val();
+                                var compostalcode = $('#compostalcode').val();
+                                var comstate = $('#comstate').val();
 
-                            var uid = firebase.database().ref().child('com_profiles').push().key;
-                            var cusid = $('#cusid').val();
-                            var comlogo = sessionStorage.getItem('companylogo');
-                            var comname = $('#comname').val();
-                            var comcontact = $('#comcontact').val();
-                            var landmark = $('#landmark').val();
-                            var comcity = $('#comcity').val();
-                            var compostalcode = $('#compostalcode').val();
-                            var comstate = $('#comstate').val();
+                                var data = {
+                                    user_id: uid,
+                                    cusid: cusid,
+                                    comlogo: comlogo,
+                                    comname: comname,
+                                    landmark: landmark,
+                                    comcontact: comcontact,
+                                    comcity: comcity,
+                                    compostalcode: compostalcode,
+                                    comstate: comstate
+                                }
 
-                            var data = {
-                                user_id: uid,
-                                cusid: cusid,
-                                comlogo: comlogo,
-                                comname: comname,
-                                landmark: landmark,
-                                comcontact: comcontact,
-                                comcity: comcity,
-                                compostalcode: compostalcode,
-                                comstate: comstate
+                                var updates = {};
+                                updates['/com_profiles/' + uid] = data;
+                                firebase.database().ref().update(updates);
+                                if (updates) {
+                                    save_cus_theme_info()
+                                }
+                            } catch (error) {
+                                alert(error)
                             }
-
-                            var updates = {};
-                            updates['/com_profiles/' + uid] = data;
-                            firebase.database().ref().update(updates);
-
-                            refresh();
                         }
 
+                        function save_cus_theme_info() {
+                            try {
+                                var uid = firebase.database().ref().child('theme_info').push().key;
+                                var cusid = $('#cusid').val();
+                                var theme = ftheme;
+                                var formcolor = fcolor;
 
+                                var data = {
+                                    cusid: cusid,
+                                    theme: theme,
+                                    formcolor: formcolor
+                                }
+
+                                var updates = {};
+                                updates['/theme_info/' + uid] = data;
+                                firebase.database().ref().update(updates);
+
+                                if (updates) {
+                                    refresh();
+                                }
+                            } catch (error) {
+                                alert(error)
+                            }
+                        }
 
                         function refresh() {
                             $('#datasent').addClass('open')
@@ -277,14 +375,7 @@ $(document).ready(function() {
         }
     });
 
-    function myFunction() {
-        var x = document.getElementById("myInput");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }
+
 
 
 

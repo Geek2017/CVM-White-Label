@@ -47,16 +47,33 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $rootScope) {
 
             var ref = firebase.database().ref("theme_info");
             ref.orderByChild("cusid").equalTo(snapshot.val().cusid).on("child_added", function(snapshot) {
+
                 console.log(snapshot.val());
+
+                localStorage.setItem('formcolor', snapshot.val().formcolor)
+
                 $("#theme").attr("href", snapshot.val().theme);
+
+                $(".x-navigation .informer.informer-warning ").css("background", snapshot.val().formcolor);
+
+                $(".panel").css("border-top-color", snapshot.val().formcolor);
+
+                $(".btn-primary").css("background", snapshot.val().formcolor)
+
+                $(".btn-primary").css("border-color", 'white')
+
+                $(".x-navigation>li.xn-logo>a:first-child").css("background", snapshot.val().formcolor);
+
+                $(".x-navigation li.active>a").css("background", snapshot.val().formcolor);
+
+                $(".panel-success>.panel-heading").css("color", snapshot.val().formcolor);
+
                 localStorage.setItem('tuid', snapshot.val().user_id)
             });
 
             var ref = firebase.database().ref("com_profiles");
             ref.orderByChild("cusid").equalTo(snapshot.val().cusid).on("child_added", function(snapshot) {
                 console.log(snapshot.val().landmark);
-
-
 
                 $('#span').text(snapshot.val().comname);
 
@@ -88,100 +105,6 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $rootScope) {
         document.getElementById("formportal").style.visibility = "visible";
 
     }, 5000)
-
-    // var myVar = setInterval(myTimer, 100);
-
-    // function myTimer() {
-
-    //     var ref = firebase.database().ref("users");
-    //     ref.orderByChild("cusemail").equalTo(localStorage.getItem('curusermail')).on("child_added", function(snapshot) {
-    //         console.log('Processing....');
-    //         if (snapshot.val()) {
-
-    //             runtime();
-
-    //             console.log('Processing User Complete!');
-
-    //             sessionStorage.setItem('curuserid', snapshot.val().cusid);
-
-    //             localStorage.setItem('childkey', snapshot.key)
-
-    //             var datacontent = snapshot.val().role
-
-    //             datacontent == "0" ? $('#gearup').hide() : $('#gearup').show();
-
-    //             sessionStorage.setItem('cusname', snapshot.val().cusname);
-
-    //             sessionStorage.setItem('role', snapshot.val().role);
-
-    //             sessionStorage.setItem('designation', snapshot.val().designation);
-
-    //             sessionStorage.setItem('userimg', snapshot.val().userimage);
-    //         } else {
-    //             console.log('Processing User Failed');
-    //         }
-
-    //     });
-    //     if (sessionStorage.getItem('userimg')) {
-    //         console.log('imageloaded')
-    //         $scope.userimg = sessionStorage.getItem('userimg');
-    //         $('#profile-mini').attr('src', sessionStorage.getItem('userimg'));
-    //         $('#profile-image').attr('src', sessionStorage.getItem('userimg'));
-
-    //         $("#job").text(sessionStorage.getItem('designation'));
-
-    //         $("#curusername").text(sessionStorage.getItem('cusname'));
-
-    //     } else {
-    //         console.log('imagenotloaded')
-    //         $('#profile-mini').attr('src', 'assets/images/users/avatar.jpg')
-    //         $('#profile-image').attr('src', 'assets/images/users/avatar.jpg')
-    //     }
-    // }
-
-    // function myStopFunction() {
-
-    //     unicolorandtheme();
-    //     clearInterval(myVar);
-    //     setTimeout(function() {
-    //         document.getElementById("formportal").style.visibility = "visible";
-    //         document.getElementById("spinner").style.visibility = "hidden";
-    //         $("#span").text(sessionStorage.getItem('curcomname'));
-
-
-    //     }, 2000);
-    // }
-
-    // function runtime() {
-
-    //     var ref = firebase.database().ref("com_profiles");
-    //     ref.orderByChild("cusid").equalTo(sessionStorage.getItem('curuserid')).on("child_added", function(snapshot) {
-    //         console.log('Logo is Set');
-    //         sessionStorage.setItem('curcomname', snapshot.val().comname);
-    //         sessionStorage.setItem('comlogo', snapshot.val().comlogo);
-    //     });
-
-    //     var ref = firebase.database().ref("theme_info");
-    //     ref.orderByChild("cusid").equalTo(sessionStorage.getItem('curuserid')).on("child_added", function(snapshot) {
-    //         console.log('Unicolor & Theme is Set');
-    //         localStorage.setItem('unicolor', snapshot.val().formcolor);
-    //         localStorage.setItem('theme', snapshot.val().theme);
-    //         myStopFunction();
-    //     });
-
-
-
-    // }
-
-
-    // function unicolorandtheme() {
-    //     $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
-    //     $(".panel").css("border-top-color", localStorage.getItem('unicolor'));
-    //     $(".panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
-    //     $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
-    //     console.log('red')
-    //     $("#theme").prop("href", localStorage.getItem('theme'));
-    // }
 
 
 
