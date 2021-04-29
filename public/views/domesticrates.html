@@ -1,32 +1,43 @@
 <ul class="breadcrumb">
-    <li>Forms</li>
-    <li class="active">Domestic Rates</li>
+    <li>FORMS</li>
+    <li class="active">DOMESTIC RATES</li>
 </ul>
 <form class="form-horizontal">
     <div class="panel panel-success">
-        <div class="panel-heading">
-            <h1 class="panel-title pull-center"><strong>DOMESTIC</strong> RATES</h1>
-            <ul class="panel-controls">
-                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
-            </ul>
+        <div class="panel-heading" style="height:50px!important">
+            <div class="col-md-2 pull-left">
+            </div>
+            <div class="col-md-8" style="top:-15px!important">
+                <h1 class="text-center">
+                    <strong>DOMESTIC</strong> RATES
+                </h1>
+            </div>
+            <div class="col-md-2">
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                </ul>
+            </div>
         </div>
-        <div class="panel-heading ">
-            <img id="comlogo" class="img-responsive pull-left" width="10%" src="" alt="log">
-            <center>
-                <h3>
-                    <div style=" padding-top: 2%!important;">
-
-                        <span><strong><span id="comname"></span></strong><br>
-                        <span id="landmark"></span><br>
-                        <span id="comcity"></span><br>
-                        <span id="comstate"></span>,
-                        <span id="compostalcode"></span><br>#
-                        <span id="comno"></span>
-                    </div>
+        <div class="row panel-heading">
+            <div class="col-md-4 pull-left">
+                <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive " width="40%" src="" alt="log">
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-center">
+                    <span>
+                        <h1>{{comname | uppercase}}</h1>
+                    </span>
+                    <span>{{comlandmark}}</span><br>
+                    <span>{{comcity}}</span><br>
+                    <span>{{comstate}},</span>
+                    <span>{{compostalcode}}</span><br>
+                    <span>#{{comno}}</span>
                 </h3>
-            </center>
+            </div>
+            <div class="col-md-4">
+            </div>
         </div>
-        <div class="col-md-12 ">
+
 
 
 

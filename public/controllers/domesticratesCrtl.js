@@ -1,4 +1,12 @@
 angular.module('newApp').controller('domesticratesCrtl', function($scope) {
+
+    $scope.comname = localStorage.getItem('comname');
+    $scope.comlandmark = localStorage.getItem('landmark');
+    $scope.comcity = localStorage.getItem('comcity');
+    $scope.comstate = localStorage.getItem('comstate');
+    $scope.compostalcode = localStorage.getItem('compostalcode');
+    $scope.comno = localStorage.getItem('comcontact');
+
     $("#comname").text(localStorage.getItem('comname'))
     $("#landmark").text(localStorage.getItem('landmark'))
     $("#comcity").text(localStorage.getItem('comcity'))

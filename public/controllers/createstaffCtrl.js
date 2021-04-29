@@ -74,35 +74,6 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
     }
 
 
-
-
-    // var fb = firebase.database().ref().child("users");
-
-    // fb.orderByChild("cusid").equalTo(sessionStorage.getItem('curuserid')).on("value", function(snapshot) {
-
-    //     console.log(snapshot.val());
-
-    // localStorage.setItem('stafflist', $scope.stafflists);
-
-    // $timeout(function() {
-    //     $scope.$apply(function() {
-
-    //         // $scope.stafflist = snapshot.val();
-
-    //         // delete $scope.stafflist[localStorage.getItem('childkey')]
-
-    //         $scope.stafflists = localStorage.getItem('stafflists');
-
-    //         console.log($scope.stafflist);
-
-    //     });
-
-    // }, 300);
-
-    // });
-
-
-
     function snapshotToArray(snapshot) {
         var returnArr = [];
 

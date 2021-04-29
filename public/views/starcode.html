@@ -1,30 +1,41 @@
 <ul class="breadcrumb">
-    <li>Forms</li>
-    <li class="active">Start Code Reference</li>
+    <li>FORMS</li>
+    <li class="active">STAR CODE REFERENCE</li>
 </ul>
 <form class="form-horizontal">
     <div class="panel panel-success">
-        <div class="panel-heading" style="padding-left: 35%!important;">
-
-            <h1 class="panel-title" style="font-size: 35px;"><strong>STAR CODE</strong> REFERENCE
-            </h1>
-            <ul class="panel-controls">
-                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
-            </ul>
-
+        <div class="panel-heading" style="height:50px!important">
+            <div class="col-md-2 pull-left">
+            </div>
+            <div class="col-md-8" style="top:-15px!important">
+                <h1 class="text-center">
+                    <strong>STAR CODE</strong> REFERENCE
+                </h1>
+            </div>
+            <div class="col-md-2">
+                <ul class="panel-controls">
+                    <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                </ul>
+            </div>
         </div>
-        <div class="panel-heading" style="text-align:center!important;">
-            <img id="comlogo" style=" z-index: 1!important;" class="img-responsive pull-left" width="10%" src="" alt="log">
-            <h3>
-                <section style="padding-right: 11%!important;padding-top: 1%!important;">
-                    <span><strong><span id="comname"></span></strong><br>
-                    <span id="landmark"></span><br>
-                    <span id="comcity"></span><br>
-                    <span id="comstate"></span>,
-                    <span id="compostalcode"></span><br>#
-                    <span id="comno"></span>
-                </section>
-            </h3>
+        <div class="row panel-heading">
+            <div class="col-md-4 pull-left">
+                <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive " width="40%" src="" alt="log">
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-center">
+                    <span>
+                        <h1>{{comname | uppercase}}</h1>
+                    </span>
+                    <span>{{comlandmark}}</span><br>
+                    <span>{{comcity}}</span><br>
+                    <span>{{comstate}},</span>
+                    <span>{{compostalcode}}</span><br>
+                    <span>#{{comno}}</span>
+                </h3>
+            </div>
+            <div class="col-md-4">
+            </div>
         </div>
         <div class="col-md-12 ">
 

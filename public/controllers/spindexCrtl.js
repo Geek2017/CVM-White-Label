@@ -8,13 +8,8 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     $(".x-navigation li.active>a").css("background", fcolor);
     $(".panel-success>.panel-heading").css("color", fcolor);
 
-    var fcolor = localStorage.getItem('formcolor')
-    $(".panel").css("border-top-color", fcolor);
-    $(".btn-primary").css("background", fcolor)
-    $(".btn-primary").css("border-color", 'white')
-    $(".x-navigation>li.xn-logo>a:first-child").css("background", fcolor);
-    $(".x-navigation li.active>a").css("background", fcolor);
-    $(".panel-success>.panel-heading").css("color", fcolor);
+
+
 
     $scope.comname = localStorage.getItem('comname');
     $scope.comlandmark = localStorage.getItem('landmark');
@@ -449,6 +444,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     var sigb64;
 
     $scope.trigersignsp = function() {
+        $(".m-signature-pad").css("border-top-color", fcolor);
         var w = document.getElementById("signature-pad"),
             c = w.querySelector("canvas");
 
@@ -493,7 +489,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     $scope.editsp = function(nsp) {
 
         $('canvas').remove();
-
+        $(".m-signature-pad panel-success").css("border-top-color", fcolor);
         sigb64 = nsp.sign;
 
         $('#sign').prepend($('<img>', { id: 'sigb64', src: nsp.sign }))
@@ -649,6 +645,41 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         $('#spdelete').removeClass('open')
     }
 
+    $scope.print = function() {
+        $('.btn-primary').hide();
+        $('.removepanel').hide();
+        $('.btn-danger').hide();
+        $('.btn-info').hide();
+
+
+        $("#removepanel0").removeClass("panel panel-warning panel-heading");
+        $("#removepanel1").removeClass("panel panel-warning panel-heading");
+        $("#removepanel2").removeClass("panel panel-warning panel-heading");
+        // $(".modal-header").removeClass("modal-header");
+
+        $("#printThis").removeClass("pabel-body");
+
+        $("input").addClass("txtinput");
+        $("select").addClass("txtinput");
+
+        $('input').attr('style', 'height: 23px!important');
+        $('input').attr('style', 'font-size: 14px!important');
+
+        $('table').addClass('tables');
+
+        $('.modal-content').addClass('modal-contents');
+
+        html2canvas(document.querySelector("#printThis")).then(canvas => {
+            document.body.appendChild(canvas)
+            var nWindow = window.open('');
+            nWindow.document.body.appendChild(canvas);
+            nWindow.focus();
+            location.replace('#/')
+            location.replace('#/spindex')
+            nWindow.print();
+        });
+
+    }
 
     $(".icheckbox").click(function() {
         console.log($scope.phone, $scope.custname, $scope.bizname)

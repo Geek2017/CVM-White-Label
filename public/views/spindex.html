@@ -1,4 +1,28 @@
 <style>
+    .txtinput {
+        border: 0;
+        outline: 0;
+        background: transparent;
+        border-bottom: 2px solid black;
+    }
+    
+    .tds {
+        border-collapse: collapse;
+        border: 1px solid black;
+        width: 100%;
+        text-align: right;
+    }
+    
+    .modal-contents {
+        border: 0!important;
+    }
+    
+    @media print {
+        @page {
+            size: Legal;
+        }
+    }
+    
     .buttons {
         width: 20%;
         table-layout: fixed;
@@ -13,15 +37,18 @@
         background-color: #9773e2;
     }
     
+    .topline {
+        border-top-color: #9773e2;
+    }
+    
     .m-signature-pad {
         position: relative;
         font-size: 10px;
-        width: 400px;
+        width: 100%;
         height: 128px;
         border: 1px solid #e8e8e8;
         background-color: #fff;
         border-top-width: 2px;
-        border-top-color: #9773e2;
     }
     
     .m-signature-pad:before,
@@ -113,9 +140,10 @@
         }
     }
 </style>
-<ul class="breadcrumb">
-    <li>List</li>
-    <li class="active">Sales Proposal</li>
+
+<ul class="breadcrumb panel panel-success">
+    <li>LIST</li>
+    <li class="active">SALES PROPOSAL</li>
 </ul>
 <div class="page-content-wrap">
     <div class="row">
@@ -145,8 +173,8 @@
                             <h3 class="text-center">
 
                                 <span>
-                                    <h1>{{comname | uppercase}}</h1>
-                                </span>
+                                   <h1><strong>{{comname | uppercase}}</strong></h1>
+                               </span>
                                 <span>{{comlandmark}}</span><br>
                                 <span>{{comcity}}</span><br>
                                 <span>{{comstate}},</span>
@@ -204,14 +232,14 @@
                     <div class="panel-body">
                         <div class="table-responsive">
                             <label class="input">
-                                <input type="text" name="name" ng-model="findcf" >
-                            </label>
+                               <input type="text" name="name" ng-model="findcf" >
+                           </label>
 
                             <label class="input pull-right">
-                                <label class="select ">
-                                    <select class="" ng-model="pageSize" ng-options="num for num in [5,10, 100,1000]" ></select> <i></i> <br>
-                                    
-                                </label>
+                               <label class="select ">
+                                   <select class="" ng-model="pageSize" ng-options="num for num in [5,10, 100,1000]" ></select> <i></i> <br>
+                                   
+                               </label>
                             </label>
 
 
@@ -242,7 +270,7 @@
                                         <td>{{nsp.zipcode}}</td>
 
                                         <td class="text-center buttons">
-                                            <button ng-click="trigersignsp();editsp(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
+                                            <button ng-click="trigersignsp();editsp(nsp);" class="btn btn-default btn-sm fa fa-pencil print-preview" data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
                                             <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
                                             <button class="btn btn-info btn-sm fa fa-print " data-box="#message-box-success"> PRINT&nbsp;</button>
                                             <button class="btn btn-warning btn-sm fa fa-rocket" data-toggle="modal" data-target="#email_modal" ng-click="genhashkey(nsp);"> EMAIL&nbsp;</button>
@@ -254,11 +282,11 @@
 
                         <div class="btn-group btn-group-xs pull-right ">
                             <button class="btn btn-primary " ng-disabled="currentPage==0 " ng-click="currentPage=currentPage-1 ">
-       Back
-      </button>
+      Back
+     </button>
                             <button class="btn btn-primary ">{{currentPage+1}} of {{numberOfPages()}}</button>
                             <button class="btn btn-primary " ng-disabled="currentPage>= data.length/pageSize - 1" ng-click="currentPage=currentPage+1"> Next
-                                            </button>
+                                           </button>
                         </div>
                     </div>
                 </div>
@@ -294,7 +322,7 @@
 
 <div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" id="printThis">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">SALES PROPOSAL INFO.</h5>
             </div>
@@ -413,61 +441,61 @@
 
                             <div class="form-group">
                                 <div class="col-md-5">
-                                    <label class=" control-label">State:</label>
-                                    <select ng-model="nsp.state" class="form-control " data-style="btn-success" required>
-                                        <option value="">Select</option>
-                                        <option value="Alabama">Alabama</option>
-                                        <option value="Alaska">Alaska</option>
-                                        <option value="Arizona">Arizona</option>
-                                        <option value="Arkansas">Arkansas</option>
-                                        <option value="California">California</option>
-                                        <option value="Colorado">Colorado</option>
-                                        <option value="Connecticut">Connecticut</option>
-                                        <option value="Delaware">Delaware</option>
-                                        <option value="District Of Columbia">District Of Columbia</option>
-                                        <option value="Florida">Florida</option>
-                                        <option value="Georgia">Georgia</option>
-                                        <option value="Hawaii">Hawaii</option>
-                                        <option value="Idaho">Idaho</option>
-                                        <option value="Illinois">Illinois</option>
-                                        <option value="Indiana">Indiana</option>
-                                        <option value="Iowa">Iowa</option>
-                                        <option value="Kansas">Kansas</option>
-                                        <option value="Kentucky">Kentucky</option>
-                                        <option value="Louisiana">Louisiana</option>
-                                        <option value="Maine">Maine</option>
-                                        <option value="Maryland">Maryland</option>
-                                        <option value="Massachusetts">Massachusetts</option>
-                                        <option value="Michigan">Michigan</option>
-                                        <option value="Minnesota">Minnesota</option>
-                                        <option value="Mississippi">Mississippi</option>
-                                        <option value="Missouri">Missouri</option>
-                                        <option value="Montana">Montana</option>
-                                        <option value="Nebraska">Nebraska</option>
-                                        <option value="Nevada">Nevada</option>
-                                        <option value="New Hampshire">New Hampshire</option>
-                                        <option value="New Jersey">New Jersey</option>
-                                        <option value="New Mexico">New Mexico</option>
-                                        <option value="New York">New York</option>
-                                        <option value="North Carolina">North Carolina</option>
-                                        <option value="North Dakota">North Dakota</option>
-                                        <option value="Ohio">Ohio</option>
-                                        <option value="Oklahoma">Oklahoma</option>
-                                        <option value="Oregon">Oregon</option>
-                                        <option value="Pennsylvania">Pennsylvania</option>
-                                        <option value="Rhode Island">Rhode Island</option>
-                                        <option value="South Carolina">South Carolina</option>
-                                        <option value="South Dakota">South Dakota</option>
-                                        <option value="Tennessee">Tennessee</option>
-                                        <option value="Texas">Texas</option>
-                                        <option value="Utah">Utah</option>
-                                        <option value="Vermont">Vermont</option>
-                                        <option value="Virginia">Virginia</option>
-                                        <option value="Washington">Washington</option>
-                                        <option value="West Virginia">West Virginia</option>
-                                        <option value="Wisconsin">Wisconsin</option>
-                                        <option value="Wyoming">Wyoming</option>
-                                    </select>
+                                    <label class="control-label">State:</label>
+                                    <select ng-model="nsp.state" class="form-control" data-style="btn-success" required>
+                                       <option value="">Select</option>
+                                       <option value="Alabama">Alabama</option>
+                                       <option value="Alaska">Alaska</option>
+                                       <option value="Arizona">Arizona</option>
+                                       <option value="Arkansas">Arkansas</option>
+                                       <option value="California">California</option>
+                                       <option value="Colorado">Colorado</option>
+                                       <option value="Connecticut">Connecticut</option>
+                                       <option value="Delaware">Delaware</option>
+                                       <option value="District Of Columbia">District Of Columbia</option>
+                                       <option value="Florida">Florida</option>
+                                       <option value="Georgia">Georgia</option>
+                                       <option value="Hawaii">Hawaii</option>
+                                       <option value="Idaho">Idaho</option>
+                                       <option value="Illinois">Illinois</option>
+                                       <option value="Indiana">Indiana</option>
+                                       <option value="Iowa">Iowa</option>
+                                       <option value="Kansas">Kansas</option>
+                                       <option value="Kentucky">Kentucky</option>
+                                       <option value="Louisiana">Louisiana</option>
+                                       <option value="Maine">Maine</option>
+                                       <option value="Maryland">Maryland</option>
+                                       <option value="Massachusetts">Massachusetts</option>
+                                       <option value="Michigan">Michigan</option>
+                                       <option value="Minnesota">Minnesota</option>
+                                       <option value="Mississippi">Mississippi</option>
+                                       <option value="Missouri">Missouri</option>
+                                       <option value="Montana">Montana</option>
+                                       <option value="Nebraska">Nebraska</option>
+                                       <option value="Nevada">Nevada</option>
+                                       <option value="New Hampshire">New Hampshire</option>
+                                       <option value="New Jersey">New Jersey</option>
+                                       <option value="New Mexico">New Mexico</option>
+                                       <option value="New York">New York</option>
+                                       <option value="North Carolina">North Carolina</option>
+                                       <option value="North Dakota">North Dakota</option>
+                                       <option value="Ohio">Ohio</option>
+                                       <option value="Oklahoma">Oklahoma</option>
+                                       <option value="Oregon">Oregon</option>
+                                       <option value="Pennsylvania">Pennsylvania</option>
+                                       <option value="Rhode Island">Rhode Island</option>
+                                       <option value="South Carolina">South Carolina</option>
+                                       <option value="South Dakota">South Dakota</option>
+                                       <option value="Tennessee">Tennessee</option>
+                                       <option value="Texas">Texas</option>
+                                       <option value="Utah">Utah</option>
+                                       <option value="Vermont">Vermont</option>
+                                       <option value="Virginia">Virginia</option>
+                                       <option value="Washington">Washington</option>
+                                       <option value="West Virginia">West Virginia</option>
+                                       <option value="Wisconsin">Wisconsin</option>
+                                       <option value="Wyoming">Wyoming</option>
+                                   </select>
                                 </div>
                                 <div class="col-md-5">
                                     <label class=" control-label">Zip Code:</label>
@@ -513,59 +541,59 @@
                                 <div class="col-md-5">
                                     <label class=" control-label">State:</label>
                                     <select ng-model="nsp.state2" class="form-control state2" data-style="btn-success">
-                                        <option value="">Select</option>
-                                        <option value="Alabama">Alabama</option>
-                                        <option value="Alaska">Alaska</option>
-                                        <option value="Arizona">Arizona</option>
-                                        <option value="Arkansas">Arkansas</option>
-                                        <option value="California">California</option>
-                                        <option value="Colorado">Colorado</option>
-                                        <option value="Connecticut">Connecticut</option>
-                                        <option value="Delaware">Delaware</option>
-                                        <option value="District Of Columbia">District Of Columbia</option>
-                                        <option value="Florida">Florida</option>
-                                        <option value="Georgia">Georgia</option>
-                                        <option value="Hawaii">Hawaii</option>
-                                        <option value="Idaho">Idaho</option>
-                                        <option value="Illinois">Illinois</option>
-                                        <option value="Indiana">Indiana</option>
-                                        <option value="Iowa">Iowa</option>
-                                        <option value="Kansas">Kansas</option>
-                                        <option value="Kentucky">Kentucky</option>
-                                        <option value="Louisiana">Louisiana</option>
-                                        <option value="Maine">Maine</option>
-                                        <option value="Maryland">Maryland</option>
-                                        <option value="Massachusetts">Massachusetts</option>
-                                        <option value="Michigan">Michigan</option>
-                                        <option value="Minnesota">Minnesota</option>
-                                        <option value="Mississippi">Mississippi</option>
-                                        <option value="Missouri">Missouri</option>
-                                        <option value="Montana">Montana</option>
-                                        <option value="Nebraska">Nebraska</option>
-                                        <option value="Nevada">Nevada</option>
-                                        <option value="New Hampshire">New Hampshire</option>
-                                        <option value="New Jersey">New Jersey</option>
-                                        <option value="New Mexico">New Mexico</option>
-                                        <option value="New York">New York</option>
-                                        <option value="North Carolina">North Carolina</option>
-                                        <option value="North Dakota">North Dakota</option>
-                                        <option value="Ohio">Ohio</option>
-                                        <option value="Oklahoma">Oklahoma</option>
-                                        <option value="Oregon">Oregon</option>
-                                        <option value="Pennsylvania">Pennsylvania</option>
-                                        <option value="Rhode Island">Rhode Island</option>
-                                        <option value="South Carolina">South Carolina</option>
-                                        <option value="South Dakota">South Dakota</option>
-                                        <option value="Tennessee">Tennessee</option>
-                                        <option value="Texas">Texas</option>
-                                        <option value="Utah">Utah</option>
-                                        <option value="Vermont">Vermont</option>
-                                        <option value="Virginia">Virginia</option>
-                                        <option value="Washington">Washington</option>
-                                        <option value="West Virginia">West Virginia</option>
-                                        <option value="Wisconsin">Wisconsin</option>
-                                        <option value="Wyoming">Wyoming</option>
-                                    </select>
+                                       <option value="">Select</option>
+                                       <option value="Alabama">Alabama</option>
+                                       <option value="Alaska">Alaska</option>
+                                       <option value="Arizona">Arizona</option>
+                                       <option value="Arkansas">Arkansas</option>
+                                       <option value="California">California</option>
+                                       <option value="Colorado">Colorado</option>
+                                       <option value="Connecticut">Connecticut</option>
+                                       <option value="Delaware">Delaware</option>
+                                       <option value="District Of Columbia">District Of Columbia</option>
+                                       <option value="Florida">Florida</option>
+                                       <option value="Georgia">Georgia</option>
+                                       <option value="Hawaii">Hawaii</option>
+                                       <option value="Idaho">Idaho</option>
+                                       <option value="Illinois">Illinois</option>
+                                       <option value="Indiana">Indiana</option>
+                                       <option value="Iowa">Iowa</option>
+                                       <option value="Kansas">Kansas</option>
+                                       <option value="Kentucky">Kentucky</option>
+                                       <option value="Louisiana">Louisiana</option>
+                                       <option value="Maine">Maine</option>
+                                       <option value="Maryland">Maryland</option>
+                                       <option value="Massachusetts">Massachusetts</option>
+                                       <option value="Michigan">Michigan</option>
+                                       <option value="Minnesota">Minnesota</option>
+                                       <option value="Mississippi">Mississippi</option>
+                                       <option value="Missouri">Missouri</option>
+                                       <option value="Montana">Montana</option>
+                                       <option value="Nebraska">Nebraska</option>
+                                       <option value="Nevada">Nevada</option>
+                                       <option value="New Hampshire">New Hampshire</option>
+                                       <option value="New Jersey">New Jersey</option>
+                                       <option value="New Mexico">New Mexico</option>
+                                       <option value="New York">New York</option>
+                                       <option value="North Carolina">North Carolina</option>
+                                       <option value="North Dakota">North Dakota</option>
+                                       <option value="Ohio">Ohio</option>
+                                       <option value="Oklahoma">Oklahoma</option>
+                                       <option value="Oregon">Oregon</option>
+                                       <option value="Pennsylvania">Pennsylvania</option>
+                                       <option value="Rhode Island">Rhode Island</option>
+                                       <option value="South Carolina">South Carolina</option>
+                                       <option value="South Dakota">South Dakota</option>
+                                       <option value="Tennessee">Tennessee</option>
+                                       <option value="Texas">Texas</option>
+                                       <option value="Utah">Utah</option>
+                                       <option value="Vermont">Vermont</option>
+                                       <option value="Virginia">Virginia</option>
+                                       <option value="Washington">Washington</option>
+                                       <option value="West Virginia">West Virginia</option>
+                                       <option value="Wisconsin">Wisconsin</option>
+                                       <option value="Wyoming">Wyoming</option>
+                                   </select>
                                 </div>
                                 <div class="col-md-5">
                                     <label class=" control-label">Zip Code:</label>
@@ -579,21 +607,21 @@
                                     <label class=" control-label">Term Length:</label>
                                     <input ng-model="nsp.termlength" type="text" class="form-control" required />
                                     <label class=" control-label">(Federal, state and Local Taxes and Fees Not
-                                        Included)</label>
+                                       Included)</label>
                                 </div>
                                 <span class="col-md-2"></span>
                             </div>
                         </div>
 
                     </div>
-                    <br><br>
+                    <br>
                     <div class="row">
                         <!-- MRC -->
                         <div class="col-md-12">
 
                             <span class="col-md-1"></span>
                             <div class="col-md-10">
-                                <div class="panel panel-warning panel-heading">
+                                <div id="removepanel0" class="panel panel-warning panel-heading">
                                     <h3 class="panel-title">Monthly Recurring Charges (MRC)</h3>
                                 </div>
                                 <div class="panel-body">
@@ -649,7 +677,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="panel panel-warning panel-heading">
+                                <div class="panel panel-warning panel-heading removepanel">
                                     <div class="btn-group pull-right ">
                                         <button class="btn btn-primary btn-lg" ng-click="mrcadd(mrc);">+</button>
                                         <button class="btn btn-danger btn-lg" ng-click="mrcmin(mrc);">-</button>
@@ -663,7 +691,7 @@
                         <div class="col-md-12">
                             <span class="col-md-1"></span>
                             <div class="col-md-10">
-                                <div class="panel panel-warning panel-heading">
+                                <div id="removepanel1" class="panel panel-warning panel-heading">
                                     <h3 class="panel-title">Non-Recurring Charges (NRC)</h3>
                                 </div>
                                 <div class="panel-body">
@@ -721,9 +749,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="panel panel-warning panel-heading">
+                                <div class="panel panel-warning panel-heading removepanel">
                                     <div class="btn-group pull-right ">
-
                                         <button class="btn btn-primary btn-lg" ng-click="nrcadd(nrc);">+</button>
                                         <button class="btn btn-danger btn-lg" ng-click="nrcmin(nrc);">-</button>
                                     </div>
@@ -735,7 +762,7 @@
                         <div class="col-md-12">
                             <span class="col-md-1"></span>
                             <div class="col-md-10">
-                                <div class="panel panel-warning panel-heading">
+                                <div id="removepanel2" class="panel panel-warning panel-heading">
                                     <h3 class="panel-title">Free Program Feature Highlights</h3>
                                 </div>
                                 <div class="panel-body">
@@ -786,29 +813,25 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="panel panel-warning panel-heading">
+                                <div class="panel panel-warning panel-heading removepanel">
                                     <div class="btn-group pull-right ">
-
                                         <button class="btn btn-primary btn-lg" ng-click="frcadd(frc);">+</button>
                                         <button class="btn btn-danger btn-lg" ng-click="frcmin(frc);">-</button>
                                     </div>
                                 </div>
                             </div>
                             <div>
-
-
                             </div>
-
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <span class="col-md-2"></span>
                                         <div class="col-md-10">
                                             <label class="control-label">Main Phone Number to be
-                                    Used to Establish Account:</label>
+                                   Used to Establish Account:</label>
                                             <input ng-model="nsp.mainphoneno" type="text" class="form-control" />
                                             <label class="control-label"><p style="font-size:9px">This proposal has been approved and
-                                    is valid for 30 days from signature date.</p> </label>
+                                   is valid for 30 days from signature date.</p> </label>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -825,17 +848,16 @@
                                         <div class="col-md-10">
                                             <label class="control-label">Signature:</label>
 
-                                            <div id="signature-pad" class="m-signature-pad panel-success" style="width: 360px!important;">
+                                            <div id="signature-pad" class="m-signature-pad">
                                                 <button id="savesign" type="button" class="btn  btn-info btn-xs  pull-right">Save Sign</button>
+
                                                 <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">Delete Sign</button><br><br><br>
                                                 <div class="m-signature-pad--body" id="sign">
                                                     <canvas></canvas>
                                                 </div>
-
                                             </div>
 
                                         </div>
-
                                         <span class="col-md-2"></span>
                                     </div>
                                 </div>
@@ -843,11 +865,11 @@
                         </div>
 
                     </div>
-
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">CLOSE</button>
+                <button id="update" type="button" class="btn btn-primary" ng-click="print();">PRINT</button>
                 <button id="update" type="button" class="btn btn-primary" ng-click="updatesp();">UPDATE</button>
             </div>
         </div>

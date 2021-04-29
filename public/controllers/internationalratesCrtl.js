@@ -1,10 +1,10 @@
 angular.module('newApp').controller('internationalratesCrtl', function($scope) {
-    $("#comname").text(localStorage.getItem('comname'))
-    $("#landmark").text(localStorage.getItem('landmark'))
-    $("#comcity").text(localStorage.getItem('comcity'))
-    $("#comstate").text(localStorage.getItem('comstate'))
-    $("#compostalcode").text(localStorage.getItem('compostalcode'))
-    $("#comno").text(localStorage.getItem('comcontact'))
+    $scope.comname = localStorage.getItem('comname');
+    $scope.comlandmark = localStorage.getItem('landmark');
+    $scope.comcity = localStorage.getItem('comcity');
+    $scope.comstate = localStorage.getItem('comstate');
+    $scope.compostalcode = localStorage.getItem('compostalcode');
+    $scope.comno = localStorage.getItem('comcontact');
 
     if (sessionStorage.getItem('comlogo')) {
         console.log('imageloaded')
