@@ -1,4 +1,4 @@
-angular.module('newApp').controller('indexdCtrl', function($scope, $rootScope) {
+angular.module('newApp').controller('indexdCtrl', function($scope) {
 
     var config = {
         apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",
@@ -8,9 +8,6 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $rootScope) {
     };
 
     firebase.initializeApp(config);
-
-
-
     firebase.auth().onAuthStateChanged(function(user) {
         doSomething();
 
@@ -53,6 +50,24 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $rootScope) {
                 localStorage.setItem('formcolor', snapshot.val().formcolor)
 
                 $("#theme").attr("href", snapshot.val().theme);
+
+                console.log($("#theme").attr("href"))
+
+                if ($("#theme").attr("href") == snapshot.val().theme) {
+
+                    $(document).ready(function() {
+
+                        setTimeout(function() {
+
+                            document.getElementById("spinner").style.visibility = "hidden";
+
+                            document.getElementById("formportal").style.visibility = "visible";
+
+                        }, 1500)
+
+                    });
+
+                }
 
                 $(".x-navigation .informer.informer-warning ").css("background", snapshot.val().formcolor);
 
@@ -98,13 +113,6 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $rootScope) {
 
     $(".activate").addClass("active");
 
-    setTimeout(function() {
-
-        document.getElementById("spinner").style.visibility = "hidden";
-
-        document.getElementById("formportal").style.visibility = "visible";
-
-    }, 5000)
 
 
 
