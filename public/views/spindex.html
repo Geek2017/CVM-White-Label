@@ -6,21 +6,8 @@
         border-bottom: 2px solid black;
     }
     
-    .tds {
-        border-collapse: collapse;
-        border: 1px solid black;
-        width: 100%;
-        text-align: right;
-    }
-    
     .modal-contents {
         border: 0!important;
-    }
-    
-    @media print {
-        @page {
-            size: Legal;
-        }
     }
     
     .buttons {
@@ -35,10 +22,6 @@
     
     .hover:hover {
         background-color: #9773e2;
-    }
-    
-    .topline {
-        border-top-color: #9773e2;
     }
     
     .m-signature-pad {
@@ -150,11 +133,12 @@
         <div class="col-md-12">
             <form class="form-horizontal">
                 <div class="panel panel-success">
+
                     <div class="panel-heading" style="height:50px!important">
-                        <div class="col-md-4 pull-left">
+                        <div class="col-md-4">
                         </div>
-                        <div class="col-md-4" style="top:-15px!important">
-                            <h1 class="text-center">
+                        <div class="col-md-4 text-center" style="top:-15px!important">
+                            <h1>
                                 <strong>SALES</strong> PROPOSAL
                             </h1>
                         </div>
@@ -167,11 +151,10 @@
 
                     <div class="row panel-heading">
                         <div class="col-md-4 pull-left">
-                            <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive " width="40%" src="" alt="log">
+                            <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive " width="150px!important" height="150px!important" src="" alt="log">
                         </div>
                         <div class="col-md-4 ">
                             <h3 class="text-center">
-
                                 <span>
                                    <h1><strong>{{comname | uppercase}}</strong></h1>
                                </span>
@@ -185,17 +168,18 @@
                         <div class="col-md-4">
                         </div>
                     </div>
-                    <div class="message-box message-box-success animated fadeIn" id="spsuccess">
+
+                    <div class="message-box message-box-primary animated fadeIn" id="spsuccess">
                         <div class="mb-container">
                             <div class="mb-middle">
                                 <div class="mb-title"><span class="fa fa-check"></span> Success:</div>
                                 <div class="mb-content">
                                     <p>Your Data had been save!</p>
                                 </div>
-
                             </div>
                         </div>
                     </div>
+
                     <div class="message-box message-box-danger animated fadeIn" id="sperror">
                         <div class="mb-container">
                             <div class="mb-middle">
@@ -237,7 +221,7 @@
 
                             <label class="input pull-right">
                                <label class="select ">
-                                   <select class="" ng-model="pageSize" ng-options="num for num in [5,10, 100,1000]" ></select> <i></i> <br>
+                                   <select class="" ng-model="pageSize" ng-options="num for num in [2,5,10, 100,1000]" ></select> <i></i> <br>
                                    
                                </label>
                             </label>
@@ -258,7 +242,7 @@
                                         <th style="width:160px!important">Data Controls <a href="#/salesproposal"><span class="btn btn-primary btn-sm fa fa-plus pull-right"> NEW</span></a></th>
                                     </tr>
                                 </thead>
-                                <tbody ng-repeat="nsp in osps | startFrom:currentPage*pageSize | limitTo:pageSize |filter:findcf ">
+                                <tbody ng-repeat="nsp in osps | startFrom:currentPage*pageSize | limitTo:pageSize | filter:findcf ">
                                     <tr>
                                         <td class="text-center">{{$index + 1}}</td>
                                         <td>{{nsp.bizname}}</td>
@@ -270,9 +254,9 @@
                                         <td>{{nsp.zipcode}}</td>
 
                                         <td class="text-center buttons">
-                                            <button ng-click="trigersignsp();editsp(nsp);" class="btn btn-default btn-sm fa fa-pencil print-preview" data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
+                                            <button ng-click="editsp(nsp);trigersignsp(nsp);" class="btn btn-default btn-sm fa fa-pencil print-preview" data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
                                             <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
-                                            <button class="btn btn-info btn-sm fa fa-print " data-box="#message-box-success"> PRINT&nbsp;</button>
+                                            <button ng-click="editsp(nsp);print()" data-toggle="modal" data-target="#update_modal" class="btn btn-info btn-sm fa fa-print "> PRINT&nbsp;</button>
                                             <button class="btn btn-warning btn-sm fa fa-rocket" data-toggle="modal" data-target="#email_modal" ng-click="genhashkey(nsp);"> EMAIL&nbsp;</button>
                                         </td>
                                     </tr>
@@ -323,9 +307,38 @@
 <div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" id="printThis">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">SALES PROPOSAL INFO.</h5>
+
+            <div class="panel-body" style="height:50px!important">
+
+                <div class="col-md-12 text-center" style="top:-15px!important">
+                    <h1 class="text-center">
+                        <strong>SALES</strong> PROPOSAL
+                    </h1>
+                </div>
+
             </div>
+
+            <div class="panel-body">
+                <div class="col-md-4 pull-left">
+                    <img style="padding-top: 6px!important;" class="img-responsive" width="150px!important" height="150px!important" src="{{comlogo}}" alt="log">
+                </div>
+                <div class="col-md-4 ">
+                    <h3 class="text-center">
+
+                        <span>
+                   <h2><strong>{{comname | uppercase}}</strong></h2>
+               </span>
+                        <span>{{comlandmark}}</span><br>
+                        <span>{{comcity}}</span><br>
+                        <span>{{comstate}},</span>
+                        <span>{{compostalcode}}</span><br>
+                        <span>#{{comno}}</span>
+                    </h3>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+
             <div class="modal-body">
                 <div class="panel-body">
                     <div class="row">
@@ -618,7 +631,6 @@
                     <div class="row">
                         <!-- MRC -->
                         <div class="col-md-12">
-
                             <span class="col-md-1"></span>
                             <div class="col-md-10">
                                 <div id="removepanel0" class="panel panel-warning panel-heading">
@@ -684,7 +696,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
                         <!-- NRC -->
@@ -849,7 +860,7 @@
                                             <label class="control-label">Signature:</label>
 
                                             <div id="signature-pad" class="m-signature-pad">
-                                                <button id="savesign" type="button" class="btn  btn-info btn-xs  pull-right">Save Sign</button>
+                                                <strong class="signmsg"></strong><button id="savesign" type="button" class="btn  btn-info btn-xs  pull-right">Save Sign</button>
 
                                                 <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">Delete Sign</button><br><br><br>
                                                 <div class="m-signature-pad--body" id="sign">
@@ -867,9 +878,10 @@
                     </div>
                 </div>
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">CLOSE</button>
-                <button id="update" type="button" class="btn btn-primary" ng-click="print();">PRINT</button>
+                <button id="update" type="button" class="btn btn-info" ng-click="download();">DOWNLOAD</button>
                 <button id="update" type="button" class="btn btn-primary" ng-click="updatesp();">UPDATE</button>
             </div>
         </div>

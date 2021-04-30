@@ -8,9 +8,6 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     $(".x-navigation li.active>a").css("background", fcolor);
     $(".panel-success>.panel-heading").css("color", fcolor);
 
-
-
-
     $scope.comname = localStorage.getItem('comname');
     $scope.comlandmark = localStorage.getItem('landmark');
     $scope.comcity = localStorage.getItem('comcity');
@@ -20,16 +17,16 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     $scope.currentPage = 0;
     $scope.pageSize = 10;
-    $scope.data = [];
+    $scope.osps = [];
 
     $scope.numberOfPages = () => {
         return Math.ceil(
-            $scope.data.length / $scope.pageSize
+            $scope.osps.length / $scope.pageSize
         );
     }
 
     for (var i = 0; i < 10; i++) {
-        $scope.data.push(`Question number ${i}`);
+        $scope.osps.push(`Question number ${i}`);
     }
 
     if (sessionStorage.getItem('comlogo')) {
@@ -444,20 +441,21 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     var sigb64;
 
     $scope.trigersignsp = function() {
-        $(".m-signature-pad").css("border-top-color", fcolor);
+
+
         var w = document.getElementById("signature-pad"),
             c = w.querySelector("canvas");
 
-
         document.getElementById('clear').addEventListener('click', function() {
-            signaturePad.clear();
 
             $('#sign').prepend($('<canvas>'))
             $('#sigb64').remove();
 
             $scope.trigersignsp();
-
+            // signaturePad.clear();
         });
+
+
 
         function resizeCanvas(canvas) {
             var ratio = window.devicePixelRatio || 1;
@@ -465,6 +463,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
             canvas.height = canvas.offsetHeight * ratio;
             canvas.getContext("2d").scale(ratio, ratio);
         }
+
         resizeCanvas(c);
 
         var data = "";
@@ -476,7 +475,9 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         signaturePad.fromDataURL(data);
 
         $("#savesign").click(function() {
+            $('.signmsg').text('Signature saved!');
             sigb64 = c.toDataURL(c);
+            console.log(sigb64)
         });
 
     }
@@ -488,13 +489,19 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
     $scope.editsp = function(nsp) {
 
+        console.log(nsp)
+
+        $scope.comlogo = sessionStorage.getItem('comlogo');
+
+        console.log($scope.comlogo)
+
         $('canvas').remove();
+
         $(".m-signature-pad panel-success").css("border-top-color", fcolor);
+
         sigb64 = nsp.sign;
 
         $('#sign').prepend($('<img>', { id: 'sigb64', src: nsp.sign }))
-
-        console.log(nsp)
 
         $scope.nsp = nsp;
 
@@ -525,6 +532,112 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
             $scope.nrct = nrct,
             $scope.mrct = mrct,
             $scope.frct = frct;
+
+
+    }
+
+    $scope.download = function() {
+
+        $('.removepanel').hide();
+        $('#savesign').hide();
+        $('#clear').hide();
+
+        $(".modal-footer").hide();
+
+        $("#removepanel0").removeClass("panel panel-warning panel-heading");
+        $("#removepanel1").removeClass("panel panel-warning panel-heading");
+        $("#removepanel2").removeClass("panel panel-warning panel-heading");
+
+
+        $("#printThis").removeClass("pabel-body");
+
+        $("input").addClass("txtinput");
+        $("select").addClass("txtinput");
+
+        $('input').attr('style', 'height: 23px!important');
+        $('input').attr('style', 'font-size: 14px!important');
+
+        $('table').addClass('tables');
+
+        $('.modal-content').addClass('modal-contents');
+        $("#printThis").addClass('printls');
+
+        $('#printThis').animate({ scrollTop: 0 }, 'slow');
+
+
+        html2canvas(document.querySelector("#printThis")).then(function(canvas) {
+            console.log(canvas);
+            simulateDownloadImageClick(canvas.toDataURL(), 'salesproposal.png');
+        });
+
+
+
+        function simulateDownloadImageClick(uri, filename) {
+            var link = document.createElement('a');
+            if (typeof link.download !== 'string') {
+                window.open(uri);
+            } else {
+                link.href = uri;
+                link.download = filename;
+                accountForFirefox(clickLink, link);
+            }
+        }
+
+        function clickLink(link) {
+            link.click();
+        }
+
+        function accountForFirefox(click) {
+
+            let link = arguments[1];
+            document.body.appendChild(link);
+            click(link);
+            document.body.removeChild(link);
+        }
+
+
+    }
+
+    $scope.print = function() {
+
+        $('.removepanel').hide();
+        $('#savesign').hide();
+        $('#clear').hide();
+
+        $(".modal-footer").hide();
+
+        $("#removepanel0").removeClass("panel panel-warning panel-heading");
+        $("#removepanel1").removeClass("panel panel-warning panel-heading");
+        $("#removepanel2").removeClass("panel panel-warning panel-heading");
+
+
+        $("#printThis").removeClass("pabel-body");
+
+        $("input").addClass("txtinput");
+        $("select").addClass("txtinput");
+
+        $('input').attr('style', 'height: 23px!important');
+        $('input').attr('style', 'font-size: 14px!important');
+
+        $('table').addClass('tables');
+
+        $('.modal-content').addClass('modal-contents');
+        $("#printThis").addClass('printls');
+
+        setTimeout(function() {
+            html2canvas(document.querySelector("#printThis")).then(canvas => {
+                document.body.appendChild(canvas)
+                var nWindow = window.open('', 'PrintWindow', 'width=1000,height=1000', 'overflow=hidden');
+                nWindow.document.body.appendChild(canvas)
+                nWindow.focus();
+                nWindow.print();
+                location.replace('#/')
+                location.replace('#/spindex')
+                setTimeout(function() {
+                    nWindow.close();
+                }, 1000)
+            });
+        }, 2000)
 
     }
 
@@ -645,41 +758,9 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         $('#spdelete').removeClass('open')
     }
 
-    $scope.print = function() {
-        $('.btn-primary').hide();
-        $('.removepanel').hide();
-        $('.btn-danger').hide();
-        $('.btn-info').hide();
 
 
-        $("#removepanel0").removeClass("panel panel-warning panel-heading");
-        $("#removepanel1").removeClass("panel panel-warning panel-heading");
-        $("#removepanel2").removeClass("panel panel-warning panel-heading");
-        // $(".modal-header").removeClass("modal-header");
 
-        $("#printThis").removeClass("pabel-body");
-
-        $("input").addClass("txtinput");
-        $("select").addClass("txtinput");
-
-        $('input').attr('style', 'height: 23px!important');
-        $('input').attr('style', 'font-size: 14px!important');
-
-        $('table').addClass('tables');
-
-        $('.modal-content').addClass('modal-contents');
-
-        html2canvas(document.querySelector("#printThis")).then(canvas => {
-            document.body.appendChild(canvas)
-            var nWindow = window.open('');
-            nWindow.document.body.appendChild(canvas);
-            nWindow.focus();
-            location.replace('#/')
-            location.replace('#/spindex')
-            nWindow.print();
-        });
-
-    }
 
     $(".icheckbox").click(function() {
         console.log($scope.phone, $scope.custname, $scope.bizname)
