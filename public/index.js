@@ -53,21 +53,9 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
                 console.log($("#theme").attr("href"))
 
-                if ($("#theme").attr("href") == snapshot.val().theme) {
+                document.getElementById("spinner").style.visibility = "hidden";
 
-                    $(document).ready(function() {
-
-                        setTimeout(function() {
-
-                            document.getElementById("spinner").style.visibility = "hidden";
-
-                            document.getElementById("formportal").style.visibility = "visible";
-
-                        }, 1500)
-
-                    });
-
-                }
+                document.getElementById("formportal").style.visibility = "visible";
 
                 $(".x-navigation .informer.informer-warning ").css("background", snapshot.val().formcolor);
 

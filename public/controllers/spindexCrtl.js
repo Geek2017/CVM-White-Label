@@ -635,9 +635,9 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
                 location.replace('#/spindex')
                 setTimeout(function() {
                     nWindow.close();
-                }, 1000)
+                }, 2000)
             });
-        }, 2000)
+        }, 3000)
 
     }
 

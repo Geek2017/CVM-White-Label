@@ -149,7 +149,7 @@
                                                 <input id="cusname" type="text" class="form-control" name="data" placeholder="Admin Full Name" />
                                             </div>
                                             <div class="col-md-5">
-                                                <input id="cusid" type="text" class="form-control" name="data" placeholder="Partner ID" />
+                                                <input id="cusemail" type="email" class="form-control" name="email" placeholder="Email" autocorrect="off" spellcheck="false" autocomplete="off" />
                                             </div>
                                         </div>
                                     </div>
@@ -159,11 +159,13 @@
                                     <div class="col-md-10">
                                         <div class="form-group">
                                             <span class="col-md-2"></span>
+
                                             <div class="col-md-5">
-                                                <input id="cusemail" type="email" class="form-control" name="email" placeholder="Email" />
+                                                <input id="cusid" type="text" class="form-control" name="data" placeholder="Partner ID" />
                                             </div>
                                             <div class="col-md-5">
-                                                <input id="registerPassword" type="password" class="form-control" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+                                                <input id="registerPassword" type="password" class="form-control" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password"
+                                                    required/>
                                                 <label id="showpwd" class="col-md-12 pull-right control-label" style="color: white;">Show Password <input type="checkbox" ></label>
                                             </div>
                                             <span class="col-md-2"></span>
@@ -201,7 +203,7 @@
                                         <input id="comname" type="text" class="form-control" name="data" placeholder="Company Name" />
                                     </div>
                                     <div class="col-md-5">
-                                        <input id="comcontact" type="number" class="form-control" name="Contact" placeholder="Company Contact" />
+                                        <input id="comcontact" type="text" class="form-control" name="Contact" placeholder="Company Contact" />
                                     </div>
                                 </div>
 
@@ -282,130 +284,30 @@
 
                             <div id="step-2" style="margin-left: -130px!important;">
 
-                                <div class="form-group" style="color: white;">
-                                    <span class="col-md-2"></span>
-                                    <div class="col-md-2">
-                                        <div class="ts-title">Themes:</div>
-                                        <div class="ts-themes">
-                                            <a href="#" id="tdefault" class="active" data-theme="css/theme-default.css"><img src="./assets/img/themes/default.jpg"></a>
-                                            <a href="#" id="tbrown" data-theme="css/theme-brown.css"><img src="./assets/img/themes/brown.jpg"></a>
-                                            <a href="#" id="tblue" data-theme="css/theme-blue.css"><img src="./assets/img/themes/blue.jpg"></a>
-                                            <p></p>
-                                            <a href="#" id="twhite" data-theme="css/theme-white.css"><img src="./assets/img/themes/light.jpg"></a>
-                                            <a href="#" id="tblack" data-theme="css/theme-black.css"><img src="./assets/img/themes/green.jpg"></a>
-                                        </div>
-                                        <br>
+                                <div class="form-group " style="color: white;">
+                                    <span class="col-md-6"></span>
+                                    <div class="col-md-6">
+
                                         <div class="ts-title">Form Color:</div>
 
                                         <div class="form-c">
-                                            <a href="#" id="purple"><img class="purple" src="./assets/img/themes/default.jpg"></a>
-                                            <a href="#" id="blue"><img class="blue" src="./assets/img/themes/bl.jpg"></a>
-                                            <a href="#" id="green"><img class="green" src="./assets/img/themes/normal.jpg"></a>
+                                            <a href="#" id="purple"><img class="purple" width="50" src="./assets/img/themes/default.jpg"></a>
+                                            <a href="#" id="blue"><img class="blue" width="50" src="./assets/img/themes/bl.jpg"></a>
+                                            <a href="#" id="green"><img class="green" width="50" src="./assets/img/themes/normal.jpg"></a>
                                             <p></p>
-                                            <a href="#" id="red"><img src="./assets/img/themes/red.jpg"></a>
-                                            <a href="#" id="grey"><img src="./assets/img/themes/grey.jpg"></a>
-                                            <a href="#" id="orange"><img src="./assets/img/themes/orange.jpg"></a>
+                                            <a href="#" id="red"><img width="50" src="./assets/img/themes/red.jpg"></a>
+                                            <a href="#" id="grey"><img width="50" src="./assets/img/themes/grey.jpg"></a>
+                                            <a href="#" id="orange"><img width="50" src="./assets/img/themes/orange.jpg"></a>
                                         </div>
                                         <br>
                                         <div class="ts-title">Custom:</div>
                                         <div class="col-md-2 input-group color" data-color="rgb(255, 255, 255)" data-color-format="rgb" id="colorpicker" style="padding-left: 0px;padding-right: 0px;">
-                                            <input id="dcpr" type="text" class="btn-xs form-control" style="font-size: 6!important; width: 55px; height: 20px;" readonly>
+                                            <input id="dcpr" type="text" class="btn-xs form-control" style="font-size: 10!important; width: 105px; " readonly>
                                             <span id="cpr" class="input-group-addon"><i
-                                                                style="background-color: rgb(255, 255, 255);"></i>
+                                                                style="margin-bottom: 3px; width:30px; height:30px; background-color: rgb(255, 255, 255);"></i>
                                                         </span>
                                         </div>
                                     </div>
-
-                                    <span class="col-md-2"></span>
-                                    <div class="col-md-2">
-                                        <div class="ts-title">Options:</div>
-                                        <div class="ts-row"><label class="check">
-                                                            <div class="icheckbox_minimal-grey"
-                                                                style="position: relative;">
-                                                                <input type="checkbox" class="icheckbox"
-                                                                    name="st_head_fixed" value="1"
-                                                                    style="position: absolute; opacity: 0;"><ins
-                                                                    class="iCheck-helper"
-                                                                    style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                                            </div> Fixed Header
-                                                        </label></div>
-                                        <div class="ts-row"><label class="check">
-                                                            <div class="icheckbox_minimal-grey checked"
-                                                                style="position: relative;"><input type="checkbox"
-                                                                    class="icheckbox" name="st_sb_fixed" value="1"
-                                                                    checked=""
-                                                                    style="position: absolute; opacity: 0;"><ins
-                                                                    class="iCheck-helper"
-                                                                    style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                                            </div> Fixed Sidebar
-                                                        </label></div>
-                                        <div class="ts-row"><label class="check">
-                                                            <div class="icheckbox_minimal-grey checked"
-                                                                style="position: relative;"><input type="checkbox"
-                                                                    class="icheckbox" name="st_sb_scroll" value="1"
-                                                                    style="position: absolute; opacity: 0;"><ins
-                                                                    class="iCheck-helper"
-                                                                    style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                                            </div> Scroll Sidebar
-                                                        </label></div>
-                                        <div class="ts-row"><label class="check">
-                                                            <div class="icheckbox_minimal-grey"
-                                                                style="position: relative;">
-                                                                <input type="checkbox" class="icheckbox"
-                                                                    name="st_sb_right" value="1"
-                                                                    style="position: absolute; opacity: 0;"><ins
-                                                                    class="iCheck-helper"
-                                                                    style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                                            </div> Right Sidebar
-                                                        </label></div>
-                                        <div class="ts-row"><label class="check">
-                                                            <div class="icheckbox_minimal-grey"
-                                                                style="position: relative;">
-                                                                <input type="checkbox" class="icheckbox"
-                                                                    name="st_sb_custom" value="1"
-                                                                    style="position: absolute; opacity: 0;"><ins
-                                                                    class="iCheck-helper"
-                                                                    style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                                            </div> Custom Nav.
-                                                        </label></div>
-                                        <div class="ts-row"><label class="check">
-                                                            <div class="icheckbox_minimal-grey"
-                                                                style="position: relative;">
-                                                                <input type="checkbox" class="icheckbox"
-                                                                    name="st_sb_toggled" value="1"
-                                                                    style="position: absolute; opacity: 0;"><ins
-                                                                    class="iCheck-helper"
-                                                                    style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(6, 243, 144); border: 0px; opacity: 0;"></ins>
-                                                            </div> Toggled Nav.
-                                                        </label></div>
-                                    </div>
-
-                                    <span class="col-md-2"></span>
-                                    <div class="col-md-2">
-                                        <div class="ts-title">Layout:</div>
-                                        <div class="ts-row"><label class="check">
-                                                            <div class="iradio_minimal-grey checked"
-                                                                style="position: relative;"><input type="radio"
-                                                                    class="iradio" name="st_layout_boxed" value="1"
-                                                                    checked=""
-                                                                    style="position: absolute; opacity: 0;"><ins
-                                                                    class="iCheck-helper"
-                                                                    style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                                            </div> Full Width
-                                                        </label></div>
-                                        <div class="ts-row"><label class="check">
-                                                            <div class="iradio_minimal-grey"
-                                                                style="position: relative;">
-                                                                <input type="radio" class="iradio"
-                                                                    name="st_layout_boxed" value="1"
-                                                                    style="position: absolute; opacity: 0;"><ins
-                                                                    class="iCheck-helper"
-                                                                    style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                                            </div> Boxed
-                                                        </label></div>
-                                    </div>
-
-
                                 </div>
                             </div>
 

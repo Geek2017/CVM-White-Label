@@ -1,7 +1,14 @@
 $(document).ready(function() {
+
+
+
+
+
     //initialize the firebase app
     var str = window.location.pathname;
     var res = str.slice(0, 5);
+
+
 
     var config = {
         apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",
@@ -10,11 +17,6 @@ $(document).ready(function() {
         projectId: "cmlformportal-b8674"
     };
     firebase.initializeApp(config);
-
-
-
-
-
 
     var fcolor;
     var ftheme;
@@ -153,7 +155,9 @@ $(document).ready(function() {
             FR.addEventListener("load", function(e) {
                 sessionStorage.setItem('companylogo', e.target.result)
 
-                console.log(e.target)
+                console.log(e.width, e.height)
+
+
 
                 var partcusid = $('#cusid').val();
 
@@ -184,6 +188,9 @@ $(document).ready(function() {
     $("#userimg").change(function() {
         console.log("A Image has been selected.");
         var file = document.querySelector('input[type=file]')['files'][0];
+
+        console.log(this.width)
+
         var reader = new FileReader();
         var baseString;
         reader.onloadend = function() {
@@ -333,12 +340,10 @@ $(document).ready(function() {
                             try {
                                 var uid = firebase.database().ref().child('theme_info').push().key;
                                 var cusid = $('#cusid').val();
-                                var theme = ftheme;
                                 var formcolor = fcolor;
 
                                 var data = {
                                     cusid: cusid,
-                                    theme: theme,
                                     formcolor: formcolor
                                 }
 
@@ -421,4 +426,6 @@ $(document).ready(function() {
 
     });
 
+    $('form').attr('autocomplete', 'off');
+    $('input').attr('autocomplete', 'off');
 });
