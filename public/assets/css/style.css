@@ -72,13 +72,13 @@ body {
 .spinner {
     width: 100px;
     height: 100px;
-    border-top-color: orange;
+    border-top-color: white;
     top: calc(50% - 50px);
     left: calc(50% - 50px);
 }
 
 .spinner::before {
-    border-top-color: magenta;
+    border-top-color: white;
     animation-duration: 4s;
     top: 2px;
     bottom: 2px;
@@ -87,7 +87,7 @@ body {
 }
 
 .spinner::after {
-    border-top-color: cyan;
+    border-top-color: white;
     top: 8px;
     bottom: 8px;
     left: 8px;

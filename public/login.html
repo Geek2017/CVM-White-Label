@@ -23,9 +23,11 @@
     <div class="login-container ">
         <form action="#" role="form" class="form-horizontal " id="loginForm">
             <div class="login-box animated fadeInDown">
-                <div class="login-logo"></div>
+                <!-- <div class="login-logo"></div> -->
                 <div class="login-body">
-                    <div class="login-title"><strong>Welcome </strong>, Please login</div>
+                    <div class="login-title">
+                        <h1 style="color: white!important;"><strong>Welcome,</strong> Please login</h1>
+                    </div>
                     <div class="alert alert-success" role="alert">
                         <button id="alert" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                         <strong>Your Account had been successfully migrated!</strong> <br> Pls. check your email to reset your Password Cheers!.
@@ -53,7 +55,12 @@
 
                         <div class="col-md-6">
                             <button class="btn btn-success btn-lg btn-block" type="submit">Sign-In</button>
-                            <a href="reset.html" class="btn btn-link btn-block pull-right">Forgot your password?</a>
+                        </div>
+
+                        <div class="col-md-12 ">
+                            <div class="pull-right">
+                                <a href="reset.html" class="btn btn-link  btn-block ">Forgot your password?</a>
+                            </div>
                         </div>
 
                     </div>
@@ -61,7 +68,7 @@
                 </div>
                 <div class="login-footer">
                     <div class="pull-left">
-                        &copy; <span id='curyear'>2020</span> FormPortal
+                        &copy; <span id='year'></span> | White Label
                     </div>
                     <div class="pull-right">
                         <a href="#">About</a> |

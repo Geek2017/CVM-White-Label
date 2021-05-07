@@ -53,10 +53,6 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
                 console.log($("#theme").attr("href"))
 
-                document.getElementById("spinner").style.visibility = "hidden";
-
-                document.getElementById("formportal").style.visibility = "visible";
-
                 $(".x-navigation .informer.informer-warning ").css("background", snapshot.val().formcolor);
 
                 $(".panel").css("border-top-color", snapshot.val().formcolor);
@@ -101,8 +97,11 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
     $(".activate").addClass("active");
 
+    setTimeout(function() {
+        document.getElementById("spinner").style.visibility = "hidden";
 
-
+        document.getElementById("formportal").style.visibility = "visible";
+    }, 3000)
 
 
 

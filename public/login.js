@@ -7,6 +7,9 @@ $(document).ready(function() {
     });
 
 
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+
+
     var config = {
         apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",
         authDomain: "cmlformportal-b8674.firebaseapp.com",
@@ -17,8 +20,8 @@ $(document).ready(function() {
 
     $('#loginForm').on('submit', function(e) {
         e.preventDefault();
-
-        if ($('#loginEmail').val() != '' && $('#loginPassword').val() != '') {
+        alert('123')
+        if ($('#loginEmail').val() !== '' && $('#loginPassword').val() !== '') {
 
             var data = {
                 email: $('#loginEmail').val(),
