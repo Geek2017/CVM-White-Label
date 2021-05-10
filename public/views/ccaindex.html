@@ -230,7 +230,7 @@
                                         <th width="10">Name on Card</th>
                                         <th width="10">Services</th>
                                         <th width="10">Account/Customer ID#</th>
-                                        <th width="5">Street/Block/Bldg/Lot</th>
+                                        <th width="5">Street </th>
                                         <th width="5">City</th>
                                         <th width="5">State</th>
                                         <th width="3"><label class="input">Zip Code</label></th>
@@ -253,7 +253,9 @@
                                         <td class="text-center buttons">
                                             <button ng-click="trigersigncca();editcca(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW</button>
                                             <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
-                                            <button class="btn btn-info btn-sm fa fa-print " data-box="#message-box-success"> PRINT</button>
+
+                                            <button ng-click="editcca(nsp);print()" class="btn btn-info btn-sm fa fa-print" data-toggle="modal" data-target="#update_modal"> PRINT</button>
+
                                             <button class="btn btn-warning btn-sm fa fa-rocket" data-toggle="modal" data-target="#email_modal" ng-click="passwordcall(16);"> EMAIL</button>
                                         </td>
                                     </tr>
@@ -307,10 +309,11 @@
 
 <div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" id="printThis">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">CARD CREDIT AUTH INFO.</h5>
             </div>
+
             <div class="modal-body" id="qrids">
                 <div class="row">
                     <div class="col-md-4">
@@ -383,7 +386,7 @@
                             <span class="col-md-2"></span>
                             <div class="col-md-10">
                                 <label class=" control-label">Credit Card Number:</label>
-                                <input ng-model="nsp.ccnumber" type="number" class="form-control" required />
+                                <input ng-model="nsp.ccnumber" type="number" class="form-control mask" required />
                             </div>
 
                             <span class="col-md-2"></span>
@@ -409,7 +412,7 @@
                             <span class="col-md-2"></span>
 
                             <div class="col-md-10">
-                                <label class=" control-label">Street/Block/Bldg/Lot:</label>
+                                <label class=" control-label">Street :</label>
                                 <input ng-model="nsp.street" type="text" class="form-control" required />
                             </div>
                             <span class="col-md-2"></span>
@@ -613,8 +616,8 @@
                     </div>
                 </center>
             </div>
-            <div class="modal-footer">
 
+            <div class="modal-footer">
                 <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">CLOSE</button>
                 <button id="update" type="button" class="btn btn-primary" ng-click="updatesp();">UPDATE</button>
                 <button type="button" class="btn btn-danger pull-left" ng-click="printid();">PRINT</button>

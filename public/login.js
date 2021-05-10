@@ -20,7 +20,7 @@ $(document).ready(function() {
 
     $('#loginForm').on('submit', function(e) {
         e.preventDefault();
-        alert('123')
+
         if ($('#loginEmail').val() !== '' && $('#loginPassword').val() !== '') {
 
             var data = {

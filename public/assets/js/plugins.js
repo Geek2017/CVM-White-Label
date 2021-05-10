@@ -262,7 +262,12 @@ $(function() {
                     if ($("#wizard-validation").length > 0) {
                         var validator = $("#wizard-validation").validate({
                             rules: {
-                                data: {
+                                fullname: {
+                                    required: true,
+                                    minlength: 2,
+                                    maxlength: 30
+                                },
+                                filename: {
                                     required: true,
                                     minlength: 2,
                                     maxlength: 30
@@ -272,27 +277,46 @@ $(function() {
                                     minlength: 8,
                                     maxlength: 30
                                 },
-                                repassword: {
-                                    required: true,
-                                    minlength: 8,
-                                    maxlength: 30,
-                                    equalTo: "#registerPassword"
-                                },
                                 email: {
                                     required: true,
                                     email: true
                                 },
-                                name: {
+                                partnerid: {
                                     required: true,
                                     maxlength: 10
                                 },
-                                address: {
+                                comname: {
                                     required: true
                                 },
-                                Contact: {
+                                comcontact: {
+                                    required: true
+                                },
+                                street: {
+                                    required: true
+                                },
+                                city: {
+                                    required: true
+                                },
+                                postal: {
+                                    required: true
+                                },
+                                state: {
                                     required: true
                                 }
 
+
+                            },
+                            messages: {
+                                fullname: "Admin Full Named Required",
+                                partnerid: "Partner ID Required",
+                                email: "Email Required",
+                                filename: "Null",
+                                comname: "Company Name Required",
+                                comcontact: " Contact Required",
+                                street: " Street Address Required",
+                                city: " City Required",
+                                postal: " Postal Required",
+                                state: " State Required",
                             }
                         });
 

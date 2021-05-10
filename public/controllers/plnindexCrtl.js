@@ -1,4 +1,5 @@
 angular.module('newApp').controller('plnindexCrtl', function($scope, $timeout) {
+
     var fcolor = localStorage.getItem('formcolor')
     $(".panel").css("border-top-color", fcolor);
     $(".btn-primary").css("background", fcolor)
@@ -6,6 +7,7 @@ angular.module('newApp').controller('plnindexCrtl', function($scope, $timeout) {
     $(".x-navigation>li.xn-logo>a:first-child").css("background", fcolor);
     $(".x-navigation li.active>a").css("background", fcolor);
     $(".panel-success>.panel-heading").css("color", fcolor);
+
     $scope.comname = localStorage.getItem('comname');
     $scope.comlandmark = localStorage.getItem('landmark');
     $scope.comcity = localStorage.getItem('comcity');
@@ -126,10 +128,52 @@ angular.module('newApp').controller('plnindexCrtl', function($scope, $timeout) {
 
     let keyid;
 
+    $scope.print = function() {
+
+        $('.removepanel').hide();
+        $('#savesign').hide();
+        $('#clear').hide();
+
+        $(".modal-footer").hide();
+
+        $("#removepanel0").removeClass("panel panel-warning panel-heading");
+        $("#removepanel1").removeClass("panel panel-warning panel-heading");
+        $("#removepanel2").removeClass("panel panel-warning panel-heading");
+
+
+        $("#printThis").removeClass("pabel-body");
+
+        $("input").addClass("txtinput");
+        $("select").addClass("txtinput");
+
+        $('input').attr('style', 'height: 23px!important');
+        $('input').attr('style', 'font-size: 14px!important');
+
+        $('table').addClass('tables');
+
+        $('.modal-content').addClass('modal-contents');
+        $("#printThis").addClass('printls');
+
+        setTimeout(function() {
+            html2canvas(document.querySelector("#printThis")).then(canvas => {
+                document.body.appendChild(canvas)
+                var nWindow = window.open('', 'PrintWindow', 'width=1000,height=1000', 'overflow=hidden');
+                nWindow.document.body.appendChild(canvas)
+                nWindow.focus();
+                nWindow.print();
+                location.replace('#/')
+                location.replace('#/plnindex')
+                setTimeout(function() {
+                    nWindow.close();
+                }, 2000)
+            });
+        }, 3000)
+
+    }
+
     $scope.editpl = function(nsp) {
 
-
-
+        alert('123');
         console.log("edit data", nsp)
 
         $('canvas').remove();
@@ -142,19 +186,20 @@ angular.module('newApp').controller('plnindexCrtl', function($scope, $timeout) {
         $scope.nsp.reqpd = new Date(nsp.reqpd);
         $scope.nsp.thedate = new Date(nsp.thedate);
 
-        console.log($scope.nsp.mrc)
-        console.log($scope.nsp.nrc)
-
 
         var onl = $scope.nsp.otherno;
 
-        for (var i = 0; i < onl.length; i++) {
-            if (i % 2 == 0) {
-                $("#left").append("<div class='form-group left'><span class='col-md-2'></span><div class='col-md-10'><div class='input-group'><input  type='text'  class='form-control' value='" + $scope.nsp.otherno[i] + "' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div></div>");
-            } else {
-                $("#right").append("<div class='form-group right'><div class='col-md-10'><div class='input-group'><input type='text' class='form-control' value='" + $scope.nsp.otherno[i] + "' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
+        if (onl) {
+            for (var i = 0; i < onl.length; i++) {
+                if (i % 2 == 0) {
+                    $("#left").append("<div class='form-group left'><span class='col-md-2'></span><div class='col-md-10'><div class='input-group'><input  type='text'  class='form-control' value='" + $scope.nsp.otherno[i] + "' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div></div>");
+                } else {
+                    $("#right").append("<div class='form-group right'><div class='col-md-10'><div class='input-group'><input type='text' class='form-control' value='" + $scope.nsp.otherno[i] + "' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
+                }
             }
         }
+
+
 
 
         return keyid = nsp.key;

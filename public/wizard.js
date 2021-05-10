@@ -1,14 +1,25 @@
 $(document).ready(function() {
 
 
+    $("#cusemail").mouseout(function() {
 
+        var email = $('#cusemail').val();
 
+        var ref = firebase.database().ref("users");
+        ref.orderByChild("cusemail").equalTo(email).on("child_added", function(snapshot) {
+            var emailstate = snapshot.val().cusemail
+            if (emailstate) {
+                console.log(snapshot.val().cusemail), $('#emailerr').show()
+            }
+        });
+
+    });
+
+    $('#emailerr').hide()
 
     //initialize the firebase app
     var str = window.location.pathname;
     var res = str.slice(0, 5);
-
-
 
     var config = {
         apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",

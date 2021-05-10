@@ -10,6 +10,7 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
     firebase.initializeApp(config);
     firebase.auth().onAuthStateChanged(function(user) {
         doSomething();
+        console.log(user)
 
         function doSomething() {
             if (user) {

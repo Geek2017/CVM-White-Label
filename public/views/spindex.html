@@ -257,7 +257,7 @@
                                         <td class="text-center buttons">
                                             <button ng-click="editsp(nsp);trigersignsp(nsp);" class="btn btn-default btn-sm fa fa-pencil print-preview" data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
                                             <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
-                                            <button ng-click="editsp(nsp);print()" data-toggle="modal" data-target="#update_modal" class="btn btn-info btn-sm fa fa-print "> PRINT&nbsp;</button>
+                                            <button ng-click="editcca(nsp);print()" data-toggle="modal" data-target="#update_modal" class="btn btn-info btn-sm fa fa-print "> PRINT&nbsp;</button>
                                             <button class="btn btn-warning btn-sm fa fa-rocket" data-toggle="modal" data-target="#email_modal" ng-click="genhashkey(nsp);"> EMAIL&nbsp;</button>
                                         </td>
                                     </tr>
@@ -313,7 +313,7 @@
 
                 <div class="col-md-12 text-center" style="top:-15px!important">
                     <h1 class="text-center">
-                        <strong>SALES</strong> PROPOSAL
+                        <strong>CARD CREDIT</strong> AUTH
                     </h1>
                 </div>
 
@@ -371,7 +371,7 @@
                             <div class="form-group ">
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
-                                    <label class=" control-label">Street/Block/Bldg/Lot:</label>
+                                    <label class=" control-label">Street :</label>
                                     <input ng-model="nsp.street" type="text" class="form-control" required />
                                 </div>
                                 <div class="col-md-5">
@@ -411,7 +411,7 @@
                             <div class="form-group">
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
-                                    <label class=" control-label">Street/Block/Bldg/Lot:</label>
+                                    <label class=" control-label">Street :</label>
                                     <input ng-model="nsp.street2" type="text" class="form-control street2" required />
                                 </div>
                                 <div class="col-md-5">

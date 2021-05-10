@@ -21,7 +21,6 @@
         border: 1px solid #e8e8e8;
         background-color: #fff;
         border-top-width: 2px;
-        border-top-color: #9773e2;
     }
     
     .m-signature-pad:before,
@@ -113,11 +112,14 @@
         }
     }
 </style>
+
 <ul class="breadcrumb">
     <li>List</li>
     <li class="active">Port Local Number</li>
 </ul>
+
 <script src="./assets/js/drop.js"></script>
+
 <div class="page-content-wrap">
     <div class="row">
         <div class="col-md-12">
@@ -246,8 +248,11 @@
 
                                         <td class="text-center buttons">
                                             <button ng-click="trigersignpl();editpl(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
+
                                             <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
-                                            <button class="btn btn-info btn-sm fa fa-print " data-box="#message-box-success"> PRINT&nbsp;</button>
+
+                                            <button ng-click="editpl(nsp);print()" class="btn btn-info btn-sm fa fa-print " data-toggle="modal" data-target="#update_modal"> PRINT&nbsp;</button>
+
                                             <button class="btn btn-warning btn-sm fa fa-rocket" data-toggle="modal" data-target="#email_modal" ng-click="passwordcall(16);"> EMAIL&nbsp;</button>
                                         </td>
                                     </tr>
@@ -301,7 +306,7 @@
 
 <div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" id="printThis">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">PORT LOCAL NUMBER INFO.</h5>
             </div>
@@ -383,7 +388,7 @@
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
-                                    <label class=" control-label">Street/Block/Bldg/Lot:</label>
+                                    <label class=" control-label">Street :</label>
                                     <input ng-model="nsp.street2" type="text" class="form-control" required/>
                                 </div>
 
@@ -504,7 +509,7 @@
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
-                                    <label class=" control-label">Street/Block/Bldg/Lot:</label>
+                                    <label class=" control-label">Street :</label>
                                     <input ng-model="nsp.street1" type="text" class="form-control" required/>
                                 </div>
 

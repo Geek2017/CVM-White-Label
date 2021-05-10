@@ -21,7 +21,6 @@
         border: 1px solid #e8e8e8;
         background-color: #fff;
         border-top-width: 2px;
-        border-top-color: #9773e2;
     }
     
     .m-signature-pad:before,
@@ -220,7 +219,7 @@
                                         <th width="3" class="text-center">#</th>
                                         <th width="5">Account Number</th>
                                         <th width="10">Customer Name:</th>
-                                        <th width="5">Street/Block/Bldg/Lot:</th>
+                                        <th width="5">Street :</th>
                                         <th width="5">City</th>
                                         <th width="5">State</th>
                                         <th width="5">Zip Code</th>
@@ -241,7 +240,9 @@
                                         <td class="text-center buttons">
                                             <button ng-click="trigersignsp();editptfn(nsp);" class="btn btn-default btn-sm fa fa-pencil " data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
                                             <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
-                                            <button class="btn btn-info btn-sm fa fa-print " data-box="#message-box-success"> PRINT&nbsp;</button>
+
+                                            <button ng-click="editptfn(nsp);print()" class="btn btn-info btn-sm fa fa-print" data-toggle="modal" data-target="#update_modal"> PRINT&nbsp;</button>
+
                                             <button class="btn btn-warning btn-sm fa fa-rocket" data-toggle="modal" data-target="#email_modal" ng-click="passwordcall(16);"> EMAIL&nbsp;</button>
                                         </td>
                                     </tr>
@@ -295,7 +296,7 @@
 
 <div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" id="printThis">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">PORT TOLL FREE NUMBER INFO.</h5>
             </div>
@@ -341,7 +342,7 @@
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-5">
-                                    <label class=" control-label">Street/Block/Bldg/Lot:</label>
+                                    <label class=" control-label">Street :</label>
                                     <input ng-model="nsp.street0" type="text" class="form-control" required />
                                 </div>
 
@@ -436,7 +437,7 @@
                                 <span class="col-md-2"></span>
 
                                 <div class="col-md-5">
-                                    <label class=" control-label">Street/Block/Bldg/Lot:</label>
+                                    <label class=" control-label">Street :</label>
                                     <input ng-model="nsp.street1" type="text" class="form-control" required />
                                 </div>
 
