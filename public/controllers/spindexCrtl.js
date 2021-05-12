@@ -37,21 +37,30 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
         $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
 
-    firebase.database().ref('/salesproposal/').orderByChild('uid').on("value", function(snapshot) {
+    firebase.database().ref('/salesproposal/').orderByChild('cusid').on("value", function(snapshot) {
+        let cdata = localStorage.getItem('curuserid');
+        console.log(snapshot.val())
         $timeout(function() {
-
             $scope.$apply(function() {
                 let returnArr = [];
                 snapshot.forEach(childSnapshot => {
                     let item = childSnapshot.val();
                     item.key = childSnapshot.key;
-                    returnArr.push(item);
+
+                    console.log(item, parseInt(cdata));
+
+                    if (item.cusid == parseInt(cdata)) {
+
+                        returnArr.push(item);
+                    }
+
                 });
                 $scope.osps = returnArr;
                 console.log($scope.osps);
             });
 
         })
+
     });
 
 
@@ -763,16 +772,16 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
 
 
     $(".icheckbox").click(function() {
-        console.log($scope.phone, $scope.custname, $scope.bizname)
+        console.log($scope.nsp.phone, $scope.nsp.custname, $scope.nsp.bizname)
 
-        $('.phone2').val($scope.phone);
-        $('.custname2').val($scope.custname);
-        $('.bizname2').val($scope.bizname);
+        $('.phone2').val($scope.nsp.phone);
+        $('.custname2').val($scope.nsp.custname);
+        $('.bizname2').val($scope.nsp.bizname);
 
-        $('.street2').val($scope.street);
-        $('.city2').val($scope.city);
-        $('.state2').val($scope.state);
-        $('.zipcode2').val($scope.zipcode);
+        $('.street2').val($scope.nsp.street);
+        $('.city2').val($scope.nsp.city);
+        $('.state2').val($scope.nsp.state);
+        $('.zipcode2').val($scope.nsp.zipcode);
     });
 
 

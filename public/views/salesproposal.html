@@ -3,6 +3,24 @@
     <li class="active">Sales Proposal</li>
 </ul>
 <style>
+    input {
+        border: 0!important;
+        outline: 0!important;
+        background: transparent!important;
+        border-bottom: 1.5px solid black!important;
+        border-right-style: hidden!important;
+        border-left-style: hidden!important;
+        border-radius: 0!important;
+    }
+    
+    select {
+        border: 0!important;
+        outline: 0!important;
+        background: transparent!important;
+        border-bottom: 1.5px solid black!important;
+        border-radius: 0!important;
+    }
+    
     .hover:hover {
         background-color: #9773e2;
     }
@@ -113,10 +131,10 @@
         <div class="col-md-12">
             <form class="form-horizontal">
                 <div class="panel panel-success">
-                    <div class="panel-heading" style="height:50px!important">
+                    <div class="panel-heading">
                         <div class="col-md-4 pull-left">
                         </div>
-                        <div class="col-md-4" style="top:-15px!important">
+                        <div class="col-md-4" >
                             <h1 class="text-center">
                                 <strong>SALES</strong> PROPOSAL
                             </h1>
@@ -467,6 +485,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="row">
+
                                     <div class="col-md-12">
 
                                         <div class="panel panel-success panel-heading">
@@ -476,22 +495,27 @@
                                         <table class="table table-hover mcrrowTable" id="mcrrowTable">
                                             <thead>
                                                 <tr>
-                                                    <th>Unit</th>
+                                                    <th>Qty</th>
                                                     <th>Services</th>
+                                                    <th>MSRP</th>
                                                     <th>Unit Price</th>
-                                                    <th>Total Price</th>
+                                                    <th>Your Price Total </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr class="mrc0 " ng-repeat="m in mrc">
-                                                    <td><input type="number" class="mrcu form-control text-center" ng-model="mrcu" placeholder="{{m.unit}}"></td>
+                                                    <td style="width: 60px!important;"><input type="number" class="mrcu form-control text-center" ng-model="mrcu" placeholder="{{m.unit}}">
+                                                    </td>
                                                     <td>
                                                         <select id="type" class="form-control btn-block text-center" required>
                                                             <option ng-repeat="mrcitem in mcritems">{{mrcitem.items}}
                                                             </option>
                                                         </select>
                                                     </td>
-                                                    <td><input type="number" class="mrcup form-control text-center" ng-model="mrcup" placeholder="$ 0.00" readonly></td>
+                                                    <td><input type="number" class="mrcup form-control text-center" ng-model="mrcup" placeholder="$ 0.00" readonly>
+                                                    </td>
+                                                    <td><input type="number" class="mrcup form-control text-center" ng-model="mrcup" placeholder="$ 0.00" readonly>
+                                                    </td>
                                                     <td>
                                                         <input type="number" class="tprice form-control text-center" ng-model="tprice" value="{{mrcup*mrcu}}" placeholder="$ 0.00" readonly>
                                                     </td>
@@ -501,6 +525,7 @@
                                                     <td>
                                                         <h4>Total Monthly Recurring Charges</h4>
                                                     </td>
+                                                    <td></td>
                                                     <td></td>
                                                     <td class="text-center">
                                                         <h4><strong class="mrcgtotal ">$ 0.00</strong></h4>
@@ -529,21 +554,23 @@
                                         <table class="table table-hover ncrrowTable" id="ncrrowTable">
                                             <thead>
                                                 <tr>
-                                                    <th>Unit</th>
+                                                    <th>Qty</th>
                                                     <th>Services</th>
+
                                                     <th>Unit Price</th>
                                                     <th>Total Price </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr ng-repeat="n in nrc">
-                                                    <td><input type="number" class="nrcu form-control text-center" ng-model="nrcu" placeholder="{{n.unit}}"></td>
+                                                    <td style="width: 60px!important;"><input type="number" class="nrcu form-control text-center" ng-model="nrcu" placeholder="{{n.unit}}"></td>
                                                     <td>
                                                         <select id="type" class="form-control btn-block" required>
                                                             <option ng-repeat="nrcitem in ncritems">{{nrcitem.items}}
                                                             </option>
                                                         </select>
                                                     </td>
+
                                                     <td><input type="number" class="nrcup form-control text-center" ng-model="nrcup" placeholder="{{n.unitprice}}" readonly></td>
                                                     <td><input type="number" class="form-control tnup text-center" ng-model="tnup" value="{{nrcup*nrcu}}" placeholder="$ 0.00" readonly></td>
                                                 </tr>
@@ -553,6 +580,7 @@
                                                         <h4>Total Non-Recurring ChargesDate</h4>
                                                     </td>
                                                     <td></td>
+
                                                     <td class="text-center">
                                                         <h4><strong class="nrcgtotal">$ 0.00</strong></h4>
                                                     </td>

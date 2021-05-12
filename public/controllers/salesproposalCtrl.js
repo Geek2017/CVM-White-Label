@@ -432,46 +432,51 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
         console.log(table2)
 
         try {
-            var uid = firebase.database().ref().child('salesproposal').push().key;
+            let cdata = localStorage.getItem('curuserid');
 
-            localStorage.setItem('ukeyid', uid);
+            if (cdata) {
+                var uid = firebase.database().ref().child('salesproposal').push().key;
 
-            var data = {
-                mrc: table0,
-                nrc: table1,
-                fpfrow: table2,
-                bizname: $scope.bizname,
-                custname: $scope.custname,
-                street: $scope.street,
-                city: $scope.city,
-                state: $scope.state,
-                zipcode: $scope.zipcode,
-                presentedby: $scope.presentedby,
-                date2: $scope.date2,
-                bizname2: $('.bizname2').val(),
-                custname2: $('.custname2').val(),
-                street2: $('.street2').val(),
-                city2: $('.city2').val(),
-                state2: $('.state2').val(),
-                zipcode2: $('.zipcode2').val(),
-                phone2: $('.phone2').val(),
-                termlength: $scope.termlength,
-                phone: $scope.phone,
-                mainphoneno: $scope.mainphoneno,
-                sign: c.toDataURL(c)
+                localStorage.setItem('ukeyid', uid);
+
+                var data = {
+                    mrc: table0,
+                    nrc: table1,
+                    fpfrow: table2,
+                    bizname: $scope.bizname,
+                    custname: $scope.custname,
+                    street: $scope.street,
+                    city: $scope.city,
+                    state: $scope.state,
+                    zipcode: $scope.zipcode,
+                    presentedby: $scope.presentedby,
+                    date2: $scope.date2,
+                    bizname2: $('.bizname2').val(),
+                    custname2: $('.custname2').val(),
+                    street2: $('.street2').val(),
+                    city2: $('.city2').val(),
+                    state2: $('.state2').val(),
+                    zipcode2: $('.zipcode2').val(),
+                    phone2: $('.phone2').val(),
+                    termlength: $scope.termlength,
+                    phone: $scope.phone,
+                    mainphoneno: $scope.mainphoneno,
+                    sign: c.toDataURL(c),
+                    cusid: cdata
+                }
+
+                var updates = {};
+                updates['/salesproposal/' + uid] = data;
+                firebase.database().ref().update(updates);
+                console.log(updates)
             }
-
-            var updates = {};
-            updates['/salesproposal/' + uid] = data;
-            firebase.database().ref().update(updates);
-            console.log(updates)
 
             if (updates) {
                 $('#spsuccess').addClass('open')
-                    // setTimeout(function() {
-                    //     window.location.replace("#/");
-                    //     window.location.replace("#/spindex");
-                    // }, 2000)
+                setTimeout(function() {
+                    window.location.replace("#/");
+                    window.location.replace("#/spindex");
+                }, 2000)
 
             }
 

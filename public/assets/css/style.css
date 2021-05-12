@@ -97,3 +97,27 @@ body {
 .spinit {
     visibility: hidden;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input {
+    border: 0!important;
+    outline: 0!important;
+    background: transparent!important;
+    border-bottom: 1.5px solid black!important;
+    border-right-style: hidden!important;
+    border-left-style: hidden!important;
+    border-radius: 0!important;
+}
+
+select {
+    border: 0!important;
+    outline: 0!important;
+    background: transparent!important;
+    border-bottom: 1.5px solid black!important;
+    border-radius: 0!important;
+}
