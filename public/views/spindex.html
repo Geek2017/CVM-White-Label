@@ -241,7 +241,7 @@
                                         <th width="5">State</th>
                                         <th width="3"><label class="input">Zip Code</label></th>
 
-                                        <th style="width:160px!important">Data Controls <a href="#/salesproposal"><span class="btn btn-primary btn-sm fa fa-plus pull-right"> NEW</span></a></th>
+                                        <th style="width:160px!important">Data Controls <a href="#/salesproposal"><span class="btn btn-primary btn-sm fa fa-files-o pull-right"> CREATE</span></a></th>
                                     </tr>
                                 </thead>
                                 <tbody ng-repeat="nsp in osps | startFrom:currentPage*pageSize | limitTo:pageSize | filter:findcf ">
@@ -258,7 +258,7 @@
                                         <td class="text-center buttons">
                                             <button ng-click="editsp(nsp);trigersignsp(nsp);" class="btn btn-default btn-sm fa fa-pencil print-preview" data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
                                             <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
-                                            <button ng-click="editcca(nsp);print()" data-toggle="modal" data-target="#update_modal" class="btn btn-info btn-sm fa fa-print "> PRINT&nbsp;</button>
+                                            <button ng-click="editsp(nsp);print()" data-toggle="modal" data-target="#update_modal" class="btn btn-info btn-sm fa fa-print "> PRINT&nbsp;</button>
                                             <button class="btn btn-warning btn-sm fa fa-rocket" data-toggle="modal" data-target="#email_modal" ng-click="genhashkey(nsp);"> EMAIL&nbsp;</button>
                                         </td>
                                     </tr>
@@ -312,7 +312,7 @@
 
             <div class="panel-body">
 
-                <div class="col-md-12 text-center" >
+                <div class="col-md-12 text-center">
                     <h1 class="text-center">
                         <strong>CARD CREDIT</strong> AUTH
                     </h1>
@@ -322,7 +322,7 @@
 
             <div class="panel-body">
                 <div class="col-md-4 pull-left">
-                    <img style="padding-top: 6px!important;" class="img-responsive" width="auto!important" height="150px!important" src="{{comlogo}}" alt="log">
+                    <img style="padding-top: 6px!important;" class="img-responsive" width="80%" src="{{comlogo}}" alt="log">
                 </div>
                 <div class="col-md-4 ">
                     <h3 class="text-center">

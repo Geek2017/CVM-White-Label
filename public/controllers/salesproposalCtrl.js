@@ -23,37 +23,6 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
         $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
 
-    (function() {
-        emailjs.init('user_0dRWnov2yzJ0mYSTS3nqs')
-    })();
-
-
-    const btn = document.getElementById('button');
-
-
-
-    $("#myform").submit(function(event) {
-        event.preventDefault();
-
-        btn.value = 'Sending...';
-
-        const serviceID = 'default_service';
-        const templateID = 'template_zbea5bx';
-
-        emailjs.sendForm(serviceID, templateID, this)
-            .then(() => {
-                btn.value = 'Send Email';
-                alert('Sent!');
-            }, (err) => {
-                btn.value = 'Send Email';
-                alert(JSON.stringify(err));
-            });
-    })
-
-
-
-
-
     // MRC
     $scope.mcritems = [{
         items: "Select"
@@ -342,16 +311,6 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
     var signaturePad = new SignaturePad(c);
     signaturePad.fromDataURL(data);
 
-    let ukeyid = localStorage.getItem('ukeyid');
-
-    $scope.passwordcall = function(length, special) {
-
-
-
-        $scope.hash = window.location.origin + '/formsindex.html#/:' + ukeyid;
-        console.log(password);
-        sessionStorage.setItem('hkc', password);
-    }
 
 
     $scope.closesp = function() {
@@ -364,8 +323,20 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
         window.location.replace("#/spindex");
     }
 
-    $("#myform").submit(function(event) {
+    let c_check = 0;
+    let ukeyid;
 
+    $(".email").click(function() {
+        return c_check = 1, console.log(c_check);
+    });
+
+    $scope.passwordcall = function() {
+        $scope.hash = window.location.origin + '/formsindex.html#/:' + ukeyid;
+        console.log($scope.hash);
+        sessionStorage.setItem('hkc', ukeyid);
+    }
+
+    $("#myform").submit(function(event) {
 
         var uid = firebase.database().ref().child('users').push().key;
 
@@ -382,22 +353,76 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
         updates['/sfsalespropsal/' + uid] = data;
         firebase.database().ref().update(updates, alert('Data Saved!'));
 
+
     });
 
-    $(".icheckbox").click(function() {
-        console.log($scope.phone, $scope.custname, $scope.bizname)
+    (function() {
+        emailjs.init('user_0dRWnov2yzJ0mYSTS3nqs')
+    })();
 
-        $('.phone2').val($scope.phone);
-        $('.custname2').val($scope.custname);
-        $('.bizname2').val($scope.bizname);
+    const btn = document.getElementById('button');
 
-        $('.street2').val($scope.street);
-        $('.city2').val($scope.city);
-        $('.state2').val($scope.state);
-        $('.zipcode2').val($scope.zipcode);
-    });
+    $("#myform").submit(function(event) {
+        event.preventDefault();
+
+        btn.value = 'Sending...';
+
+        const serviceID = 'default_service';
+        const templateID = 'template_zbea5bx';
+
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                btn.value = 'Send Email';
+                alert('Sent!');
+            }, (err) => {
+                btn.value = 'Send Email';
+                alert(JSON.stringify(err));
+            });
+    })
+
+    $scope.print = function() {
+
+        $scope.comlogo = sessionStorage.getItem('comlogo');
+
+        $('.removepanel').hide();
+        $('#savesign').hide();
+        $('#clear').hide();
+
+        $(".modal-footer").hide();
+
+        $("#removepanel0").removeClass("panel panel-warning panel-heading");
+        $("#removepanel1").removeClass("panel panel-warning panel-heading");
+        $("#removepanel2").removeClass("panel panel-warning panel-heading");
 
 
+        $("#printThis").removeClass("pabel-body");
+
+        $("input").addClass("txtinput");
+        $("select").addClass("txtinput");
+
+        $('input').attr('style', 'height: 23px!important');
+        $('input').attr('style', 'font-size: 14px!important');
+
+        $('table').addClass('tables');
+
+        $('.modal-content').addClass('modal-contents');
+        $("#printThis").addClass('printls');
+
+        setTimeout(function() {
+            html2canvas(document.querySelector("#printThis")).then(canvas => {
+                document.body.appendChild(canvas)
+                var nWindow = window.open('', 'PrintWindow', 'width=1000,height=1000', 'overflow=hidden');
+                nWindow.document.body.appendChild(canvas)
+                nWindow.focus();
+                nWindow.print();
+
+                setTimeout(function() {
+                    nWindow.close();
+                }, 2000)
+            });
+        }, 1000)
+
+    }
 
     $scope.savesp = function() {
 
@@ -437,7 +462,6 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
             if (cdata) {
                 var uid = firebase.database().ref().child('salesproposal').push().key;
 
-                localStorage.setItem('ukeyid', uid);
 
                 var data = {
                     mrc: table0,
@@ -468,16 +492,13 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
                 var updates = {};
                 updates['/salesproposal/' + uid] = data;
                 firebase.database().ref().update(updates);
-                console.log(updates)
+                console.log(updates, uid)
+                return ukeyid = uid;
             }
 
-            if (updates) {
+            if (updates && c_check == 0) {
+                console.log(c_check)
                 $('#spsuccess').addClass('open')
-                setTimeout(function() {
-                    window.location.replace("#/");
-                    window.location.replace("#/spindex");
-                }, 2000)
-
             }
 
         } catch (err) {
@@ -492,5 +513,18 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
         }
 
     }
+
+    $(".icheckbox").click(function() {
+        console.log($scope.phone, $scope.custname, $scope.bizname)
+
+        $('.phone2').val($scope.phone);
+        $('.custname2').val($scope.custname);
+        $('.bizname2').val($scope.bizname);
+
+        $('.street2').val($scope.street);
+        $('.city2').val($scope.city);
+        $('.state2').val($scope.state);
+        $('.zipcode2').val($scope.zipcode);
+    });
 
 })
