@@ -120,9 +120,10 @@
         }
     }
 </style>
-<ul class="breadcrumb">
-    <li>Forms</li>
-    <li class="active">Sales Proposal</li>
+<ul class="breadcrumb panel panel-success">
+    <li><a href="#/">DASHBOARD</a></li>
+    <li><a href="#/spindex">LIST</a></li>
+    <li class="active"><strong>SALES PROPOSAL</strong></li>
 </ul>
 <div class="page-content-wrap">
     <div class="row">
@@ -131,11 +132,11 @@
                 <div class="panel panel-success">
                     <div class="panel-heading">
                         <div class="col-md-4 pull-left">
-                            <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive " width="40%" src="" alt="log">
+                            <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive" src="" alt="log">
                         </div>
                         <div class="col-md-4">
                             <h1 class="text-center">
-                                <strong>SALES</strong> PROPOSAL
+                                <strong>SALES  PROPOSAL</strong>
                             </h1>
                         </div>
                         <div class="col-md-4">
@@ -150,17 +151,13 @@
 
                         </div>
                         <div class="col-md-4 ">
-                            <h3 class="text-center">
-
+                            <h5 class="text-center">
                                 <span>
-                                    <h1>{{comname | uppercase}}</h1>
+                                  <h2 style="margin-bottom: 0px!important;"><strong>{{comname | uppercase}}</strong></h2>
                                 </span>
-                                <span>{{comlandmark}}</span><br>
-                                <span>{{comcity}}</span><br>
-                                <span>{{comstate}},</span>
-                                <span>{{compostalcode}}</span><br>
+                                <span>{{comlandmark}} {{comcity}} {{comstate}}, {{compostalcode}}</span><br>
                                 <span>#{{comno}}</span>
-                            </h3>
+                            </h5>
                         </div>
                         <div class="col-md-4">
                         </div>
@@ -1210,7 +1207,7 @@
                             <span class="col-md-1"></span>
                             <div class="col-md-10">
                                 <div id="removepanel2" class="panel panel-warning panel-heading">
-                                    <h3 class="panel-title">Free Program Feature Highlights</h3>
+                                    <h3 class="panel-title">Optional</h3>
                                 </div>
                                 <div class="panel-body">
                                     <table class="table table-hover fpfrowTable" id="fpfrowTable">
@@ -1250,7 +1247,7 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <h4>Total Program Features</h4>
+                                                    <h4>Total Optional Features</h4>
                                                 </td>
                                                 <td></td>
                                                 <td class="text-center">

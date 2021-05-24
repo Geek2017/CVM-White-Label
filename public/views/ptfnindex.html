@@ -112,22 +112,25 @@
         }
     }
 </style>
-<ul class="breadcrumb">
-    <li>LIST</li>
-    <li class="active">PORT TOLL FREE NUMBER</li>
+
+<ul class="breadcrumb panel panel-success">
+    <li><a href="#/">DASHBOARD</a></li>
+    <li class="active"><strong>LIST</strong></li>
 </ul>
+
 <div class="page-content-wrap">
     <div class="row">
         <div class="col-md-12">
             <form class="form-horizontal">
                 <div class="panel panel-success">
+
                     <div class="panel-heading">
                         <div class="col-md-4 pull-left">
-                            <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive " width="40%" src="" alt="log">
+                            <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive" src="" alt="log">
                         </div>
                         <div class="col-md-4">
                             <h1 class="text-center">
-                                <strong>PORT TOLL</strong> FREE NUMBER
+                                <strong>PORT TOLL FREE NUMBER</strong>
                             </h1>
                         </div>
                         <div class="col-md-4">
@@ -142,20 +145,18 @@
 
                         </div>
                         <div class="col-md-4 ">
-                            <h3 class="text-center">
+                            <h5 class="text-center">
                                 <span>
-                                    <h1><strong>{{comname | uppercase}}</strong></h1>
+                                  <h2 style="margin-bottom: 0px!important;"><strong>{{comname | uppercase}}</strong></h2>
                                 </span>
-                                <span>{{comlandmark}}</span><br>
-                                <span>{{comcity}}</span><br>
-                                <span>{{comstate}},</span>
-                                <span>{{compostalcode}}</span><br>
+                                <span>{{comlandmark}} {{comcity}} {{comstate}}, {{compostalcode}}</span><br>
                                 <span>#{{comno}}</span>
-                            </h3>
+                            </h5>
                         </div>
                         <div class="col-md-4">
                         </div>
                     </div>
+
                     <div class="message-box message-box-success animated fadeIn" id="spsuccess">
                         <div class="mb-container">
                             <div class="mb-middle">

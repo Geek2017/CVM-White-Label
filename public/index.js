@@ -60,7 +60,7 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
                 $(".btn-primary").css("background", snapshot.val().formcolor)
 
-                $(".btn-primary").css("border-color", 'white')
+                
 
                 $(".x-navigation>li.xn-logo>a:first-child").css("background", snapshot.val().formcolor);
 
@@ -86,6 +86,29 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
                 localStorage.setItem('landmark', snapshot.val().landmark)
 
                 console.log(snapshot.val())
+                var logo = sessionStorage.getItem('comlogo');
+                if (logo) {
+
+                    console.log(logo.width, logo.height);
+                    var i = new Image();
+                    console.log(logo)
+                    i.onload = function() {
+                        console.log(i.width + ", " + i.height);
+
+                        if (i.width == i.height) {
+                            $('#comlogo').attr('src', logo).css({ 'width': '100px', 'height': '100px' });;
+                        } else {
+                            $('#comlogo').attr('src', logo).css({ 'width': '200px', 'height': '60px' });;
+                        }
+
+
+                    };
+                    i.src = logo;
+
+                } else {
+                    console.log('imagenotloaded')
+                    $('#comlogo').attr('src', 'assets/images/plj.jpg')
+                }
             });
 
 

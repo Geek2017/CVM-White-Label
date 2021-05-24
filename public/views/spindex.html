@@ -125,8 +125,9 @@
 </style>
 
 <ul class="breadcrumb panel panel-success">
-    <li>LIST</li>
-    <li class="active">SALES PROPOSAL</li>
+    <li><a href="#/">DASHBOARD</a></li>
+    <li class="active"> <strong>LIST</strong></li>
+
 </ul>
 
 <div class="page-content-wrap">
@@ -136,12 +137,12 @@
                 <div class="panel panel-success">
 
                     <div class="panel-heading">
-                        <div class="col-md-4">
-                            <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive" width="40%" src="" alt="logo">
+                        <div class="col-md-4" style="padding-top: 10px!important;">
+                            <img id="comlogo" class="img-responsive" src="" alt="logo">
                         </div>
                         <div class="col-md-4 text-center">
-                            <h1>
-                                <strong>SALES</strong> PROPOSAL
+                            <h1 style="margin-top: 5px!important;">
+                                <strong>SALES PROPOSAL</strong>
                             </h1>
                         </div>
                         <div class="col-md-4">
@@ -156,16 +157,13 @@
 
                         </div>
                         <div class="col-md-4 ">
-                            <h3 class="text-center">
+                            <h5 class="text-center">
                                 <span>
-                                   <h1><strong>{{comname | uppercase}}</strong></h1>
-                               </span>
-                                <span>{{comlandmark}}</span><br>
-                                <span>{{comcity}}</span><br>
-                                <span>{{comstate}},</span>
-                                <span>{{compostalcode}}</span><br>
+                                  <h2 style="margin-bottom: 0px!important;"><strong>{{comname | uppercase}}</strong></h2>
+                                </span>
+                                <span>{{comlandmark}} {{comcity}} {{comstate}}, {{compostalcode}}</span><br>
                                 <span>#{{comno}}</span>
-                            </h3>
+                            </h5>
                         </div>
                         <div class="col-md-4">
                         </div>
@@ -298,7 +296,7 @@
                     <label>Hash Link:</label>
                     <input ng-model="hash" type="text" name="message" id="message" class="form-control" readonly />
                     <br><br>
-                    <input type="submit" class="btn btn-primary btn-block" id="button" value="SEND">
+                    <button type="submit" class="btn btn-primary btn-block" id="button">SEND</button>
                 </form>
             </div>
 
@@ -314,7 +312,7 @@
 
                 <div class="col-md-12 text-center">
                     <h1 class="text-center">
-                        <strong>CARD CREDIT</strong> AUTH
+                        <strong>SALES PROPOSAL</strong>
                     </h1>
                 </div>
 

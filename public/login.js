@@ -9,13 +9,13 @@ $(document).ready(function() {
 
     document.getElementById("year").innerHTML = new Date().getFullYear();
 
-
     var config = {
         apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",
         authDomain: "cmlformportal-b8674.firebaseapp.com",
         databaseURL: "https://cmlformportal-b8674.firebaseio.com/",
         projectId: "cmlformportal-b8674"
     };
+
     firebase.initializeApp(config);
 
     $('#loginForm').on('submit', function(e) {

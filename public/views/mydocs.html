@@ -1,25 +1,48 @@
 <ul class="breadcrumb">
-    <li>Forms</li>
-    <li class="active">Sales Proposal</li>
+    <li><a href="#/">DASHBOARD</a></li>
+    <li class="active"><strong>MY DOCUMENT</strong></li>
 </ul>
 <div class="page-content-wrap">
     <div class="row">
         <div class="col-md-12">
             <form class="form-horizontal">
                 <div class="panel panel-success">
-                    <div class="panel-heading" style="padding-left:39%!important">
-                        <h1 class="panel-title" style="font-size:35px"><strong>MY </strong>DOCUMENT's</h1>
-                        <ul class="panel-controls">
-                            <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
-                        </ul>
+
+                    <div class="panel-heading">
+                        <div class="col-md-4 pull-left">
+                            <img id="comlogo" style="padding-top: 6px!important;" class="img-responsive" src="" alt="log">
+                        </div>
+                        <div class="col-md-4">
+                            <h1 class="text-center">
+                                <strong>MY DOCUMENT</strong>
+                            </h1>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="panel-controls">
+                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="panel-heading" style="text-align:center!important"><img id="comlogo" style="z-index:1!important" class="img-responsive pull-left" width="10%" src="" alt="log">
-                        <h3>
-                            <section style="padding-right:11%!important;padding-top:1%!important"><span><strong><span
-                                            id="comname"></span></strong><br><span id="landmark"></span><br><span id="comcity"></span><br><span id="comstate"></span>, <span id="compostalcode"></span><br># <span id="comno"></span></span>
-                            </section>
-                        </h3>
+
+                    <div class="row panel-heading">
+                        <div class="col-md-4 pull-left">
+
+                        </div>
+                        <div class="col-md-4 ">
+                            <h5 class="text-center">
+                                <span>
+                                  <h2 style="margin-bottom: 0px!important;"><strong>{{comname | uppercase}}</strong></h2>
+                                </span>
+                                <span>{{comlandmark}} {{comcity}} {{comstate}}, {{compostalcode}}</span><br>
+                                <span>#{{comno}}</span>
+                            </h5>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
                     </div>
+
+
+
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-actions">

@@ -114,8 +114,8 @@
 </style>
 
 <ul class="breadcrumb">
-    <li>LIST</li>
-    <li class="active">PORT LOCAL NUMBER</li>
+    <li><a href="#/">DASHBOARD</a></li>
+    <li class="active"><strong>LIST</strong></li>
 </ul>
 
 <script src="./assets/js/drop.js"></script>
@@ -131,7 +131,7 @@
                         </div>
                         <div class="col-md-4">
                             <h1 class="text-center">
-                                <strong>PORT LOCAL</strong> NUMBER
+                                <strong>PORT LOCAL NUMBER</strong>
                             </h1>
                         </div>
                         <div class="col-md-4">
@@ -146,16 +146,13 @@
 
                         </div>
                         <div class="col-md-4 ">
-                            <h3 class="text-center">
+                            <h5 class="text-center">
                                 <span>
-                                  <h1><strong>{{comname | uppercase}}</strong></h1>
+                                  <h2 style="margin-bottom: 0px!important;"><strong>{{comname | uppercase}}</strong></h2>
                                 </span>
-                                <span>{{comlandmark}}</span><br>
-                                <span>{{comcity}}</span><br>
-                                <span>{{comstate}},</span>
-                                <span>{{compostalcode}}</span><br>
+                                <span>{{comlandmark}} {{comcity}} {{comstate}}, {{compostalcode}}</span><br>
                                 <span>#{{comno}}</span>
-                            </h3>
+                            </h5>
                         </div>
                         <div class="col-md-4">
                         </div>
@@ -231,7 +228,7 @@
                                         <th width="5">State</th>
                                         <th width="5"><label class="input">Zip Code</label></th>
 
-                                        <th style="width:160px!important">Data Controls <a href="#/portlocalnumber"><span class="btn btn-primary btn-sm fa fa-plus pull-right"> NEW</span></a></th>
+                                        <th style="width:160px!important">Data Controls <a href="#/portlocalnumber"><span class="btn btn-primary btn-sm fa fa-plus pull-right"> CREATE</span></a></th>
                                     </tr>
                                 </thead>
                                 <tbody ng-repeat="nsp in opln | startFrom:currentPage*pageSize | limitTo:pageSize |filter:findcf ">
