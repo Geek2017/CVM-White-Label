@@ -2480,10 +2480,11 @@ ul.panel-controls>li>.dropdown-menu:before {
     border-color: #a7c479;
 }
 
-.btn-primary {
+
+/* .btn-primary {
     background-color: #1b1e24;
     border-color: #1b1e24;
-}
+} */
 
 .btn-primary:hover,
 .btn-primary:focus,

@@ -3,7 +3,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
     var fcolor = localStorage.getItem('formcolor')
     $(".panel").css("border-top-color", fcolor);
     $(".btn-primary").css("background", fcolor)
-    
+
     $(".x-navigation>li.xn-logo>a:first-child").css("background", fcolor);
     $(".x-navigation li.active>a").css("background", fcolor);
     $(".panel-success>.panel-heading").css("color", fcolor);
@@ -14,6 +14,9 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
     $scope.comstate = localStorage.getItem('comstate');
     $scope.compostalcode = localStorage.getItem('compostalcode');
     $scope.comno = localStorage.getItem('comcontact');
+
+
+
 
     var logo = sessionStorage.getItem('comlogo');
     if (logo) {
@@ -477,7 +480,6 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
             if (cdata) {
                 var uid = firebase.database().ref().child('salesproposal').push().key;
 
-
                 var data = {
                     mrc: table0,
                     nrc: table1,
@@ -501,20 +503,25 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
                     phone: $scope.phone,
                     mainphoneno: $scope.mainphoneno,
                     sign: c.toDataURL(c),
-                    cusid: cdata
+                    cusid: cdata,
+                    startedAt: firebase.database.ServerValue.TIMESTAMP,
+                    doctype: "Sales Proposal"
                 }
 
                 var updates = {};
                 updates['/salesproposal/' + uid] = data;
                 firebase.database().ref().update(updates);
                 console.log(updates, uid)
-                return ukeyid = uid;
+
+                if (updates && c_check == 0) {
+                    console.log(c_check)
+                    $('#spsuccess').addClass('open')
+                    return ukeyid = uid;
+                }
+
             }
 
-            if (updates && c_check == 0) {
-                console.log(c_check)
-                $('#spsuccess').addClass('open')
-            }
+
 
         } catch (err) {
             $("#errormsg").text(err);

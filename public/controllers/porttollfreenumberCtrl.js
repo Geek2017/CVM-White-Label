@@ -3,7 +3,7 @@ angular.module('newApp').controller('porttollfreenumber', function($scope) {
     var fcolor = localStorage.getItem('formcolor')
     $(".panel").css("border-top-color", fcolor);
     $(".btn-primary").css("background", fcolor)
-    
+
     $(".x-navigation>li.xn-logo>a:first-child").css("background", fcolor);
     $(".x-navigation li.active>a").css("background", fcolor);
     $(".panel-success>.panel-heading").css("color", fcolor);
@@ -103,43 +103,48 @@ angular.module('newApp').controller('porttollfreenumber', function($scope) {
     $scope.saveptfn = function() {
 
         try {
-            var uid = firebase.database().ref().child('porttollfreenumber').push().key;
+            let cdata = localStorage.getItem('curuserid');
+            if (cdata) {
+                var uid = firebase.database().ref().child('porttollfreenumber').push().key;
 
-            localStorage.setItem('ukeyid', uid);
+                localStorage.setItem('ukeyid', uid);
 
-            var data = {
-                acctno: $scope.acctno,
-                street0: $scope.street0,
-                city0: $scope.city0,
-                zipcode0: $scope.zipcode0,
-                asname: $scope.asname,
-                custname: $scope.custname,
-                street1: $scope.street1,
-                city1: $scope.city1,
-                state0: $scope.state0,
-                state1: $scope.state1,
-                zipcode1: $scope.zipcode1,
-                rpdate: $scope.rpdate,
-                mainno: $scope.mainno,
-                otherno: $scope.otherno,
-                datesign: $scope.datesign,
-                sign: c.toDataURL(c)
+                var data = {
+                    acctno: $scope.acctno,
+                    street0: $scope.street0,
+                    city0: $scope.city0,
+                    zipcode0: $scope.zipcode0,
+                    asname: $scope.asname,
+                    custname: $scope.custname,
+                    street1: $scope.street1,
+                    city1: $scope.city1,
+                    state0: $scope.state0,
+                    state1: $scope.state1,
+                    zipcode1: $scope.zipcode1,
+                    rpdate: $scope.rpdate,
+                    mainno: $scope.mainno,
+                    otherno: $scope.otherno,
+                    datesign: $scope.datesign,
+                    sign: c.toDataURL(c),
+                    cusid: cdata,
+                    startedAt: firebase.database.ServerValue.TIMESTAMP,
+                    doctype: "Port Toll Free No."
+                }
+
+                var updates = {};
+                updates['/porttollfreenumber/' + uid] = data;
+                firebase.database().ref().update(updates);
+                console.log(updates)
+
+                if (updates) {
+                    $('#spsuccess').addClass('open')
+                        // setTimeout(function() {
+                        //     window.location.replace("#/");
+                        //     window.location.replace("#/spindex");
+                        // }, 2000)
+
+                }
             }
-
-            var updates = {};
-            updates['/porttollfreenumber/' + uid] = data;
-            firebase.database().ref().update(updates);
-            console.log(updates)
-
-            if (updates) {
-                $('#spsuccess').addClass('open')
-                    // setTimeout(function() {
-                    //     window.location.replace("#/");
-                    //     window.location.replace("#/spindex");
-                    // }, 2000)
-
-            }
-
         } catch (err) {
             $("#errormsg").text(err);
 

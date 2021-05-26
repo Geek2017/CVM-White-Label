@@ -3,7 +3,7 @@ angular.module('newApp').controller('ccaindexCrtl', function($scope, $timeout) {
     var fcolor = localStorage.getItem('formcolor')
     $(".panel").css("border-top-color", fcolor);
     $(".btn-primary").css("background", fcolor)
-    
+
     $(".x-navigation>li.xn-logo>a:first-child").css("background", fcolor);
     $(".x-navigation li.active>a").css("background", fcolor);
     $(".panel-success>.panel-heading").css("color", fcolor);

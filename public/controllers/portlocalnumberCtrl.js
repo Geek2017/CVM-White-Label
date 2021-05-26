@@ -4,7 +4,7 @@ angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
     var fcolor = localStorage.getItem('formcolor')
     $(".panel").css("border-top-color", fcolor);
     $(".btn-primary").css("background", fcolor)
-    
+
     $(".x-navigation>li.xn-logo>a:first-child").css("background", fcolor);
     $(".x-navigation li.active>a").css("background", fcolor);
     $(".panel-success>.panel-heading").css("color", fcolor);
@@ -141,52 +141,57 @@ angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
 
         setTimeout(function() {
             try {
+                let cdata = localStorage.getItem('curuserid');
 
-                var uid = firebase.database().ref().child('portlocalnumber').push().key;
+                if (cdata) {
+                    var uid = firebase.database().ref().child('portlocalnumber').push().key;
 
-                localStorage.setItem('ukeyid', uid);
+                    localStorage.setItem('ukeyid', uid);
 
-                var data = {
-                    mainbtn: $scope.mainbtn,
-                    acctnumber: $scope.acctnumber,
-                    street2: $scope.street2,
-                    city2: $scope.city2,
-                    state2: $scope.state2,
-                    zipcode2: $scope.zipcode2,
-                    e911: $scope.e911,
-                    cname: $scope.cname,
-                    numberbarn: $scope.numberbarn,
-                    reqpd: $scope.reqpd,
-                    custname: $scope.custname,
-                    street1: $scope.street1,
-                    city1: $scope.city1,
-                    state1: $scope.state1,
-                    zipcode1: $scope.zipcode1,
-                    asname: $scope.asname,
-                    asphone: $scope.asphone,
-                    mainno: $scope.mainno,
-                    addno: $scope.addno,
-                    otherno: otherno,
-                    thedate: $scope.thedate,
-                    printname: $scope.printname,
-                    emailadd: $scope.emailadd,
-                    sign: c.toDataURL(c)
+                    var data = {
+                        mainbtn: $scope.mainbtn,
+                        acctnumber: $scope.acctnumber,
+                        street2: $scope.street2,
+                        city2: $scope.city2,
+                        state2: $scope.state2,
+                        zipcode2: $scope.zipcode2,
+                        e911: $scope.e911,
+                        cname: $scope.cname,
+                        numberbarn: $scope.numberbarn,
+                        reqpd: $scope.reqpd,
+                        custname: $scope.custname,
+                        street1: $scope.street1,
+                        city1: $scope.city1,
+                        state1: $scope.state1,
+                        zipcode1: $scope.zipcode1,
+                        asname: $scope.asname,
+                        asphone: $scope.asphone,
+                        mainno: $scope.mainno,
+                        addno: $scope.addno,
+                        otherno: otherno,
+                        thedate: $scope.thedate,
+                        printname: $scope.printname,
+                        emailadd: $scope.emailadd,
+                        sign: c.toDataURL(c),
+                        cusid: cdata,
+                        startedAt: firebase.database.ServerValue.TIMESTAMP,
+                        doctype: "Port Local No."
+                    }
+
+                    var updates = {};
+                    updates['/portlocalnumber/' + uid] = data;
+                    firebase.database().ref().update(updates);
+                    console.log(updates)
+
+                    if (updates) {
+                        $('#spsuccess').addClass('open')
+                        setTimeout(function() {
+                            window.location.replace("#/");
+                            window.location.replace("#/spindex");
+                        }, 2000)
+
+                    }
                 }
-
-                var updates = {};
-                updates['/portlocalnumber/' + uid] = data;
-                firebase.database().ref().update(updates);
-                console.log(updates)
-
-                if (updates) {
-                    $('#spsuccess').addClass('open')
-                        // setTimeout(function() {
-                        //     window.location.replace("#/");
-                        //     window.location.replace("#/spindex");
-                        // }, 2000)
-
-                }
-
             } catch (err) {
                 $("#errormsg").text(err);
 

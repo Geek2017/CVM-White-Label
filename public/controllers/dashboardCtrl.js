@@ -8,7 +8,7 @@ angular.module('newApp').controller('dashboardCtrl', function($scope, $rootScope
     var fcolor = localStorage.getItem('formcolor')
     $(".panel").css("border-top-color", fcolor);
     $(".btn-primary").css("background", fcolor)
-    
+
     $(".x-navigation>li.xn-logo>a:first-child").css("background", fcolor);
     $(".x-navigation li.active>a").css("background", fcolor);
     $(".panel-success>.panel-heading").css("color", fcolor);
@@ -18,13 +18,16 @@ angular.module('newApp').controller('dashboardCtrl', function($scope, $rootScope
 
 
     firebase.database().ref('/salesproposal/').orderByChild('cusid').on("value", function(snapshot) {
+        let cdata = localStorage.getItem('curuserid');
         $timeout(function() {
             $scope.$apply(function() {
                 let returnArr = [];
                 snapshot.forEach(childSnapshot => {
                     let item = childSnapshot.val();
                     item.key = childSnapshot.key;
-                    returnArr.push(item);
+                    if (item.cusid == parseInt(cdata)) {
+                        returnArr.push(item);
+                    }
                 });
                 console.log(returnArr.length)
                 if (returnArr.length) {
@@ -38,13 +41,16 @@ angular.module('newApp').controller('dashboardCtrl', function($scope, $rootScope
     })
 
     firebase.database().ref('/portlocalnumber/').orderByChild('cusid').on("value", function(snapshot) {
+        let cdata = localStorage.getItem('curuserid');
         $timeout(function() {
             $scope.$apply(function() {
                 let returnArr = [];
                 snapshot.forEach(childSnapshot => {
                     let item = childSnapshot.val();
                     item.key = childSnapshot.key;
-                    returnArr.push(item);
+                    if (item.cusid == parseInt(cdata)) {
+                        returnArr.push(item);
+                    }
                 });
                 console.log(returnArr.length)
 
@@ -59,13 +65,16 @@ angular.module('newApp').controller('dashboardCtrl', function($scope, $rootScope
     })
 
     firebase.database().ref('/porttollfreenumber/').orderByChild('cusid').on("value", function(snapshot) {
+        let cdata = localStorage.getItem('curuserid');
         $timeout(function() {
             $scope.$apply(function() {
                 let returnArr = [];
                 snapshot.forEach(childSnapshot => {
                     let item = childSnapshot.val();
                     item.key = childSnapshot.key;
-                    returnArr.push(item);
+                    if (item.cusid == parseInt(cdata)) {
+                        returnArr.push(item);
+                    }
                 });
                 console.log(returnArr.length)
                 $scope.ptfncount = returnArr.length;

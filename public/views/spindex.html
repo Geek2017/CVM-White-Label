@@ -216,15 +216,16 @@
                     <div class="panel-body">
                         <div class="table-responsive">
                             <label class="input">
-                                Search:<input type="text" name="name" ng-model="findcf" >
+                                Search:<input type="text" name="name" ng-model="findcf" > <button class="btn btn-danger btn-xs clean" ng-click="clean()">Clear</button>
                            </label>
 
                             <label class="input pull-right">
-                               <label class="select ">
-                                 Filter:<select class="" ng-model="pageSize" ng-options="num for num in [2,5,10, 100,1000]" ></select> <i></i> <br>
-                                   
-                               </label>
+                            <label class="select">
+                                <select class="" ng-model="pageSize" ng-options="num for num in [5,10, 100,1000]" ></select> <i></i> <br>
                             </label>
+                            </label>
+
+
 
 
                             <table class="table table-bordered table-striped table-actions">
@@ -242,9 +243,9 @@
                                         <th style="width:160px!important">Data Controls <a href="#/salesproposal"><span class="btn btn-primary btn-sm fa fa-files-o pull-right"> CREATE</span></a></th>
                                     </tr>
                                 </thead>
-                                <tbody ng-repeat="nsp in osps | startFrom:currentPage*pageSize | limitTo:pageSize | filter:findcf ">
+                                <tbody ng-repeat="nsp in osps | startFrom:currentPage*pageSize | limitTo:pageSize | filter:findcf">
                                     <tr>
-                                        <td class="text-center">{{$index + 1}}</td>
+                                        <td class=" text-center ">{{$index + 1}}</td>
                                         <td>{{nsp.bizname}}</td>
                                         <td>{{nsp.custname}}</td>
                                         <td>{{nsp.presentedby}}</td>
@@ -253,11 +254,11 @@
                                         <td>{{nsp.state}}</td>
                                         <td>{{nsp.zipcode}}</td>
 
-                                        <td class="text-center buttons">
-                                            <button ng-click="editsp(nsp);trigersignsp(nsp);" class="btn btn-default btn-sm fa fa-pencil print-preview" data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
-                                            <button ng-click="deletesp(nsp)" class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
-                                            <button ng-click="editsp(nsp);print()" data-toggle="modal" data-target="#update_modal" class="btn btn-info btn-sm fa fa-print "> PRINT&nbsp;</button>
-                                            <button class="btn btn-warning btn-sm fa fa-rocket" data-toggle="modal" data-target="#email_modal" ng-click="genhashkey(nsp);"> EMAIL&nbsp;</button>
+                                        <td class="text-center buttons ">
+                                            <button ng-click="editsp(nsp);trigersignsp(nsp); " class="btn btn-default btn-sm fa fa-pencil print-preview " data-toggle="modal " data-target="#update_modal "> VIEW&nbsp;&nbsp;</button>
+                                            <button ng-click="deletesp(nsp) " class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
+                                            <button ng-click="editsp(nsp);print() " data-toggle="modal " data-target="#update_modal " class="btn btn-info btn-sm fa fa-print "> PRINT&nbsp;</button>
+                                            <button class="btn btn-warning btn-sm fa fa-rocket " data-toggle="modal " data-target="#email_modal " ng-click="genhashkey(nsp); "> EMAIL&nbsp;</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -270,7 +271,7 @@
      </button>
                             <button class="btn btn-primary ">{{currentPage+1}} of {{numberOfPages()}}</button>
                             <button class="btn btn-primary " ng-disabled="currentPage>= data.length/pageSize - 1" ng-click="currentPage=currentPage+1"> Next
-                                           </button>
+                                    </button>
                         </div>
                     </div>
                 </div>

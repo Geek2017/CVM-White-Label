@@ -1,4 +1,6 @@
-angular.module('newApp').controller('indexdCtrl', function($scope) {
+angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
+
+
 
     var config = {
         apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",
@@ -60,7 +62,7 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
                 $(".btn-primary").css("background", snapshot.val().formcolor)
 
-                
+
 
                 $(".x-navigation>li.xn-logo>a:first-child").css("background", snapshot.val().formcolor);
 
@@ -118,6 +120,80 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
 
     });
+
+    firebase.database().ref('/salesproposal/').orderByChild('cusid').on("value", function(snapshot) {
+        let cdata = localStorage.getItem('curuserid');
+        $timeout(function() {
+            $scope.$apply(function() {
+                let returnArr = [];
+                snapshot.forEach(childSnapshot => {
+                    let item = childSnapshot.val();
+                    item.key = childSnapshot.key;
+                    if (item.cusid == parseInt(cdata)) {
+                        returnArr.push(item);
+                    }
+                });
+                console.log(returnArr.length)
+                if (returnArr.length) {
+                    $scope.spcount = returnArr.length;
+                } else {
+                    $scope.spcount = 0;
+                }
+            });
+
+        })
+    })
+
+    firebase.database().ref('/portlocalnumber/').orderByChild('cusid').on("value", function(snapshot) {
+        let cdata = localStorage.getItem('curuserid');
+        $timeout(function() {
+            $scope.$apply(function() {
+                let returnArr = [];
+                snapshot.forEach(childSnapshot => {
+                    let item = childSnapshot.val();
+                    item.key = childSnapshot.key;
+                    if (item.cusid == parseInt(cdata)) {
+                        returnArr.push(item);
+                    }
+                });
+                console.log(returnArr.length)
+
+                if (returnArr.length) {
+                    $scope.plncount = returnArr.length;
+                } else {
+                    $scope.plncount = 0;
+                }
+            });
+
+        })
+    })
+
+    firebase.database().ref('/porttollfreenumber/').orderByChild('cusid').on("value", function(snapshot) {
+        let cdata = localStorage.getItem('curuserid');
+        $timeout(function() {
+            $scope.$apply(function() {
+                let returnArr = [];
+                snapshot.forEach(childSnapshot => {
+                    let item = childSnapshot.val();
+                    item.key = childSnapshot.key;
+                    if (item.cusid == parseInt(cdata)) {
+                        returnArr.push(item);
+                    }
+                });
+                console.log(returnArr.length)
+                $scope.ptfncount = returnArr.length;
+
+                if (returnArr.length) {
+                    $scope.ptfncount = returnArr.length;
+                } else {
+                    $scope.ptfncount = 0;
+                }
+
+
+            });
+
+        })
+    })
 
     $(".activate").addClass("active");
 

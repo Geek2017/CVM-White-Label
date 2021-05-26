@@ -3,7 +3,7 @@ angular.module('newApp').controller('ptfnindexCrtl', function($scope, $timeout) 
     var fcolor = localStorage.getItem('formcolor')
     $(".panel").css("border-top-color", fcolor);
     $(".btn-primary").css("background", fcolor)
-    
+
     $(".x-navigation>li.xn-logo>a:first-child").css("background", fcolor);
     $(".x-navigation li.active>a").css("background", fcolor);
     $(".panel-success>.panel-heading").css("color", fcolor);
@@ -51,6 +51,7 @@ angular.module('newApp').controller('ptfnindexCrtl', function($scope, $timeout) 
     }
 
     firebase.database().ref('/porttollfreenumber/').orderByChild('uid').on("value", function(snapshot) {
+        let cdata = localStorage.getItem('curuserid');
         $timeout(function() {
 
             $scope.$apply(function() {
@@ -58,13 +59,16 @@ angular.module('newApp').controller('ptfnindexCrtl', function($scope, $timeout) 
                 snapshot.forEach(childSnapshot => {
                     let item = childSnapshot.val();
                     item.key = childSnapshot.key;
-                    returnArr.push(item);
+                    if (item.cusid == parseInt(cdata)) {
+                        returnArr.push(item);
+                    }
                 });
                 $scope.opln = returnArr;
                 console.log($scope.opln);
             });
 
         })
+
     });
 
 
@@ -286,7 +290,20 @@ angular.module('newApp').controller('ptfnindexCrtl', function($scope, $timeout) 
     }
 
 
+    var searchdate = localStorage.getItem('sdata')
+    if (searchdate) {
+        $('.clean').show()
+        console.log(searchdate)
+        $scope.findcf = searchdate
+    } else {
+        $('.clean').hide()
+    }
 
+    $scope.clean = function() {
+        localStorage.removeItem("sdata");
+        $scope.findcf = " "
+        $('.clean').hide()
+    }
 
 }).filter('startFrom', function() {
     return function(input, start) {
