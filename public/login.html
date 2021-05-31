@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" id="theme" href="assets/css/theme-default.css" />
     <!-- <link rel="stylesheet" type="text/css" id="theme" href="assets/css/style.css" /> -->
     <!-- EOF CSS INCLUDE -->
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
 </head>
 
 <body>
@@ -34,19 +35,33 @@
                         <button id="alert" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                         <strong>Your Account had been successfully migrated!</strong> <br> Pls. check your email to reset your Password Cheers!.
                     </div>
-                    <div class="form-group">
+
+                    <div id="otpholder" class="form-group">
+                        <div class="col-md-12">
+                            <h1 class="login-title">ENTER YOUR OTP:</h1>
+                            <input id="otpno" type="number" class="form-control" placeholder="OTP" />
+                        </div>
+                    </div>
+
+                    <div id="mauth0" class="form-group">
                         <div class="col-md-12">
                             <input id="loginEmail" type="text" class="form-control" placeholder="Email" required />
                         </div>
                     </div>
                     <br>
-                    <div class="form-group">
+                    <div id="mauth1" class="form-group">
                         <div class="col-md-12">
                             <input id="loginPassword" type="password" class="form-control" value="xxx" placeholder="Password" required />
                         </div>
                     </div>
                     <br>
-                    <div class="form-group">
+                    <div class="form-group validatec">
+                        <div class="col-md-12">
+                            <button class="btn btn-danger btn-lg btn-block validate" type="button">Validate OTP</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group loginh">
 
                         <div class="col-md-6">
 
@@ -83,9 +98,7 @@
     </div>
     <script type="text/javascript" src="assets/js/plugins/jquery/jquery.min.js"></script>
     <script src="login.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
 
-    </script>
 </body>
 
 </html>

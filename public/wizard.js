@@ -294,7 +294,13 @@ $(document).ready(function() {
                                     cusemail: cusemail,
                                     role: "1",
                                     designation: "Account Manager",
-                                    userimage: localStorage.getItem('userimgbase64')
+                                    userimage: localStorage.getItem('userimgbase64'),
+                                    taxexempt: 1,
+                                    hw_markup: "empty",
+                                    cmvbilltype: "empty",
+                                    costperbilltype: "0",
+                                    chargeacct: "empty",
+                                    mfa: 0
                                 }
 
                                 var updates = {};

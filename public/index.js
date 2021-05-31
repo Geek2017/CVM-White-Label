@@ -10,6 +10,7 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
     };
 
     firebase.initializeApp(config);
+
     firebase.auth().onAuthStateChanged(function(user) {
         doSomething();
         console.log(user)
@@ -36,6 +37,18 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
 
         var ref = firebase.database().ref("users");
         ref.orderByChild("cusemail").equalTo(response).on("child_added", function(snapshot) {
+            var sotp = localStorage.getItem('OTP')
+
+            console.log(sotp, snapshot.val().otp)
+
+            if (snapshot.val().otp === 1) {
+
+                if (!sotp) {
+                    localStorage.clear()
+                    sessionStorage.clear()
+                }
+
+            }
 
             console.log(snapshot.val().cusid);
 
