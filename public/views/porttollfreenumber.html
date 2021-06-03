@@ -1,4 +1,10 @@
 <style>
+    .oinput {
+        background: transparent!important;
+        border: 1.5px solid gray!important;
+        border-radius: 5!important;
+    }
+    
     .hover:hover {
         background-color: #9773e2;
     }
@@ -425,7 +431,7 @@
                             <div class="form-group">
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
-                                    <input ng-model="mainno" placeholder="Main Number" type="text" class="form-control" required />
+                                    <input ng-model="mainno" placeholder="Main Number" type="text" class="form-control oinput" required />
                                 </div>
                             </div>
                         </div>
@@ -433,7 +439,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <div class="col-md-10 input-group">
-                                    <input type="text" ng-model="otherno" class="form-control" placeholder="Other Number" />
+                                    <input type="text" ng-model="otherno" class="form-control oinput" placeholder="Other Number " />
                                     <span class="input-group-addon hover"><i class="fa fa-plus"></i></span>
                                 </div>
                                 <span class="col-md-2"></span>

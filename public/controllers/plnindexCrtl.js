@@ -195,7 +195,6 @@ angular.module('newApp').controller('plnindexCrtl', function($scope, $timeout) {
 
     $scope.editpl = function(nsp) {
 
-        alert('123');
         console.log("edit data", nsp)
 
         $('canvas').remove();
@@ -214,9 +213,9 @@ angular.module('newApp').controller('plnindexCrtl', function($scope, $timeout) {
         if (onl) {
             for (var i = 0; i < onl.length; i++) {
                 if (i % 2 == 0) {
-                    $("#left").append("<div class='form-group left'><span class='col-md-2'></span><div class='col-md-10'><div class='input-group'><input  type='text'  class='form-control' value='" + $scope.nsp.otherno[i] + "' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div></div>");
+                    $("#left").append("<div class='form-group left'><span class='col-md-2'></span><div class='col-md-10'><div class='input-group'><input  type='text'  class='form-control oinput' value='" + $scope.nsp.otherno[i] + "' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div></div>");
                 } else {
-                    $("#right").append("<div class='form-group right'><div class='col-md-10'><div class='input-group'><input type='text' class='form-control' value='" + $scope.nsp.otherno[i] + "' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
+                    $("#right").append("<div class='form-group right'><div class='col-md-10'><div class='input-group'><input type='text' class='form-control oinput' value='" + $scope.nsp.otherno[i] + "' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
                 }
             }
         }
@@ -319,13 +318,13 @@ angular.module('newApp').controller('plnindexCrtl', function($scope, $timeout) {
     $(document).on('click', '#addno', function(e) {
         if (count % 2 == 0) {
 
-            $("#left").append("<div class='form-group left' ><span class='col-md-2'></span><div class='col-md-10'><div class='input-group' style='padding-top: 3px!important;'><input  type='text' id='ldata" + count + "' class='form-control' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div></div>");
+            $("#left").append("<div class='form-group left' ><span class='col-md-2'></span><div class='col-md-10'><div class='input-group' style='padding-top: 3px!important;'><input  type='text' id='ldata" + count + "' class='form-control oinput' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div></div>");
             // console.log(count)
             count += 1;
             return (count)
         } else {
 
-            $("#right").append("<div class='form-group right' ><div class='col-md-10'><div class='input-group' style='padding-top: 3px!important;'><input type='text' id='rdata" + count + "' class='form-control' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
+            $("#right").append("<div class='form-group right' ><div class='col-md-10'><div class='input-group' style='padding-top: 3px!important;'><input type='text' id='rdata" + count + "' class='form-control oinput' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
             // console.log(count)
             count += 1;
             return (count)

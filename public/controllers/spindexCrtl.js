@@ -479,7 +479,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
             $('#sigb64').remove();
 
             $scope.trigersignsp();
-            // signaturePad.clear();
+            signaturePad.clear();
         });
 
 
