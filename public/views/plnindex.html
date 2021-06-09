@@ -236,7 +236,7 @@
                                         <td class="text-center">{{$index + 1}}</td>
                                         <td>{{nsp.mainbtn}}</td>
                                         <td>{{nsp.acctnumber}}</td>
-                                        <td>{{nsp.reqpd}}</td>
+                                        <td>{{nsp.reqpd | date}}</td>
                                         <td>{{nsp.custname}}</td>
 
                                         <td>{{nsp.city1}}</td>
@@ -380,6 +380,7 @@
                                 <!-- Boundery -->
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
+                                    <br>
                                     <h4><label class="control-label">Customer Billing Address:</label></h4>
                                 </div>
 
@@ -498,6 +499,7 @@
 
                                 <span class="col-md-2"></span>
                                 <div class="col-md-10">
+                                    <br>
                                     <h4><label class="control-label">Customer Physical Addres:</label></h4>
                                 </div>
 
@@ -680,7 +682,9 @@
                                     <label class="control-label">Attachment:</label>
                                     <div class="panel panel-success">
                                         <div class="panel-body">
-                                            <div action="#" class="dropzone dropzone-mini"></div>
+                                            <form>
+                                                <input type="file" accept="image/*,.pdf" multiple>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

@@ -1,5 +1,32 @@
 angular.module('newApp').controller('plnindexCrtl', function($scope, $timeout) {
 
+    $(document).ready(function() {
+        $('input[type="file"]').imageuploadify();
+    })
+
+    function getBase64(file) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function() {
+            console.log(reader.result);
+        };
+        reader.onerror = function(error) {
+            console.log('Error: ', error);
+        };
+    }
+
+
+    $(':file').on('change', function() {
+        var file = this.files;
+
+        angular.forEach(file, function(value, key) {
+            console.log(value)
+            var endr = getBase64(value);
+            console.log(key, endr);
+        });
+
+    });
+
     var fcolor = localStorage.getItem('formcolor')
     $(".panel").css("border-top-color", fcolor);
     $(".btn-primary").css("background", fcolor)

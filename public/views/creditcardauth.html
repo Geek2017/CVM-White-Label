@@ -27,8 +27,8 @@
         height: 128px;
         border: 1px solid #e8e8e8;
         background-color: #fff;
-        border-top-width: 2px;
-        border-top-color: #9773e2;
+        border-top-width: 1px;
+        border-top-color: black;
     }
     
     .m-signature-pad:before,
@@ -128,7 +128,7 @@
 
 <div class="page-content-wrap">
     <div class="row">
-        <div class="col-md-12">
+        <div id="printThis" class="col-md-12">
             <form class="form-horizontal">
                 <div class="panel panel-success">
                     <div class="panel-heading">
@@ -250,7 +250,7 @@
 
                                     <label class="check ">Discover <input ng-model="discover" type="checkbox" class="icheckbox discover"/></label>
 
-                                    <label class="check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <label class="check">&nbsp;&nbsp;</label>
 
                                     <label class="check ">Mastercard <input ng-model="mastercard" type="checkbox" class="icheckbox mastercard"/></label>
 
@@ -510,7 +510,7 @@
                     <div class="panel-footer">
                         <button class="btn btn-danger">CLEAR</button>
                         <div class="btn-group pull-right ">
-                            <button class="btn btn-primary">PRINT</button>
+                            <button class="btn btn-primary" ng-click="print()">PRINT</button>
                             <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">EMAIL</button>
                             <button class="btn btn-primary " ng-click="savecca();">SAVE</button>
                         </div>

@@ -1,5 +1,35 @@
 angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
 
+    var fileuploaded = []
+
+    $(document).ready(function() {
+        $('input[type="file"]').imageuploadify();
+    })
+
+    function getBase64(file) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function() {
+            // console.log(reader.result);
+            fileuploaded.push(reader.result)
+        };
+        reader.onerror = function(error) {
+            console.log('Error: ', error);
+        };
+    }
+
+
+    $(':file').on('change', function() {
+        fileuploaded = [];
+        var file = this.files;
+
+        angular.forEach(file, function(value, key) {
+            console.log(value)
+            var endr = getBase64(value);
+            // console.log(uploadedfile);
+        });
+
+    });
 
     var fcolor = localStorage.getItem('formcolor')
     $(".panel").css("border-top-color", fcolor);
@@ -42,26 +72,22 @@ angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
     }
 
 
-    let count = 0;
+    var count = 0;
+    console.log(count)
 
-
-    $("#send").click(function() {
-
-
-
-    });
+    $("#send").click(function() {});
 
     $(document).on('click', '#addno', function(e) {
         if (count % 2 == 0) {
 
             $("#left").append("<div class='form-group left'><span class='col-md-2'></span><div class='col-md-10'><div class='input-group'><input  type='text' id='ldata" + count + "' class='form-control oinput' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div></div>");
-            // console.log(count)
+            console.log(count)
             count += 1;
             return (count)
         } else {
 
             $("#right").append("<div class='form-group right'><div class='col-md-10'><div class='input-group'><input type='text' id='rdata" + count + "' class='form-control oinput' required/><span class='input-group-addon hover remt'><i class='fa fa-minus'></i></span></div></div><span class='col-md-2'></span></div>");
-            // console.log(count)
+            console.log(count)
             count += 1;
             return (count)
         }
@@ -140,6 +166,7 @@ angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
         }
 
         setTimeout(function() {
+            9
             try {
                 let cdata = localStorage.getItem('curuserid');
 
@@ -149,6 +176,7 @@ angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
                     localStorage.setItem('ukeyid', uid);
 
                     var data = {
+                        fileuploaded: fileuploaded,
                         mainbtn: $scope.mainbtn,
                         acctnumber: $scope.acctnumber,
                         street2: $scope.street2,
@@ -204,6 +232,7 @@ angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
             }
         }, 2000)
     }
+
 
 
 
