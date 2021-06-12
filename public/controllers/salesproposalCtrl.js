@@ -428,6 +428,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
 
         setTimeout(function() {
             html2canvas(document.querySelector("#printThis")).then(canvas => {
+
                 document.body.appendChild(canvas)
                 var nWindow = window.open('', 'PrintWindow', 'width=1000,height=1000', 'overflow=hidden');
                 nWindow.document.body.appendChild(canvas)
