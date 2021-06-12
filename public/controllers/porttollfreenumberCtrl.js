@@ -168,4 +168,8 @@ angular.module('newApp').controller('porttollfreenumber', function($scope) {
         window.location.replace("#/ptfnindex");
     }
 
+    $scope.refresh = function() {
+        window.location.replace("#/");
+        window.location.replace("#/porttollfreenumber");
+    }
 });

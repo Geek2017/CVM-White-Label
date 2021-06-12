@@ -443,6 +443,11 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope, ) {
 
     }
 
+    $scope.refresh = function() {
+        window.location.replace("#/");
+        window.location.replace("#/salesproposal");
+    }
+
     $scope.savesp = function() {
 
         var table0 = $('#mcrrowTable').tableToJSON({

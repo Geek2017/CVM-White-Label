@@ -166,7 +166,7 @@ angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
         }
 
         setTimeout(function() {
-            9
+
             try {
                 let cdata = localStorage.getItem('curuserid');
 
@@ -233,7 +233,9 @@ angular.module('newApp').controller('portlocalnumberCtrl', function($scope) {
         }, 2000)
     }
 
-
-
+    $scope.refresh = function() {
+        window.location.replace("#/");
+        window.location.replace("#/portlocalnumber");
+    }
 
 });

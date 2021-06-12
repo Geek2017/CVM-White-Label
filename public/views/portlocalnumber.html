@@ -607,10 +607,10 @@
 
                 <div class="row">
                     <div class="panel-footer">
-                        <button class="btn btn-danger" id="send">Clear Form</button>
+                        <button class="btn btn-warning" ng-click="refresh()">CLEAR</button>
                         <div class="btn-group pull-right ">
-                            <button class="btn btn-primary">PRINT</button>
-                            <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="">EMAIL </button>
+                            <!-- <button class="btn btn-primary" ng-click="editpl(nsp);print()" class="btn btn-info btn-sm fa fa-print " data-toggle="modal" data-target="#update_modal">PRINT</button>
+                            <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="">EMAIL </button> -->
                             <button class="btn btn-primary " ng-click="savepln()">SAVE</button>
                         </div>
                     </div>
@@ -621,4 +621,459 @@
     </div>
 </div>
 
+<div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="printThis">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">PORT LOCAL NUMBER INFO.</h5>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label class=" control-label">&nbsp;</label>
+                                    <label class=" control-label">&nbsp;</label>
+                                    <label class=" control-label">&nbsp;</label>
+                                </div>
+                                <span class="col-md-2"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span class="col-md-1"></span>
+                                <div class="col-md-10">
+                                    <h3> This authorization covers the following locations and lead billing telephone numbers and shall remain in effect until further written notice is provided. I understand that I can have only one local service provider
+                                        for any one telephone number.
+                                    </h3>
+                                    <p>
+                                        <strong> NOTE: Hand written forms will not be accepted.</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-box message-box-success animated fadeIn" id="spsuccess">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4  pull-center">
+                                    <div class="mb-title"><span class="fa fa-check"></span> Success:</div>
+                                    <div class="mb-content">
+                                        <p>Your Data had been save!</p>
+                                    </div>
+                                    <div class="btn-group btn-default" role="group" aria-label="Basic example">
+                                        <button type="button" class="btn btn-default" ng-click="goindex()">GO TO
+                                            LIST</button>
+                                        <button type="button" class="btn btn-primary" ng-click="closed()">CREATE
+                                            ANEW</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class=" control-label">Main Billing Tel. Number:</label>
+                                    <input ng-model="nsp.mainbtn" type="text" class="form-control" required/>
+                                </div>
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class=" control-label">Account Number:</label>
+                                    <input ng-model="nsp.acctnumber" type="text" class="form-control" required/>
+                                </div>
+                                <!-- Boundery -->
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <br>
+                                    <h4><label class="control-label">Customer Billing Address:</label></h4>
+                                </div>
+
+                                <span class="col-md-2"></span>
+                                <div class="col-md-5">
+                                    <label class=" control-label">Street :</label>
+                                    <input ng-model="nsp.street2" type="text" class="form-control" required/>
+                                </div>
+
+                                <span class="col-md-2"></span>
+                                <div class="col-md-5">
+                                    <label class=" control-label">City:</label>
+                                    <input ng-model="nsp.city2" type="text" class="form-control" required/>
+                                </div>
+
+                                <span class="col-md-2"></span>
+                                <div class="col-md-5">
+                                    <label class=" control-label">State:</label>
+                                    <select ng-model="nsp.state2" class="form-control " data-style="btn-success">
+                                                    <option value="">Select</option>
+                                                    <option value="Alabama">Alabama</option>
+                                                    <option value="Alaska">Alaska</option>
+                                                    <option value="Arizona">Arizona</option>
+                                                    <option value="Arkansas">Arkansas</option>
+                                                    <option value="California">California</option>
+                                                    <option value="Colorado">Colorado</option>
+                                                    <option value="Connecticut">Connecticut</option>
+                                                    <option value="Delaware">Delaware</option>
+                                                    <option value="District Of Columbia">District Of Columbia</option>
+                                                    <option value="Florida">Florida</option>
+                                                    <option value="Georgia">Georgia</option>
+                                                    <option value="Hawaii">Hawaii</option>
+                                                    <option value="Idaho">Idaho</option>
+                                                    <option value="Illinois">Illinois</option>
+                                                    <option value="Indiana">Indiana</option>
+                                                    <option value="Iowa">Iowa</option>
+                                                    <option value="Kansas">Kansas</option>
+                                                    <option value="Kentucky">Kentucky</option>
+                                                    <option value="Louisiana">Louisiana</option>
+                                                    <option value="Maine">Maine</option>
+                                                    <option value="Maryland">Maryland</option>
+                                                    <option value="Massachusetts">Massachusetts</option>
+                                                    <option value="Michigan">Michigan</option>
+                                                    <option value="Minnesota">Minnesota</option>
+                                                    <option value="Mississippi">Mississippi</option>
+                                                    <option value="Missouri">Missouri</option>
+                                                    <option value="Montana">Montana</option>
+                                                    <option value="Nebraska">Nebraska</option>
+                                                    <option value="Nevada">Nevada</option>
+                                                    <option value="New Hampshire">New Hampshire</option>
+                                                    <option value="New Jersey">New Jersey</option>
+                                                    <option value="New Mexico">New Mexico</option>
+                                                    <option value="New York">New York</option>
+                                                    <option value="North Carolina">North Carolina</option>
+                                                    <option value="North Dakota">North Dakota</option>
+                                                    <option value="Ohio">Ohio</option>
+                                                    <option value="Oklahoma">Oklahoma</option>
+                                                    <option value="Oregon">Oregon</option>
+                                                    <option value="Pennsylvania">Pennsylvania</option>
+                                                    <option value="Rhode Island">Rhode Island</option>
+                                                    <option value="South Carolina">South Carolina</option>
+                                                    <option value="South Dakota">South Dakota</option>
+                                                    <option value="Tennessee">Tennessee</option>
+                                                    <option value="Texas">Texas</option>
+                                                    <option value="Utah">Utah</option>
+                                                    <option value="Vermont">Vermont</option>
+                                                    <option value="Virginia">Virginia</option>
+                                                    <option value="Washington">Washington</option>
+                                                    <option value="West Virginia">West Virginia</option>
+                                                    <option value="Wisconsin">Wisconsin</option>
+                                                    <option value="Wyoming">Wyoming</option>
+                                                </select>
+                                </div>
+                                <span class="col-md-2"></span>
+                                <div class="col-md-5">
+                                    <label class=" control-label">Zip Code:</label>
+                                    <input ng-model="nsp.zipcode2" type="text" class="form-control" required/>
+                                </div>
+
+
+                                <span class="col-md-2"></span>
+                                <div class="col-md-5">
+                                    <label class=" control-label">e911:</label>
+                                    <input ng-model="nsp.e911" type="text" class="form-control" required/>
+                                </div>
+                                <div class="col-md-5">
+                                    <label class=" control-label">Caller ID Name (CNAME):</label>
+                                    <input ng-model="nsp.cname" type="text" class="form-control" required/>
+                                </div>
+
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class=" control-label">Cell Phone or NumberBarn:</label>
+                                    <input ng-model="nsp.numberbarn" type="text" class="form-control" required/>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    <label class=" control-label">Requested Port Date:</label>
+                                    <input ng-model="nsp.reqpd" type="date" class="form-control" required/>
+                                </div>
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class=" control-label">Customer Name:</label>
+                                    <input ng-model="nsp.custname" type="text" class="form-control" required/>
+                                </div>
+
+                                <span class="col-md-2"></span>
+                                <!-- Boundery -->
+
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <br>
+                                    <h4><label class="control-label">Customer Physical Addres:</label></h4>
+                                </div>
+
+                                <span class="col-md-2"></span>
+                                <div class="col-md-5">
+                                    <label class=" control-label">Street :</label>
+                                    <input ng-model="nsp.street1" type="text" class="form-control" required/>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <label class=" control-label">City:</label>
+                                    <input ng-model="nsp.city1" type="text" class="form-control" required/>
+                                </div>
+                                <span class="col-md-2"></span>
+
+                                <span class="col-md-2"></span>
+                                <div class="col-md-5">
+                                    <label class=" control-label">State:</label>
+                                    <select ng-model="nsp.state1" class="form-control " data-style="btn-success">
+                                                   <option value="">Select</option>
+                                                   <option value="Alabama">Alabama</option>
+                                                   <option value="Alaska">Alaska</option>
+                                                   <option value="Arizona">Arizona</option>
+                                                   <option value="Arkansas">Arkansas</option>
+                                                   <option value="California">California</option>
+                                                   <option value="Colorado">Colorado</option>
+                                                   <option value="Connecticut">Connecticut</option>
+                                                   <option value="Delaware">Delaware</option>
+                                                   <option value="District Of Columbia">District Of Columbia</option>
+                                                   <option value="Florida">Florida</option>
+                                                   <option value="Georgia">Georgia</option>
+                                                   <option value="Hawaii">Hawaii</option>
+                                                   <option value="Idaho">Idaho</option>
+                                                   <option value="Illinois">Illinois</option>
+                                                   <option value="Indiana">Indiana</option>
+                                                   <option value="Iowa">Iowa</option>
+                                                   <option value="Kansas">Kansas</option>
+                                                   <option value="Kentucky">Kentucky</option>
+                                                   <option value="Louisiana">Louisiana</option>
+                                                   <option value="Maine">Maine</option>
+                                                   <option value="Maryland">Maryland</option>
+                                                   <option value="Massachusetts">Massachusetts</option>
+                                                   <option value="Michigan">Michigan</option>
+                                                   <option value="Minnesota">Minnesota</option>
+                                                   <option value="Mississippi">Mississippi</option>
+                                                   <option value="Missouri">Missouri</option>
+                                                   <option value="Montana">Montana</option>
+                                                   <option value="Nebraska">Nebraska</option>
+                                                   <option value="Nevada">Nevada</option>
+                                                   <option value="New Hampshire">New Hampshire</option>
+                                                   <option value="New Jersey">New Jersey</option>
+                                                   <option value="New Mexico">New Mexico</option>
+                                                   <option value="New York">New York</option>
+                                                   <option value="North Carolina">North Carolina</option>
+                                                   <option value="North Dakota">North Dakota</option>
+                                                   <option value="Ohio">Ohio</option>
+                                                   <option value="Oklahoma">Oklahoma</option>
+                                                   <option value="Oregon">Oregon</option>
+                                                   <option value="Pennsylvania">Pennsylvania</option>
+                                                   <option value="Rhode Island">Rhode Island</option>
+                                                   <option value="South Carolina">South Carolina</option>
+                                                   <option value="South Dakota">South Dakota</option>
+                                                   <option value="Tennessee">Tennessee</option>
+                                                   <option value="Texas">Texas</option>
+                                                   <option value="Utah">Utah</option>
+                                                   <option value="Vermont">Vermont</option>
+                                                   <option value="Virginia">Virginia</option>
+                                                   <option value="Washington">Washington</option>
+                                                   <option value="West Virginia">West Virginia</option>
+                                                   <option value="Wisconsin">Wisconsin</option>
+                                                   <option value="Wyoming">Wyoming</option>
+                                               </select>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <label class=" control-label">Zip Code:</label>
+                                    <input ng-model="nsp.zipcode1" type="text" class="form-control" required/>
+                                </div>
+                                <span class="col-md-2"></span>
+
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class="control-label">Authorized Signer Name:</label>
+                                    <input ng-model="nsp.asname" type="text" class="form-control" required/>
+                                </div>
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class=" control-label">Authorized Signer Phone #:</label>
+                                    <input ng-model="nsp.asphone" type="text" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+
+                                <span class="col-md-1"></span>
+                                <div class="col-md-10">
+                                    <p>
+                                        <strong> <hr></strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span class="col-md-1"></span>
+                                <div class="col-md-10">
+                                    <h3>The numbers listed below are the numbers
+                                    </h3>
+                                    <p>
+                                        <strong> NOTE: If you are porting more than 10 (ten) numbers please submit an Excel spreadsheet. The Numbers Listed Here are the numbers that I want ported:</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <input ng-model="nsp.mainno" placeholder="Main Number" type="text" class="form-control oinput" required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-10 input-group">
+                                    <input type="number" ng-model="nsp.addno" class="form-control oinput" placeholder="Other Number" />
+                                    <span id="addno" class="input-group-addon hover"><i class="fa fa-plus"></i></span>
+                                </div>
+                                <span class="col-md-2"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row" style="padding-top: 2px!important;">
+                        <div class="col-md-6 left" id="left">
+                        </div>
+
+                        <div class="col-md-6 right" id="right">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+
+                                <span class="col-md-1"></span>
+                                <div class="col-md-10">
+                                    <p>
+                                        <strong> <hr></strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class="control-label">Attachment:</label>
+                                    <div class="panel panel-success">
+                                        <div class="panel-body">
+                                            <form>
+                                                <input type="file" accept="image/*,.pdf" multiple>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-10 input-group">
+                                    <label class="control-label">Signature:</label>
+                                    <div id="signature-pad" class="m-signature-pad panel-success">
+                                        <button id="savesign" type="button" class="btn  btn-info btn-xs  pull-right">Save Sign</button>
+                                        <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">Delete Sign</button><br><br><br>
+                                        <div class="m-signature-pad--body" id="sign">
+                                            <canvas></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="col-md-2"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-5">
+                                    <label class=" control-label">Date:</label>
+                                    <input ng-model="nsp.thedate" type="date" class="form-control" required/>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <label class=" control-label">Printed Name:</label>
+                                    <input ng-model="nsp.printname" type="text" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label class=" control-label">Email Address:</label>
+                                    <input ng-model="nsp.emailadd" type="email" class="form-control" required/>
+                                </div>
+                                <span class="col-md-2"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label class=" control-label">&nbsp;</label>
+                                    <label class=" control-label">&nbsp;</label>
+                                    <label class=" control-label">&nbsp;</label>
+                                </div>
+                                <span class="col-md-2"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">CLOSE</button>
+                <button id="update" type="button" class="btn btn-primary" ng-click="updatesp();">UPDATE</button>
+            </div>
+        </div>
+    </div>
 </div>
