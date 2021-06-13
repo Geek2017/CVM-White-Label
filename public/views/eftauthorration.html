@@ -1,4 +1,8 @@
 <style>
+    .modal-contents {
+        border: 0!important;
+    }
+    
     .input {
         border: 0;
         outline: 0;
@@ -14,11 +18,11 @@
         position: relative;
         font-size: 10px;
         width: 100%;
-        height: 128px!important;
+        height: 150px!important;
         border: 1px solid #e8e8e8;
         background-color: #fff;
-        border-top-width: 2px;
-        border-top-color: #9773e2;
+        border-top-width: 1px;
+        border-top-color: black;
     }
     
     .m-signature-pad:before,
@@ -315,8 +319,6 @@
 
                     </div>
 
-
-
                     <div class="row">
                         <div class="col-md-2">
                         </div>
@@ -334,7 +336,6 @@
                         </div>
 
                     </div>
-
 
                     <center>
                         <div class="row">
@@ -402,16 +403,246 @@
                         </div>
                     </center>
 
-
                     <div class="panel-footer">
                         <button class="btn btn-danger">CLEAR</button>
                         <div class="btn-group pull-right ">
-                            <button class="btn btn-primary">PRINT</button>
-                            <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">EMAIL</button>
-                            <button class="btn btn-primary " ng-click="eftsave()">SAVE</button>
+                            <button data-toggle="modal" data-target="#update_modal" class="btn btn-primary" ng-click="print()"> PRINT&nbsp;</button>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">EMAIL</button>
+                            <button class="btn btn-primary" ng-click="eftsave()">SAVE</button>
                         </div>
                     </div>
+                </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="printThis">
+
+            <div class="panel-body">
+
+                <div class="col-md-12 text-center">
+                    <h1 class="text-center">
+                        <strong>EFT AUTHORIZATION</strong>
+                    </h1>
+                </div>
+
+            </div>
+
+            <div class="panel-body">
+                <div class="col-md-4 pull-left">
+                    <img style="padding-top: 6px!important;" class="img-responsive" width="80%" src="{{comlogo}}" alt="log">
+                </div>
+                <div class="col-md-4 ">
+                    <h3 class="text-center">
+
+                        <span>
+                   <h2><strong>{{comname | uppercase}}</strong></h2>
+               </span>
+                        <span>{{comlandmark}}</span><br>
+                        <span>{{comcity}}</span><br>
+                        <span>{{comstate}},</span>
+                        <span>{{compostalcode}}</span><br>
+                        <span>#{{comno}}</span>
+                    </h3>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span class="col-md-1"></span>
+                                <div class="col-md-10">
+                                    <hr class="panel panel-success">
+                                    <strong> <p>I <input type="text" ng-model="fullname" class="input text-center" style="width:200px;"> hereby authorize VoIP Billing Services to charge my bank account via EFT (Electronic Funds Transfer) for recurring monthly service fees.
+                                    </p></strong>
+                                    <p>
+                                        Authorization for: ongoing until written cancellation is received.
+                                    </p>
+                                    <hr class="panel panel-success">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class="control-label">Company Name:</label>
+                                    <input ng-model="compname" type="text" class="form-control" required/>
+                                </div>
+                                <span class="col-md-2"></span>
+                                <div class="col-md-5">
+                                    <label class=" control-label">Account Phone Number:</label>
+                                    <input ng-model="acctpn" type="text" class="form-control" required/>
+                                </div>
+                                <span class="col-md-2"></span>
+                                <div class="col-md-5">
+                                    <label class=" control-label">Bank Name:</label>
+                                    <input ng-model="bankname" type="text" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label class=" control-label">Bank Routing Number:</label>
+                                    <input ng-model="bankroutingno" type="text" class="form-control" required/>
+                                </div>
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class=" control-label">Bank Account Number:</label>
+                                    <input ng-model="bankacctno" type="number" class="form-control" required/>
+                                </div>
+                                <span class="col-md-2"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span class="col-md-1"></span>
+                                <div class="col-md-10">
+                                    <hr class="panel panel-success">
+                                    <p>
+                                        I authorize VoIP Billing Services to charge my credit card for the recurring monthly fee plus taxes and telecommunication fees. These charges will occur on a monthly basis until this account is canceled.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class="check"><strong>Date:</strong></label>
+                                    <input type="date" ng-model="date" class="form-control" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class="check"><strong>&nbsp;</strong></label>
+                                    <label class="check"><strong>&nbsp;</strong></label>
+                                    <label class="check"><strong>&nbsp;</strong></label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class="check"><strong>Email:</strong></label>
+                                    <input type="email" ng-model="email" class="form-control" />
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label class="control-label">Signature:</label>
+                                    <div id="signature-pad" class="m-signature-pad panel-success">
+                                        <button id="clear" type="button" class="btn btn-danger btn-xs pull-right">x</button>
+                                        <div class="m-signature-pad--body" id="sign">
+                                            <canvas></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span class="col-md-1"></span>
+                                <div class="col-md-10">
+                                    <hr class="panel panel-success">
+                                    <p> As the credit card holder, I also authorize VoIP Billing Services to charge my credit card for future purchases or equipment orders verbally approved by me. VoIP Billing Services will keep all information entered on
+                                        this form strictly confidential.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <center>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="panel panel-warning">
+                                        <div class="panel-heading ui-draggable-handle">
+                                            <h3 class="panel-title">Voip Billing Services</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h2>
+                                                <p>VOIP BILLING SERVICES CREDIT CARD AUTHORIZATION FORM</p>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="panel panel-warning">
+                                        <div class="panel-heading ui-draggable-handle">
+                                            <h3 class="panel-title"></h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h1>
+                                                <p>About VoIP Billing Services</p>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <h4>VoIP Billing Services is designed and built for Managed Service Providers to perform billing for telecommunications. VoIP Billing Services, serves as a billing platform and handles telecommunication taxes and fees
+                                            to assure FCC compliance. Once your account is actively running traffic and set to Active Status, your account is deemed active to bill. After your account is placed in Active Status, your initial invoice will
+                                            generate and be charged. Each month you will be charged on your Bill Date for your monthly service. I understand VoIP Billing Services will apply fee of $20.00 to my account if I Chargeback my monthly payment
+                                            or if I reverse payment without VoIP Billing Service’s permission of any of the charges authorized on this form and I agree to pay this fee if this occurs.</h4>
+                                    </p>
+
+                                    <div class="panel panel-warning">
+                                        <div class="panel-heading ui-draggable-handle">
+                                            <h3 class="panel-title"></h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h1>
+                                                <p>Contac Us</p>
+                                            </h1>
+                                        </div>
+                                    </div>
+
+                                    <h4 style="padding-left: 20px">
+                                        <p>VoIP Billing Services</p>
+                                        <p> 345 Highway 9 South Suite 342</p>
+                                        <p> Manalapan, NJ 07726</p>
+                                        <p> (800) 362-7929</p>
+                                    </h4>
+                                </div>
+                            </div>
+
+                        </div>
+                    </center>
+                </div>
             </div>
         </div>
     </div>
+</div>

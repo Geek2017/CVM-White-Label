@@ -113,6 +113,51 @@ angular.module('newApp').controller('eftauthorrationCtrl', function($scope) {
         window.location.replace("#/eftauthorration");
     }
 
+    $scope.print = function() {
+        $scope.comlogo = sessionStorage.getItem('comlogo');
+
+        $('.removepanel').hide();
+        $('#savesign').hide();
+        $('#clear').hide();
+
+        $(".modal-footer").hide();
+
+        $("#removepanel0").removeClass("panel panel-warning panel-heading");
+        $("#removepanel1").removeClass("panel panel-warning panel-heading");
+        $("#removepanel2").removeClass("panel panel-warning panel-heading");
+
+
+        $("#printThis").removeClass("pabel-body");
+
+        $("input").addClass("txtinput");
+        $("select").addClass("txtinput");
+
+        $('input').attr('style', 'height: 23px!important');
+        $('input').attr('style', 'font-size: 14px!important');
+
+        $('table').addClass('tables');
+
+        $('.modal-content').addClass('modal-contents');
+        $("#printThis").addClass('printls');
+
+        setTimeout(function() {
+            html2canvas(document.querySelector("#printThis")).then(canvas => {
+                document.body.appendChild(canvas)
+                var nWindow = window.open('', 'PrintWindow', 'width=1000,height=1000', 'overflow=hidden');
+                nWindow.document.body.appendChild(canvas)
+                nWindow.focus();
+                nWindow.print();
+
+                setTimeout(function() {
+                    location.replace('#/')
+                    location.replace('#/eftauthorration')
+                    nWindow.close();
+                }, 2000)
+            });
+        }, 1000)
+
+    }
+
     $scope.goindex = function() {
         window.location.replace("#/eftaindex");
     }

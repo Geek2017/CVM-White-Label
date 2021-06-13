@@ -126,6 +126,8 @@ angular.module('newApp').controller('eftaindexCrtl', function($scope, $timeout) 
 
     let keyid;
 
+
+
     $scope.editsp = function(nsp) {
 
         $('canvas').remove();
