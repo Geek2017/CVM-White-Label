@@ -115,30 +115,31 @@ angular.module('newApp').controller('creditcardauthCtrl', function($scope) {
     });
 
     $scope.print = function() {
+        $scope.comlogo = sessionStorage.getItem('comlogo');
 
-        // $('.removepanel').hide();
-        // $('#savesign').hide();
-        // $('#clear').hide();
+        $('.removepanel').hide();
+        $('#savesign').hide();
+        $('#clear').hide();
 
-        // $(".modal-footer").hide();
+        $(".modal-footer").hide();
 
-        // $("#removepanel0").removeClass("panel panel-warning panel-heading");
-        // $("#removepanel1").removeClass("panel panel-warning panel-heading");
-        // $("#removepanel2").removeClass("panel panel-warning panel-heading");
+        $("#removepanel0").removeClass("panel panel-warning panel-heading");
+        $("#removepanel1").removeClass("panel panel-warning panel-heading");
+        $("#removepanel2").removeClass("panel panel-warning panel-heading");
 
 
-        // $("#printThis").removeClass("pabel-body");
+        $("#printThis").removeClass("pabel-body");
 
-        // $("input").addClass("txtinput");
-        // $("select").addClass("txtinput");
+        $("input").addClass("txtinput");
+        $("select").addClass("txtinput");
 
-        // $('input').attr('style', 'height: 23px!important');
-        // $('input').attr('style', 'font-size: 14px!important');
+        $('input').attr('style', 'height: 23px!important');
+        $('input').attr('style', 'font-size: 14px!important');
 
-        // $('table').addClass('tables');
+        $('table').addClass('tables');
 
-        // $('.modal-content').addClass('modal-contents');
-        // $("#printThis").addClass('printls');
+        $('.modal-content').addClass('modal-contents');
+        $("#printThis").addClass('printls');
 
         setTimeout(function() {
             html2canvas(document.querySelector("#printThis")).then(canvas => {
@@ -153,7 +154,7 @@ angular.module('newApp').controller('creditcardauthCtrl', function($scope) {
                     nWindow.close();
                 }, 2000)
             });
-        }, 3000)
+        }, 2000)
 
     }
 
