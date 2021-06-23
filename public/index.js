@@ -1,6 +1,43 @@
 angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
 
 
+    var inc = 0;
+    $(".collor").click(function() {
+
+        let sdata = $('#collor').val();
+
+        if (sdata) {
+            inc++;
+            if (inc % 2 === 0) {
+                console.log('OFF', inc)
+                $("#theme").attr("href", "./assets/css/theme-white.css");
+            } else {
+                console.log('ON', inc)
+                $("#theme").attr("href", "./assets/css/theme-black.css");
+            }
+        }
+
+    });
+
+
+
+    $("#revertt").click(function() {
+        console.log('revert')
+        $("#theme").attr("href", "./assets/css/theme-blue.css");
+    });
+
+
+    setTimeout(function() {
+        var dms = Cookies.get('ne_pl_m');
+        alert(dms)
+        if (dms === '1') {
+            $('#collor').prop('checked', true);
+            $("#theme").attr("href", "./assets/css/theme-black.css");
+        }
+    }, 5000)
+
+
+
 
     var config = {
         apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",
@@ -74,6 +111,8 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
                 $(".panel").css("border-top-color", snapshot.val().formcolor);
 
                 $(".btn-primary").css("background", snapshot.val().formcolor)
+
+                $(".collor").css("background-color", snapshot.val().formcolor)
 
 
 
@@ -227,4 +266,10 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
             window.location.replace("login.html");
         });
     }
+
+    // alert(Cookies.get('ne_pl_m'))
+
+
+
+
 });

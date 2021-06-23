@@ -62,7 +62,7 @@ $(document).ready(function() {
     set_settings(theme_settings, false);
 
     $(".theme-settings input").on("ifClicked", function() {
-        alert('123');
+
         var input = $(this);
 
         if (input.attr("name") != 'st_layout_boxed') {
@@ -116,11 +116,11 @@ $(document).ready(function() {
 
     /* Change Theme */
     $(".ts-themes a").click(function() {
+
+
         $(".ts-themes a").removeClass("active");
         $(this).addClass("active");
         $("#theme").attr("href", $(this).data("theme"));
-
-
 
         var userid = localStorage.getItem('curuserid');
         var tuid = localStorage.getItem("tuid");

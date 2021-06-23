@@ -3456,7 +3456,7 @@ blockquote.pull-right {
 }
 
 .switch input:checked+span {
-    background-color: #95b75d;
+    background-color: rgb(5, 5, 3);
 }
 
 .switch input:disabled+span {
@@ -3466,19 +3466,18 @@ blockquote.pull-right {
 .switch span {
     position: relative;
     width: 50px;
-    height: 30px;
+    height: 27px;
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;
     border-radius: 30px;
-    background-color: #E04B4A;
-    border: 1px solid #E5E5E5;
+    background-color: black;
+    border: 2px solid #E5E5E5;
     display: inline-block;
     -webkit-transition: all 200ms ease;
     -moz-transition: all 200ms ease;
     -ms-transition: all 200ms ease;
     -o-transition: all 200ms ease;
     transition: all 200ms ease;
-    border-color: rgba(0, 0, 0, 0.1);
     left: 0px;
 }
 
@@ -3486,6 +3485,7 @@ blockquote.pull-right {
     content: "";
     position: absolute;
     background-color: #fff;
+    border-color: black;
     width: 26px;
     top: 1px;
     bottom: 1px;
