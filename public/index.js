@@ -29,7 +29,7 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
 
     setTimeout(function() {
         var dms = Cookies.get('ne_pl_m');
-        alert(dms)
+
         if (dms === '1') {
             $('#collor').prop('checked', true);
             $("#theme").attr("href", "./assets/css/theme-black.css");

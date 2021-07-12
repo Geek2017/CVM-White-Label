@@ -427,7 +427,7 @@ body.page-container-boxed .page-container {
 
 .x-navigation li.xn-openable:before {
     position: absolute;
-    font-family: "FontAwesome";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     content: "\f196";
     font-size: 14px;
     width: 20px;
@@ -1041,7 +1041,7 @@ body.page-container-boxed .page-container {
 
 .x-navigation .xn-search:before {
     content: "\f002";
-    font-family: FontAwesome;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     position: absolute;
     width: 30px;
     height: 30px;
@@ -1075,7 +1075,7 @@ body.page-container-boxed .page-container {
 
 .x-navigation .x-navigation-control:before {
     position: absolute;
-    font-family: "FontAwesome";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     content: "\f0c9";
     font-size: 14px;
     top: 14px;
@@ -1444,7 +1444,7 @@ body.page-container-boxed .page-container {
 }
 
 .breadcrumb>li+li:before {
-    font-family: "FontAwesome";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     content: "\f105";
     color: #8d8678;
     padding: 0px 8px;
@@ -5938,7 +5938,7 @@ td.dataTables_empty {
     width: 80px;
     height: 80px;
     text-align: center;
-    font-family: FontAwesome;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 88px;
     top: 26px;
     left: 50%;
@@ -7318,7 +7318,7 @@ input.ui-editRangeSlider-inputValue {
 .wizard .anchor li a.done:after {
     border-color: #95b75d;
     content: "\f00c";
-    font-family: FontAwesome;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #95b75d;
     font-size: 10px;
 }
@@ -7330,7 +7330,7 @@ input.ui-editRangeSlider-inputValue {
 .wizard .anchor li a.error:after {
     border-color: #E04B4A;
     content: "\f00d";
-    font-family: FontAwesome;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #E04B4A;
     font-size: 10px;
 }
@@ -7342,7 +7342,7 @@ input.ui-editRangeSlider-inputValue {
 .wizard .anchor li a.selected:after {
     border-color: #565249;
     content: "\f0da";
-    font-family: FontAwesome;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #565249;
     font-size: 13px;
     padding-left: 2px;
@@ -7661,7 +7661,7 @@ div.tagsinput span.tag a:hover {
 
 div.tagsinput span.tag a:before {
     position: absolute;
-    font-family: "FontAwesome";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     content: "\f00d";
     color: #FFF;
     font-size: 12px;

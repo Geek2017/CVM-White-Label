@@ -2,10 +2,13 @@
     <li>{{url0}}</li>
     <li class="active">{{url1}}</li>
 </ul>
-<div class="page-content-wrap">
 
+<div class="page-content-wrap">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-3">
+        </div>
+
+        <div class="col-md-6">
 
             <div class="panel panel-default">
                 <div class="scCol ui-sortable">
@@ -23,7 +26,7 @@
                                     <div class="input-group-addon">
                                         <span class="fa fa-user"></span>
                                     </div>
-                                    <input id="usersname" type="text" class="form-control" placeholder="Full Name" />
+                                    <input id="usersname" type="text" class="form-control oinput" placeholder="Full Name" />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -31,7 +34,7 @@
                                     <div class="input-group-addon">
                                         <span class="fa fa-envelope"></span>
                                     </div>
-                                    <input id="usersmail" type="text" class="form-control" placeholder="Email" />
+                                    <input id="usersmail" type="text" class="form-control oinput" placeholder="Email" />
                                 </div>
                             </div><br><br>
                             <div class="col-md-6">
@@ -39,7 +42,7 @@
                                     <div class="input-group-addon">
                                         <span class="fa fa-phone"></span>
                                     </div>
-                                    <input id="mobile" type="number" class="form-control" placeholder="Mobile #" />
+                                    <input id="mobile" type="number" class="form-control oinput" placeholder="Mobile #" />
                                 </div>
                             </div>
 
@@ -48,7 +51,7 @@
                                     <div class="input-group-addon">
                                         <span class="fa fa-briefcase"></span>
                                     </div>
-                                    <input id="usersdesignation" type="text" class="form-control" placeholder="Designation" readonly/>
+                                    <input id="usersdesignation" type="text" class="form-control oinput" placeholder="Designation" readonly/>
                                 </div>
                             </div>
                             <br><br>
@@ -57,26 +60,31 @@
                                     <div class="input-group-addon">
                                         <span class="fa fa-briefcase"></span>
                                     </div>
-                                    <input id="phone" type="number" class="form-control" placeholder="Phone #" />
+                                    <input id="phone" type="number" class="form-control oinput" placeholder="Phone #" />
+
                                 </div>
+                                <br>
+                                <a href="./reset.html" class="btn btn-warning "><span
+                                class="fa fa-unlock"> Reset Password</span></a>
                             </div>
 
                             <div class="col-md-6">
-                                <input type="file" class="file-input-wrapper btn btn-default btn-block fileinput " id="userimg" title="Browse file" />
+                                <input type="file" class="file-input-wrapper btn btn-default btn-block fileinput oinput" id="userimg" title="Browse file" /> <br>
+                                <button class="btn btn-success pull-right"><span class="fa fa-plus"></span>Update Profile</button>
                             </div>
-                            <br><br>
-                            <br><br>
-                            <div class="col-md-2 pull-right">
-                                <button class="btn btn-success btn-block"><span class="fa fa-plus"></span>Update</button>
-                            </div>
-                            <div class="col-md-2 pull-right">
-                                <a href="./reset.html" class="btn btn-warning btn-block"><span
-                                        class="fa fa-unlock"> Change Password</span></a>
-                            </div>
+
+
                         </div>
+
+
+
                     </form>
                 </div>
             </div>
 
         </div>
+
+        <div class="col-md-3">
+        </div>
     </div>
+</div>
