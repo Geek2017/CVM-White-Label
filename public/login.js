@@ -134,6 +134,8 @@ $(document).ready(function() {
                                     } else {
                                         window.location.replace("./index.html");
                                         console.log(authData);
+
+
                                     }
                                 });
 

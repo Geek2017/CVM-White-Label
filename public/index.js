@@ -91,6 +91,33 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
 
             localStorage.setItem('curuserid', snapshot.val().cusid);
 
+            if (snapshot.val().cusid) {
+                var uid = firebase.database().ref().child('/sessiontoken/').push().key;
+
+                localStorage.setItem('authtoken', uid);
+
+                var data = {
+                    cusid: snapshot.val().cusid,
+                    hashkey: uid,
+                    duration: 120,
+                    date: firebase.database.ServerValue.TIMESTAMP,
+                    state: 'active'
+                }
+
+                var updates = {};
+                updates['/sessiontoken/' + uid] = data;
+                firebase.database().ref().update(updates);
+
+                if (updates) {
+                    console.log(updates)
+                }
+
+            } else {
+                alert('Token error!')
+            }
+
+
+
             $('#profile-image').attr('src', snapshot.val().userimage);
 
             $('#job').text(snapshot.val().designation);
