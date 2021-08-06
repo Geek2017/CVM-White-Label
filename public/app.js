@@ -81,4 +81,8 @@ angular
                 templateUrl: 'views/eftaindex.html',
                 controller: 'eftaindexCrtl'
             })
+            .when('/productlist', {
+                templateUrl: 'views/productlist.html',
+                controller: 'productlistCtrl'
+            })
     });

@@ -1,0 +1,413 @@
+<style>
+    .txtinput {
+        border: 0;
+        outline: 0;
+        background: transparent;
+        border-bottom: 2px solid black;
+    }
+    
+    .modal-contents {
+        border: 0!important;
+    }
+    
+    .buttons {
+        width: 20%;
+        table-layout: fixed;
+        border-collapse: collapse;
+    }
+    
+    .buttons button {
+        width: 36%;
+    }
+    
+    .hover:hover {
+        background-color: #9773e2;
+    }
+    
+    .m-signature-pad {
+        position: relative;
+        font-size: 10px;
+        width: 100%;
+        height: 128px;
+        border: 1px solid #e8e8e8;
+        background-color: #fff;
+        border-top-width: 2px;
+    }
+    
+    .m-signature-pad:before,
+    .m-signature-pad:after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        width: 40%;
+        height: 10px;
+        left: 20px;
+        bottom: 10px;
+        background: transparent;
+        -webkit-transform: skew(-3deg) rotate(-3deg);
+        -moz-transform: skew(-3deg) rotate(-3deg);
+        -ms-transform: skew(-3deg) rotate(-3deg);
+        -o-transform: skew(-3deg) rotate(-3deg);
+        transform: skew(-3deg) rotate(-3deg);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+    }
+    
+    .m-signature-pad:after {
+        left: auto;
+        right: 20px;
+        -webkit-transform: skew(3deg) rotate(3deg);
+        -moz-transform: skew(3deg) rotate(3deg);
+        -ms-transform: skew(3deg) rotate(3deg);
+        -o-transform: skew(3deg) rotate(3deg);
+        transform: skew(3deg) rotate(3deg);
+    }
+    
+    .m-signature-pad--body {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 30px;
+        bottom: 20px;
+        border: 1px solid #f4f4f4;
+    }
+    
+    .m-signature-pad--body canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+    }
+    
+    @media screen and (max-width: 1024px) {
+        .m-signature-pad {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: auto;
+            height: auto;
+            min-width: 250px;
+            min-height: 250px;
+            margin: 5%;
+        }
+        #github {
+            display: none;
+        }
+    }
+    
+    @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        .m-signature-pad {
+            margin: 10%;
+        }
+    }
+    
+    @media screen and (max-height: 320px) {
+        .m-signature-pad--body {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 32px;
+        }
+        .m-signature-pad--footer {
+            left: 20px;
+            right: 20px;
+            bottom: 4px;
+            height: 8px;
+        }
+        .m-signature-pad--footer .description {
+            font-size: 1em;
+            margin-top: 1em;
+        }
+    }
+</style>
+
+<ul class="breadcrumb panel panel-success">
+    <li><a href="#/">DASHBOARD</a></li>
+    <li class="active"> <strong>LIST</strong></li>
+</ul>
+
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal">
+                <div class="panel panel-success">
+
+                    <div class="panel-heading">
+                        <div class="col-md-4 text-left">
+                            <h1 style="margin-top: 5px!important;">
+                                <strong>Product List</strong>
+                            </h1>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row panel-heading">
+                        <div class="col-md-4 pull-left">
+
+                        </div>
+                        <div class="col-md-4 ">
+                            <h5 class="text-center">
+                                <span>
+                                  <h2 style="margin-bottom: 0px!important;"><strong>{{comname | uppercase}}</strong></h2>
+                                </span>
+                                <span>{{comlandmark}} {{comcity}} {{comstate}}, {{compostalcode}}</span><br>
+                                <span>#{{comno}}</span>
+                            </h5>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                    </div> -->
+
+                    <div class="message-box message-box-primary animated fadeIn" id="spsuccess">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+                                <div class="mb-title"><span class="fa fa-check"></span> Success:</div>
+                                <div class="mb-content">
+                                    <p>Your Data had been save!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-box message-box-danger animated fadeIn" id="sperror">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+                                <div class="mb-title"><span class="fa fa-times-circle"></span> Error:</div>
+                                <div class="mb-content">
+
+                                    <p id="errormsg"></p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-box message-box-warning animated fadeIn" id="delsales">
+                        <div class="mb-container">
+                            <div class="mb-middle">
+
+                                <div class="mb-content pull-center">
+                                    <div class="col-md-4">
+                                    </div>
+                                    <div class="col-md-4 input-group-lg">
+                                        <div class="mb-title"><span class="fa fa-warning"></span> Warning:</div>
+                                        <p>Please TYPE "remove" to delete data!</p>
+                                        <input ng-model="deleteconfirm" type="text" class="form-control " required/><br>
+                                        <button class="btn btn-block btn-danger btn-lg fa fa-trash-o" ng-click="confirmdel()"><strong> DELETE</strong></button>
+                                    </div>
+                                    <div class="col-md-4 pull-right">
+                                        <button class="btn btn-default btn-lg btn-rounded fa fa-times" ng-click="closesp()"></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <label class="input">
+                                Search:<input type="text" name="name" ng-model="findcf" > <button class="btn btn-danger btn-xs clean" ng-click="clean()">Clear</button>
+                           </label>
+
+                            <label class="input pull-right">
+                            <label class="select">
+                                <select class="" ng-model="pageSize" ng-options="num for num in [5,10, 100,1000]" ></select> <i></i> <br>
+                            </label>
+                            </label>
+
+
+
+
+                            <table class="table table-bordered table-striped table-actions">
+                                <thead>
+                                    <tr>
+                                        <th width="1" class="text-center">#</th>
+                                        <th width="2">BrandName</th>
+                                        <th width="5">ItemID</th>
+                                        <th width="5">Manufacturer</th>
+                                        <th width="5">ProductName</th>
+                                        <th width="5">ProductDescription</th>
+                                        <th width="5">Item ID</th>
+                                        <th width="5">Sku</th>
+                                        <th width="5">StandardPrice</th>
+                                        <th width="5">UnitPrice</th>
+                                        <th width="5">MSRP</th>
+                                        <th style="width:30px!important">
+                                            <div class="btn-group ">
+                                                <button class="btn btn-success" ng-click="showproduct();">CREATE</button>
+                                                <button class="btn btn-primary" ng-click="importproduct();">IMPORT</button>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="productlist in productlists | startFrom:currentPage*pageSize | limitTo:pageSize | filter:findcf">
+                                    <tr>
+                                        <td class=" text-center ">{{$index + 1}}</td>
+                                        <td>{{productlist.BrandName}}</td>
+                                        <td>{{productlist.ItemID}}</td>
+                                        <td>{{productlist.Manufacturer}}</td>
+                                        <td>{{productlist.ProductName}}</td>
+                                        <td>{{productlist.ProductDescription}}</td>
+                                        <td>{{productlist.ItemID}}</td>
+                                        <td>{{productlist.Sku}}</td>
+                                        <td>{{productlist.StandardPrice}}</td>
+                                        <td>{{productlist.UnitPrice}}</td>
+                                        <td>{{productlist.MSRP}}</td>
+
+                                        <td class="text-center buttons ">
+                                            <button ng-click="editsp(nsp);trigersignsp(nsp); " class="btn btn-default btn-sm fa fa-pencil print-preview " data-toggle="modal" data-target="#update_modal"> VIEW&nbsp;&nbsp;</button>
+                                            <button ng-click="deleteproduct(productlist) " class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="btn-group btn-group-xs pull-right ">
+                            <button class="btn btn-primary " ng-disabled="currentPage==0 " ng-click="currentPage=currentPage-1 ">
+      Back
+     </button>
+                            <button class="btn btn-primary ">{{currentPage+1}} of {{numberOfPages()}}</button>
+                            <button class="btn btn-primary " ng-disabled="currentPage>= data.length/pageSize - 1" ng-click="currentPage=currentPage+1"> Next
+                                    </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="importsales" tabindex="-1" role="dialog" aria-labelledby="email_modalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="width: 400px!important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLongTitle">Sales History Import:</h2>
+            </div>
+            <div class="modal-body ">
+                <form id="myform">
+                    <label>Upload CSV:</label>
+                    <input type="file" ng-model="salesupload" class="form-control" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addnewproduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="printThis">
+
+            <div class="panel-body">
+                <div class="col-md-12 text-center">
+                    <h1 class="text-center">
+                        <strong>PRODUCT DETAILS</strong>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class=" control-label">Tran Date:</label>
+                                    <input type="datetime-local" class="form-control" ng-model="transdate" ng-required="true" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class=" control-label">Cust PO No:</label>
+                                    <input ng-model="custpono" type="text" class="form-control" ng-required="true" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class=" control-label">ItemID:</label>
+                                    <input ng-model="itemid" type="text" class="form-control" ng-required="true" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class=" control-label">Qty. Shipped:</label>
+                                    <input ng-model="qtyshipped" type="text" class="form-control" ng-required="true" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="col-md-2"></span>
+                                <div class="col-md-10">
+                                    <label class=" control-label">Ext. Amt:</label>
+                                    <input ng-model="extamt" type="text" class="form-control" ng-required="true" />
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label class=" control-label">Tran ID:</label>
+                                    <input ng-model="transid" type="text" class="form-control" ng-required="true" />
+                                </div>
+                                <span class="col-md-2"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label class=" control-label">Cust. Name:</label>
+                                    <input ng-model="custname" type="text" class="form-control" ng-required="true" />
+                                </div>
+                                <span class="col-md-2"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label class=" control-label">Description:</label>
+                                    <input ng-model="description" type="text" class="form-control" ng-required="true" />
+                                </div>
+                                <span class="col-md-2"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label class=" control-label">Unit Price:</label>
+                                    <input ng-model="unitprice" type="text" class="form-control" ng-required="true" />
+                                </div>
+                                <span class="col-md-2"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label class=" control-label">Freight Amt:</label>
+                                    <input ng-model="freightamt" type="text" class="form-control" ng-required="true" />
+                                </div>
+                                <span class="col-md-2"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">CLOSE</button>
+                <button id="update" type="button" class="btn btn-primary" ng-click="updatesales();">UPDATE</button>
+                <button id="update" type="button" class="btn btn-info" ng-click="savenewsales();">PROCEED</button>
+            </div>
+
+        </div>
+    </div>
+</div>
