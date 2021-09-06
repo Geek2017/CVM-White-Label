@@ -85,4 +85,8 @@ angular
                 templateUrl: 'views/productlist.html',
                 controller: 'productlistCtrl'
             })
+            .when('/productorders', {
+                templateUrl: 'views/productorders.html',
+                controller: 'productordersCtrl'
+            })
     });

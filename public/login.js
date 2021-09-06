@@ -45,7 +45,7 @@ $(document).ready(function() {
                     console.log(snapshot.val().userimage);
 
                     var actionCodeSettings = {
-                        url: "https://kb.voipcloudconnect.com/4109-2/",
+                        url: "https://gethelp.voipcloudconnect.com/white-label/",
                         handleCodeInApp: false
                     };
                     firebase.auth().sendPasswordResetEmail(snapshot.val().cusemail, actionCodeSettings)
@@ -88,7 +88,6 @@ $(document).ready(function() {
                             let otp = Math.random().toString().substr(2, 7);
 
                             var votp = otp;
-
 
                             console.log(auth);
                             if (authData.emailVerified) {
@@ -134,8 +133,7 @@ $(document).ready(function() {
                                     } else {
                                         window.location.replace("./index.html");
                                         console.log(authData);
-
-
+                                        snapshot.val()
                                     }
                                 });
 

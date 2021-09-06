@@ -91,6 +91,8 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
 
             localStorage.setItem('curuserid', snapshot.val().cusid);
 
+            localStorage.setItem('cusid', snapshot.val().cusid);
+
             if (snapshot.val().cusid) {
                 var uid = firebase.database().ref().child('/sessiontoken/').push().key;
 
