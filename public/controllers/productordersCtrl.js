@@ -76,8 +76,55 @@ angular.module('newApp').controller('productordersCtrl', function($scope, $timeo
 
     });
 
+    $scope.editorders = function(order) {
+        console.log(order);
+
+        $scope.totalprice = order.tprice;
+
+        $timeout(function() {
+            $scope.$apply(function() {
+
+                var orders = JSON.parse(order.orders)
+
+                $scope.odetails = orders;
+                console.log($scope.odetails);
+                setTimeout(function() {
+                    txtslice();
+
+                }, 500)
+            });
+
+        })
+    }
 
 
+    function txtslice() {
+
+        var minimized_elements = $('p.minimizes');
+
+        minimized_elements.each(function() {
+            var t = $(this).text();
+            if (t.length < 50) return;
+
+            $(this).html(
+                t.slice(0, 50) + '<span>... </span><a href="#" class="more">More</a>' +
+                '<span style="display:none;">' + t.slice(100, t.length) + ' <a href="#" class="less">Less</a></span>'
+            );
+
+        });
+
+        $('a.more', minimized_elements).click(function(event) {
+            event.preventDefault();
+            $(this).hide().prev().hide();
+            $(this).next().show();
+        });
+
+        $('a.less', minimized_elements).click(function(event) {
+            event.preventDefault();
+            $(this).parent().hide().prev().show().prev().show();
+        });
+
+    }
 
 }).filter('startFrom', function() {
     return function(input, start) {
