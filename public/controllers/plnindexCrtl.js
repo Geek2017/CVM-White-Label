@@ -256,7 +256,6 @@ angular.module('newApp').controller('plnindexCrtl', function($scope, $timeout) {
 
     $scope.updatepln = function() {
 
-
         try {
             var uid = keyid;
 

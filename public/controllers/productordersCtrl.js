@@ -70,16 +70,24 @@ angular.module('newApp').controller('productordersCtrl', function($scope, $timeo
                 });
                 $scope.orders = returnArr;
                 console.log($scope.orders);
+
             });
 
         })
 
     });
 
+    var uodata = [];
+
     $scope.editorders = function(order) {
         console.log(order);
 
         $scope.totalprice = order.tprice;
+
+        uodata = [];
+        uodata.push(order);
+
+        $scope.orderstate = order.state;
 
         $timeout(function() {
             $scope.$apply(function() {
@@ -88,6 +96,7 @@ angular.module('newApp').controller('productordersCtrl', function($scope, $timeo
 
                 $scope.odetails = orders;
                 console.log($scope.odetails);
+
                 setTimeout(function() {
                     txtslice();
 
@@ -95,6 +104,29 @@ angular.module('newApp').controller('productordersCtrl', function($scope, $timeo
             });
 
         })
+    }
+
+    $scope.updatestate = function() {
+        console.log(uodata[0]);
+        var data = {
+            cusid: uodata[0].cusid,
+            date: uodata[0].date,
+            designation: uodata[0].designation,
+            email: uodata[0].email,
+            key: uodata[0].key,
+            name: uodata[0].name,
+            orders: JSON.stringify($scope.odetails),
+            state: $scope.orderstate,
+            tprice: uodata[0].tprice
+        }
+
+        var updates = {};
+        updates['/orders/' + uodata[0].key] = data;
+        firebase.database().ref().update(updates);
+
+        if (updates) {
+            console.log(updates)
+        }
     }
 
 

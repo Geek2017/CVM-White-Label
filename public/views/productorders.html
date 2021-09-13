@@ -11,13 +11,13 @@
     }
     
     .buttons {
-        width: 18%;
+        width: 12%;
         table-layout: fixed;
         border-collapse: collapse;
     }
     
     .buttons button {
-        width: 50%;
+        width: 80%;
     }
     
     .hover:hover {
@@ -235,17 +235,22 @@
                                         <th width="5">Partner Id</th>
                                         <th width="5">Partner Name</th>
                                         <th width="5">Title</th>
+                                        <th width="5">Status</th>
                                         <th>Product Order</th>
                                     </tr>
                                 </thead>
                                 <tbody ng-repeat="order in orders | startFrom:currentPage*pageSize | limitTo:pageSize | filter:findcf">
                                     <tr>
-                                        <td class=" text-center ">{{$index + 1}}</td>
+                                        <td class="text-center">{{$index + 1}}</td>
                                         <td>{{order.cusid}}</td>
                                         <td>{{order.date | date:'yyyy-MM-dd'}}</td>
                                         <td>{{order.email}}</td>
                                         <td>{{order.name}}</td>
+
                                         <td>{{order.designation}}</td>
+                                        <td class="text-center">
+                                            <h4> <span class="label label-danger">{{order.state}}</span></h4>
+                                        </td>
                                         <td class="text-center buttons ">
                                             <button ng-click="editorders(order);" class="btn btn-success btn-sm fa fa-pencil print-preview " data-toggle="modal" data-target="#update_modal"> VIEW ORDERS&nbsp;&nbsp;</button>
 
@@ -318,11 +323,27 @@
                         </tr>
                     </tbody>
                 </thead>
+                <thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="7" class="text-right">
+                                <h5><span class="label label-info">Order Status</span></h5>
+                            </td>
+                            <td>
+                                <select name="" ng-model="orderstate">
+                                    <option value="processing">Processing</option>
+                                    <option value="onhold">Onhold</option>
+                                    <option value="delivered">Delivered</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </thead>
             </table>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">CLOSE</button>
-                <button id="update" type="button" class="btn btn-primary" ng-click="updatesp();">UPDATE</button>
+                <button id="update" type="button" class="btn btn-primary" ng-click="updatestate(order);">UPDATE</button>
             </div>
         </div>
     </div>

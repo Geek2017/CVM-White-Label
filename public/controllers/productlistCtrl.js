@@ -7,7 +7,7 @@ angular.module('newApp').controller('productlistCtrl', function($scope, $timeout
 
 
 
-    firebase.database().ref('/productlist/').orderByChild('cusid').on("value", function(snapshot) {
+    firebase.database().ref('/cmvproductlist/').orderByChild('cusid').on("value", function(snapshot) {
 
         $timeout(function() {
             $scope.$apply(function() {
@@ -15,14 +15,11 @@ angular.module('newApp').controller('productlistCtrl', function($scope, $timeout
                 snapshot.forEach(childSnapshot => {
                     let item = childSnapshot.val();
                     item.key = childSnapshot.key;
-
-
-
                     returnArr.push(item);
-
-
                 });
+
                 $scope.productlists = returnArr;
+
                 console.log(returnArr);
 
                 $scope.numberOfPages = () => {

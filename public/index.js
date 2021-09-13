@@ -87,6 +87,8 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
 
             }
 
+
+
             console.log(snapshot.val().cusid);
 
             localStorage.setItem('curuserid', snapshot.val().cusid);
