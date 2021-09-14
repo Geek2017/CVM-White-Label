@@ -139,7 +139,7 @@
                     <div class="panel-heading">
                         <div class="col-md-4 text-left">
                             <h1 style="margin-top: 5px!important;">
-                                <strong>Product List</strong>
+                                <strong>Wish List</strong>
                             </h1>
                         </div>
                     </div>
@@ -218,22 +218,22 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody ng-repeat="productlist in productlists | startFrom:currentPage*pageSize | limitTo:pageSize | filter:findcf">
+                                <tbody ng-repeat="wishlist in wishlists | startFrom:currentPage*pageSize | limitTo:pageSize | filter:findcf">
                                     <tr>
                                         <td class=" text-center ">{{$index + 1}}</td>
-                                        <td>{{productlist.BrandName}}</td>
-                                        <td>{{productlist.Manufacturer}}</td>
-                                        <td>{{productlist.ProductName}}</td>
-                                        <td>{{productlist.ProductDescription}}</td>
-                                        <td>{{productlist.ItemID}}</td>
-                                        <td>{{productlist.Sku}}</td>
-                                        <td>{{productlist.StandardPrice| currency:"$":0}}</td>
-                                        <td>{{productlist.UnitPrice | currency:"$":0}}</td>
-                                        <td>{{productlist.MSRP | currency:"$":0}}</td>
+                                        <td>{{wishlist.BrandName}}</td>
+                                        <td>{{wishlist.Manufacturer}}</td>
+                                        <td>{{wishlist.ProductName}}</td>
+                                        <td>{{wishlist.ProductDescription}}</td>
+                                        <td>{{wishlist.ItemID}}</td>
+                                        <td>{{wishlist.Sku}}</td>
+                                        <td>{{wishlist.StandardPrice| currency:"$":0}}</td>
+                                        <td>{{wishlist.UnitPrice | currency:"$":0}}</td>
+                                        <td>{{wishlist.MSRP | currency:"$":0}}</td>
 
                                         <td class="text-center buttons ">
-                                            <button ng-click="editproduct(productlist)" class="btn btn-default btn-sm fa fa-pencil print-preview " data-toggle="modal" data-target="#update_modal"> EDIT INFO. </button>
-                                            <button ng-click="deleteproduct(productlist) " class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
+                                            <button ng-click="move2order(wishlist)" class="btn btn-default btn-sm glyphicon glyphicon-shopping-cart" data-toggle="modal" data-target="#update_modal"> ORDER IT</button>
+                                            <button ng-click="deletewishlist(wishlist) " class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -256,121 +256,6 @@
     </div>
 </div>
 
-
-<div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" id="printThis">
-
-            <div class="panel-body">
-                <div class="col-md-12 text-center">
-                    <h1 class="text-center">
-                        <strong>PRODUCT DETAILS</strong>
-                    </h1>
-                </div>
-            </div>
-
-            <div class="modal-body">
-                <div class="panel-body">
-                    <div class="row">
-
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <span class="col-md-2"></span>
-                                <div class="col-md-10">
-                                    <label class=" control-label">BrandName:</label>
-                                    <input type="text" ng-model="productlist.BrandName" class="form-control" ng-required="true" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <span class="col-md-2"></span>
-                                <div class="col-md-10">
-                                    <label class=" control-label">ProductName:</label>
-                                    <input ng-model="productlist.ProductName" type="text" class="form-control" ng-required="true" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <span class="col-md-2"></span>
-                                <div class="col-md-10">
-                                    <label class=" control-label">ItemID:</label>
-                                    <input ng-model="productlist.ItemID" type="text" class="form-control" ng-required="true" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <span class="col-md-2"></span>
-                                <div class="col-md-10">
-                                    <label class=" control-label">StandardPrice:</label>
-                                    <input ng-model="productlist.StandardPrice" type="text" class="form-control" ng-required="true" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <span class="col-md-2"></span>
-                                <div class="col-md-10">
-                                    <label class=" control-label">MSRP:</label>
-                                    <input ng-model="productlist.MSRP" class="form-control" ng-required="true" />
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="col-md-10">
-                                    <label class=" control-label">Product Img Link:</label>
-                                    <input ng-model="productlist.Imgs[0].ResourceUrl" type="text" class="form-control" ng-required="true" />
-                                </div>
-                                <span class="col-md-2"></span>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-10">
-                                    <label class=" control-label">Manufacturer:</label>
-                                    <input ng-model="productlist.Manufacturer" type="text" class="form-control" ng-required="true" />
-                                </div>
-                                <span class="col-md-2"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-10">
-                                    <label class=" control-label">ProductDescription:</label>
-                                    <input ng-model="productlist.ProductDescription" type="text" class="form-control" ng-required="true" />
-                                </div>
-                                <span class="col-md-2"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-10">
-                                    <label class=" control-label">Sku:</label>
-                                    <input ng-model="productlist.Sku" type="text" class="form-control" ng-required="true" />
-                                </div>
-                                <span class="col-md-2"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-10">
-                                    <label class=" control-label">Unit Price:</label>
-                                    <input ng-model="productlist.UnitPrice" type="text" class="form-control" ng-required="true" />
-                                </div>
-                                <span class="col-md-2"></span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">CLOSE</button>
-                <button id="update" type="button" class="btn btn-primary" ng-click="updateproduct(productlist);">UPDATE</button>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="add_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -472,6 +357,8 @@
                                 </div>
                                 <span class="col-md-2"></span>
                             </div>
+
+
                         </div>
 
                     </div>

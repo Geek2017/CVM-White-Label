@@ -249,7 +249,7 @@
 
                                         <td>{{order.designation}}</td>
                                         <td class="text-center">
-                                            <h4> <span class="label label-danger">{{order.state}}</span></h4>
+                                            <h4> <span class="label label-primary">{{order.state}}</span></h4>
                                         </td>
                                         <td class="text-center buttons ">
                                             <button ng-click="editorders(order);" class="btn btn-success btn-sm fa fa-pencil print-preview " data-toggle="modal" data-target="#update_modal"> VIEW ORDERS&nbsp;&nbsp;</button>
@@ -331,9 +331,12 @@
                             </td>
                             <td>
                                 <select name="" ng-model="orderstate">
-                                    <option value="processing">Processing</option>
-                                    <option value="onhold">Onhold</option>
-                                    <option value="delivered">Delivered</option>
+                                    <option value="Processing">Processing</option>
+                                    <option value="&nbsp;Delivered&nbsp;">Delivered</option>
+                                    <option value="&nbsp;Canceled&nbsp;">Canceled</option>
+                                    <option value="&nbsp;&nbsp;&nbsp;Onhold&nbsp;&nbsp;&nbsp;">Onhold</option>
+                                    <option value="&nbsp;&nbsp;&nbsp;Voided&nbsp;&nbsp;&nbsp;">Voided</option>
+                                    
                                 </select>
                             </td>
                         </tr>

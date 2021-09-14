@@ -1,4 +1,4 @@
-angular.module('newApp').controller('productlistCtrl', function($scope, $timeout) {
+angular.module('newApp').controller('wishlistCtrl', function($scope, $timeout) {
 
     $scope.currentPage = 0;
     $scope.pageSize = 10;
@@ -7,7 +7,7 @@ angular.module('newApp').controller('productlistCtrl', function($scope, $timeout
 
 
 
-    firebase.database().ref('/cmvproductlist/').orderByChild('cusid').on("value", function(snapshot) {
+    firebase.database().ref('/wishlist/').orderByChild('cusid').on("value", function(snapshot) {
 
         $timeout(function() {
             $scope.$apply(function() {
@@ -18,18 +18,18 @@ angular.module('newApp').controller('productlistCtrl', function($scope, $timeout
                     returnArr.push(item);
                 });
 
-                $scope.productlists = returnArr;
+                $scope.wishlists = returnArr;
 
                 console.log(returnArr);
 
                 $scope.numberOfPages = () => {
                     return Math.ceil(
-                        $scope.productlists.length / $scope.pageSize
+                        $scope.wishlists.length / $scope.pageSize
                     );
                 }
 
                 for (var i = 0; i < 10; i++) {
-                    $scope.productlists.push(`Question number ${i}`);
+                    $scope.data.push(`Question number ${i}`);
                 }
             });
 
@@ -45,50 +45,8 @@ angular.module('newApp').controller('productlistCtrl', function($scope, $timeout
         $('#importproduct').modal('toggle');
     }
 
-    $scope.savenewproduct = function() {
 
-        try {
-            var uid = firebase.database().ref().child('saleshistory').push().key;
-
-            var data = {
-                transdate: $scope.transdate,
-                custpono: $scope.custpono,
-                itemid: $scope.itemid,
-                qtyshipped: $scope.qtyshipped,
-                extamt: $scope.extamt,
-                unitprice: $scope.unitprice,
-                transid: $scope.transid,
-                custname: $scope.custname,
-                description: $scope.description,
-                freightamt: $scope.freightamt,
-            }
-
-            var updates = {};
-            updates['/saleshistory/' + uid] = data;
-            firebase.database().ref().update(updates);
-
-            if (updates) {
-                console.log(updates);
-                $scope.transdate = "";
-                $scope.custpono = "";
-                $scope.itemid = "";
-                $scope.qtyshipped = "";
-                $scope.extamt = "";
-                $scope.unitprice = "";
-                $scope.transid = "";
-                $scope.custname = "";
-                $scope.description = "";
-                $scope.freightamt = "";
-                alert('Data saved!')
-            }
-
-        } catch (error) {
-            alert(error)
-        }
-
-    }
-
-    $scope.deleteproduct = function(productlist) {
+    $scope.deletewishlist = function(productlist) {
 
         console.log(productlist.key);
 
@@ -97,7 +55,7 @@ angular.module('newApp').controller('productlistCtrl', function($scope, $timeout
         $scope.confirmdel = function() {
             if ($scope.deleteconfirm == "remove") {
 
-                var ref = firebase.database().ref("/cmvproductlist/" + productlist.key);
+                var ref = firebase.database().ref("/wishlist/" + productlist.key);
                 ref.remove()
                     .then(function() {
                         console.log("Remove succeeded.")
@@ -149,7 +107,7 @@ angular.module('newApp').controller('productlistCtrl', function($scope, $timeout
 
     $scope.saveproduct = function() {
 
-        var uid = firebase.database().ref().child('cmvproductlist').push().key;
+        var uid = firebase.database().ref().child('wishlist').push().key;
 
         var data = {
             BrandName: $scope.BrandName,
@@ -165,7 +123,7 @@ angular.module('newApp').controller('productlistCtrl', function($scope, $timeout
         }
 
         var updates = {};
-        updates['/cmvproductlist/' + uid] = data;
+        updates['/wishlist/' + uid] = data;
         firebase.database().ref().update(updates);
 
         if (updates) {
