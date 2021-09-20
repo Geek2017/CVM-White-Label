@@ -11,13 +11,13 @@
     }
     
     .buttons {
-        width: 20%;
+        width: 10%;
         table-layout: fixed;
         border-collapse: collapse;
     }
     
     .buttons button {
-        width: 45%;
+        width: 100%;
     }
     
     .hover:hover {
@@ -139,7 +139,7 @@
                     <div class="panel-heading">
                         <div class="col-md-4 text-left">
                             <h1 style="margin-top: 5px!important;">
-                                <strong>Wish List</strong>
+                                <strong>Saved Order</strong>
                             </h1>
                         </div>
                     </div>
@@ -203,38 +203,44 @@
                             <table class="table table-bordered table-striped table-actions">
                                 <thead>
                                     <tr>
-                                        <th width="1" class="text-center">#</th>
-                                        <th width="2">BrandName</th>
-                                        <th width="5">Manufacturer</th>
-                                        <th width="5">ProductName</th>
-                                        <th width="5">ProductDescription</th>
-                                        <th width="5">Item ID</th>
-                                        <th width="5">Sku</th>
-                                        <th width="5">StandardPrice</th>
-                                        <th width="5">UnitPrice</th>
-                                        <th width="5">MSRP</th>
-                                        <!-- <th>
-                                            <button class="btn btn-success pull-right" ng-click="addproduct()">ADD NEW PRODUCT</button>
-                                        </th> -->
+
+                                        <th width="2">ID</th>
+                                        <th width="5">Date</th>
+                                        <th width="5">Designation</th>
+                                        <th width="5">Email</th>
+                                        <th width="5">Name</th>
+
+                                        <th width="5">Product Details</th>
+                                        <th width="5">Total Price</th>
+                                        <th width="5">Controls</th>
                                     </tr>
                                 </thead>
-                                <tbody ng-repeat="wishlist in wishlists | startFrom:currentPage*pageSize | limitTo:pageSize | filter:findcf">
+                                <tbody ng-repeat="w in wishlists | startFrom:currentPage*pageSize | limitTo:pageSize | filter:findcf">
                                     <tr>
-                                        <td class=" text-center ">{{$index + 1}}</td>
-                                        <td>{{wishlist.BrandName}}</td>
-                                        <td>{{wishlist.Manufacturer}}</td>
-                                        <td>{{wishlist.ProductName}}</td>
-                                        <td>{{wishlist.ProductDescription}}</td>
-                                        <td>{{wishlist.ItemID}}</td>
-                                        <td>{{wishlist.Sku}}</td>
-                                        <td>{{wishlist.StandardPrice| currency:"$":0}}</td>
-                                        <td>{{wishlist.UnitPrice | currency:"$":0}}</td>
-                                        <td>{{wishlist.MSRP | currency:"$":0}}</td>
 
-                                        <td class="text-center buttons ">
-                                            <button ng-click="move2order(wishlist)" class="btn btn-default btn-sm glyphicon glyphicon-shopping-cart" data-toggle="modal" data-target="#update_modal"> ORDER IT</button>
-                                            <button ng-click="deletewishlist(wishlist) " class="btn btn-danger btn-sm fa fa-trash-o "> DELETE</button>
+                                        <td>{{w.cusid}}</td>
+                                        <td>{{w.date}}</td>
+                                        <td>{{w.designation}}</td>
+                                        <td>{{w.email}}</td>
+                                        <td>{{w.name}}</td>
+                                        <td>
+                                            <table>
+                                                <tbody ng-repeat="p in w.orders">
+                                                    <tr>
+                                                        <td>
+                                                            <strong><span class="label label-primary">{{$index + 1}}</span></strong> <strong>{{p[0].tdproductlist.ProductName}}</strong> <br>{{p[0].tdproductlist.BrandName}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </td>
+                                        <td>{{w.tprice}}</td>
+                                        <td class="text-center buttons">
+                                            <button ng-click="placeorder(w)" class="btn btn-default btn-sm fa fa-shopping-cart"> ORDER NOW</button>
+                                            <br>
+                                            <button ng-click="deletewishlist(w)" class="btn btn-danger btn-sm fa fa-trash-o"> REMOVE</button>
+                                        </td>
+
                                     </tr>
                                 </tbody>
                             </table>

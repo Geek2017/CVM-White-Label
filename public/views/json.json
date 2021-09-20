@@ -1,0 +1,32 @@
+
+    [{
+        "keyid": 1,
+        "tdproductlist": {
+            "BrandName": "Grandstream",
+            "Imgs": [{
+                "Description": "GS-WP800",
+                "ResourceUrl": "https://www.teledynamics.com/tdresources/50f0560d-0257-4e2a-a704-d38fc8ce720a.jpg"
+            }, {
+                "Description": "GS-WP800",
+                "ResourceUrl": "https://www.teledynamics.com/tdresources/1f757c5c-ed1f-40b5-bb67-e0b570764ad8.jpg"
+            }, {
+                "Description": "GS-WP800",
+                "ResourceUrl": "https://www.teledynamics.com/tdresources/a1e75a60-bbd3-4ac8-b753-53a64fedeea2.jpg"
+            }, {
+                "Description": "GS-WP800",
+                "ResourceUrl": "https://www.teledynamics.com/tdresources/8ed3c40e-4288-4993-a0a7-e0a24e68ffe6.jpg"
+            }],
+            "ItemID": "GS-WP820",
+            "MSRP": 219,
+            "Manufacturer": "Grandstream",
+            "ProductDescription": "- Dual-band Wifi with efficient antenna design and advanced roaming support<br/>- Bluetooth for syncing headsets and mobile devices(contact and call transferring) <br/>- HD voice & dual MIC design with AEC and Noise Shield Technology<br/>- Rechargeable 1500 mAh battery, 7.5 hour talk time, 150-hour standby<br/>- Built-in accelerometer, panic button, push-to-talk<br/>- Micro USB port and 3.5 mm headset jack<br/>- 2 SIP accounts, 2 lines<br/>- Support custom Android apps that fit the phone's screen/keys.",
+            "ProductName": "Portable WiFi Phone",
+            "Sku": "Portable WiFi Phone",
+            "StandardPrice": 145,
+            "UnitPrice": 145,
+            "key": "-MgS7N8R5vu5lokDZC3e",
+            "$$hashKey": "object:83"
+        }
+    }]
+
+

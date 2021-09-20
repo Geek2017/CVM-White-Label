@@ -15,12 +15,27 @@ angular.module('newApp').controller('wishlistCtrl', function($scope, $timeout) {
                 snapshot.forEach(childSnapshot => {
                     let item = childSnapshot.val();
                     item.key = childSnapshot.key;
-                    returnArr.push(item);
+                    let data = item.orders
+                    var idata = {
+                        key: item.key,
+                        cusid: item.cusid,
+                        date: item.cusid,
+                        designation: item.designation,
+                        email: item.email,
+                        key: item.key,
+                        name: item.name,
+                        orders: JSON.parse(data),
+                        state: item.state,
+                        tprice: item.tprice
+                    }
+
+                    returnArr.push(idata);
                 });
 
                 $scope.wishlists = returnArr;
 
-                console.log(returnArr);
+                console.log($scope.wishlists[0].orders)
+
 
                 $scope.numberOfPages = () => {
                     return Math.ceil(
@@ -69,67 +84,37 @@ angular.module('newApp').controller('wishlistCtrl', function($scope, $timeout) {
         }
     }
 
+    $scope.placeorder = function(w) {
 
-    $scope.editproduct = function(productlist) {
-        console.log(productlist);
-        $scope.productlist = productlist;
-        prodkey = productlist.key;
-    }
+        console.log(w);
 
-    $scope.updateproduct = function(productlist) {
+        var uid = firebase.database().ref().child('/orders').push().key;
 
-        console.log(productlist);
-        var updates = {};
-
-        var ResourceUrl = [{ ResourceUrl: $scope.productlist.Imgs[0].ResourceUrl }];
-
-        data = {
-            BrandName: $scope.productlist.BrandName,
-            Imgs: ResourceUrl,
-            ItemID: $scope.productlist.ItemID,
-            MSRP: $scope.productlist.MSRP,
-            Manufacturer: $scope.productlist.Manufacturer,
-            ProductDescription: $scope.productlist.ProductDescription,
-            ProductName: $scope.productlist.ProductName,
-            Sku: $scope.productlist.Sku,
-            StandardPrice: $scope.productlist.StandardPrice,
-            UnitPrice: $scope.productlist.UnitPrice
+        var products = {
+            date: firebase.database.ServerValue.TIMESTAMP,
+            email: w.email,
+            cusid: w.cusid,
+            name: w.name,
+            designation: w.designation,
+            orders: JSON.stringify(w.orders),
+            tprice: w.tprice,
+            state: w.state
         }
 
-        updates['/cmvproductlist/' + productlist.key] = data;
-
-        firebase.database().ref().update(updates);
-    }
-
-    $scope.addproduct = function() {
-        $('#add_modal').modal('show');
-    }
-
-    $scope.saveproduct = function() {
-
-        var uid = firebase.database().ref().child('wishlist').push().key;
-
-        var data = {
-            BrandName: $scope.BrandName,
-            ResourceUrl: $scope.ResourceUrl,
-            ItemID: $scope.ItemID,
-            MSRP: $scope.MSRP,
-            Manufacturer: $scope.Manufacturer,
-            ProductDescription: $scope.ProductDescription,
-            ProductName: $scope.ProductName,
-            Sku: $scope.Sku,
-            StandardPrice: $scope.StandardPrice,
-            UnitPrice: $scope.UnitPrice
-        }
+        console.log(products)
 
         var updates = {};
-        updates['/wishlist/' + uid] = data;
-        firebase.database().ref().update(updates);
+        updates['/orders/' + uid] = products;
+        firebase.database().ref().update(updates, alert('Order had been Placed!'));
 
         if (updates) {
-            console.log(updates);
-            alert('Data Saved!')
+            console.log(updates)
+            setTimeout(function() {
+                window.location.href = "#productorders";
+            }, 1000)
         }
+
+
 
     }
 
