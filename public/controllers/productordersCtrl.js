@@ -89,6 +89,8 @@ angular.module('newApp').controller('productordersCtrl', function($scope, $timeo
 
         $scope.orderstate = order.state;
 
+        console.log(uodata);
+
         $timeout(function() {
             $scope.$apply(function() {
 
@@ -107,16 +109,16 @@ angular.module('newApp').controller('productordersCtrl', function($scope, $timeo
     }
 
     $scope.updatestate = function() {
-        console.log(uodata[0]);
+
         var data = {
-            cusid: uodata[0].cusid,
             date: uodata[0].date,
-            designation: uodata[0].designation,
             email: uodata[0].email,
+            cusid: uodata[0].cusid,
             key: uodata[0].key,
             name: uodata[0].name,
             orders: JSON.stringify($scope.odetails),
             state: $scope.orderstate,
+            type: uodata[0].type,
             tprice: uodata[0].tprice
         }
 

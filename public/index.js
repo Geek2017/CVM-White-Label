@@ -10,10 +10,10 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
             inc++;
             if (inc % 2 === 0) {
                 console.log('OFF', inc)
-                $("#theme").attr("href", "./assets/css/theme-white.css");
+                $("#theme").attr("href", "./assets/css/theme-default.css");
             } else {
                 console.log('ON', inc)
-                $("#theme").attr("href", "./assets/css/theme-black.css");
+                $("#theme").attr("href", "./assets/css/theme-white.css");
             }
         }
 
@@ -23,7 +23,7 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
 
     $("#revertt").click(function() {
         console.log('revert')
-        $("#theme").attr("href", "./assets/css/theme-blue.css");
+        $("#theme").attr("href", "./assets/css/theme-default.css");
     });
 
 
@@ -32,7 +32,7 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
 
         if (dms === '1') {
             $('#collor').prop('checked', true);
-            $("#theme").attr("href", "./assets/css/theme-black.css");
+            $("#theme").attr("href", "./assets/css/theme-default.css");
         }
     }, 5000)
 

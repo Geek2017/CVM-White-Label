@@ -3445,7 +3445,7 @@ blockquote.pull-right {
 }
 
 .switch input:checked+span {
-    background-color: #9773e2;
+    background-color: #a4a3a2;
 }
 
 .switch input:disabled+span {
@@ -3459,7 +3459,7 @@ blockquote.pull-right {
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;
     border-radius: 30px;
-    background-color: #E04B4A;
+    background-color: #f1da00;
     border: 1px solid #E5E5E5;
     display: inline-block;
     -webkit-transition: all 200ms ease;

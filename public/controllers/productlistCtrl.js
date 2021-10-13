@@ -4,9 +4,6 @@ angular.module('newApp').controller('productlistCtrl', function($scope, $timeout
     $scope.pageSize = 10;
     $scope.data = [];
 
-
-
-
     firebase.database().ref('/cmvproductlist/').orderByChild('cusid').on("value", function(snapshot) {
 
         $timeout(function() {
@@ -110,7 +107,6 @@ angular.module('newApp').controller('productlistCtrl', function($scope, $timeout
             }
         }
     }
-
 
     $scope.editproduct = function(productlist) {
         console.log(productlist);

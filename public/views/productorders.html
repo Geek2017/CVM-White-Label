@@ -234,7 +234,8 @@
                                         <th width="5">Email</th>
                                         <th width="5">Partner Id</th>
                                         <th width="5">Partner Name</th>
-                                        <th width="5">Title</th>
+
+                                        <th width="5">Type</th>
                                         <th width="5">Status</th>
                                         <th>Product Order</th>
                                     </tr>
@@ -242,18 +243,24 @@
                                 <tbody ng-repeat="order in orders | startFrom:currentPage*pageSize | limitTo:pageSize | filter:findcf">
                                     <tr>
                                         <td class="text-center">{{$index + 1}}</td>
-                                        <td>{{order.cusid}}</td>
-                                        <td>{{order.date | date:'yyyy-MM-dd'}}</td>
-                                        <td>{{order.email}}</td>
-                                        <td>{{order.name}}</td>
-
-                                        <td>{{order.designation}}</td>
+                                        <td class="text-center">{{order.date | date: "M/d/yy h:mm a"}}</td>
+                                        <td class="text-center">{{order.email}}</td>
+                                        <td class="text-center">{{order.cusid}}</td>
+                                        <td class="text-center">{{order.name}}</td>
                                         <td class="text-center">
-                                            <h4> <span class="label label-primary">{{order.state}}</span></h4>
+                                            <h4><span ng-if="order.type=='Saved'" class="label label-danger">&nbsp;&nbsp;{{order.type}}&nbsp;&nbsp;</span>
+                                                <span ng-if="order.type=='Placed'" class="label label-success">&nbsp;&nbsp;{{order.type}}&nbsp;&nbsp;</span>
+                                            </h4>
                                         </td>
-                                        <td class="text-center buttons ">
+                                        <td class="text-center">
+                                            <h4>
+                                                <span ng-if="order.type=='Saved'" class="label label-danger" ng-init="order.state='Unprocess'">{{order.state}}</span>
+                                                <span ng-if="order.state=='Processing'" class="label label-primary">{{order.state}}</span>
+                                                <span ng-if="order.state=='Delivered'" class="label label-success">&nbsp;{{order.state}}&nbsp;</span>
+                                            </h4>
+                                        </td>
+                                        <td class="text-center buttons">
                                             <button ng-click="editorders(order);" class="btn btn-success btn-sm fa fa-pencil print-preview " data-toggle="modal" data-target="#update_modal"> VIEW ORDERS&nbsp;&nbsp;</button>
-
                                         </td>
                                     </tr>
                                 </tbody>
@@ -285,40 +292,40 @@
             <table class="table table-bordered table-striped table-actions">
                 <thead>
                     <tr>
-                        <th width="3" class="text-center">#</th>
-                        <th width="3">Brand</th>
-                        <th width="5">Manufacturer</th>
-                        <th width="10">Description</th>
-                        <th width="5">Name</th>
-                        <th width="5">StandardPrice</th>
-                        <th>UnitPrice</th>
-                        <th>MSRP</th>
+                        <th class="text-center">#</th>
+                        <th style="width:5%;">Image</th>
+                        <th style="width:35%;">Name</th>
+                        <th style="width:45%;">Description</th>
+                        <th style="width:5%;text-align: center;">Qty</th>
+                        <th style="width:5%;">StandardPrice</th>
+                        <th>Sub total</th>
                     </tr>
                 </thead>
                 <tbody ng-repeat="odetail in odetails | startFrom:currentPage*pageSize | limitTo:pageSize | filter:findcf">
                     <tr>
                         <td class="text-center">{{$index + 1}}</td>
-                        <td>{{odetail[0].tdproductlist.BrandName}}</td>
-                        <td>{{odetail[0].tdproductlist.Manufacturer}}</td>
-                        <td style="width: 30%!important;">
-                            <p class="minimizes" style="text-align: left;"> {{odetail[0].tdproductlist.ProductDescription}}</p>
-                        </td>
-                        <td style="width: 20%!important;">{{odetail[0].tdproductlist.ProductName}}</td>
-                        <td style="width: 10%!important;"><strong> {{odetail[0].tdproductlist.StandardPrice | currency : "$" }}</strong></td>
-                        <td style="width: 10%!important;"><strong> {{odetail[0].tdproductlist.UnitPrice | currency : "$" }}</strong></td>
-                        <td style="width: 10%!important;"><strong> {{odetail[0].tdproductlist.MSRP | currency : "$" }}</strong></td>
+                        <td> <img src="{{odetail.image}}" width="80" height="auto"></td>
+                        <td>{{odetail.name}}</td>
 
+                        <td style="width: 30%!important;">
+                            <p class="minimizes" style="text-align: left;"> {{odetail.summary}}</p>
+                        </td>
+                        <td style="width: 20%!important;padding-top: 5%;" class="text-center">
+                            <h4>{{odetail.quantity}}</h4>
+                        </td>
+                        <td style="width: 10%!important;padding-top: 5%" class="text-center"><strong>  <h4>{{odetail.price | currency : "$" }}</h4></strong></td>
+                        <td style="width: 10%!important;padding-top: 5%" class="text-center"><strong> <h4>{{odetail.price*odetail.quantity | currency : "$" }}</h4></strong></td>
                     </tr>
 
                 </tbody>
                 <thead>
                     <tbody>
                         <tr>
-                            <td colspan="7" class="text-right">
+                            <td colspan="6" class="text-right">
                                 <h5>GRAND TOTAL</h5>
                             </td>
                             <td>
-                                <h5> <strong>{{totalprice}}</strong></h5>
+                                <h3> <strong>{{totalprice}}</strong></h3>
                             </td>
                         </tr>
                     </tbody>
@@ -326,16 +333,16 @@
                 <thead>
                     <tbody>
                         <tr>
-                            <td colspan="7" class="text-right">
+                            <td colspan="6" class="text-right">
                                 <h5><span class="label label-info">Order Status</span></h5>
                             </td>
                             <td>
                                 <select name="" ng-model="orderstate">
                                     <option value="Processing">Processing</option>
-                                    <option value="&nbsp;Delivered&nbsp;">Delivered</option>
-                                    <option value="&nbsp;Canceled&nbsp;">Canceled</option>
-                                    <option value="&nbsp;&nbsp;&nbsp;Onhold&nbsp;&nbsp;&nbsp;">Onhold</option>
-                                    <option value="&nbsp;&nbsp;&nbsp;Voided&nbsp;&nbsp;&nbsp;">Voided</option>
+                                    <option value="Delivered">Delivered</option>
+                                    <option value="Canceled">Canceled</option>
+                                    <option value="Onhold">Onhold</option>
+                                    <option value="Voided">Voided</option>
                                     
                                 </select>
                             </td>

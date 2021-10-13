@@ -3456,7 +3456,7 @@ blockquote.pull-right {
 }
 
 .switch input:checked+span {
-    background-color: #95b75d;
+    background-color: #a4a3a2;
 }
 
 .switch input:disabled+span {

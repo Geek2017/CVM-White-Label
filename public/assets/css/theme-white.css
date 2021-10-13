@@ -96,7 +96,7 @@ body {
     float: left;
     min-height: 100%;
     position: relative;
-    background: #1e293d;
+    background: #ffffff;
     /* SIDEBAR */
     /* END SIDEBAR */
     /* CONTENT */
@@ -3465,7 +3465,7 @@ blockquote.pull-right {
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;
     border-radius: 30px;
-    background-color: #E04B4A;
+    background-color: #f1da00;
     border: 1px solid #E5E5E5;
     display: inline-block;
     -webkit-transition: all 200ms ease;
