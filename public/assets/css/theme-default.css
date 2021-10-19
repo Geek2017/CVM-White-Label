@@ -7327,7 +7327,7 @@ input.ui-editRangeSlider-inputValue {
 
 .wizard .anchor li a.done:after {
     border-color: #9773e2;
-    content: "\f00c";
+    content: "";
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #9773e2;
     font-size: 10px;
@@ -7351,7 +7351,7 @@ input.ui-editRangeSlider-inputValue {
 
 .wizard .anchor li a.selected:after {
     border-color: #1b1e24;
-    content: "\f0da";
+    content: "";
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #1b1e24;
     font-size: 13px;

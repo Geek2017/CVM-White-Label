@@ -307,16 +307,17 @@ $(function() {
 
                             },
                             messages: {
-                                fullname: "Admin Full Named Required",
-                                partnerid: "Partner ID Required",
-                                email: "Email Required",
-                                filename: "Null",
-                                comname: "Company Name Required",
-                                comcontact: " Contact Required",
-                                street: " Street Address Required",
-                                city: " City Required",
-                                postal: " Postal Required",
-                                state: " State Required",
+                                fullname: "required",
+                                password: "",
+                                partnerid: "required",
+                                email: "required",
+                                filename: "required",
+                                comname: "required",
+                                comcontact: "required",
+                                street: "required",
+                                city: "required",
+                                postal: "required",
+                                state: "required",
                             }
                         });
 

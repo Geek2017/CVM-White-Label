@@ -26,12 +26,13 @@ angular.module('newApp').controller('usersprofileCrtl', function($scope) {
 
 
         //   console.log(user)
-        var databaseRef = firebase.database().ref('users/');
+        var databaseRef = firebase.database().ref('/users/');
         databaseRef.once('value', function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
                 var childKey = childSnapshot.key;
                 var childData = childSnapshot.val();
 
+                console.log(childData);
 
                 if (user.providerData[0].email == childData.cusemail) {
                     console.log(childSnapshot.key);
@@ -66,17 +67,23 @@ angular.module('newApp').controller('usersprofileCrtl', function($scope) {
         $('#updateprofile').on('submit', function(e) {
             e.preventDefault();
 
-            var uid = firebase.database().ref().child('users').push().key;
+
             var data = {
-                cusid: sessionStorage.getItem('curuserid'),
+                user_id: localStorage.getItem('childkey'),
+                cusid: localStorage.getItem('cusid'),
                 cusname: $('#usersname').val(),
                 cusemail: $('#usersmail').val(),
-                phone: $('#phone').val(),
-                designation: $('#usersdesignation').val(),
-                mobile: $('#mobile').val(),
+                role: "1",
+                designation: "Account Manager",
                 userimage: sessionStorage.getItem('userimg'),
-                used_id: localStorage.getItem('childkey'),
-                role: sessionStorage.getItem('role')
+                taxexempt: 1,
+                hw_markup: "empty",
+                mobile: $('#mobile').val(),
+                phone: $('#phone').val(),
+                cmvbilltype: "empty",
+                costperbilltype: 0,
+                chargeacct: "empty",
+                mfa: 0
             }
 
             if (user) {
@@ -95,7 +102,11 @@ angular.module('newApp').controller('usersprofileCrtl', function($scope) {
             updates['/users/' + localStorage.getItem('childkey')] = data;
             firebase.database().ref().update(updates);
 
-            alert('The user is updated successfully!');
+            if (updates) {
+                alert('The user is updated successfully!');
+                console.log(updates);
+            }
+
 
 
 

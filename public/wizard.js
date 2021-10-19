@@ -33,26 +33,32 @@ $(document).ready(function() {
     var ftheme;
 
     $("#purple").on("click", function() {
+        alert('Purple Selected')
         return fcolor = '#b511b4', console.log(fcolor);
     });
 
     $("#blue").on("click", function() {
+        alert('Blue Selected')
         return fcolor = '#02c2fb', console.log(fcolor);
     });
 
     $("#green").on("click", function() {
+        alert('Green Selected')
         return fcolor = '#2bc20e', console.log(fcolor);
     });
 
     $("#red").on("click", function() {
+        alert('Red Selected')
         return fcolor = '#f21918', console.log(fcolor);
     });
 
     $("#grey").on("click", function() {
+        alert('Grey Selected')
         return fcolor = '#a4a3a2', console.log(fcolor);
     });
 
     $("#orange").on("click", function() {
+        alert('Orange Selected')
         return fcolor = '#f2b706', console.log(fcolor);
     });
 
@@ -79,6 +85,7 @@ $(document).ready(function() {
 
     $('.colorpicker').on('click', function() {
         var rcolor = $('#cpr').children()[0].style.backgroundColor;
+        alert('Selected color set')
         return fcolor = rcolor, console.log(fcolor);
     });
 

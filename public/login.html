@@ -26,11 +26,11 @@
     <div class="login-container ">
         <form action="#" role="form" class="form-horizontal " id="loginForm" style="margin-top: 10%!important;">
             <div class="login-box animated fadeInDown">
-                <!-- <div class="login-logo"></div> -->
+                <div class="login-title">
+                    <h1 style="color: white!important;"><strong>Welcome,</strong> Please login</h1>
+                </div>
                 <div class="login-body">
-                    <div class="login-title">
-                        <h1 style="color: white!important;"><strong>Welcome,</strong> Please login</h1>
-                    </div>
+
                     <div class="alert alert-success" role="alert">
                         <button id="alert" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                         <strong>Your Account had been successfully migrated!</strong> <br> Pls. check your email to reset your Password Cheers!.
@@ -45,13 +45,15 @@
 
                     <div id="mauth0" class="form-group">
                         <div class="col-md-12">
-                            <input id="loginEmail" type="text" class="form-control" placeholder="Email" required />
+                            <label style="color: white;">Email </label>
+                            <input id="loginEmail" type="text" class="form-control" placeholder="your@email.com" required />
                         </div>
                     </div>
                     <br>
                     <div id="mauth1" class="form-group">
                         <div class="col-md-12">
-                            <input id="loginPassword" type="password" class="form-control" value="xxx" placeholder="Password" required />
+                            <label style="color: white;">Password </label>
+                            <input id="loginPassword" type="password" class="form-control" placeholder="password" required />
                         </div>
                     </div>
                     <br>

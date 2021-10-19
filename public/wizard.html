@@ -43,6 +43,13 @@
             left: -35px;
             content: "✖";
         }
+        
+        select option {
+            margin: 40px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+        }
     </style>
 </head>
 
@@ -93,7 +100,6 @@
                 <div class="login-title"><strong>Please set up, </strong>your workspace</div>
 
                 <div class="block">
-
                     <form action="#" role="form" class="form-horizontal" id="wizard-validation" autocomplete="off">
                         <div class="wizard show-submit wizard-validation" style="padding-top:10px!important">
                             <ul>
@@ -123,17 +129,20 @@
                             <div id="step-0" style="margin-right: -160px!important;
                             margin-left: -128px!important;">
                                 <div class="row">
+                                    <div class="col-md-10" style="padding-left: 14.5%;">
+                                        <p>
+                                            <h4 style="color: white;"> Note: kindly upload image with 150x150 size only</h4>
+                                        </p>
+
+                                    </div>
                                     <div class="col-md-10">
                                         <div class="form-group">
                                             <span class="col-md-2"></span>
                                             <div class="col-md-3">
                                                 <a class="file-input-wrapper btn btn-default  fileinput btn-primary"><input type="file" class="fileinput btn-primary " name="filename" id="userimg" title="User Picture" accept="image/*" required></a>
-                                            </div>
-                                            <div class="col-md-7">
-                                                <p>
-                                                    <h4 style="color: white;"> Note: kindly upload image with 150x150 size only</h4>
-                                                </p>
-                                            </div>
+                                            </div><br>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -143,10 +152,12 @@
                                         <div class="form-group">
                                             <span class="col-md-2"></span>
                                             <div class="col-md-5">
-                                                <input id="cusname" type="text" class="form-control" name="fullname" placeholder="Admin Full Name" />
+                                                <label style="color: white;">Mngr. Full Name</label>
+                                                <input id="cusname" type="text" class="form-control" name="fullname" placeholder="JOHN DOE" />
                                             </div>
                                             <div class="col-md-5">
-                                                <input id="cusemail" type="email" class="form-control" name="email" placeholder="Email" autocorrect="off" spellcheck="false" autocomplete="off" />
+                                                <label style="color: white;">Email</label>
+                                                <input id="cusemail" type="email" class="form-control" name="email" placeholder="jane@doe.com" autocorrect="off" spellcheck="false" autocomplete="off" />
                                                 <label id="emailerr" class="error">email already in used!</label>
                                             </div>
                                         </div>
@@ -159,20 +170,23 @@
                                             <span class="col-md-2"></span>
 
                                             <div class="col-md-5">
-                                                <input id="cusid" type="text" class="form-control" name="partnerid" placeholder="Partner ID" required/>
+                                                <label style="color: white;">Partner Id</label>
+                                                <input id="cusid" type="text" class="form-control" name="partnerid" placeholder="123456" required/>
                                             </div>
                                             <div class="col-md-5">
+                                                <label style="color: white;">Password</label>
                                                 <input id="registerPassword" type="password" class="form-control" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password"
                                                     required/>
                                                 <label id="showpwd" class="col-md-12 pull-right control-label" style="color: white;">Show Password <input type="checkbox" ></label>
+                                                <div class="pull-left" id="message" style="color: white;font-size: 9px!important;padding-left:11%;">
+                                                    <p id="letter" class="invalid text-left">A<b>lowercase</b> letter</p>
+                                                    <p id="capital" class="invalid text-left">A<b>capital (uppercase)</b> letter</p>
+                                                    <p id="number" class="invalid text-left">A<b>number</b></p>
+                                                    <p id="length" class="invalid text-left">Minimum<b> 8 characters</b></p>
+                                                </div>
                                             </div>
-                                            <span class="col-md-2"></span>
-                                            <div class="col-md-10 pull-left" id="message" style="color: white;font-size: 10px!important;">
-                                                <p id="letter" class="invalid text-right">A <b>lowercase</b> letter</p>
-                                                <p id="capital" class="invalid text-right">A <b>capital (uppercase)</b> letter</p>
-                                                <p id="number" class="invalid text-right">A <b>number</b></p>
-                                                <p id="length" class="invalid text-right">Minimum <b>8 characters</b></p>
-                                            </div>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -184,14 +198,17 @@
                             <div id="step-1" style="margin-left: -130px!important;">
 
                                 <div class="form-group">
+                                    <div style="padding-left: 18.5%;">
+                                        <p>
+                                            <h4 style="color: white;"> Note: kindly upload image with 150x150 or 310x150 size only</h4>
+                                        </p>
+                                    </div>
                                     <span class="col-md-2"></span>
                                     <div class="col-md-3">
                                         <a class="file-input-wrapper btn btn-default  fileinput btn-primary" name="data"><input type="file" class="fileinput btn-primary " name="filename" id="comlogo" title="Company Logo" name="data"></a>
                                     </div>
                                     <div class="col-md-7">
-                                        <p>
-                                            <h4 style="color: white;"> Note: kindly upload image with 150x150 or 310x150 size only</h4>
-                                        </p>
+
                                     </div>
                                 </div>
 
@@ -280,48 +297,47 @@
 
                             </div>
 
-
-
                             <div id="step-2" class="form-group " style="color: white;">
-                                <span class="col-md-6"></span>
-                                <div class="col-md-6">
+                                <center>
+                                    <div class="col-md-12">
 
-                                    <div class="ts-title">Form Color:</div>
+                                        <div class="ts-title">Form Color:</div>
 
-                                    <div class="form-c">
-                                        <a href="#" id="purple"><img class="purple" width="50" src="./assets/img/themes/default.jpg"></a>
-                                        <a href="#" id="blue"><img class="blue" width="50" src="./assets/img/themes/bl.jpg"></a>
-                                        <a href="#" id="green"><img class="green" width="50" src="./assets/img/themes/normal.jpg"></a>
-                                        <p></p>
-                                        <a href="#" id="red"><img width="50" src="./assets/img/themes/red.jpg"></a>
-                                        <a href="#" id="grey"><img width="50" src="./assets/img/themes/grey.jpg"></a>
-                                        <a href="#" id="orange"><img width="50" src="./assets/img/themes/orange.jpg"></a>
-                                    </div>
-                                    <br>
-                                    <div class="ts-title">Custom:</div>
-                                    <div class="col-md-2 input-group color" data-color="rgb(255, 255, 255)" data-color-format="rgb" id="colorpicker" style="padding-left: 0px;padding-right: 0px;">
-                                        <input id="dcpr" type="text" class="btn-xs form-control" style="font-size: 10!important; width: 105px; " readonly>
-                                        <span id="cpr" class="input-group-addon"><i
+                                        <div class="form-c">
+                                            <a href="#" id="purple"><img class="purple" width="50" src="./assets/img/themes/default.jpg"></a>
+                                            <a href="#" id="blue"><img class="blue" width="50" src="./assets/img/themes/bl.jpg"></a>
+                                            <a href="#" id="green"><img class="green" width="50" src="./assets/img/themes/normal.jpg"></a>
+                                            <p></p>
+                                            <a href="#" id="red"><img width="50" src="./assets/img/themes/red.jpg"></a>
+                                            <a href="#" id="grey"><img width="50" src="./assets/img/themes/grey.jpg"></a>
+                                            <a href="#" id="orange"><img width="50" src="./assets/img/themes/orange.jpg"></a>
+                                        </div>
+                                        <br>
+                                        <div class="ts-title">Custom:</div>
+                                        <div class="col-md-2 input-group color" data-color="rgb(255, 255, 255)" data-color-format="rgb" id="colorpicker" style="padding-left: 0px;padding-right: 0px;">
+                                            <input id="dcpr" type="text" class="btn-xs form-control" style="font-size: 10!important; width: 105px; " readonly>
+                                            <span id="cpr" class="input-group-addon"><i
                                                                 style="margin-bottom: 3px; width:30px; height:30px; background-color: rgb(255, 255, 255);"></i>
                                                         </span>
+                                        </div>
                                     </div>
-                                </div>
+                                </center>
                             </div>
                         </div>
 
                         <div class="form-group" style="padding-bottom: 35px;">
                             <label class="col-md-2 control-label" style="color: white;"></label>
                             <div id="errors" class="col-md-10" style="color: white;">
-
                             </div>
                         </div>
+                    </form>
                 </div>
-                </form>
+
 
                 <div class="login-footer">
 
                     <div class="pull-left">
-                        &copy; 2020 Partner Portal
+                        &copy; 2021 Partner Portal
                     </div>
                     <div class="pull-right">
                         <a href="./login.html">Login</a> |
