@@ -103,8 +103,6 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
     });
 
 
-
-
     $('.parent').find('div:first').remove();
 
 
@@ -157,7 +155,6 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
             stuffmail: $('#stuffmail').val(),
             stuffcontacts: $('#stuffcontacts').val()
         };
-
 
 
 

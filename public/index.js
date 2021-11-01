@@ -11,9 +11,13 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $timeout) {
             if (inc % 2 === 0) {
                 console.log('OFF', inc)
                 $("#theme").attr("href", "./assets/css/theme-default.css");
+                $('.dark').css('color', 'white');
+                $('.ligth').css('color', 'white');
             } else {
                 console.log('ON', inc)
                 $("#theme").attr("href", "./assets/css/theme-white.css");
+                $('.dark').css('color', 'black');
+                $('.ligth').css('color', 'black');
             }
         }
 

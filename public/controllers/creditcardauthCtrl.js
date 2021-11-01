@@ -12,6 +12,7 @@ angular.module('newApp').controller('creditcardauthCtrl', function($scope) {
     $scope.comstate = localStorage.getItem('comstate');
     $scope.compostalcode = localStorage.getItem('compostalcode');
     $scope.comno = localStorage.getItem('comcontact');
+    $scope.curem = localStorage.getItem('curuseremail');
 
     var logo = sessionStorage.getItem('comlogo');
     if (logo) {

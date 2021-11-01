@@ -22,6 +22,14 @@ $(document).ready(function() {
 
     firebase.initializeApp(config);
 
+    $('#showpwd').click(function() {
+        if ('password' == $('#loginPassword').attr('type')) {
+            $('#loginPassword').prop('type', 'text');
+        } else {
+            $('#loginPassword').prop('type', 'password');
+        }
+    });
+
     $('#loginForm').on('submit', function(e) {
         e.preventDefault();
 
@@ -36,132 +44,147 @@ $(document).ready(function() {
             // ref.orderByChild("cusemail").equalTo($('#loginEmail').val()).on("child_added", function(snapshot) {
             //     console.log(snapshot.val())
             // });
+            console.log(1)
             var ref = firebase.database().ref("users");
-            ref.orderByChild("cusemail").equalTo($('#loginEmail').val()).on("child_added", function(snapshot) {
-                if (snapshot.val().state === 0 && snapshot.val().userimage === "https://via.placeholder.com/150") {
+            ref.orderByChild("cusemail").equalTo($('#loginEmail').val()).on("value", function(snapshot) {
+                console.log(snapshot.val())
+                let rsnap = snapshot.val();
 
-                    console.log(snapshot.val().user_id);
-                    console.log(snapshot.val().cusemail);
-                    console.log(snapshot.val().userimage);
+                console.log(rsnap);
 
-                    var actionCodeSettings = {
-                        url: "https://gethelp.voipcloudconnect.com/white-label/",
-                        handleCodeInApp: false
-                    };
-                    firebase.auth().sendPasswordResetEmail(snapshot.val().cusemail, actionCodeSettings)
-                        .then(function() {
-                            $(".alert").show()
-                            setTimeout(function() {
-                                $(".alert").hide()
+                if (rsnap != null) {
+                    if (snapshot.val().state === 0 && snapshot.val().userimage === "https://via.placeholder.com/150") {
 
+                        console.log(snapshot.val().user_id);
+                        console.log(snapshot.val().cusemail);
+                        console.log(snapshot.val().userimage);
 
-                                var data = {
-                                    cusemail: snapshot.val().cusemail,
-                                    cusid: snapshot.val().user_id,
-                                    designation: "Aaccount Manager",
-                                    role: 1,
-                                    user_id: snapshot.val().user_id,
-                                    userimage: "https://via.placeholder.com/150",
-                                    state: 1
-                                }
-
-                                var updates = {};
-
-                                updates['/users/' + snapshot.val().user_id] = data;
-                                firebase.database().ref().update(updates);
-
-                                if (updates) {
-                                    console.log(updates)
-                                    window.location.replace("./login.html");
-                                }
+                        var actionCodeSettings = {
+                            url: "https://gethelp.voipcloudconnect.com/white-label/",
+                            handleCodeInApp: false
+                        };
+                        firebase.auth().sendPasswordResetEmail(snapshot.val().cusemail, actionCodeSettings)
+                            .then(function() {
+                                $(".alert").show()
+                                setTimeout(function() {
+                                    $(".alert").hide()
 
 
-                            }, 5000)
-                        }).catch(function(error) {
-                            // Error occurred. Inspect error.code.
-                        });
-                } else {
-
-                    firebase.auth().signInWithEmailAndPassword(data.email, data.password)
-                        .then(function(authData) {
-                            auth = authData;
-                            let otp = Math.random().toString().substr(2, 7);
-
-                            var votp = otp;
-
-                            console.log(auth);
-                            if (authData.emailVerified) {
-
-                                var ref = firebase.database().ref("users");
-                                ref.orderByChild("cusemail").equalTo($('#loginEmail').val()).on("child_added", function(snapshot) {
-                                    console.log(snapshot.val().mobileno)
-
-                                    if (snapshot.val().otp === 1) {
-
-                                        $(".validatec").show()
-                                        $("#otpholder").show()
-
-                                        $("#mauth0").hide()
-                                        $("#mauth1").hide()
-                                        $(".loginh").hide()
-
-                                        var form = new FormData();
-                                        form.append("To", snapshot.val().mobileno);
-                                        form.append("From", "+14157924897");
-                                        form.append("Body", "Hello!, " + snapshot.val().cusname + " this is your ConnectMeVoice OTP " + otp);
-
-                                        var settings = {
-                                            "url": "https://api.twilio.com/2010-04-01/Accounts/AC616dd219c8bea3811d0c502f573af681/Messages.json",
-                                            "method": "POST",
-                                            "timeout": 0,
-                                            "headers": {
-                                                "Authorization": "Basic QUM2MTZkZDIxOWM4YmVhMzgxMWQwYzUwMmY1NzNhZjY4MTpiNThlNTYwNGRjNzE5MDlhODYwNDgzZjljZmZiZDU0Mg=="
-                                            },
-                                            "processData": false,
-                                            "mimeType": "multipart/form-data",
-                                            "contentType": false,
-                                            "data": form
-                                        };
-
-                                        $.ajax(settings).done(function(response) {
-                                            var resp = JSON.parse(response)
-                                            let str = resp.body.replace(/^\D+/g, '');
-                                            // console.log(str)
-
-                                        });
-
-                                    } else {
-                                        window.location.replace("./index.html");
-                                        console.log(authData);
-                                        snapshot.val()
+                                    var data = {
+                                        cusemail: snapshot.val().cusemail,
+                                        cusid: snapshot.val().user_id,
+                                        designation: "Aaccount Manager",
+                                        role: 1,
+                                        user_id: snapshot.val().user_id,
+                                        userimage: "https://via.placeholder.com/150",
+                                        state: 1
                                     }
-                                });
 
-                            } else {
-                                alert('email not verified, please check your email for confirmation');
-                            }
+                                    var updates = {};
 
-                            $(".validate").click(function() {
-                                let etop = $('#otpno').val();
+                                    updates['/users/' + snapshot.val().user_id] = data;
+                                    firebase.database().ref().update(updates);
 
-                                if (votp === etop) {
-                                    localStorage.setItem('OTP', etop)
-                                    console.log(votp, etop)
-                                    window.location.replace("./index.html");
+                                    if (updates) {
+                                        console.log(updates)
+                                        window.location.replace("./login.html");
+                                    }
+
+
+                                }, 5000)
+                            }).catch(function(error) {
+                                // Error occurred. Inspect error.code.
+                            });
+                    } else {
+
+                        firebase.auth().signInWithEmailAndPassword(data.email, data.password)
+                            .then(function(authData) {
+                                auth = authData;
+                                let otp = Math.random().toString().substr(2, 7);
+
+                                var votp = otp;
+
+                                console.log(auth);
+                                if (authData.emailVerified) {
+
+                                    var ref = firebase.database().ref("users");
+                                    ref.orderByChild("cusemail").equalTo($('#loginEmail').val()).on("child_added", function(snapshot) {
+                                        console.log(snapshot.val().mobileno)
+
+                                        if (snapshot.val().otp === 1) {
+
+                                            $(".validatec").show()
+                                            $("#otpholder").show()
+
+                                            $("#mauth0").hide()
+                                            $("#mauth1").hide()
+                                            $(".loginh").hide()
+
+                                            var form = new FormData();
+                                            form.append("To", snapshot.val().mobileno);
+                                            form.append("From", "+14157924897");
+                                            form.append("Body", "Hello!, " + snapshot.val().cusname + " this is your ConnectMeVoice OTP " + otp);
+
+                                            var settings = {
+                                                "url": "https://api.twilio.com/2010-04-01/Accounts/AC616dd219c8bea3811d0c502f573af681/Messages.json",
+                                                "method": "POST",
+                                                "timeout": 0,
+                                                "headers": {
+                                                    "Authorization": "Basic QUM2MTZkZDIxOWM4YmVhMzgxMWQwYzUwMmY1NzNhZjY4MTpiNThlNTYwNGRjNzE5MDlhODYwNDgzZjljZmZiZDU0Mg=="
+                                                },
+                                                "processData": false,
+                                                "mimeType": "multipart/form-data",
+                                                "contentType": false,
+                                                "data": form
+                                            };
+
+                                            $.ajax(settings).done(function(response) {
+                                                var resp = JSON.parse(response)
+                                                let str = resp.body.replace(/^\D+/g, '');
+                                                // console.log(str)
+
+                                            });
+
+                                        } else {
+                                            window.location.replace("./index.html");
+                                            console.log(authData);
+                                            snapshot.val()
+                                        }
+                                    });
+
                                 } else {
-                                    console.log(votp, etop)
-                                    alert('INVALID OTP')
+                                    alert('email not verified, please check your email for confirmation');
                                 }
+
+                                $(".validate").click(function() {
+                                    let etop = $('#otpno').val();
+
+                                    if (votp === etop) {
+                                        localStorage.setItem('OTP', etop)
+                                        console.log(votp, etop)
+                                        window.location.replace("./index.html");
+                                    } else {
+                                        console.log(votp, etop)
+                                        alert('INVALID OTP')
+                                    }
+
+                                })
 
                             })
+                            .catch(function(error) {
+                                console.log("Login Failed!", error.message);
+                                alert(error.message + ' Check your input');
 
-                        })
-                        .catch(function(error) {
-                            console.log("Login Failed!", error.message);
-                            alert(error.message + ' Check your input');
+                            })
+                    }
+                } else {
+                    $(".invalid").show();
 
-                        })
+                    setTimeout(function() {
+                        $(".invalid").hide()
+                    }, 2000)
                 }
+
             });
 
 

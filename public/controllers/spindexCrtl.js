@@ -14,6 +14,7 @@ angular.module('newApp').controller('spindexCrtl', function($scope, $timeout) {
     $scope.comstate = localStorage.getItem('comstate');
     $scope.compostalcode = localStorage.getItem('compostalcode');
     $scope.comno = localStorage.getItem('comcontact');
+    $scope.curem = localStorage.getItem('curuseremail');
 
     $scope.currentPage = 0;
     $scope.pageSize = 10;

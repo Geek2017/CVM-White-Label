@@ -16,6 +16,7 @@ $(document).ready(function() {
     });
 
     $('#emailerr').hide()
+    $('.thisalert').hide()
 
     //initialize the firebase app
     var str = window.location.pathname;
@@ -32,34 +33,63 @@ $(document).ready(function() {
     var fcolor;
     var ftheme;
 
+    var thecolor, txtcolor;
+
+    function changecolort() {
+
+        $('.thisalert').show()
+
+        $('.thisalert').css('background-color', thecolor);
+
+        $('.thisalert').text(txtcolor + ' color selected!')
+
+        setTimeout(function() {
+            $('.thisalert').hide();
+        }, 3000)
+
+    }
+
+
     $("#purple").on("click", function() {
-        alert('Purple Selected')
+        thecolor = '#b511b4';
+        txtcolor = 'Purple';
+        changecolort();
         return fcolor = '#b511b4', console.log(fcolor);
     });
 
     $("#blue").on("click", function() {
-        alert('Blue Selected')
+        thecolor = '#02c2fb';
+        txtcolor = 'Blue';
+        changecolort();
         return fcolor = '#02c2fb', console.log(fcolor);
     });
 
     $("#green").on("click", function() {
-        alert('Green Selected')
+        thecolor = '#2bc20e';
+        txtcolor = 'Green';
+        changecolort();
         return fcolor = '#2bc20e', console.log(fcolor);
     });
 
     $("#red").on("click", function() {
-        alert('Red Selected')
+        thecolor = '#f21918';
+        txtcolor = 'Red';
+        changecolort();
         return fcolor = '#f21918', console.log(fcolor);
     });
 
     $("#grey").on("click", function() {
-        alert('Grey Selected')
+        thecolor = '#a4a3a2';
+        txtcolor = 'Grey';
+        changecolort();
         return fcolor = '#a4a3a2', console.log(fcolor);
     });
 
     $("#orange").on("click", function() {
-        alert('Orange Selected')
-        return fcolor = '#f2b706', console.log(fcolor);
+        thecolor = '#fe970a';
+        txtcolor = 'Orange';
+        changecolort();
+        return fcolor = '#fe970a', console.log(fcolor);
     });
 
     $("#tdefault").on("click", function() {
@@ -84,8 +114,12 @@ $(document).ready(function() {
 
 
     $('.colorpicker').on('click', function() {
+
+
         var rcolor = $('#cpr').children()[0].style.backgroundColor;
-        alert('Selected color set')
+        thecolor = rcolor;
+        txtcolor = rcolor;
+        changecolort();
         return fcolor = rcolor, console.log(fcolor);
     });
 

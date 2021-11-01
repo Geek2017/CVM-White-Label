@@ -31,6 +31,11 @@
                 </div>
                 <div class="login-body">
 
+                    <div class="invalid alert alert-danger" role="alert">
+
+                        <strong>Invalid email pls. check your entry!</strong>
+                    </div>
+
                     <div class="alert alert-success" role="alert">
                         <button id="alert" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                         <strong>Your Account had been successfully migrated!</strong> <br> Pls. check your email to reset your Password Cheers!.
@@ -54,6 +59,7 @@
                         <div class="col-md-12">
                             <label style="color: white;">Password </label>
                             <input id="loginPassword" type="password" class="form-control" placeholder="password" required />
+                            <label id="showpwd" class="pull-right control-label" style="color: white;">Show Password <input type="checkbox" ></label>
                         </div>
                     </div>
                     <br>
